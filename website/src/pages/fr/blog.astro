@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import { getLangFromUrl } from "../../i18n/utils";
+
+const pageTitle = "My Astro Learning Blog";
+const allPosts = await getCollection("blog");
+const lang = getLangFromUrl(Astro.url);
+---
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is where I will post about my journey learning Astro.</p>
+  <ul>
+    {
+      allPosts.map((post) => {
+        const fixedUrl = "/" + post.id.replace("/", '/posts/'); // fix the URL to match the expected format
+        const postLang = post.id.split('/')[0];
+        if (postLang !== lang) {
+          return null; // Skip posts that don't match the current language
+        }
+        // const postLang = post.id.split('/')[0];
+        return <BlogPost url={fixedUrl} title={post.data.title} />
+      })
+    }
+  </ul>
+</BaseLayout>

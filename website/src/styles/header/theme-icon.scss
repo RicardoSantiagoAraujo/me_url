@@ -1,0 +1,31 @@
+
+@use '../variables/colors' as c;
+
+#themeToggle {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transform-origin: center;
+    &:hover{
+        transform: scale(1.05);
+        transition: 0.1s ease-in-out;
+    }
+    &:active{
+        transform: rotate(180deg);
+        transition: 0.1s ease-in-out;
+    }
+  }
+
+html:not(.dark) .sun { fill: white;}
+html:not(.dark) .moon { fill: transparent; }
+
+html.dark .sun { fill: transparent; }
+html.dark .moon { fill: white; }
+
+
+html:not(.dark) #themeToggle:active .sun{
+  fill: c.$color-secondary;
+}
+html.dark #themeToggle:active .moon{
+  fill: c.$color-secondary;
+}

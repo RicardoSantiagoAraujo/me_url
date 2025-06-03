@@ -1,0 +1,33 @@
+---
+import '../styles/header/theme-icon.scss';
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+---
+
+<div id="language-select__container">
+<label for="language-select"></label>
+<select id="language-select" name="language" onchange="window.location.href=this.value">
+  {Object.entries(languages).map(([lang, obj]) => (
+    <option value={`/${lang}/`}>{obj.flag}</option>
+  ))}
+</select>
+</div>
+
+
+<style>
+  #language-select {
+    background: none;
+    /* margin: 60% 0%; */
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  label{
+    display: none;
+  }
+</style>
+
+<script define:vars={{currentLang}}>
+  document.querySelector('#language-select').value = `/${currentLang}/`; // Set the selected value based on the current language
+</script>

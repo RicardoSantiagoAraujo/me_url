@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Greeting from '../../components/Greeting'; ;
+import ParallaxImage from '../../components/ParallaxImage.astro';
+import myImg from "../../assets/placeholder_image.jpg";
+const parallaxEffect = 0.1;
+const pageTitle = "Page title";
+const pageSubtitle = "Page subtitle"
+---
+<BaseLayout pageTitle={pageTitle}  pageSubtitle={pageSubtitle}>
+  <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
+
+
+  <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}/>
+
+  <p>Landing page text.</p>
+
+
+
+
+</BaseLayout>

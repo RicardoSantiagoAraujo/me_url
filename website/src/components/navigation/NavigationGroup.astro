@@ -1,0 +1,55 @@
+---
+import Logo from "./../Logo.astro"
+import { getLangFromUrl, useTranslations , useTranslatedPath} from '../../i18n/utils';
+import NavigationItem from "./NavigationItem.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const {groupName, targets, dir } = Astro.props as {groupName:string, targets: any[], dir:string }; // keep up to date with the available targets
+
+const groupName_NoSpaces = groupName.replaceAll(/\s/g, "");
+---
+<div class=`component__navigation-group nav_element navigation-group-${groupName_NoSpaces}`>
+    <div class="navigation-group-name">{groupName}</div>
+    <div class="navigation-group-dropdown hidden">
+        {targets.map((target) => (
+            <NavigationItem target={target} dir={dir}/>
+        ))}
+    </div>
+</div>
+
+
+<script define:vars={{groupName_NoSpaces}}>
+    let isOpen = false;
+
+    const targetElement = document.querySelector(`.navigation-group-${groupName_NoSpaces} .navigation-group-dropdown`);
+
+    const handleNavGroupClick = (event) => {
+        event.stopPropagation(); // prevent this click from closing immediately
+        const allDropdownElements = document.querySelectorAll(`.navigation-group-dropdown`);
+        allDropdownElements?.forEach(element => {
+            if (element !== targetElement) // check if the element is not the one that was clicked
+            {
+                element.classList.add("hidden");
+            }
+        });
+        targetElement.classList.toggle("hidden");
+        isOpen = !isOpen;
+    }
+
+
+    const handleDocumentClick = () => {
+        if (isOpen) {
+        targetElement?.classList.add("hidden");
+        isOpen = false;
+        }
+    };
+
+    document.querySelector(`.navigation-group-${groupName_NoSpaces} .navigation-group-name`)?.addEventListener("click",
+        handleNavGroupClick
+    );
+
+
+    document.addEventListener("click", handleDocumentClick);
+  </script>

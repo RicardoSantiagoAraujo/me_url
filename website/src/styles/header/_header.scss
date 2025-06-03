@@ -1,0 +1,153 @@
+@use '../variables/colors' as c;
+@use '../variables/dimensions' as d;
+@use 'sass:color';
+@use './navigation/navigation';
+
+
+
+// ============== Default styles are for SMALLER screens
+
+header {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  box-shadow: 0px 0px 10px c.$color-black;
+  background-color: c.$color-black;
+  // add texture to belt
+  $texture-colorA: c.$color-black;
+  $texture-colorB: color.mix(c.$color-black, c.$color-secondary, 90%);
+  background-image:  linear-gradient(135deg, $texture-colorB 25%, transparent 25%), linear-gradient(225deg, $texture-colorB 25%, transparent 25%), linear-gradient(45deg, $texture-colorB 25%, transparent 25%), linear-gradient(315deg, $texture-colorB 25%, $texture-colorA 25%);
+  background-position:  10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  background-repeat: repeat;
+}
+
+/* nav styles */
+
+
+#header__bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+}
+
+
+
+
+@media screen and (max-width: 636px) {
+  .header__panel {
+    padding: 0px;
+    width: d.$belt-panel-width;
+    background-color: c.$color-primary;
+    position: relative;
+
+    &.header__panel__left {
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      bottom: 50%;
+      transform: translate(-50%, 50%
+      );
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.header__widgets {
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  // padding-left: $belt-stripe-width * 5;
+  // padding-right: $belt-stripe-width * 3;
+  justify-content: space-evenly;
+  align-items: center;
+  // gap: 10px;
+}
+}
+
+
+
+
+
+
+
+// ==============  Media Query for LARGER screens
+@media screen and (min-width: 636px) {
+  header {
+    background-color: c.$color-black;
+    width: 100%;
+    height: d.$header-height-desktop;
+    position: relative;
+  }
+
+
+  .header__panel {
+    padding: 0px;
+    width: d.$belt-panel-width;
+    background-color: c.$color-primary;
+    position: relative;
+    // add texture to belt
+    $texture-colorA: c.$color-primary;
+    $texture-colorB: color.mix(c.$color-primary, c.$color-secondary, 90%);
+    background-image: linear-gradient(0deg, $texture-colorA 50%, $texture-colorB 50%);
+    background-size: 5px 5px;
+    background-repeat: repeat;
+
+    &.header__panel__left {
+      display: block;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: d.$belt-stripe-width;
+      top: 0px;
+      height: 100%;
+      background-color:   c.$belt-stripe-color;
+    }
+
+    &.header__panel__left {
+      .logo__container {
+        display: none;
+      }
+
+      &:before {
+        right: d.$belt-stripe-width * 1;
+      }
+
+      &:after {
+        right: d.$belt-stripe-width * 3;
+      }
+    }
+
+    &.header__panel__right {
+      &:before {
+        left: d.$belt-stripe-width * 1;
+      }
+
+      &:after {
+        left: d.$belt-stripe-width * 3;
+      }
+    }
+  }
+
+
+  .header__widgets {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding-left: d.$belt-stripe-width * 5;
+    padding-right: d.$belt-stripe-width * 3;
+    justify-content: space-evenly;
+    align-items: center ;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,24 @@
+---
+
+import { getCollection, render } from 'astro:content';
+import MarkdownPostLayout from '../../../layouts/MarkdownPostLayout.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('blog');
+
+  const paths = pages.map(page => {
+    const [lang, ...slug] = page.id.split('/');
+    return { params: { lang, slug: slug.join('/') || undefined }, props: page };
+  });
+
+  return paths;
+}
+
+const { lang, slug } = Astro.params;
+const page = Astro.props;
+const formattedDate = page.data.pubDate.toLocaleString(lang);
+const { Content } = await render(page);
+---
+<MarkdownPostLayout frontmatter={page.data}>
+  <Content />
+</MarkdownPostLayout>

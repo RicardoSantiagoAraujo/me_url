@@ -1,0 +1,13 @@
+---
+import Logo from "./../Logo.astro"
+import { getLangFromUrl, useTranslations , useTranslatedPath} from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const {target, dir } = Astro.props as { target: 'home' | 'about' | 'styles'; dir: string  }; // keep up to date with the available targets - does not actually need to be be up to date
+
+---
+
+<a class="link nav_element" href={translatePath(`/${dir}/${target}/`)}>{t(`nav.${target}`)}
+</a>

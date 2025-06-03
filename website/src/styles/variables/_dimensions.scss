@@ -1,0 +1,10 @@
+// HEADER
+$header-height-desktop : 33vh;
+$belt-center-width: 75%;
+$belt-panel-width: (
+  100%-$belt-center-width) * 0.5;
+$belt-stripe-width: 10px;
+
+
+// FOOTER
+$footer-height-desktop : 10vh;

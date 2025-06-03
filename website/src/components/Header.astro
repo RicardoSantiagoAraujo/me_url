@@ -1,0 +1,30 @@
+---
+import Navigation from "./navigation/Navigation.astro"
+import Hamburger from "./Hamburger.astro"
+import ThemeIcon from "./ThemeIcon.astro"
+import LanguagePicker from "./LanguagePicker.astro"
+import Logo from "./Logo.astro"
+---
+
+<header>
+    <div id="header__bar">
+        <div class="hamburger__container">
+            <Hamburger />
+        </div>
+        <!-- LEFT PANEL -->
+        <div class="header__panel header__panel__left">
+            <Logo />
+        </div>
+        <!-- NAVIGATION -->
+        <nav>
+            <Navigation />
+        </nav>
+        <!-- RIGHT PANEL -->
+        <div class="header__panel header__panel__right">
+            <div class="header__widgets">
+                <ThemeIcon />
+                <LanguagePicker/>
+            </div>
+        </div>
+    </div>
+</header>
