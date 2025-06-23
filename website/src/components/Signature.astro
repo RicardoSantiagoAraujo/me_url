@@ -1,0 +1,63 @@
+---
+import '../styles/variables/_colors.scss';
+import { Image } from 'astro:assets';
+import signatureImg from '../assets/generic_signature.png';
+import { generalParameters } from '../data/general';
+const color="transparent"; // generalParameters.signatureColor;
+const colorHover="transparent"; // generalParameters.signatureColorHover;
+const colorActive="transparent"; // generalParameters.signatureColorActive;
+---
+
+<div class="signature__container">
+    <a href="/" class="signature">
+        <!-- <div class="signature__img"></div> -->
+        <Image class="signature__img" src={signatureImg} alt="signature image."/>
+    </a>
+</div>
+
+
+<style define:vars={{ color, colorHover, colorActive}}>
+    .signature__container {
+        height: 100%;
+        /* aspect-ratio: 1; */
+    }
+
+    .signature {
+        height: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .signature__img{
+            height: 93%;
+            /* aspect-ratio: 1 / 1; */
+            width: auto;
+            background: var(--color);
+            /* background-position: center;
+            background-repeat: no-repeat; */
+            /* background-size: 97%; */
+            /* border-radius: 50%; */
+            padding: 3px;
+            opacity: 1;
+            &:hover{
+                transform: scale(1.01);
+                transition: all 0.3s ease-in-out;
+                background: var(--colorHover);
+            }
+            &:active{
+                transform: scale(1.01);
+                transition: all 0.05s ease-in-out;
+                background: var(--colorActive);
+            }
+    }
+    }
+
+
+</style>
+
+
+<script>
+    // const signatureEl = document.querySelector<HTMLElement>('.signature__container');
+    // signatureEl!.style.background = "red url('../assets/IRMÃOSS_signature1.svg')";
+    // signatureEl!.innerHTML = "world";
+</script>

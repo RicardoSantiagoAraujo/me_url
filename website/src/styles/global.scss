@@ -10,7 +10,8 @@
 @use 'dark_mode';
 
 html {
-  background: linear-gradient(0.25turn, c.$color_bg, c.$color-white d.$belt-panel-width*1 (100% - d.$belt-panel-width*1), c.$color_bg);
+  // background: linear-gradient(0.25turn, c.$color_bg, c.$color-white d.$header__panel-width*1 (100% - d.$header__panel-width*1), c.$color_bg);
+  background: c.$color_bg;
   font-family: serif;
 }
 
@@ -24,10 +25,11 @@ body {
 
 .page-container {
   padding: 0.75rem;
-  margin: 0 d.$belt-panel-width 0 0;
+  width:  d.$body-width;
   min-height: 100vh - d.$header-height-desktop; //- d.$footer-height-desktop;
   background-color: c.$color-white;
-  .page-titles{
+
+  .page-titles {
     padding-bottom: 1rem;
   }
 }
@@ -75,7 +77,7 @@ h1 {
 
   .page-container {
     padding: 2rem 4rem;
-    width: d.$belt-center-width;
+    width: d.$body-width;
     margin: 0 auto;
     min-height: 100vh - d.$header-height-desktop; //- d.$footer-height-desktop;
     background-color: c.$color-white;

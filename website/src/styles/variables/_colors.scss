@@ -10,7 +10,7 @@ $color-primary-dark: rgba($color-primary, 0.88);
 $color-dark-mode: #0d0950;
 
 
-$color-secondary-_desaturated: color.scale($color-secondary, $saturation:-50%);
+$color-secondary-_desaturated: color.scale($color-secondary, $saturation: -50%);
 
 
 
@@ -26,5 +26,4 @@ $color-info: #c6538c;
 
 // ======= COMPONENT COLORS
 // HEADER
-$color_bg:  color.scale(color.mix($color-primary, $color-secondary, 50%), $saturation: -50%);
-$belt-stripe-color: $color-white;
+$color_bg: color.scale(color.mix($color-primary, $color-secondary, 50%), $saturation: -50%);

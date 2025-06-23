@@ -6,17 +6,17 @@
 // DARK MODE
 
 
-html.dark{
-  background-color: red !important;
-  background: linear-gradient(0.25turn, c.$color_bg, c.$color-dark-mode d.$belt-panel-width*1 (100% - d.$belt-panel-width*1), c.$color_bg);
+html.dark {
+  // background: linear-gradient(0.25turn, c.$color_bg, c.$color-dark-mode d.$header__panel-width*1 (100% - d.$header__panel-width*1), c.$color_bg);
+  background: black;
 
 }
 
-.dark.page-container{
+.dark.page-container {
   background-color: c.$color-dark-mode !important;
   color: c.$color-white;
 }
 
 .dark .nav-links a {
-    color: c.$color-white;
+  color: c.$color-white;
 }
