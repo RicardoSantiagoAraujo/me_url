@@ -11,7 +11,7 @@
 
 html {
   // background: linear-gradient(0.25turn, c.$color_bg, c.$color-white d.$header__panel-width*1 (100% - d.$header__panel-width*1), c.$color_bg);
-  background: c.$color_bg;
+  background: c.$color_body_bg;
   font-family: serif;
 }
 
@@ -25,9 +25,9 @@ body {
 
 .page-container {
   padding: 0.75rem;
-  width:  d.$body-width;
+  width: d.$body-width;
   min-height: 100vh - d.$header-height-desktop; //- d.$footer-height-desktop;
-  background-color: c.$color-white;
+  background-color: c.$color_body_bg;
 
   .page-titles {
     padding-bottom: 1rem;
@@ -80,6 +80,6 @@ h1 {
     width: d.$body-width;
     margin: 0 auto;
     min-height: 100vh - d.$header-height-desktop; //- d.$footer-height-desktop;
-    background-color: c.$color-white;
+    background-color: c.$color_body_bg;
   }
 }

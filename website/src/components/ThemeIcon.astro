@@ -26,8 +26,10 @@ import '../styles/header/theme-icon.scss';
 
 
     addEventListener("load", (event) => {
+      // mark html element with dark class
       const htmlElement = document.documentElement;
-      const elementsToMark = [".page-container"]
+      // mark elements in list with dark class
+      const elementsToMark = [".page-container", "#header__bar", "footer"]
 
       if (theme === 'light') {
         htmlElement.classList.remove('dark');

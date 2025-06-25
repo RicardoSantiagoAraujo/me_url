@@ -10,7 +10,7 @@ footer {
     gap: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: c.$color-secondary--desaturated;
+    background-color: c.$color_footer_bg;
     min-height: d.$footer-height-desktop;
     a{
         color: black;
@@ -29,7 +29,7 @@ footer {
     /* margin-top: 2rem; */
     height: d.$footer-height-desktop;
     text-align: center;
-    background-color: c.$color-secondary--desaturated;
+    background-color: c.$color_footer_bg;
     height: auto;
     &>*{
         min-width: 30%;
@@ -60,7 +60,7 @@ footer {
 }
 
 .footer__row2{
-    background-color: c.$color-secondary--desaturated;
+    background-color: c.$color_footer_bg;
     width: 100%;
     height: auto;
     display: flex;
