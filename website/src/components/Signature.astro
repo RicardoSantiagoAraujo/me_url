@@ -29,7 +29,7 @@ const colorActive="transparent"; // generalParameters.signatureColorActive;
         justify-content: center;
         align-items: center;
         .signature__img{
-            height: 93%;
+            height: 65%;
             /* aspect-ratio: 1 / 1; */
             width: auto;
             background: var(--color);
@@ -39,9 +39,9 @@ const colorActive="transparent"; // generalParameters.signatureColorActive;
             /* border-radius: 50%; */
             padding: 3px;
             opacity: 1;
+            transition: all 0.3s ease-in-out;
             &:hover{
-                transform: scale(1.01);
-                transition: all 0.3s ease-in-out;
+                transform: scale(1.025);
                 background: var(--colorHover);
             }
             &:active{

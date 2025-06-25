@@ -1,5 +1,5 @@
 ---
-import Social from './Social.astro';
+import ExternalLink from './ExternalLink.astro';
 import instagramIcon from '../assets/icons/instagram.svg';
 import { generalParameters } from '../data/general';
 ---
@@ -10,8 +10,10 @@ import { generalParameters } from '../data/general';
   <!-- FOOTER ROW 1 -->
     <div class="footer_row footer__row1">
       <a href={generalParameters.email}><i class="fa fa-envelope"></i>{generalParameters.email}</a>
-      <div class="social__container">
-        <Social platform="instagram" height="27px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} />
+      <div class="external-link__container">
+        <ExternalLink platform="instagram" height="27px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} />
+        <ExternalLink platform="instagram" height="27px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} />
+        <ExternalLink platform="instagram" height="27px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} />
       </div>
       <a href="https://maps.app.goo.gl/8jWCija68AREpJKh6"><i class="fa fa-home"></i> {generalParameters.address} </a>
     </div>

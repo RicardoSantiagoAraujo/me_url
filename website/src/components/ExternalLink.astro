@@ -2,16 +2,16 @@
 const { platform, icon, faIcon, address, height } = Astro.props;
 import { Image } from 'astro:assets';
 ---
-<a class="social" href={`https://www.${address}`}>
-  {icon !== null ? <Image class="social-icon" src={icon}  alt={`icon for ${platform}`}/> : null}
-  {faIcon !== null ? <span class={`social-faicon fa ${faIcon}`}></span> : null}
-  <span class="social-text">{platform}</span>
+<a class="external-link" href={`https://www.${address}`}>
+  {icon !== null ? <Image class="external-link-icon" src={icon}  alt={`icon for ${platform}`}/> : null}
+  {faIcon !== null ? <span class={`external-link-faicon fa ${faIcon}`}></span> : null}
+  <span class="external-link-text">{platform}</span>
 </a>
 
 <style  lang="scss" define:vars={{ height }}>
     @use 'sass:color';
     @use '../styles/variables/colors' as c;
-    a.social {
+    a.external-link {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -30,23 +30,23 @@ import { Image } from 'astro:assets';
         transition: 0.05s ease-in-out;
       }
       text-decoration: none;
-      .social-icon {
+      .external-link-icon {
         height:  calc(var(--height) * 0.8);
         width: auto;
       }
-      .social-faicon {
+      .external-link-faicon {
         display: none;
       }
-      .social-text {
+      .external-link-text {
         display: none;
       }
     }
 
     @media screen and (min-width: 636px) {
-      a.social {
+      a.external-link {
       min-width: 150px;
       padding: 0.5rem 1rem;
-      .social-icon {
+      .external-link-icon {
         height: var(--height);
         width: auto;
       }

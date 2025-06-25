@@ -16,11 +16,19 @@
     }
   }
 
-html:not(.dark) .sun { fill: white;}
+#themeToggle svg {
+    width: 30px;
+    aspect-ratio: 1 / 1;
+}
+
+
+
+
+html:not(.dark) .sun { fill: c.$color-text;}
 html:not(.dark) .moon { fill: transparent; }
 
 html.dark .sun { fill: transparent; }
-html.dark .moon { fill: white; }
+html.dark .moon { fill: c.$color-text-darkmode; }
 
 
 html:not(.dark) #themeToggle:active .sun{

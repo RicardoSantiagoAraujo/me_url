@@ -8,30 +8,34 @@
 
 html.dark {
   // background: linear-gradient(0.25turn, c.$color_bg, c.$color-dark-mode d.$header__panel-width*1 (100% - d.$header__panel-width*1), c.$color_bg);
-  background: c.$color-darkmode-bg;
-  *{
-    color: c.$color-darkmode-text ;
+  background: c.$color-bg-darkmode;
+
+  * {
+    color: c.$color-text-darkmode ;
   }
 }
 
 .dark.page-container {
-  background-color: c.$color-darkmode-bg  ;
-  color: c.$color-darkmode-text ;
+  background-color: c.$color-bg-darkmode ;
+  color: c.$color-text-darkmode ;
 }
+
 .dark#header__bar {
-  background-color: c.$color-darkmode-bg ;
-  color: c.$color-darkmode-text ;
+  background-color: c.$color-bg-darkmode ;
+  color: c.$color-text-darkmode ;
 }
-footer.dark , footer.dark .footer_row{
-  background-color: c.$color-darkmode-bg ;
-  color: c.$color-darkmode-text ;
+
+footer.dark,
+footer.dark .footer_row {
+  background-color: c.$color-bg-darkmode ;
+  color: c.$color-text-darkmode ;
 }
 
 .dark .nav-links a {
-  color: c.$color-darkmode-text ;
+  color: c.$color-text-darkmode ;
 }
 
-.dark .signature__container{
+.dark .signature__container {
   // display: none;
   filter: invert(1);
 }

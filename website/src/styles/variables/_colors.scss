@@ -4,12 +4,15 @@
 // ======= COLOR PALETTE
 $color-black: black;
 $color-white: white;
-$color-primary: #EB232A;
-$color-secondary: #0083FF;
+$color-primary: #433b3b;
+$color-secondary: #2f3337;
 $color-primary-dark: rgba($color-primary, 0.88);
+// NORMAL MODE COLORS
+$color-text: #150000;
+$color-bg: #afa9a2;
 // DARK MODE COLORS
-$color-darkmode-text: #cacaca;
-$color-darkmode-bg: #2c0519;
+$color-text-darkmode: #cacaca;
+$color-bg-darkmode: #2c0519;
 
 
 $color-secondary-_desaturated: color.scale($color-secondary, $saturation: -50%);
@@ -27,10 +30,14 @@ $color-info: #c6538c;
 
 // ======= COMPONENT COLORS
 // HEADER
-$color_header_bg: color.scale(color.mix($color-primary, $color-secondary, 50%), $saturation: -50%);
+// $color_header_bg: color.scale(color.mix($color-primary, $color-secondary, 50%), $saturation: -50%);
+$color_header_text: $color-text;
+$color_header_bg: $color-bg;
 
 // BODY
-$color_body_bg: color.scale(color.mix($color-primary, $color-secondary, 50%), $saturation: -50%);
+$color_body_text: $color-text;
+$color_body_bg: $color-bg;
 
 // FOOTER
-$color_footer_bg: color.scale(color.mix($color-primary, $color-secondary, 50%), $saturation: -50%);
+$color_footer_text: $color-text;
+$color_footer_bg: $color-bg;

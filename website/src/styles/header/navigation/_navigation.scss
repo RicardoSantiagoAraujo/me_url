@@ -66,7 +66,7 @@ nav {
 
     // margin: 10px;
     &:after {
-      color: c.$color-primary;
+      color: c.$color-text;
       content: "\25BE";
       position: relative;
       left: 10px;
@@ -83,7 +83,7 @@ nav {
       // background-color: c.$color-secondary;
       animation: appearLink 0.3s ease-in-out forwards;
       background-color: c.$color-primary;
-      color: c.$color-black;
+      color: c.$color-text;
 
       // font-size: 1rem;
       &:focus,
@@ -116,9 +116,9 @@ nav {
   padding: 10px 0;
   text-decoration: none;
   font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: c.$color-white;
+  font-weight: normal;
+  text-transform: capitalize;
+  color: c.$color-text;
   height: 100%;
 }
 
@@ -130,7 +130,13 @@ nav {
   background-color: c.$color-secondary;
   display: none;
   margin: 0;
+  // border-bottom: 1px solid red;
+
+
+
+
 }
+
 
 
 
@@ -209,7 +215,7 @@ nav {
 
       // margin: 10px;
       &:after {
-        color: c.$color-white;
+        color: c.$color-text;
         content: "\25BE";
         position: absolute;
         width: 100%;
@@ -224,7 +230,7 @@ nav {
         cursor: pointer;
 
         &:after {
-          color: c.$color-primary;
+          color: c.$color-text;
           // top: 60%;
           transition: 0.3s ease-in-out;
           font-size: 2rem;
@@ -250,7 +256,7 @@ nav {
         background-color: c.$color-secondary;
         animation: appearLink 0.3s ease-in-out forwards;
         height: auto;
-        color: c.$color-white;
+        color: c.$color-text;
 
         &:hover {
           background-color: c.$color-primary !important;
@@ -312,6 +318,18 @@ nav {
     height: 100%;
     gap: 10px;
     background: none;
+
+    // Tappering line
+    &:after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 70%;
+      border-bottom: 0.5px solid c.$color-text;
+      $taper: 150px;
+      border-left: $taper solid transparent;
+      border-right: $taper solid transparent;
+    }
   }
 
   .nav-links a {
