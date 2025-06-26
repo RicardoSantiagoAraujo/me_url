@@ -8,11 +8,11 @@ $color-primary: #433b3b;
 $color-secondary: #2f3337;
 $color-primary-dark: rgba($color-primary, 0.88);
 // NORMAL MODE COLORS
-$color-text: #150000;
-$color-bg: #afa9a2;
+$color-text: #000011;
+$color-bg: #d8d6d3;
 // DARK MODE COLORS
-$color-text-darkmode: #cacaca;
-$color-bg-darkmode: #2c0519;
+$color-text-darkmode: #dbd5d5;
+$color-bg-darkmode: #2a0310;
 
 
 $color-secondary-_desaturated: color.scale($color-secondary, $saturation: -50%);

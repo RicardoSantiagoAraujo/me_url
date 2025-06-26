@@ -7,11 +7,11 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 const {target, dir } = Astro.props as { target: 'home' | 'about' | 'styles'; dir: string  }; // keep up to date with the available targets - does not actually need to be be up to date
 
+const translatedPath = translatePath(`/${dir}/${target}/`);
 const { pathname } = Astro.url;
-const isCurrentSection = pathname == translatePath(`/${dir}/${target}/`);
-console.log(isCurrentSection)
+const isCurrentSection = pathname == translatedPath;
 
 ---
 
-<a class={`link nav_element ${isCurrentSection ? "nav_element--active" : ""}`} href={translatePath(`/${dir}/${target}/`)}>{t(`nav.${target}`)}
+<a class={`link nav_element ${isCurrentSection ? "nav_element--active" : ""}`} href={translatedPath}>{t(`nav.${target}`)}
 </a>

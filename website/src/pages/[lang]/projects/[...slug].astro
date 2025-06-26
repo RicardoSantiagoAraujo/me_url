@@ -1,10 +1,10 @@
 ---
 
 import { getCollection, render } from 'astro:content';
-import MarkdownPostLayout from '../../../layouts/MarkdownPostLayout.astro';
+import MarkdownProjectLayout from '../../../layouts/MarkdownProjectLayout.astro';
 
 export async function getStaticPaths() {
-  const pages = await getCollection('blog'); // name of the collection from content.config.ts
+  const pages = await getCollection('projects'); // name of the collection from content.config.ts
 
   const paths = pages.map(page => {
     const [lang, ...slug] = page.id.split('/');
@@ -19,6 +19,6 @@ const page = Astro.props;
 const formattedDate = page.data.pubDate.toLocaleString(lang);
 const { Content } = await render(page);
 ---
-<MarkdownPostLayout frontmatter={page.data}>
+<MarkdownProjectLayout frontmatter={page.data}>
   <Content />
-</MarkdownPostLayout>
+</MarkdownProjectLayout>

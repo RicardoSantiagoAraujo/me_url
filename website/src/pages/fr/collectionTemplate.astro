@@ -1,25 +1,25 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import ProjectLink from "../../components/ProjectLink.astro";
 import { getLangFromUrl } from "../../i18n/utils";
 
 const pageTitle = "My Astro Learning Blog";
-const allitems = await getCollection("blog");
+const allItems = await getCollection("collectionTemplate"); // Adjusted to match the collection name
 const lang = getLangFromUrl(Astro.url);
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
+  <p>This are projects I have worked on.</p>
   <ul>
     {
-      allitems.map((item) => {
-        const fixedUrl = "/" + item.id.replace("/", '/posts/'); // fix the URL to match the expected format
+      allItems.map((item) => {
+        const fixedUrl = "/" + item.id.replace("/", '/itemsTemplateSlug/'); // fix the URL to match the expected format
         const itemLang = item.id.split('/')[0];
         if (itemLang !== lang) {
           return null; // Skip items that don't match the current language
         }
         // const itemLang = item.id.split('/')[0];
-        return <BlogPost url={fixedUrl} title={item.data.title} />
+        return <ProjectLink url={fixedUrl} title={item.data.title} />
       })
     }
   </ul>
