@@ -11,10 +11,12 @@ import { generalParameters } from '../data/general';
     <div class="footer_row footer__row1">
       <a href={generalParameters.email}><i class="fa fa-envelope"></i>{generalParameters.email}</a>
       <div class="external-link__container">
-        <ExternalLink platform="linkedIn" height="27px" icon={null} faIcon={"fa-brands fa-linkedin"} address={"linkedin.com/in/ricardo-santiago-araujo/"} />
-        <ExternalLink platform="gitHub" height="27px" icon={null} faIcon={"fa-brands fa-github"} address={"github.com/RicardoSantiagoAraujo"} />
-        <ExternalLink platform="researchGate" height="27px" icon={null} faIcon={"fa-brands fa-researchgate"} address={"researchgate.net/profile/Ricardo-Santiago-Araujo"} />
-        <!-- <ExternalLink platform="instagram" height="7px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} /> -->
+        {
+          generalParameters.externalLinks.map((data) =>
+          data.include &&
+          <ExternalLink name={data.name} height={data.IconAsImgHeight} icon={data.iconAsImg} faIcon={data.iconFontAwesome} address={data.hyperref} />)
+        }
+        <!-- <ExternalLink name="instagram" height="7px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} /> -->
       </div>
       <a href="https://maps.app.goo.gl/8jWCija68AREpJKh6"><i class="fa fa-home"></i> {generalParameters.address} </a>
     </div>
