@@ -15,11 +15,14 @@ import { Image } from 'astro:assets';
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem 0.5rem;
-      min-width: 125px;
-      border-radius: 10px;
+      // padding: 0.5rem 0.5rem;
+      // min-width: 125px;
+      height: 39px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
       color: rgb(0, 0, 0);
       background-color: color.scale(c.$color-white, $alpha: -60%);
+      font-size: x-large;
       &:hover {
         background-color: color.scale(c.$color-white, $alpha: -30%);
       transition: 0.2s ease-in-out;
@@ -35,7 +38,7 @@ import { Image } from 'astro:assets';
         width: auto;
       }
       .external-link-faicon {
-        display: none;
+        // display: none;
       }
       .external-link-text {
         display: none;
@@ -44,8 +47,8 @@ import { Image } from 'astro:assets';
 
     @media screen and (min-width: 636px) {
       a.external-link {
-      min-width: 150px;
-      padding: 0.5rem 1rem;
+      // min-width: 150px;
+      padding: 0.45rem;
       .external-link-icon {
         height: var(--height);
         width: auto;

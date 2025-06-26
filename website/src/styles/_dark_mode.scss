@@ -23,6 +23,17 @@ html.dark {
 .dark#header__bar {
   background-color: c.$color-bg-darkmode ;
   color: c.$color-text-darkmode ;
+  .nav-links{
+    &::after{
+      border-bottom-color: color.scale(c.$color-text-darkmode, $alpha: -70%);
+    }
+  }
+}
+
+footer.dark{
+  &:after {
+    border-bottom-color: color.scale(c.$color-text-darkmode, $alpha: -70%);
+  }
 }
 
 footer.dark,

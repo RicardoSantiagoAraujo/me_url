@@ -325,11 +325,14 @@ nav {
       position: absolute;
       bottom: 0;
       width: 70%;
-      border-bottom: 0.5px solid c.$color-text;
+      border-bottom: 0.5px solid color.scale(c.$color-text, $alpha: -70%);
       $taper: 150px;
       border-left: $taper solid transparent;
       border-right: $taper solid transparent;
+
     }
+
+
   }
 
   .nav-links a {
