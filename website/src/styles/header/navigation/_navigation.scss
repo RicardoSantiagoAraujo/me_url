@@ -1,6 +1,6 @@
+@use 'sass:color';
 @use '../../variables/colors' as c;
 @use '../../variables/dimensions' as d;
-@use 'sass:color';
 
 
 
@@ -66,8 +66,7 @@ nav {
 
     // margin: 10px;
     &:after {
-      color: c.$color-text;
-      content: "\25BE";
+      content: "\25BE"; // ▾
       position: relative;
       left: 10px;
     }
@@ -75,7 +74,7 @@ nav {
 
   .navigation-group-dropdown {
     width: 100%;
-    box-shadow: 0px 0px 10px c.$color-black;
+    box-shadow: 0px 0px 10px color.scale(c.$color-black, $alpha: -80%);
 
     a {
       width: 100%;
@@ -83,7 +82,7 @@ nav {
       // background-color: c.$color-secondary;
       animation: appearLink 0.3s ease-in-out forwards;
       background-color: c.$color-primary;
-      color: c.$color-text;
+      color: c.$color-text-darkmode;
 
       // font-size: 1rem;
       &:focus,
@@ -118,8 +117,36 @@ nav {
   font-size: 1.2rem;
   font-weight: normal;
   text-transform: capitalize;
-  color: c.$color-text;
+  color: c.$color-text-darkmode;
   height: 100%;
+}
+
+.nav_element--active {
+  // border-bottom: 1px solid c.$color-primary;
+  // background-color: color.scale(c.$color-bg, $lightness: 10%);
+  position: relative;
+  // Tappering line
+  &:before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    width: 30px;
+    border-bottom: 0.5px solid color.scale(c.$color-text, $alpha: -5%);
+    $taper: 30px;
+    border-left: $taper solid transparent;
+    border-right: $taper solid transparent;
+    animation: lineAppear 0.3s ease-in-out forwards;
+
+    @keyframes lineAppear {
+      0% {
+        transform: scaleX(0);
+      }
+
+      100% {
+        transform: scaleX(1);
+      }
+    }
+  }
 }
 
 .nav-links {
@@ -201,14 +228,15 @@ nav {
 // ==============  Media Query for LARGER screens
 @media screen and (min-width: 636px) {
 
-   #header__bar{
-    &:after{
+  #header__bar {
+    &:after {
       content: "";
       position: absolute;
       top: 100%;
       width: 100%;
       height: 25px;
-      background: linear-gradient(c.$color-bg, transparent);
+      // fade below header
+      background: linear-gradient(color.scale(c.$color-bg, $alpha: -25%), transparent);
     }
   }
 
@@ -218,33 +246,41 @@ nav {
     display: 100%;
   }
 
+  .nav_element,
+  .navigation-group-name {
+    color: c.$color-text;
+  }
+
+
   .component__navigation-group {
     position: relative;
     height: 100%;
+
+
 
     .navigation-group-name {
 
       // margin: 10px;
       &:after {
-        color: c.$color-text;
-        content: "\25BE";
+        content: "\25BE"; // ▾
+        opacity: 0.33;
         position: absolute;
         width: 100%;
         height: 100%;
         text-align: center;
-        top: 55%;
+        top: 60%;
         left: 0px;
         font-size: 1rem;
+        transition: 0.3s ease-in-out;
       }
 
       &:hover {
         cursor: pointer;
 
         &:after {
-          color: c.$color-text;
           // top: 60%;
-          transition: 0.3s ease-in-out;
-          font-size: 2rem;
+          opacity: 0.75;
+          transform: translate(0, 12%)scale(1.25);
         }
       }
     }
@@ -267,7 +303,7 @@ nav {
         background-color: c.$color-secondary;
         animation: appearLink 0.3s ease-in-out forwards;
         height: auto;
-        color: c.$color-text;
+        color: c.$color-text-darkmode;
 
         &:hover {
           background-color: c.$color-primary !important;
@@ -331,7 +367,7 @@ nav {
     background: none;
 
     // Tappering line
-    &:after{
+    &:after {
       content: "";
       position: absolute;
       top: 100%;

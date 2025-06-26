@@ -31,6 +31,14 @@ html.dark {
       border-top-color: color.scale(c.$color-text-darkmode, $alpha: -70%);
     }
   }
+  .nav_element--active{
+    &::before{
+    border-bottom: 0.5px solid color.scale(c.$color-text-darkmode, $alpha: -70%);
+    }
+  }
+// .nav_element{
+//   color: c.$color-text;
+// }
 }
 
 footer.dark{
