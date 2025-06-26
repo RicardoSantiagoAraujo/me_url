@@ -1,8 +1,13 @@
 ---
 import '../styles/variables/_colors.scss';
 import { Image } from 'astro:assets';
-import logoImg from '../assets/generic_portrait.svg';
+import type { ImageMetadata } from 'astro';
 import { generalParameters } from '../data/general';
+const imagePath = generalParameters.logo;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,svg}')
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,svg}"`);
+
 const color="white";
 const colorHover="red";
 const colorActive="blue";
@@ -11,7 +16,7 @@ const colorActive="blue";
 <div class="logo__container">
     <a href="/" class="logo">
         <!-- <div class="logo__img"></div> -->
-        <Image class="logo__img" src={logoImg} alt="Logo image."/>
+        <Image  class="signature__img"  src={images[imagePath]()} alt="signature image." />
     </a>
 </div>
 
