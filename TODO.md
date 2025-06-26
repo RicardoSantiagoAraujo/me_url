@@ -1,0 +1,2 @@
+- Highlight selected tab
+- Change font color on dropdown in small screen mode

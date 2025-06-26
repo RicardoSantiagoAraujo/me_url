@@ -1,7 +1,7 @@
 export const languages = {
   fr: { long: "Français", short: "fr", flag: "🇫🇷" },
   en: { long: "English", short: "en", flag: "🇬🇧" },
-  pt: { long: "Português", short: "pt", flag: "🇧🇷" },
+  pt: { long: "Português", short: "pt", flag: "🇵🇹" },//🇧🇷
   de: { long: "Deutsch", short: "de", flag: "🇩🇪" },
 }  as const;
 export type Language = keyof typeof languages;
