@@ -6,18 +6,13 @@ const url = Astro.url;
 const pathname = url.pathname;
 const pathnameWithoutLang = pathname.replace(`/${getLangFromUrl(url)}/`, ''); // Remove the current language from the path
 const pathElements = pathnameWithoutLang.split('/').filter(Boolean); // Split the path and remove empty segments
-const firstElement = pathElements.shift()!; // Remove the first element from the path elements
-console.log('pathnameWithoutLang:', pathnameWithoutLang);
-console.log('firstElement:', firstElement);
-console.log('pathElements:', pathElements);
+const firstElement = pathElements.shift()!; // Remove the first element from the path elements 
 const currentLang = getLangFromUrl(url);
 const translatedPaths = Object.entries(languages).map(([lang, obj]) => ({
   lang,
   flag: obj.flag,
   path:  `/${lang}/${translateRoute(firstElement, currentLang, lang as Language)}/${pathElements.join("/")}` // Translate the path to the target language
 }));
-
-console.log('translatedPaths:', translatedPaths);
 ---
 
 <div id="language-select__container">

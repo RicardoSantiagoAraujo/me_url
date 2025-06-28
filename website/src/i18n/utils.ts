@@ -34,8 +34,7 @@ export function useTranslatedPath(lang: Language) {
   }
 
 
-export function translateRoute(path: string, currentLang: Language, targetLang: Language) {
-    console.log("translateRoute called with path:", path, "currentLang:", currentLang, "targetLang:", targetLang);
+export function translateRoute(path: string, currentLang: Language, targetLang: Language) { 
      const currentRoutes = routes[currentLang];
      const key = Object.keys(currentRoutes).find(k => currentRoutes[k as keyof typeof currentRoutes] === path) as keyof typeof routes[Language];
      const translatedRoute = routes[targetLang][key];

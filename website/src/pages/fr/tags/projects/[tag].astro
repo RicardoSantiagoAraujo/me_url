@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BlogPost from '../../../../components/BlogPost.astro';
-import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts';
+import {generateTagRoute} from '../../../../scripts/dynamicRoutes';
 import { getLangFromUrl } from '../../../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 console.log(currentLang);
 
 export async function getStaticPaths() {
-  return generateTagRoute("blog");
+  return generateTagRoute("projects");
 }
 
 const { tag } = Astro.params;
@@ -17,6 +17,6 @@ const { items } = Astro.props;
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {items.map((item: any) =>  item.id.match(`^${currentLang}/.+`) ? <BlogPost url={`/${item.id.replace("/","/posts/")}/`}  title={item.data.title}/> : null )}
+    {items.map((item: any) =>  item.id.match(`^${currentLang}/.+`) ? <BlogPost url={`/${item.id.replace("/","/projects/")}/`}  title={item.data.title}/> : null )}
   </ul>
 </BaseLayout>
