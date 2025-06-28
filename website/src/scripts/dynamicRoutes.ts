@@ -1,0 +1,36 @@
+// Functins used to dynamically generate routes for specified collections in Astro.
+
+import { getCollection, render } from "astro:content";
+import { collections } from "../content.config.ts";
+
+
+// Creating a page for each item in a collection, generating dynamic routes.
+export async function generateItemRoutes(
+  collection_name: keyof typeof collections
+) {
+  const allItems = await getCollection(collection_name); // name of the collection from content.config.ts
+
+  const paths = allItems.map((item) => {
+    const [lang, ...slug] = item.id.split("/");
+    return { params: { lang, slug: slug.join("/") || undefined }, props: item };
+  });
+
+  return paths;
+}
+
+// Creating a page for each tag in a collection, filtering items by tags.
+export async function generateTagRoute(
+  collection_name: keyof typeof collections
+) {
+  const allItems = await getCollection(collection_name); // name of the collection from content.config.ts
+
+  const uniqueTags = [...new Set(allItems.map((item: any) => item.data.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    const filteredItems = allItems.filter((item: any) => item.data.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { items: filteredItems },
+    };
+  });
+}

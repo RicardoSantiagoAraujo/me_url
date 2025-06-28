@@ -1,6 +1,7 @@
 import { ui, defaultLang, routes, type Language, type Page  } from './ui';
 
 export function getLangFromUrl(url: URL) {
+  // Extract the language from the URL path: works if the URL is like /[lang]/some-page, i.e., the language is the first segment of the path.
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as keyof typeof ui;
   return defaultLang;

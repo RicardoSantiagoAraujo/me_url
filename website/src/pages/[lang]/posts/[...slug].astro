@@ -1,17 +1,11 @@
 ---
 
-import { getCollection, render } from 'astro:content';
+import {render } from 'astro:content';
 import MarkdownPostLayout from '../../../layouts/MarkdownPostLayout.astro';
+import {generateItemRoutes} from '../../../scripts/dynamicRoutes.ts'
 
 export async function getStaticPaths() {
-  const pages = await getCollection('blog'); // name of the collection from content.config.ts
-
-  const paths = pages.map(page => {
-    const [lang, ...slug] = page.id.split('/');
-    return { params: { lang, slug: slug.join('/') || undefined }, props: page };
-  });
-
-  return paths;
+  return generateItemRoutes("blog");
 }
 
 const { lang, slug } = Astro.params;
