@@ -9,7 +9,7 @@ export async function generateItemRoutes(
   collection_name: keyof typeof collections
 ) {
   const allItems = await getCollection(collection_name); // name of the collection from content.config.ts
-
+  
   const paths = allItems.map((item) => {
     const [lang, ...slug] = item.id.split("/");
     return { params: { lang, slug: slug.join("/") || undefined }, props: item };

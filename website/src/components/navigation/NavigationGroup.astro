@@ -1,11 +1,10 @@
 ---
 import Logo from "./../Logo.astro"
-import { getLangFromUrl, useTranslations , useTranslatedPath} from '../../i18n/utils';
+import { getLangFromUrl, useTranslations} from '../../i18n/utils';
 import NavigationItem from "./NavigationItem.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
 const {groupName, targets, dir } = Astro.props as {groupName:string, targets: any[], dir:string }; // keep up to date with the available targets
 
 const groupName_NoSpaces = groupName.replaceAll(/\s/g, "");

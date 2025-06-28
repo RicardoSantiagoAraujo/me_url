@@ -1,15 +1,32 @@
 ---
 import '../styles/header/dark-mode-icon.scss';
-import { languages } from '../i18n/ui';
-import { getLangFromUrl } from '../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
+import { languages, type Language } from '../i18n/ui';
+import { getLangFromUrl, useTranslatedPath ,translateRoute} from '../i18n/utils';
+const url = Astro.url;
+const pathname = url.pathname;
+const pathnameWithoutLang = pathname.replace(`/${getLangFromUrl(url)}/`, ''); // Remove the current language from the path
+const pathElements = pathnameWithoutLang.split('/').filter(Boolean); // Split the path and remove empty segments
+const firstElement = pathElements.shift()!; // Remove the first element from the path elements
+console.log('pathnameWithoutLang:', pathnameWithoutLang);
+console.log('firstElement:', firstElement);
+console.log('pathElements:', pathElements);
+const currentLang = getLangFromUrl(url);
+const translatedPaths = Object.entries(languages).map(([lang, obj]) => ({
+  lang,
+  flag: obj.flag,
+  path:  `/${lang}/${translateRoute(firstElement, currentLang, lang as Language)}/${pathElements.join("/")}` // Translate the path to the target language
+}));
+
+console.log('translatedPaths:', translatedPaths);
 ---
 
 <div id="language-select__container">
 <label for="language-select"></label>
 <select id="language-select" name="language" onchange="window.location.href=this.value">
-  {Object.entries(languages).map(([lang, obj]) => (
-    <option value={`/${lang}/`}>{obj.flag}</option>
+  {translatedPaths.map(({ lang, flag, path }) => (
+    <option value={path} data-lang={lang}>
+      {flag}
+    </option>
   ))}
 </select>
 </div>
@@ -29,5 +46,13 @@ const currentLang = getLangFromUrl(Astro.url);
 </style>
 
 <script define:vars={{currentLang}}>
-  document.querySelector('#language-select').value = `/${currentLang}/`; // Set the selected value based on the current language
+  const selectElement = document.querySelector('#language-select'); // Set the selected value based on the current language
+
+  // Loop through the options and set the matching one as selected
+  for (const option of Array.from(selectElement.options)) {
+    if (option.dataset.lang === currentLang) {
+      option.selected = true;
+      break;
+    }
+  }
 </script>
