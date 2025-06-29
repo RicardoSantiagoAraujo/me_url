@@ -9,5 +9,6 @@ export interface GeneralParameters {
     email: string;
     phone: string;
     address: string;
+    siteCopyright: string;
     externalLinks: ExternalLink[]
   }

@@ -1,19 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Greeting from '../../components/Greeting';
+import Greeting from '../../components/Greeting'; ;
 import ParallaxImage from '../../components/ParallaxImage.astro';
 import myImg from "../../assets/placeholder_image.jpg";
+import { getLangFromUrl } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+
+
 const parallaxEffect = 0.1;
-const pageTitle = "Page title";
-const pageSubtitle = "Page subtitle"
+const pageTitle = "Welcome to my Website !";
+const pageSubtitle = ""
 ---
 <BaseLayout pageTitle={pageTitle}  pageSubtitle={pageSubtitle}>
+
+  <!-- Immediately Redirect to desired page for now -->
+  <meta http-equiv="refresh" content=`0;url=/${lang}/projectos/` />
+
   <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 
+  <!-- <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}/> -->
 
-  <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}/>
-
-  <p>Landing page text.</p>
+  <!-- <p>Landing page text.</p> -->
 
 
 

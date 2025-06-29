@@ -11,6 +11,7 @@ export const generalParameters: GeneralParameters = {
   email: "johndoe@email.com",
   phone: "9999999999",
   address: "rue de Cockayne, 1234",
+  siteCopyright: "© Port.jects template website built with Astro by by Ricardo Santiago Araújo.",
   externalLinks: [
     {
       name: "GitHub",
