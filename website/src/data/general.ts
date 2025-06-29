@@ -1,7 +1,6 @@
 // This file contains the general parameters for the application
 import type { GeneralParameters } from "./types/GeneralParameters";
 
-
 export const generalParameters: GeneralParameters = {
   name: "John",
   surname: "Doe",
@@ -11,7 +10,8 @@ export const generalParameters: GeneralParameters = {
   email: "johndoe@email.com",
   phone: "9999999999",
   address: "rue de Cockayne, 1234",
-  siteCopyright: "© Port.jects template website built with Astro by by Ricardo Santiago Araújo.",
+  siteCopyright:
+    "© me_url template website built with Astro by by Ricardo Santiago Araújo.",
   externalLinks: [
     {
       name: "GitHub",
@@ -19,7 +19,7 @@ export const generalParameters: GeneralParameters = {
       iconAsImg: null,
       IconAsImgHeight: "27px",
       iconFontAwesome: "fa-brands fa-github",
-      hyperref: "github.com/RicardoSantiagoAraujo"
+      hyperref: "github.com/RicardoSantiagoAraujo",
     },
     {
       name: "LinkedIn",
@@ -27,7 +27,7 @@ export const generalParameters: GeneralParameters = {
       iconAsImg: null,
       IconAsImgHeight: "27px",
       iconFontAwesome: "fa-brands fa-linkedin",
-      hyperref: "linkedin.com/in/ricardo-santiago-araujo/"
+      hyperref: "linkedin.com/in/ricardo-santiago-araujo/",
     },
     {
       name: "ResearchGate",
@@ -35,7 +35,7 @@ export const generalParameters: GeneralParameters = {
       iconAsImg: null,
       IconAsImgHeight: "27px",
       iconFontAwesome: "fa-brands fa-researchgate",
-      hyperref: "researchgate.net/profile/Ricardo-Santiago-Araujo"
+      hyperref: "researchgate.net/profile/Ricardo-Santiago-Araujo",
     },
     {
       name: "Instagram",
@@ -43,7 +43,7 @@ export const generalParameters: GeneralParameters = {
       iconAsImg: null, // "/src/assets/icons/instagram.svg",
       IconAsImgHeight: "27px",
       iconFontAwesome: "fa-brands fa-instagram",
-      hyperref: "instagram.com"
+      hyperref: "instagram.com",
     },
-  ]
+  ],
 };
