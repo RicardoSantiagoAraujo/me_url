@@ -1,11 +1,9 @@
 ---
 import Logo from "./../Logo.astro"
-import { getLangFromUrl, useTranslations} from '../../i18n/utils';
 import NavigationItem from "./NavigationItem.astro";
 import NavigationGroup from "./NavigationGroup.astro";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+
 
 ---
 <div class="nav-links">
@@ -16,5 +14,5 @@ const t = useTranslations(lang);
     <NavigationItem  dir={"."}  target="blog"/>
     <NavigationItem  dir={"."}  target="contact"/>
     <NavigationItem  dir={"."}  target="collectionTemplate"/>
-    <!-- <NavigationGroup groupName={t(`nav.example-dropdownGroup`)} dir={"dropdownGroup"} targets={['example-dropdownItem','example-dropdownItem']} /> -->
+    <NavigationGroup groupName={`example-dropdownGroup`} dir={"dropdownGroup"} targets={['example-dropdownItem','example-dropdownItem']} />
 </div>

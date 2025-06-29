@@ -2,6 +2,8 @@ import { blogCollection } from "./collectionsConfig/blog";
 import { projectsCollection } from "./collectionsConfig/projects";
 import {collectionTemplateCollection} from "./collectionsConfig/collectionTemplate";
 
+// Switch debug mode for more printouts to console
+export const debugMode: boolean = false;
 
 // Export a single `collections` object to register your collection(s)
 export const collections = {

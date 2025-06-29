@@ -1,16 +1,20 @@
 ---
 import Logo from "./../Logo.astro"
-import { getLangFromUrl, useTranslations} from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, warningMissingSectionName} from '../../i18n/utils';
 import NavigationItem from "./NavigationItem.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const {groupName, targets, dir } = Astro.props as {groupName:string, targets: any[], dir:string }; // keep up to date with the available targets
+var groupNameTranslated = t(`nav.${groupName}`)
+groupNameTranslated = groupNameTranslated ? groupNameTranslated : "MISSING_NAME"
+const groupName_NoSpaces = groupNameTranslated.replaceAll(/\s/g, "");
 
-const groupName_NoSpaces = groupName.replaceAll(/\s/g, "");
+warningMissingSectionName(groupName, lang)
+
 ---
 <div class=`component__navigation-group nav_element navigation-group-${groupName_NoSpaces}`>
-    <div class="navigation-group-name">{groupName}</div>
+    <div class="navigation-group-name">{groupNameTranslated}</div>
     <div class="navigation-group-dropdown hidden">
         {targets.map((target) => (
             <NavigationItem target={target} dir={dir}/>

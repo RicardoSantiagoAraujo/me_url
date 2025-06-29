@@ -1,17 +1,18 @@
 ---
 import Logo from "./../Logo.astro"
-import { getLangFromUrl, useTranslations , useTranslatedPath} from '../../i18n/utils';
-
+import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '../../i18n/utils';
+import { ui , defaultLang} from "../../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 const {target, dir } = Astro.props as { target: 'home' | 'about' | 'styles'; dir: string  }; // keep up to date with the available targets - does not actually need to be be up to date
+
+warningMissingSectionName(target, lang)
 
 const translatedPath = translatePath(`/${dir}/${target}/`);
 const { pathname } = Astro.url;
 const isCurrentSection = pathname == translatedPath;
 
 ---
-
 <a class={`link nav_element ${isCurrentSection ? "nav_element--active" : ""}`} href={translatedPath}>{t(`nav.${target}`)}
 </a>

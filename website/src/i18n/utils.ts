@@ -1,4 +1,6 @@
 import { ui, defaultLang, routes, type Language, type Page  } from './ui';
+import { debugMode } from '../content.config';
+
 
 export function getLangFromUrl(url: URL) {
   // Extract the language from the URL path: works if the URL is like /[lang]/some-page, i.e., the language is the first segment of the path.
@@ -34,7 +36,7 @@ export function useTranslatedPath(lang: Language) {
   }
 
 
-export function translateRoute(path: string, currentLang: Language, targetLang: Language) { 
+export function translateRoute(path: string, currentLang: Language, targetLang: Language) {
      const currentRoutes = routes[currentLang];
      const key = Object.keys(currentRoutes).find(k => currentRoutes[k as keyof typeof currentRoutes] === path) as keyof typeof routes[Language];
      const translatedRoute = routes[targetLang][key];
@@ -49,3 +51,22 @@ export function translateRoute(path: string, currentLang: Language, targetLang: 
         return "";
      }
   }
+
+
+
+
+  export function warningMissingSectionName(section: string, language: Language){
+    if (!debugMode){return 0};
+    const sectionNameTranslated = ui[language][`nav.${section}`];
+    const sectionNameDefault = ui[defaultLang][`nav.${section}`];
+    // if (!sectionNameTranslated) throw new Error(`"${"test"}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,svg}"`);
+    if (sectionNameTranslated){
+        console.log("☑ Section translation: "+ sectionNameTranslated);
+    }
+    else if (sectionNameDefault){
+        console.log(`⚠ NO TRANSLATION AVAILABLE FOR SECTION ${section}. Defaulting to [${defaultLang}]: ${sectionNameDefault}`);
+    }
+    else {
+        console.log(`⚠⚠⚠ NO DEFAULT NAME AVAILABLE FOR SECTION ${section}. Make sure to add it to the ui object`);
+    }
+}
