@@ -1,18 +1,15 @@
 export const languages = {
-  fr: { long: "Français", short: "fr", flag: "🇫🇷" },
-  en: { long: "English", short: "en", flag: "🇬🇧" },
-  pt: { long: "Português", short: "pt", flag: "🇵🇹" },//🇧🇷
-  de: { long: "Deutsch", short: "de", flag: "🇩🇪" },
-}  as const;
+  fr: { long: "Français", short: "fr", flag: "🇫🇷", isAvailable: true },
+  en: { long: "English", short: "en", flag: "🇬🇧", isAvailable: true },
+  pt: { long: "Português", short: "pt", flag: "🇵🇹", isAvailable: true }, //🇧🇷
+  de: { long: "Deutsch", short: "de", flag: "🇩🇪", isAvailable: false },
+};
 export type Language = keyof typeof languages;
-
 
 export const defaultLangStart = "fr"; // default language for the app when accessing the root URL
 export const defaultLang = "fr"; // fallback language in the absence of a translation
 
-
-
-export const ui : Record<Language, Record<string, string>>= {
+export const ui: Record<Language, Record<string, string>> = {
   fr: {
     "nav.home": "Accueil",
     "nav.about": "À propos",
@@ -40,7 +37,7 @@ export const ui : Record<Language, Record<string, string>>= {
     "nav.blog": "Blog",
     "nav.contact": "Contacto",
   },
-  de : {
+  de: {
     "nav.home": "Startseite",
     "nav.about": "Über mich",
     "nav.experience": "Erfahrung",
@@ -50,10 +47,16 @@ export const ui : Record<Language, Record<string, string>>= {
   },
 } as const;
 
-
 // Ensure all possible routes are included in the Page type to enforce type safety
-export type Page = 'home' | 'about' | 'blog' | 'projects' | 'experience' | 'contact' | 'collectionTemplate';
-export const routes : Record<Language, Record<Page, string>> = {
+export type Page =
+  | "home"
+  | "about"
+  | "blog"
+  | "projects"
+  | "experience"
+  | "contact"
+  | "collectionTemplate";
+export const routes: Record<Language, Record<Page, string>> = {
   fr: {
     home: "",
     about: "a-propos",
@@ -61,7 +64,7 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projets",
     experience: "experience",
     contact: "contact",
-    collectionTemplate: "collectionTemplate"
+    collectionTemplate: "collectionTemplate",
   },
   en: {
     home: "",
@@ -70,7 +73,7 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projects",
     experience: "experience",
     contact: "contact",
-    collectionTemplate: "collectionTemplate"
+    collectionTemplate: "collectionTemplate",
   },
   pt: {
     home: "",
@@ -79,7 +82,7 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projectos",
     experience: "experiencia",
     contact: "contacto",
-    collectionTemplate: "collectionTemplate"
+    collectionTemplate: "collectionTemplate",
   },
   de: {
     home: "",
@@ -88,6 +91,6 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projekte",
     experience: "erfahrung",
     contact: "kontakt",
-    collectionTemplate: "collectionTemplate"
+    collectionTemplate: "collectionTemplate",
   },
 };
