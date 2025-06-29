@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getLangFromUrl } from "../i18n/utils";
+
+const pageTitle = "MISSING PAGE";
+const lang = getLangFromUrl(Astro.url);
+---
+<BaseLayout pageTitle={pageTitle}>
+  <p style="color: red; text-align: center; font-size: 50px">This page does not exists yet.</p>
+</BaseLayout>
