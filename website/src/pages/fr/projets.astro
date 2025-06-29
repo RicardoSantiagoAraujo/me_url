@@ -4,12 +4,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectLink from "../../components/ProjectLink.astro";
 import { getLangFromUrl } from "../../i18n/utils";
 
-const pageTitle = "My Astro Learning Blog";
+const pageTitle = "My Projects";
 const allItems = await getCollection("projects");
 const lang = getLangFromUrl(Astro.url);
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <p>This are projects I have worked on.</p>
+  <p>Here are some of the projects I have worked on over the years.</p>
   <ul>
     {
       allItems.map((item) => {

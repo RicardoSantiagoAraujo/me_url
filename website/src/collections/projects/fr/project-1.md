@@ -1,25 +1,41 @@
 ---
-title: 'My First Blog Post'
-pubDate: 2022-07-01
-description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
-image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
-tags: ["astro", "blogging", "learning in public"]
+title: "Project Title"
+subtitle: "project subtitle"
+include: true
+description: "More detailed description of project goes here."
+descriptionShort: "Shorter description of project goes here."
+datePublication: 2022-07-01
+authors: ["First Author","Second Author", "Third Author"]
+tags: ["tag A","tag B","tag C"]
+fields: ["field A","field B","field C"]
+techstack: ["tool A","tool B","tool C"]
+repository: "www.github.com"
+finished: true
+opensource: true
+href: "google.com"
+images:
+    - title: 'image title'
+      caption: 'image caption'
+      url: "https://docs.astro.build/assets/rose.webp"
+      alt: "Alternative text"
+    - title: 'image title'
+      caption: 'image caption'
+      url: "https://docs.astro.build/assets/rose.webp"
+      alt: "Alternative text"
+videos:
+    - title: 'video title'
+      caption: 'video caption'
+      url: "https://docs.astro.build/assets/rose.webp"
+      alt: "Alternative text"
+    - title: 'video title'
+      caption: 'video caption'
+      url: "https://docs.astro.build/assets/rose.webp"
+      alt: "Alternative text"
 ---
 
+Welcome to my template for a projects entry.
 
-Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
+## Making a list
 
-## What I've accomplished
-
-1. **Installing Astro**: First, I created a new Astro project and set up my online accounts.
-
-2. **Making Pages**: I then learned how to make pages by creating new `.astro` files and placing them in the `src/pages/` folder.
-
-3. **Making Blog Posts**: This is my first blog post! I now have Astro pages and Markdown posts!
-
-## What's next
-
-I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+1. **Item one**: description
+2. **Item two**: description
