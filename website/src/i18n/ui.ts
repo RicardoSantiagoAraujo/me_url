@@ -52,7 +52,7 @@ export const ui : Record<Language, Record<string, string>>= {
 
 
 // Ensure all possible routes are included in the Page type to enforce type safety
-export type Page = 'home' | 'about' | 'blog' | 'projects' | 'experience' | 'contact';
+export type Page = 'home' | 'about' | 'blog' | 'projects' | 'experience' | 'contact' | 'collectionTemplate';
 export const routes : Record<Language, Record<Page, string>> = {
   fr: {
     home: "",
@@ -61,6 +61,7 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projets",
     experience: "experience",
     contact: "contact",
+    collectionTemplate: "collectionTemplate"
   },
   en: {
     home: "",
@@ -69,6 +70,7 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projects",
     experience: "experience",
     contact: "contact",
+    collectionTemplate: "collectionTemplate"
   },
   pt: {
     home: "",
@@ -77,6 +79,7 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projectos",
     experience: "experiencia",
     contact: "contacto",
+    collectionTemplate: "collectionTemplate"
   },
   de: {
     home: "",
@@ -85,5 +88,6 @@ export const routes : Record<Language, Record<Page, string>> = {
     projects: "projekte",
     experience: "erfahrung",
     contact: "kontakt",
+    collectionTemplate: "collectionTemplate"
   },
 };
