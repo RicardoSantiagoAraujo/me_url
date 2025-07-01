@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ProjectLink from "../../components/ProjectLink.astro";
+import ProjectLink from "../../components/collection/ProjectCard.astro";
 import { getLangFromUrl } from "../../i18n/utils";
 
 const pageTitle = "My Projects";
@@ -10,7 +10,7 @@ const lang = getLangFromUrl(Astro.url);
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>Here are some of the projects I have worked on over the years.</p>
-  <ul>
+  <ul class="collection-list">
     {
       allItems.map((item) => {
         const fixedUrl = "/" + item.id.replace("/", '/projects/'); // fix the URL to match the expected format
@@ -19,7 +19,7 @@ const lang = getLangFromUrl(Astro.url);
           return null; // Skip items that don't match the current language
         }
         // const itemLang = item.id.split('/')[0];
-        return <ProjectLink url={fixedUrl} title={item.data.title} />
+        return <ProjectLink url={fixedUrl} data={item.data} />
       })
     }
   </ul>

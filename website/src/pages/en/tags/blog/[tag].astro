@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import BlogPost from '../../../../components/BlogPost.astro';
+import BlogPostLink from '../../../../components/collection/BlogPostLink.astro';
 import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts'
 
 export async function getStaticPaths() {
@@ -13,7 +13,7 @@ const { items } = Astro.props;
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    <!-- {posts.map((post: any) =>  <BlogPost url={`/posts/${post.id}/`}  title={post.data.title}/>)} -->
-    {items.map((item: any) =>  <BlogPost url={`/${item.id.replace("/","/posts/")}/`}  title={"ff" + item.data.title}/>)}
+    <!-- {posts.map((post: any) =>  <BlogPostLink url={`/posts/${post.id}/`}  title={post.data.title}/>)} -->
+    {items.map((item: any) =>  <BlogPostLink url={`/${item.id.replace("/","/posts/")}/`}  title={"ff" + item.data.title}/>)}
   </ul>
 </BaseLayout>

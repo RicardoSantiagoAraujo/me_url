@@ -1,31 +1,27 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import { getLangFromUrl } from '../i18n/utils';
+import BaseLayout from './../BaseLayout.astro';
+import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 
 const { frontmatter } = Astro.props;
-console.log(frontmatter)
 frontmatter.lang = currentLang;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <p><em>{frontmatter.description}</em></p>
-  <p>{frontmatter.datePublication.toLocaleDateString()}</p>
+  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
 
   <p>Written by: {frontmatter.author}</p>
-  <p>Test: {frontmatter.test}</p>
 
-  <!-- <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} /> -->
+  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
 
   <div class="tags">
     {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/${currentLang}/tags/projects/${tag}`}>{tag}</a></p>
+      <p class="tag"><a href={`/${currentLang}/tags/collectionTemplate/${tag}`}>{tag}</a></p>
     ))}
   </div>
 
   <slot />
 </BaseLayout>
-
-
 <style>
   a {
     color: #00539F;

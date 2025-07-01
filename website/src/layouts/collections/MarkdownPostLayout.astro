@@ -1,6 +1,6 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import { getLangFromUrl } from '../i18n/utils';
+import BaseLayout from './../BaseLayout.astro';
+import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 
 const { frontmatter } = Astro.props;
@@ -16,7 +16,7 @@ frontmatter.lang = currentLang;
 
   <div class="tags">
     {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/${currentLang}/tags/collectionTemplate/${tag}`}>{tag}</a></p>
+      <p class="tag"><a href={`/${currentLang}/tags/blog/${tag}`}>{tag}</a></p>
     ))}
   </div>
 

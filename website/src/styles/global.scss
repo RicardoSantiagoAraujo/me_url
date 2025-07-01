@@ -5,6 +5,7 @@
 @use 'variables/dimensions' as d;
 // COMPONENTS
 @use 'header/header';
+@use 'collection/projectCard';
 @use 'footer/footer';
 // @use 'timetable/timetable';
 @use 'dark_mode';
