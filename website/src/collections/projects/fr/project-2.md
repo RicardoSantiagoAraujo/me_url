@@ -1,9 +1,9 @@
 ---
-title: "Project Title"
-subtitle: "project subtitle"
+title: "Project Title B"
+subtitle: "project subtitle B"
 include: true
-description: "More detailed description of project goes here."
-descriptionShort: "Shorter description of project goes here."
+description: "More detailed description of project B goes here."
+descriptionShort: "Shorter description of project B goes here."
 datePublication: 2022-07-01
 authors: ["First Author","Second Author", "Third Author"]
 tags: ["tag A","tag B","tag C"]

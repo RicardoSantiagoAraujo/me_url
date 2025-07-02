@@ -8,6 +8,10 @@ const {data} = Astro.props
         {data.title}{data.subtitle}
     </div>
     <div>
-        {data.title}{data.subtitle}
+        {data.description}
+        <img src={data.images[0].url} alt={data.images[0].alt}  width="300px">
+    </div>
+    <div>
+        {data.tags}
     </div>
 </a></li>
