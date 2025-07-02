@@ -6,6 +6,7 @@ export interface GeneralParameters {
     portfolioTitle: string;
     logo: string;
     signature: string;
+    signatureLinkTo: string;
     email: string;
     phone: string;
     address: string;

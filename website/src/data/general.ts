@@ -7,6 +7,7 @@ export const generalParameters: GeneralParameters = {
   portfolioTitle: "My Portfolio",
   logo: "/src/assets/generic_portrait.svg",
   signature: "/src/assets/generic_signature.png",
+  signatureLinkTo: "./projects",
   email: "johndoe@email.com",
   phone: "9999999999",
   address: "rue de Cockayne, 1234",
