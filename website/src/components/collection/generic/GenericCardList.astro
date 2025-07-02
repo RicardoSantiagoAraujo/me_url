@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import GenericCard from "./GenericCard.astro";
 import { getLangFromUrl } from "../../../i18n/utils";
+const dynamicCard = `../${Astro.props.collectionName}/${Astro.props.cardComponent}.astro`;
+const Card = (await import(dynamicCard)).default;
 
 
 const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
@@ -11,13 +12,16 @@ const allItems = await getCollection(collectionName);
   <ul class="collection-list">
     {
       allItems.map((item) => {
-        const fixedUrl = "/" + item.id.replace("/", `/${collectionName}/`); // fix the URL to match the expected format
         const itemLang = item.id.split('/')[0];
         if (itemLang !== lang) {
           return null; // Skip items that don't match the current language
         }
+        const data = {
+            ...item.data,
+            url: "/" + item.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
+        }; 
         // const itemLang = item.id.split('/')[0];
-        return <GenericCard url={fixedUrl} data={item.data} />
+        return <Card   data={data} />
       })
     }
   </ul>

@@ -1,0 +1,15 @@
+---
+import GenericCard from "../generic/GenericCard.astro"
+import type {DataGenericCard} from "../generic/DataGenericCard"
+const {data} = Astro.props
+console.log(data)
+
+const dataGenericCard : DataGenericCard = {
+    header: {left: data.title, right: data.subtitle},
+    body: {text: "", img: ""},
+    footer: {left: "", right: ""},
+    url: data.url
+}
+---
+
+<GenericCard dataGenericCard={dataGenericCard}/>
