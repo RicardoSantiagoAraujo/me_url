@@ -1,6 +1,6 @@
 ---
 import { render } from 'astro:content';
-import MarkdownItemTemplateLayout from '../../../layouts/collections/MarkdownItemTemplateLayout.astro';
+import ItemLayout_collectionTemplate from '../../../layouts/collections/ItemLayout_collectionTemplate.astro';
 import {generateItemRoutes} from '../../../scripts/dynamicRoutes.ts'
 
 export async function getStaticPaths() {
@@ -12,6 +12,6 @@ const page = Astro.props;
 const formattedDate = page.data.pubDate.toLocaleString(lang);
 const { Content } = await render(page);
 ---
-<MarkdownItemTemplateLayout frontmatter={page.data}>
+<ItemLayout_collectionTemplate frontmatter={page.data}>
   <Content />
-</MarkdownItemTemplateLayout>
+</ItemLayout_collectionTemplate>

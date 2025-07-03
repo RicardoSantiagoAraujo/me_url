@@ -1,0 +1,17 @@
+---
+const {data} = Astro.props
+
+--- 
+    <li class="collection-item">
+        <div class="collection-item__header">
+            <span class="collection-item__header__title">{data.title}</span>
+            <!-- <span class="collection-item__header__title">{data.subtitle}</span> -->
+        </div>
+        <a href={data.url} class="collection-item__body">
+            <div class="collection-item__body__description">{data.description}</div>
+            <!-- <div class="collection-item__body__image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div> -->
+        </a>
+        <div class="collection-item__footer">
+            {data.tags}
+        </div>
+    </li>

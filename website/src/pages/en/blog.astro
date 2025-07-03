@@ -13,7 +13,7 @@ const lang = getLangFromUrl(Astro.url);
   <ul>
     {
       allPosts.map((post) => {
-        const fixedUrl = "/" + post.id.replace("/", '/posts/'); // fix the URL to match the expected format
+        const fixedUrl = "/" + post.id.replace("/", '/blog/'); // fix the URL to match the expected format
         const postLang = post.id.split('/')[0];
         if (postLang !== lang) {
           return null; // Skip posts that don't match the current language

@@ -19,7 +19,7 @@ const allItems = await getCollection(collectionName);
         const data = {
             ...item.data,
             url: "/" + item.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
-        }; 
+        };
         // const itemLang = item.id.split('/')[0];
         return <Card   data={data} />
       })

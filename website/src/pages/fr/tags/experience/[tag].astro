@@ -7,7 +7,7 @@ const currentLang = getLangFromUrl(Astro.url);
 console.log(currentLang);
 
 export async function getStaticPaths() {
-  return generateTagRoute("blog");
+  return generateTagRoute("experience");
 }
 
 const { tag } = Astro.params;
@@ -17,6 +17,6 @@ const { items } = Astro.props;
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {items.map((item: any) =>  item.id.match(`^${currentLang}/.+`) ? <BlogPostLink url={`/${item.id.replace("/","/blog/")}/`}  title={item.data.title}/> : null )}
+    {items.map((item: any) =>  item.id.match(`^${currentLang}/.+`) ? <BlogPostLink url={`/${item.id.replace("/","/experience/")}/`}  title={item.data.title}/> : null )}
   </ul>
 </BaseLayout>

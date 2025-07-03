@@ -4,8 +4,10 @@ import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
 // Define a `loader` and `schema` for collection
-export const projectsCollection = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/collections/projects" }),
+export const definition: Record<string, any> = {};
+const collection = "projects";
+definition[collection] = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.md", base: `./src/collections/${collection}` }),
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
