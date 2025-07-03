@@ -4,7 +4,7 @@ import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 
 const { frontmatter } = Astro.props;
-console.log(frontmatter)
+// console.log(frontmatter)
 frontmatter.lang = currentLang;
 ---
 <BaseLayout pageTitle={frontmatter.title}>

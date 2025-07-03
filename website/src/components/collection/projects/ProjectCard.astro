@@ -2,7 +2,6 @@
 const {data} = Astro.props
 
 ---
-{data.include &&
     <li class="collection-item">
         <div class="collection-item__header">
             <span class="collection-item__header__title">{data.title}</span>
@@ -15,5 +14,4 @@ const {data} = Astro.props
         <div class="collection-item__footer">
             {data.tags}
         </div>
-    </li>
-}
+    </li> 

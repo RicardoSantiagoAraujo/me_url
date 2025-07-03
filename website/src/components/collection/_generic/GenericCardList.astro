@@ -11,7 +11,9 @@ const allItems = await getCollection(collectionName);
 ---
   <ul class="collection-list">
     {
-      allItems.map((item) => {
+      allItems
+      .filter((item)=> item.data.include !== false)
+      .map((item) => {
         const itemLang = item.id.split('/')[0];
         if (itemLang !== lang) {
           return null; // Skip items that don't match the current language
