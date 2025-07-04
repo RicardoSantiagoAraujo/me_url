@@ -1,5 +1,6 @@
 ---
 title: My Fourth Blog Post
+include: true
 author: Astro Learner
 description: "This post will show up on its own!"
 image:

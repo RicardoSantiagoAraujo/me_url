@@ -1,5 +1,5 @@
 import { ui, defaultLang, routes, type Language, type Page  } from './ui';
-import { debugMode } from '../content.config';
+import { debugMode } from '../options.config';
 
 
 export function getLangFromUrl(url: URL) {

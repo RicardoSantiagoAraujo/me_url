@@ -3,13 +3,14 @@ import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
 import { collectionBase } from "./collectionBase.ts";
+import { excludedFolder } from "../options.config.ts";
 
 // Define a `loader` and `schema` for collection
 export const definition: Record<string, any> = {};
 const collection = "projects";
 definition[collection] = defineCollection({
   loader: glob({
-    pattern: ["**/[^_]*.md"],
+    pattern: [ "**/[^_]*.md", ...excludedFolder.map(item => `!**/${item}/**`)],
     base: `./src/collections/${collection}`,
   }),
   schema: collectionBase

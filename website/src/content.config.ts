@@ -1,10 +1,9 @@
+
 import { definition as blog } from "./collectionsConfig/blog";
 import { definition as projects  } from "./collectionsConfig/projects";
 import { definition as collectionTemplate } from "./collectionsConfig/collectionTemplate";
 import { definition as experience} from "./collectionsConfig/experience";
 
-// Switch debug mode for more printouts to console
-export const debugMode: boolean = false;
 
 // Export a single `collections` object to register your collection(s)
 export const collections = {
@@ -15,4 +14,4 @@ export const collections = {
   projects: projects.projects ,
   experience: experience.experience
 };
- 
+
