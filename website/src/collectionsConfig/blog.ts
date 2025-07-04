@@ -10,7 +10,7 @@ export const definition: Record<string, any> = {};
 const collection = "blog";
 definition[collection] = defineCollection({
   loader: glob({
-    pattern: [ "**/[^_]*.md", ...excludedFolder.map(item => `!**/${item}/**`)],
+    pattern: [ "**/[^_]*.md", ...excludedFolder.filter(item => item !== "").map(item => `!**/${item}/**`)],
     base: `./src/collections/${collection}`,
   }),
   schema: collectionBase
