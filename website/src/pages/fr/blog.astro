@@ -1,26 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPostLink from "../../components/collection/blog/BlogPostLink.astro";
-import { getLangFromUrl } from "../../i18n/utils";
-
+import GenericList from "../../components/collection/_generic/GenericList.astro";
 const pageTitle = "My Blog";
-const allitems = await getCollection("blog");
-const lang = getLangFromUrl(Astro.url);
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allitems.map((item) => {
-        const fixedUrl = "/" + item.id.replace("/", '/blog/'); // fix the URL to match the expected format
-        const itemLang = item.id.split('/')[0];
-        if (itemLang !== lang) {
-          return null; // Skip items that don't match the current language
-        }
-        // const itemLang = item.id.split('/')[0];
-        return <BlogPostLink url={fixedUrl} title={item.data.title} />
-      })
-    }
-  </ul>
+  <GenericList cardComponent="BlogPostLink" collectionName="blog"/>
+  
 </BaseLayout>

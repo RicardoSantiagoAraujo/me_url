@@ -1,26 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import CollectionTemplateLink from "../../components/collection/collectionTemplate/CollectionTemplateLink.astro";
-import { getLangFromUrl } from "../../i18n/utils";
-
+import GenericList from "../../components/collection/_generic/GenericList.astro";
 const pageTitle = "My Collection Example";
-const allItems = await getCollection("collectionTemplate"); // Adjusted to match the collection name
-const lang = getLangFromUrl(Astro.url);
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>This are projects I have worked on.</p>
-  <ul>
-    {
-      allItems.map((item) => {
-        const fixedUrl = "/" + item.id.replace("/", '/collectionTemplate/'); // fix the URL to match the expected format
-        const itemLang = item.id.split('/')[0];
-        if (itemLang !== lang) {
-          return null; // Skip items that don't match the current language
-        }
-        // const itemLang = item.id.split('/')[0];
-        return <CollectionTemplateLink url={fixedUrl} title={item.data.title} />
-      })
-    }
-  </ul>
+  <GenericList cardComponent="CollectionTemplateLink" collectionName="collectionTemplate"/>
+  
 </BaseLayout>

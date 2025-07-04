@@ -1,5 +1,7 @@
 ---
-const {url, title} = Astro.props
+
+const {data} = Astro.props
+console.log("Collection Template Link")
+console.log(data)
 ---
-testtest
-<li><a href={url}>{title}</a></li>
+<li><a href={data.url}>{data.title} test test test</a></li>

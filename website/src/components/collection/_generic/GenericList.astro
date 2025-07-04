@@ -9,7 +9,7 @@ const collectionName = Astro.props.collectionName as keyof typeof import('../../
 const lang = getLangFromUrl(Astro.url);
 const allItems = await getCollection(collectionName);
 ---
-  <ul class="collection-card-list">
+  <ul class="collection-list">
     {
       allItems
       .filter((item)=> item.data.include !== false) // filter out excluded items
