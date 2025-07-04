@@ -15,3 +15,4 @@ export const collections = {
   projects: projects.projects ,
   experience: experience.experience
 };
+ 
