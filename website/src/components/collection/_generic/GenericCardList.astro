@@ -12,7 +12,7 @@ const allItems = await getCollection(collectionName);
   <ul class="collection-list">
     {
       allItems
-      .filter((item)=> item.data.include !== false)
+      .filter((item)=> item.data.include !== false) // filter out excluded items
       .map((item) => {
         const itemLang = item.id.split('/')[0];
         if (itemLang !== lang) {

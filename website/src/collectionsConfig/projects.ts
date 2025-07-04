@@ -2,13 +2,14 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
+import {collectionBase} from './collectionBase.ts';
 
 // Define a `loader` and `schema` for collection
 export const definition: Record<string, any> = {};
 const collection = "projects";
 definition[collection] = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./src/collections/${collection}` }),
-  schema: z.object({
+  schema: collectionBase.extend({
     title: z.string(),
     subtitle: z.string().optional(),
     description: z.string(),
@@ -19,8 +20,7 @@ definition[collection] = defineCollection({
     techstack: z.array(z.string()).optional(),
     repository: z.string().optional(),
     href: z.string().optional(),
-    datePublication: z.date().optional(),
-    include: z.boolean(),
+    datePublication: z.date().optional(), 
     finished: z.boolean().optional(),
     opensource: z.boolean().optional(),
     images: z
@@ -43,5 +43,6 @@ definition[collection] = defineCollection({
         })
       )
       .optional(),
-  }),
+  })
+  .strict() //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });
