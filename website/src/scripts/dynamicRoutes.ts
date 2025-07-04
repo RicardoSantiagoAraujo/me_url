@@ -12,7 +12,7 @@ export async function generateItemRoutes(
   // Filter out excluded items
   allItems = allItems.filter((item)=>{return item.data.include !== false});
   const paths = allItems.map((item) => {
-    console.log(item.data.include);
+    // console.log(item.data.include);
     const [lang, ...slug] = item.id.split("/");
     return { params: { lang, slug: slug.join("/") || undefined }, props: item };
   });
