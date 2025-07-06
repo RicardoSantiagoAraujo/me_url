@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "../../../i18n/utils";
 const dynamicCard = `../${Astro.props.collectionName}/${Astro.props.cardComponent}.astro`;
-const Card = (await import(dynamicCard)).default;
+const Card = (await import(/* @vite-ignore */ dynamicCard)).default;
 
 
 const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
