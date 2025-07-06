@@ -1,9 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "../../../i18n/utils";
-const dynamicListItem = `../${Astro.props.collectionName}/${Astro.props.listItemComponent}.astro`;
-const ListItem = (await import(/* @vite-ignore */ dynamicListItem)).default;
-
+const componentMap = {
+  projects:   import('../projects/ProjectCard.astro') ,
+  experience:    import('../experience/ExperienceCard.astro'),
+} as const;
+const targetCollectionName = Astro.props.collectionName as keyof typeof componentMap;
+const ListItem = (await componentMap[targetCollectionName]).default;
 
 const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
