@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "../../../i18n/utils";
-const dynamicCard = `../${Astro.props.collectionName}/${Astro.props.cardComponent}.astro`;
-const Card = (await import(dynamicCard)).default;
+const dynamicListItem = `../${Astro.props.collectionName}/${Astro.props.listItemComponent}.astro`;
+const ListItem = (await import(/* @vite-ignore */ dynamicListItem)).default;
 
 
 const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
@@ -23,7 +23,7 @@ const allItems = await getCollection(collectionName);
             url: "/" + item.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
         };
         // const itemLang = item.id.split('/')[0];
-        return <Card   data={data} />
+        return <ListItem   data={data} />
       })
     }
   </ul>

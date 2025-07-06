@@ -1,22 +1,16 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import BlogPostLink from '../../../../components/collection/blog/BlogPostLink.astro';
 import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts';
-import { getLangFromUrl } from '../../../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-console.log(currentLang);
 
 export async function getStaticPaths() {
   return generateTagRoute("collectionTemplate");
 }
+import GenericList from '../../../../components/collection/_generic/GenericList.astro';
 
 const { tag } = Astro.params;
-const { items } = Astro.props;
 // console.log(items);
 ---
 <BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
-  <ul>
-    {items.map((item: any) =>  item.id.match(`^${currentLang}/.+`) ? <BlogPostLink url={`/${item.id.replace("/","/collectionTemplate/")}/`}  title={item.data.title}/> : null )}
-  </ul>
+  <p>Collection template items tagged with {tag}</p>
+  <GenericList listItemComponent="CollectionTemplateLink" collectionName="collectionTemplate"/>
 </BaseLayout>
