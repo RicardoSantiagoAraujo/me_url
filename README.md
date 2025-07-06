@@ -18,6 +18,10 @@ To create a local build, run:
 npm run build
 ```
 
+You can preview the built website:
+```
+npm run preview
+```
 ### Deployment
 
 When the **main** branch is pushed to Github, Netflify automatically pulls from it and performs a new build, so a new version is deployed.
