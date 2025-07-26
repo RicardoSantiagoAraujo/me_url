@@ -1,0 +1,43 @@
+#themeToggle {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform-origin: center;
+}
+#themeToggle:hover {
+  transform: scale(1.05);
+  transition: 0.1s ease-in-out;
+}
+#themeToggle:active {
+  transform: rotate(180deg);
+  transition: 0.1s ease-in-out;
+}
+
+#themeToggle svg {
+  width: 30px;
+  aspect-ratio: 1/1;
+}
+
+html:not(.dark) .sun {
+  fill: #000011;
+}
+
+html:not(.dark) .moon {
+  fill: transparent;
+}
+
+html.dark .sun {
+  fill: transparent;
+}
+
+html.dark .moon {
+  fill: #dbd5d5;
+}
+
+html:not(.dark) #themeToggle:active .sun {
+  fill: #2f3337;
+}
+
+html.dark #themeToggle:active .moon {
+  fill: #2f3337;
+}/*# sourceMappingURL=dark-mode-icon.css.map */

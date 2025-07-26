@@ -1,8 +1,3 @@
-@use 'sass:color';
-@forward 'default/dimensions_default'; // to forward default values to downstream imports
-@use 'default/dimensions_default' as *; // to use default values directly in this file
-
-
 // HEADER
 $header-height-desktop : 10vh;
 $header__center-width: 65%;
