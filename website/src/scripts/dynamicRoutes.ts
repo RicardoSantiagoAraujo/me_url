@@ -4,14 +4,15 @@ import { getCollection, render } from "astro:content";
 import { collections } from "../content.config.ts";
 import { object } from "astro:schema";
 
-
 // Creating a page for each item in a collection, generating dynamic routes.
 export async function generateItemRoutes(
   collection_name: keyof typeof collections
 ) {
   let allItems = await getCollection(collection_name); // name of the collection from content.config.ts
   // Filter out excluded items
-  allItems = allItems.filter((item)=>{return item.data.include !== false});
+  allItems = allItems.filter((item) => {
+    return item.data.include !== false;
+  });
   const paths = allItems.map((item) => {
     // console.log(item.data.include);
     const [lang, ...slug] = item.id.split("/");
@@ -26,15 +27,29 @@ export async function generateTagRoute(
   collection_name: keyof typeof collections
 ) {
   const allItems = await getCollection(collection_name); // name of the collection from content.config.ts
-  const uniqueTags = [...new Set(allItems.map((item: any) => item.data.tags).flat())];
-  return uniqueTags.map((tag) => {
-    console.log("TAG:");
-    console.log(tag);
-    const filteredItems = allItems.filter((item: any) => item.data.tags.includes(tag));
-    console.log("Filtered items:");
-    console.log(filteredItems);
-    // get string from tag object
-    tag = tag.name;
+
+  const filteredTags = [
+    ...new Set(
+      allItems
+        .map((item: any) => item.data.tags)
+        .flat()
+        .filter((tag) => tag.include !== false)
+        .map((tag) => tag.name)
+    ),
+  ];
+  // console.log("flatTags: ", filteredTags);
+
+  return filteredTags.map((tag) => {
+    const filteredItems = allItems.filter((item: any) => {
+      let tags = item.data.tags.map((t: any) => t.name);
+      // console.log("\n\n\n tags: ", tags);
+      // console.log("tag:" + tag);
+      // console.log(tags.includes(tag));
+      return tags.includes(tag);
+    });
+    // console.log("\n\n\n============================================================")
+    // console.log("tag: ", tag);
+    // console.log(filteredItems);
     return {
       params: { tag },
       props: { items: filteredItems },

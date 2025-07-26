@@ -2,7 +2,9 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import {generateTagRoute} from '../../../../scripts/dynamicRoutes';
 export async function getStaticPaths() {
-  return generateTagRoute("projects");
+  let routes = generateTagRoute("projects");
+  console.log("routes: ", routes);
+  return routes
 }
 import GenericCardList from '../../../../components/collection/_generic/GenericCardList.astro';
 

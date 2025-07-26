@@ -9,10 +9,6 @@ authors: ["First Author","Second Author", "Third Author"]
 tags:
     - name: "tag A"
       include: true
-    - name: "tag B"
-      include: true
-    - name: "tag C"
-      include: true
 techstack:
     - name: "techstack A"
       include: true
