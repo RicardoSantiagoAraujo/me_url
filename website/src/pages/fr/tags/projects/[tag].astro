@@ -2,15 +2,17 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import {generateTagRoute} from '../../../../scripts/dynamicRoutes';
 export async function getStaticPaths() {
-  let routes = generateTagRoute("projects");
-  console.log("routes: ", routes);
-  return routes
+  return generateTagRoute("projects");
 }
 import GenericCardList from '../../../../components/collection/_generic/GenericCardList.astro';
 
 const { tag } = Astro.params;
+
+const { items } = Astro.props;
 ---
 <BaseLayout pageTitle={tag}>
+
   <p>Projects tagged with {tag}</p>
-  <GenericCardList listItemComponent="ProjectCard" collectionName="projects"/>
+  <GenericCardList listItemComponent="ProjectCard" collectionName="projects" items={items}/>
+
 </BaseLayout>

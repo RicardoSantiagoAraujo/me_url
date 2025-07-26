@@ -13,8 +13,7 @@ export async function generateItemRoutes(
   allItems = allItems.filter((item) => {
     return item.data.include !== false;
   });
-  const paths = allItems.map((item) => {
-    // console.log(item.data.include);
+  const paths = allItems.map((item) => { 
     const [lang, ...slug] = item.id.split("/");
     return { params: { lang, slug: slug.join("/") || undefined }, props: item };
   });
@@ -37,19 +36,12 @@ export async function generateTagRoute(
         .map((tag) => tag.name)
     ),
   ];
-  // console.log("flatTags: ", filteredTags);
 
   return filteredTags.map((tag) => {
     const filteredItems = allItems.filter((item: any) => {
       let tags = item.data.tags.map((t: any) => t.name);
-      // console.log("\n\n\n tags: ", tags);
-      // console.log("tag:" + tag);
-      // console.log(tags.includes(tag));
       return tags.includes(tag);
     });
-    // console.log("\n\n\n============================================================")
-    // console.log("tag: ", tag);
-    // console.log(filteredItems);
     return {
       params: { tag },
       props: { items: filteredItems },

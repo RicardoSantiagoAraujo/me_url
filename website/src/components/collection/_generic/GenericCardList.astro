@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "../../../i18n/utils";
+import type { arrayOutputType } from "astro:schema";
 const componentMap = {
   projects:   import('../projects/ProjectCard.astro') ,
   experience:    import('../experience/ExperienceCard.astro'),
@@ -10,13 +11,18 @@ const ListItem = (await componentMap[targetCollectionName]).default;
 
 const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
-const allItems = await getCollection(collectionName);
+
+var { items } = Astro.props;
+// If no items are passed, fetch the whole collection by default
+if (!items) {
+  items = await getCollection(collectionName);
+}
 ---
   <ul class="collection-card-list">
     {
-      allItems
-      .filter((item)=> item.data.include !== false) // filter out excluded items
-      .map((item) => {
+      items
+      .filter((item: any)=> item.data.include !== false) // filter out excluded items
+      .map((item: any) => {
         const itemLang = item.id.split('/')[0];
         if (itemLang !== lang) {
           return null; // Skip items that don't match the current language
