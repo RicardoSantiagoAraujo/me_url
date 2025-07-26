@@ -2,6 +2,7 @@
 
 import { getCollection, render } from "astro:content";
 import { collections } from "../content.config.ts";
+import { object } from "astro:schema";
 
 
 // Creating a page for each item in a collection, generating dynamic routes.
@@ -25,11 +26,15 @@ export async function generateTagRoute(
   collection_name: keyof typeof collections
 ) {
   const allItems = await getCollection(collection_name); // name of the collection from content.config.ts
-
   const uniqueTags = [...new Set(allItems.map((item: any) => item.data.tags).flat())];
-
   return uniqueTags.map((tag) => {
+    console.log("TAG:");
+    console.log(tag);
     const filteredItems = allItems.filter((item: any) => item.data.tags.includes(tag));
+    console.log("Filtered items:");
+    console.log(filteredItems);
+    // get string from tag object
+    tag = tag.name;
     return {
       params: { tag },
       props: { items: filteredItems },

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import {generateTagRoute} from '../../../../scripts/dynamicRoutes';  
+import {generateTagRoute} from '../../../../scripts/dynamicRoutes';
 export async function getStaticPaths() {
   return generateTagRoute("projects");
 }

@@ -15,11 +15,14 @@ frontmatter.lang = currentLang;
 
   <!-- <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} /> -->
 
+
   <div class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/${currentLang}/tags/projects/${tag}`}>{tag}</a></p>
+    {frontmatter.tags.map((item: string) => (
+      <p class="tag"><a href={`/${currentLang}/tags/projects/${item.name}`}>{item.name}</a></p>
     ))}
   </div>
+
+
 
 
   <slot /> <!-- slot injects contents of .md file  -->
