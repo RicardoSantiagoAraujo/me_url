@@ -1,6 +1,9 @@
 @use 'sass:color';
+// recover values from default files
 @forward 'default/colors_default'; // to forward default values to downstream imports
 @use 'default/colors_default' as *; // to use default values directly in this file
+
+// +++++++++++++++++++ ADJUST YOUR STYLE BY MODIFYING THE VARIABLES BELOW
 
 // ======= COLOR PALETTE
 $color-black: black;
