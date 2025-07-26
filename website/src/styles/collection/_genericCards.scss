@@ -1,35 +1,109 @@
+@use '../variables/colors' as c;
+@use '../variables/dimensions' as d;
+@use 'sass:color';
+
+
 .collection-card-list {
+    width: 100%;
+    position: relative;
+    z-index: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    padding: 0pt;
+    // grid-template-columns: 1fr 1fr; // two columns
+    grid-template-columns: 1fr; // one column
+    place-items: center; // shorthand for align-items + justify-items
     list-style-type: none;
     column-gap: 20px;
-    row-gap: 20px;
+    row-gap: 50px;
 
     li.collection-item {
         position: relative;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
         width: 100%;
         height: auto;
-        aspect-ratio: 2 / 1;
-        background-color: rgb(240, 231, 231);
+        height: 50vh;
+        // aspect-ratio: 2 / 1;
         border: 2px solid rgb(215, 202, 202);
         border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.21);
 
         .collection-item__header {
+            position: relative;
             padding: 5px 50px;
+            width: 100%;
+
+            &>a {
+                text-decoration: none;
+                color: c.$color-text;
+            }
 
             .collection-item__header__title {
                 font-size: larger;
                 font-weight: bolder;
             }
+
+            .collection-item__header__subtitle {
+                font-size: larger;
+                font-weight: normal;
+                opacity: 0.5;
+            }
+
+            .collection-item__header__link-group {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+
+                a {
+                    opacity: 0.3;
+                    transition: 0.3s ease-in-out;
+                    text-decoration: none;
+                    color: c.$color-text;
+                    margin-left: 20px;
+                    font-size: larger;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+
         }
 
         .collection-item__body {
-            display: block;
+            place-items: center;
+            display: flex;
             position: relative;
-            height: 80%;
+            height: 100%;
 
+            .collection-item__body__description {
+                z-index: 1;
+                width: 50%;
+                height: 100%;
+                padding: 50px 10px 10px 50px;
+                font-size: medium;
+                text-align: justify;
+            }
+
+            // CARD IMAGE
             .collection-item__body__image-container {
+                z-index: 1;
+                width: 50%;
+                text-align: center;
+
+                img {
+                    max-width: 66%;
+                    height: auto; // auto height preserves aspect ratio
+                }
+            }
+
+            // CARD BG IMAGE
+            .collection-item__body__bg-image-container {
+                // display: none;
                 position: absolute;
+                z-index: 0;
                 top: 0px;
                 left: 0px;
                 width: 100%;
@@ -41,13 +115,24 @@
                     height: auto; // auto height preserves aspect ratio
                 }
 
-                opacity: 60%;
+                opacity: 10%;
             }
 
         }
 
         .collection-item__footer {
-            background-color: pink;
+            width: 100%;
+
+            ul {
+                width: 33%;
+                margin: 0px;
+                padding: 0px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                list-style: none;
+                gap: 20px;
+            }
         }
     }
 }

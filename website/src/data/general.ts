@@ -1,6 +1,6 @@
 // This file sets the general parameters for the application
 import type { GeneralParameters } from "./types/GeneralParameters";
-import { generalParametersUser } from "./general.config";
+import { generalParametersUser } from "./_general.config";
 
 // DEFINE USER PARAMETERS IN general.config.ts IN SAME DIRECTORY AS THIS FILE
 

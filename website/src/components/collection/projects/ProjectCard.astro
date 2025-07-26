@@ -3,15 +3,25 @@ const {data} = Astro.props
 
 ---
     <li class="collection-item">
-        <div class="collection-item__header">
-            <span class="collection-item__header__title">{data.title}</span>
-            <!-- <span class="collection-item__header__title">{data.subtitle}</span> -->
+        <div  class="collection-item__header">
+            <a href={data.url}>
+                <span class="collection-item__header__title">{data.title}</span>
+                {data.subtitle &&  <span class="collection-item__header__subtitle">: {data.subtitle}</span>}
+            </a>
+            <div class="collection-item__header__link-group">
+                 <a href={data.url} class="collection-item__header__repository"><i class="fa-solid fa-book-open"></i></a>
+                {data.repository && <a href={"https://"+data.repository} class="collection-item__header__repository"><i class="fa-brands fa-github"></i></a>}
+                {data.externalLink && <a href={"https://"+data.externalLink} class="collection-item__header__external-link"><i class="fas fa-external-link"></i></a>}
+            </div>
         </div>
-        <a href={data.url} class="collection-item__body">
+        <div class="collection-item__body">
             <div class="collection-item__body__description">{data.description}</div>
             <div class="collection-item__body__image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
-        </a>
-        <div class="collection-item__footer">
-            {data.tags}
+            <div class="collection-item__body__bg-image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
         </div>
-    </li> 
+        <div class="collection-item__footer">
+            <ul class="tag-list">{data.tags.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
+            <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
+            <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
+        </div>
+    </li>

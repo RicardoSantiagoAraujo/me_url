@@ -6,13 +6,31 @@ description: "More detailed description of project A goes here."
 descriptionShort: "Shorter description of project A goes here."
 datePublication: 2022-07-01
 authors: ["First Author","Second Author", "Third Author"]
-tags: ["tag A","tag B","tag C"]
-fields: ["field A","field B","field C"]
-techstack: ["tool A","tool B","tool C"]
+tags:
+    - name: "tag A"
+      include: true
+    - name: "tag B"
+      include: true
+    - name: "tag C"
+      include: false
+techstack:
+    - name: "techstack A"
+      include: true
+    - name: "techstack B"
+      include: true
+    - name: "techstack C"
+      include: true
+fields:
+    - name: "fields A"
+      include: true
+    - name: "fields B"
+      include: true
+    - name: "fields C"
+      include: true
 repository: "www.github.com"
 finished: true
 opensource: true
-href: "google.com"
+externalLink: "google.com"
 images:
     - title: 'image title'
       caption: 'image caption'

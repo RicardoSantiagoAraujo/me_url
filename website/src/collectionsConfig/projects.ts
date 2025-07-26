@@ -25,14 +25,34 @@ definition[collection] = defineCollection({
       description: z.string(),
       descriptionShort: z.string().optional(),
       authors: z.array(z.string()),
-      tags: z.array(z.string()),
-      fields: z.array(z.string()).optional(),
-      techstack: z.array(z.string()).optional(),
       repository: z.string().optional(),
-      href: z.string().optional(),
+      externalLink: z.string().optional(),
       datePublication: z.date().optional(),
       finished: z.boolean().optional(),
       opensource: z.boolean().optional(),
+      public: z.boolean().optional(),
+      tags: z.array(
+        z.object({
+          name: z.string(),
+          include: z.boolean(),
+        })
+      ),
+      fields: z
+        .array(
+          z.object({
+            name: z.string(),
+            include: z.boolean(),
+          })
+        )
+        .optional(),
+      techstack: z
+        .array(
+          z.object({
+            name: z.string(),
+            include: z.boolean(),
+          })
+        )
+        .optional(),
       images: z
         .array(
           z.object({
