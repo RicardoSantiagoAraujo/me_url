@@ -1,13 +1,8 @@
-// This file sets the general parameters for the application
 import type { GeneralParameters } from "./types/GeneralParameters";
-import { generalParametersUser } from "./general.config";
 
-// DEFINE USER PARAMETERS IN general.config.ts IN SAME DIRECTORY AS THIS FILE
-
-// PLACEHOLDER GENERAL PARAMETERS
-// This is used when userGeneralParameters is not defined or empty
-// It provides a fallback to ensure the application has valid general parameters
-const generalParametersPlaceholder: GeneralParameters = {
+// DEFINE USER PARAMETERS IN HERE;
+// OTHERWISE PLACEHOLDER PARAMETERS WILL BE USED
+export const generalParametersUser: GeneralParameters = {
   name: "John",
   surname: "Doe",
   portfolioTitle: "My Portfolio",
@@ -16,7 +11,7 @@ const generalParametersPlaceholder: GeneralParameters = {
   signatureLinkTo: "./projects",
   email: "johndoe@email.com",
   phone: "9999999999",
-  address: "rue de Cockayne, 1234",
+  address: "rue de Codckayne, 1234",
   siteCopyright:
     "© me_url template website built with Astro by by Ricardo Santiago Araújo.",
   externalLinks: [
@@ -54,12 +49,3 @@ const generalParametersPlaceholder: GeneralParameters = {
     },
   ],
 };
-
-// Check if userGeneralParameters is defined and not empty
-const testConditions =
-  generalParametersUser! == undefined ||
-  generalParametersUser == null ||
-  Object.keys(generalParametersUser).length === 0;
-export const generalParameters: GeneralParameters = testConditions
-  ? generalParametersPlaceholder // If it is not defined or empty, use the placeholder general parameters
-  : generalParametersUser; // Otherwise, use the userGeneralParameters
