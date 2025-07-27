@@ -12,4 +12,11 @@ export interface GeneralParameters {
     address: string;
     siteCopyright: string;
     externalLinks: ExternalLink[]
+    techstack: Record<string, Tech>
   }
+
+  type Tech = {
+    name: string;
+    icon: string;
+    link: string;
+};

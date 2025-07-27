@@ -48,7 +48,7 @@ definition[collection] = defineCollection({
       techstack: z
         .array(
           z.object({
-            name: z.string(),
+            id: z.string(),
             include: z.boolean(),
           })
         )

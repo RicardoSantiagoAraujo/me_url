@@ -3,8 +3,10 @@ import { defineConfig } from 'astro/config';
 
 import preact from "@astrojs/preact";
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://me_url.netlify.app/",
-  integrations: [preact()]
+  integrations: [preact(), icon()]
 });

@@ -48,4 +48,56 @@ export const generalParametersUser: GeneralParameters = {
       hyperref: "instagram.com",
     },
   ],
+  techstack: {
+    "astro": {
+        name: "Astro",
+        icon: "tech/astro",
+        link: "https://astro.build/",
+    },
+    "typescript": {
+        name: "TypeScript",
+        icon: "tech/typescript",
+        link: "https://www.typescriptlang.org/",
+    },
+    "python": {
+        name: "Python",
+        icon: "tech/python",
+        link: "https://www.python.org/",
+    },
+    "jsx": {
+        name: "JSX",
+        icon: "tech/jsx",
+        link: "https://fr.legacy.reactjs.org/docs/introducing-jsx.html",
+    },
+    "html": {
+        name: "HTML",
+        icon: "tech/html",
+        link: "https://developer.mozilla.org/fr/docs/Web/HTML",
+    },
+    "scss": {
+        name: "SCSS",
+        icon: "tech/sass",
+        link: "https://sass-lang.com/",
+    },
+    "markdown": {
+        name: "Markdown",
+        icon: "tech/markdown",
+        link: "https://www.markdownguide.org/",
+    },
+    "techstack_a": {
+        name: "Tech A",
+        icon: "tech/tech",
+        link: "https://www.google.com/",
+    },
+    "techstack_b": {
+        name: "Tech B",
+        icon: "tech/tech",
+        link: "https://www.google.com/",
+    },
+    "techstack_c": {
+        name: "Tech C",
+        icon: "tech/tech",
+        link: "https://www.google.com/",
+    },
+  }
 };

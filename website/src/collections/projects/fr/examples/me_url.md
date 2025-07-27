@@ -11,25 +11,25 @@ tags:
     include: true
   - name: "SSG"
     include: true
-techstack:
+fields:
   - name: "Web-dev"
     include: true
   - name: "Sofware Development"
     include: true
   - name: "Frontend"
     include: true
-fields:
-  - name: "Astro"
+techstack:
+  - id: "astro"
     include: true
-  - name: "TypeScript"
+  - id: "typescript"
     include: true
-  - name: "JSX"
+  - id: "jsx"
     include: true
-  - name: "HTML"
+  - id: "html"
     include: true
-  - name: "SCSS"
+  - id: "scss"
     include: true
-  - name: "MarkDown"
+  - id: "markdown"
     include: true
 repository: "www.github.com"
 externalLink: "www.google.com"

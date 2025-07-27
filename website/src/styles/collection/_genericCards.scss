@@ -122,16 +122,27 @@
 
         .collection-item__footer {
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
             ul {
                 width: 33%;
                 margin: 0px;
-                padding: 0px;
+                padding: 9px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 list-style: none;
                 gap: 20px;
+                a{
+                    text-decoration: none;
+                    color: c.$color-text;
+                    transition: 0.3s ease-in-out;
+                    &:hover {
+                        color: color.change(c.$color-text, $lightness: -100%);
+                    }
+                }
             }
         }
     }

@@ -1,0 +1,59 @@
+---
+import '../styles/variables/_colors.scss';
+import { Icon } from 'astro-icon/components'
+import { generalParameters } from '../data/general';
+
+const { tech_id } = Astro.props;
+
+const color="white";
+const colorHover="red";
+const colorActive="blue";
+
+
+
+const icon_content = generalParameters.techstack[tech_id]
+---
+
+<div class="tech__container">
+    <a href="/" class="tech__link">
+        <Icon size="25px" name={icon_content.icon}/>
+        <!-- <span>{icon_content.name}</span> -->
+    </a>
+</div>
+
+
+<style define:vars={{ color, colorHover, colorActive}}>
+    .tech__container {
+    }
+
+    .tech__link {
+        height: 100%;
+        color: black;
+        text-decoration: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        opacity: 0.7;
+
+        &:hover{
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        &:active{
+            transform: scale(1.01);
+            transition: all 0.05s ease-in-out;
+        }
+
+    }
+
+
+</style>
+
+
+<script>
+    // const logoEl = document.querySelector<HTMLElement>('.logo__container');
+    // logoEl!.style.background = "red url('../assets/IRMÃOSS_logo1.svg')";
+    // logoEl!.innerHTML = "world";
+</script>

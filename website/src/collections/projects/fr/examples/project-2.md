@@ -18,11 +18,11 @@ tags:
     - name: "tag C"
       include: true
 techstack:
-    - name: "techstack A"
+    - id: "techstack_a"
       include: true
-    - name: "techstack B"
+    - id: "techstack_b"
       include: true
-    - name: "techstack C"
+    - id: "techstack_c"
       include: true
 fields:
     - name: "fields A"

@@ -1,6 +1,8 @@
 ---
-const {data} = Astro.props
-
+const {data} = Astro.props;
+import { getLangFromUrl } from "../../../i18n/utils";
+import TechstackIcon from "../../TechstackIcon.astro";
+const lang = getLangFromUrl(Astro.url);
 ---
     <li class="collection-item">
         <div  class="collection-item__header">
@@ -20,8 +22,9 @@ const {data} = Astro.props
             <div class="collection-item__body__bg-image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
         </div>
         <div class="collection-item__footer">
-            <ul class="tag-list">{data.tags.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
-            <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
+            <ul class="tag-list">{data.tags.map((item: any) =>  item.include && <li class="tag-list__item"><a href={`/${lang}/tags/projects/${item.name}`}>{item.name}</a></li>)}</ul>
+            <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>
             <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
         </div>
+
     </li>
