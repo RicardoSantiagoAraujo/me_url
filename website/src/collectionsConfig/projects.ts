@@ -24,7 +24,13 @@ definition[collection] = defineCollection({
       subtitle: z.string().optional(),
       description: z.string(),
       descriptionShort: z.string().optional(),
-      authors: z.array(z.string()),
+      authors: z.array(
+        z.object({
+          name: z.string(),
+          surname: z.string(),
+          include: z.boolean(),
+        })
+      ),
       repository: z.string().optional(),
       externalLink: z.string().optional(),
       datePublication: z.date().optional(),
@@ -57,6 +63,7 @@ definition[collection] = defineCollection({
         .array(
           z.object({
             title: z.string(),
+            include: z.boolean(),
             caption: z.string(),
             url: z.string(),
             alt: z.string(),
@@ -67,6 +74,7 @@ definition[collection] = defineCollection({
         .array(
           z.object({
             title: z.string(),
+            include: z.boolean(),
             caption: z.string(),
             url: z.string(),
             alt: z.string(),

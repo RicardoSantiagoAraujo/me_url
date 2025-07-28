@@ -5,7 +5,10 @@ include: true
 description: "A static website template built with Astro that allows you to quickly and conveniently set up a highly-modular and customizable personal website to showcase anything you want."
 descriptionShort: "Shorter description of project A goes here."
 datePublication: 2022-07-01
-authors: ["First Author", "Second Author", "Third Author"]
+authors:
+  - name: "Ricardo"
+    surname: "Santiago Araújo"
+    include: true
 tags:
   - name: "Website"
     include: true
@@ -37,19 +40,23 @@ finished: true
 opensource: true
 images:
   - title: "image title"
+    include: true
     caption: "image caption"
     url: "https://docs.astro.build/assets/rose.webp"
     alt: "Alternative text"
   - title: "image title"
+    include: true
     caption: "image caption"
     url: "https://docs.astro.build/assets/rose.webp"
     alt: "Alternative text"
 videos:
   - title: "video title"
+    include: true
     caption: "video caption"
     url: "https://docs.astro.build/assets/rose.webp"
     alt: "Alternative text"
   - title: "video title"
+    include: true
     caption: "video caption"
     url: "https://docs.astro.build/assets/rose.webp"
     alt: "Alternative text"

@@ -8,14 +8,31 @@ const { frontmatter } = Astro.props;
 frontmatter.lang = currentLang;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
+  <h2>{frontmatter.subtitle}</h2>
+  <h3>{frontmatter.repository}</h3>
+  <h3>{frontmatter.externalLink}</h3>
+
+  Authors:
+  <ul>
+    {frontmatter.authors.map((item: any) => item.include && <li class="author-list__item">{item.name} {item.surname} </li> )}
+  </ul>
+    Fields:
+  <ul>
+    {frontmatter.fields.map((item: any) => item.include && <li class="author-list__item">{item.name}  </li> )}
+  </ul>
+    Techstack:
+  <ul>
+    {frontmatter.techstack.map((item: any) => item.include && <li class="author-list__item">{item.id} </li> )}
+  </ul>
+  <!-- <p>{f rontmatter.datePublication.toLocaleDateString()}</p> -->
+
   <p><em>{frontmatter.description}</em></p>
-  <p>{frontmatter.datePublication.toLocaleDateString()}</p>
 
-  <p>Written by: {frontmatter.authors}</p>
+  <div> Images:
+    {frontmatter.images.map((item: any) => item.include && <div class="tag-list__item"> <img width="300px" alt={item.caption} src={item.url}/> </div> )}
+  </div>
 
-  <!-- <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} /> -->
-
-
+  Tags:
   <div class="tags">
     {frontmatter.tags.map((item: string) => (
       <p class="tag"><a href={`/${currentLang}/tags/projects/${item.name}`}>{item.name}</a></p>

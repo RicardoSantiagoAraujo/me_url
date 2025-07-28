@@ -5,7 +5,10 @@ include: true
 description: "More detailed description of project B goes here."
 descriptionShort: "Shorter description of project B goes here."
 datePublication: 2022-07-01
-authors: ["First Author","Second Author", "Third Author"]
+authors:
+    - name: "Name"
+      surname: "Surname"
+      include: true
 repository: "www.github.com"
 finished: true
 opensource: true
@@ -33,19 +36,23 @@ fields:
       include: true
 images:
     - title: 'image title'
+      include: true
       caption: 'image caption'
       url: "https://docs.astro.build/assets/rose.webp"
       alt: "Alternative text"
     - title: 'image title'
+      include: true
       caption: 'image caption'
       url: "https://docs.astro.build/assets/rose.webp"
       alt: "Alternative text"
 videos:
     - title: 'video title'
+      include: true
       caption: 'video caption'
       url: "https://docs.astro.build/assets/rose.webp"
       alt: "Alternative text"
     - title: 'video title'
+      include: true
       caption: 'video caption'
       url: "https://docs.astro.build/assets/rose.webp"
       alt: "Alternative text"
