@@ -2,6 +2,7 @@
 @use '../variables/dimensions' as d;
 @use 'sass:color';
 
+$margin-left-description: 50px;
 
 .collection-card-list {
     width: 100%;
@@ -78,30 +79,78 @@
             position: relative;
             height: 100%;
 
-            .collection-item__body__description {
+            .collection-item__body__left {
+                height: 100%;
+                padding: $margin-left-description 10px 10px 50px;
                 z-index: 1;
                 width: 50%;
-                height: 100%;
-                padding: 50px 10px 10px 50px;
-                font-size: medium;
-                text-align: justify;
+
+                .collection-item__body__description {
+                    z-index: 1;
+                    width: 100%;
+                    height: auto;
+                    font-size: medium;
+                    text-align: justify;
+                }
+
+                .tags-container {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 30px;
+
+                    span {
+                        font-weight: bold;
+                        color: c.$color-text;
+                        padding-right: 10px;
+                    }
+
+                    .tag-list {
+                        display: flex;
+                        gap: 10px;
+                        width: fit-content;
+                        justify-content: space-evenly;
+                        list-style-type: none;
+                        padding: 0px;
+
+                        .tag-list__item {
+                            a {
+                                border: 1px solid c.$color-text;
+                                background-color: c.$color-bg;
+                                width: 60px;
+                                text-align: center;
+                                display: block;
+                                border-radius: 7px;
+                                padding: 4px;
+                                text-decoration: none;
+                                color: c.$color-text;
+                            }
+                        }
+                    }
+                }
+
             }
 
-            // CARD IMAGE
-            .collection-item__body__image-container {
-                z-index: 1;
-                width: 50%;
-                text-align: center;
 
-                img {
-                    max-width: 66%;
-                    height: auto; // auto height preserves aspect ratio
+            // CARD IMAGE
+            .collection-item__body__right {
+                width: 50%;
+
+                .collection-item__body__image-container {
+                    z-index: 1;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        max-width: 70%;
+                        height: auto; // auto height preserves aspect ratio
+                    }
                 }
             }
 
             // CARD BG IMAGE
             .collection-item__body__bg-image-container {
-                // display: none;
                 position: absolute;
                 z-index: 0;
                 top: 0px;
@@ -109,13 +158,14 @@
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
+                background-color: c.$color-text;
+                opacity: 5%;
 
                 img {
+                    display: none;
                     max-width: 100%;
                     height: auto; // auto height preserves aspect ratio
                 }
-
-                opacity: 10%;
             }
 
         }
@@ -135,14 +185,22 @@
                 justify-content: center;
                 list-style: none;
                 gap: 20px;
-                a{
+
+                a {
                     text-decoration: none;
                     color: c.$color-text;
                     transition: 0.3s ease-in-out;
+
                     &:hover {
                         color: color.change(c.$color-text, $lightness: -100%);
                     }
                 }
+            }
+
+            .field-list {
+                opacity: 0.3;
+                height: 70%;
+                border-left: 1px solid c.$color-text;
             }
         }
     }

@@ -17,12 +17,21 @@ const lang = getLangFromUrl(Astro.url);
             </div>
         </div>
         <div class="collection-item__body">
-            <div class="collection-item__body__description">{data.description}</div>
-            <div class="collection-item__body__image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
+            <div class="collection-item__body__left">
+                <div class="collection-item__body__description">{data.description}</div>
+                <div class="tags-container">
+                    <span>Tags:</span>
+                    <ul class="tag-list">
+                        {data.tags.map((item: any) =>  item.include && <li class="tag-list__item"><a href={`/${lang}/tags/projects/${item.name}`}>{item.name}</a></li>)}
+                    </ul>
+                </div>
+            </div>
+            <div class="collection-item__body__right">
+                <div class="collection-item__body__image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
+            </div>
             <div class="collection-item__body__bg-image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
         </div>
         <div class="collection-item__footer">
-            <ul class="tag-list">{data.tags.map((item: any) =>  item.include && <li class="tag-list__item"><a href={`/${lang}/tags/projects/${item.name}`}>{item.name}</a></li>)}</ul>
             <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>
             <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
         </div>
