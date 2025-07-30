@@ -1,70 +1,66 @@
 ---
-title: "me_url"
-subtitle: "A personal website template built with Astro"
+title: me_url
+subtitle: A personal website template built with Astro
 include: true
-description: "A static website template built with Astro that allows you to quickly and conveniently set up a highly-modular and customizable personal website to showcase anything you want."
-descriptionShort: "Shorter description of project A goes here."
+description: >
+  A static website template built with Astro that allows you to quickly and conveniently set up a highly-modular and customizable personal website to showcase anything you want, relying on Markdown files and tags to to automatically generate and organise contents. The website you are visiting is created using this template.
+
+descriptionShort: A static website template built with Astro that allows you to quickly and conveniently set up a highly-modular and customizable personal website to showcase anything you want.
+
 datePublication: 2022-07-01
 authors:
-  - name: "Ricardo"
-    surname: "Santiago Araújo"
+  - name: Ricardo
+    surname: Santiago Araújo
     include: true
 tags:
-  - name: "Website"
+  - name: Website
     include: true
-  - name: "SSG"
+  - name: SSG
     include: true
 fields:
-  - name: "Web-dev"
+  - name: Web-dev
     include: true
-  - name: "Sofware Development"
+  - name: Sofware Development
     include: true
-  - name: "Frontend"
+  - name: Frontend
     include: true
 techstack:
-  - id: "astro"
+  - id: astro
     include: true
-  - id: "typescript"
+  - id: typescript
     include: true
-  - id: "jsx"
+  - id: jsx
     include: true
-  - id: "html"
+  - id: html
     include: true
-  - id: "scss"
+  - id: scss
     include: true
-  - id: "markdown"
+  - id: markdown
     include: true
-repository: "www.github.com"
-externalLink: "www.google.com"
+repository: www.github.com
+externalLink: null
 finished: true
 opensource: true
 images:
-  - title: "image title"
+  - title: image title
     include: true
-    caption: "image caption"
-    url: "https://docs.astro.build/assets/rose.webp"
-    alt: "Alternative text"
-  - title: "image title"
+    caption: image caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text"
+  - title: image title
     include: true
-    caption: "image caption"
-    url: "https://docs.astro.build/assets/rose.webp"
-    alt: "Alternative text"
+    caption: image caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text"
 videos:
-  - title: "video title"
+  - title: video title
     include: true
-    caption: "video caption"
-    url: "https://docs.astro.build/assets/rose.webp"
-    alt: "Alternative text"
-  - title: "video title"
+    caption: video caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text"
+  - title: video title
     include: true
-    caption: "video caption"
-    url: "https://docs.astro.build/assets/rose.webp"
-    alt: "Alternative text"
+    caption: video caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text"
 ---
-
-Welcome to my template for a projects entry.
-
-## Making a list
-
-1. **Item one**: description
-2. **Item two**: description

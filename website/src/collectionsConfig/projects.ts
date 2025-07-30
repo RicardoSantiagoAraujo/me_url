@@ -21,9 +21,9 @@ definition[collection] = defineCollection({
   schema: collectionBase
     .extend({
       title: z.string(),
-      subtitle: z.string().optional(),
+      subtitle: z.string().nullable().optional(),
       description: z.string(),
-      descriptionShort: z.string().optional(),
+      descriptionShort: z.string().nullable().optional(),
       authors: z.array(
         z.object({
           name: z.string(),
@@ -31,12 +31,12 @@ definition[collection] = defineCollection({
           include: z.boolean(),
         })
       ),
-      repository: z.string().optional(),
-      externalLink: z.string().optional(),
-      datePublication: z.date().optional(),
-      finished: z.boolean().optional(),
-      opensource: z.boolean().optional(),
-      public: z.boolean().optional(),
+      repository: z.string().nullable().optional(),
+      externalLink: z.string().nullable().optional(),
+      datePublication: z.date().nullable().optional(),
+      finished: z.boolean().nullable().optional(),
+      opensource: z.boolean().nullable().optional(),
+      public: z.boolean().nullable().optional(),
       tags: z.array(
         z.object({
           name: z.string(),
@@ -50,6 +50,7 @@ definition[collection] = defineCollection({
             include: z.boolean(),
           })
         )
+        .nullable()
         .optional(),
       techstack: z
         .array(
@@ -58,6 +59,7 @@ definition[collection] = defineCollection({
             include: z.boolean(),
           })
         )
+        .nullable()
         .optional(),
       images: z
         .array(
@@ -69,6 +71,7 @@ definition[collection] = defineCollection({
             alt: z.string(),
           })
         )
+        .nullable()
         .optional(),
       videos: z
         .array(
@@ -80,6 +83,7 @@ definition[collection] = defineCollection({
             alt: z.string(),
           })
         )
+        .nullable()
         .optional(),
     })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
