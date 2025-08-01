@@ -37,7 +37,7 @@ externalLink: google.com
 images:
     - title: image title
       include: true
-      caption: image caption
+      caption: 'image caption
       url: https://docs.astro.build/assets/rose.webp
       alt: Alternative text
     - title: image title
