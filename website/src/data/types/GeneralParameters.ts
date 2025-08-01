@@ -9,7 +9,16 @@ export interface GeneralParameters {
     signatureLinkTo: string;
     email: string;
     phone: string;
-    address: string;
+    street: string;
+    city: string;
+    country: string;
+    postcode: string;
+    birthYear:  number;
+    birthMonth:   number;
+    birthDay:   number;
+    nationality: string;
+    gender: string;
+    drivingLicense: string;
     siteCopyright: string;
     externalLinks: ExternalLink[]
     techstack: Record<string, Tech>

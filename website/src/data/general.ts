@@ -16,7 +16,16 @@ const generalParametersPlaceholder: GeneralParameters = {
   signatureLinkTo: "./projects",
   email: "johndoe@email.com",
   phone: "9999999999",
-  address: "rue de Cockayne, 1234",
+  street: "rue de Cockayne, 1234",
+  city: "Cockayne",
+  country: "UK",
+  postcode: "99999",
+  birthYear: 1990,
+  birthMonth: 1,
+  birthDay: 1,
+  nationality: "English",
+  gender: "male",
+  drivingLicense: "B",
   siteCopyright:
     "© me_url template website built with Astro by by Ricardo Santiago Araújo.",
   externalLinks: [
@@ -59,6 +68,11 @@ const generalParametersPlaceholder: GeneralParameters = {
         icon: "tech/astro",
         link: "https://astro.build/",
     },
+    "javascript": {
+        name: "JavaScript",
+        icon: "tech/typescript",
+        link: "https://www.typescriptlang.org/",
+    },
     "typescript": {
         name: "TypeScript",
         icon: "tech/typescript",
@@ -68,6 +82,21 @@ const generalParametersPlaceholder: GeneralParameters = {
         name: "Python",
         icon: "tech/python",
         link: "https://www.python.org/",
+    },
+    "flask": {
+        name: "Flask",
+        icon: "tech/flask",
+        link: "https://flask.palletsprojects.com/en/stable/",
+    },
+    "pyspark": {
+        name: "PySpark",
+        icon: "tech/pyspark2",
+        link: "https://spark.apache.org/docs/latest/api/python/",
+    },
+    "psytoolkit": {
+        name: "PsyToolkit",
+        icon: "tech/psytoolkit",
+        link: "https://www.psytoolkit.org/experiment-library/",
     },
     "jsx": {
         name: "JSX",
@@ -84,10 +113,50 @@ const generalParametersPlaceholder: GeneralParameters = {
         icon: "tech/sass",
         link: "https://sass-lang.com/",
     },
+    "mysql": {
+        name: "SCSS",
+        icon: "tech/sass",
+        link: "https://sass-lang.com/",
+    },
+    "spring": {
+        name: "SCSS",
+        icon: "tech/sass",
+        link: "https://sass-lang.com/",
+    },
     "markdown": {
         name: "Markdown",
         icon: "tech/markdown",
         link: "https://www.markdownguide.org/",
+    },
+    "latex": {
+      name: "LaTeX",
+      icon: "tech/latex",
+      link: "https://www.latex-project.org/",
+    },
+    "luatex": {
+      name: "LuaTeX",
+      icon: "tech/lua",
+      link: "https://www.luatex.org/",
+    },
+    "r": {
+      name: "R",
+      icon: "tech/r",
+      link: "https://www.r-project.org/",
+    },
+    "d3": {
+      name: "D3.js",
+      icon: "tech/d3",
+      link: "https://d3js.org/",
+    },
+    "angularjs": {
+      name: "AngularJS",
+      icon: "tech/angularjs",
+      link: "https://angularjs.org/",
+    },
+    "angular2": {
+    name: "Angular 2",
+      icon: "tech/angular2",
+      link: "https://angular.dev/",
     },
     "techstack_a": {
         name: "Tech A",
