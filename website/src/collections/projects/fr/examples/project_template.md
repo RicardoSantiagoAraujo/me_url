@@ -38,6 +38,7 @@ finished: true
 opensource: true
 externalLink: google.com
 idMainImg: id1
+idBgImg: null
 images:
   - title: image title
     id: id1

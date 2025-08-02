@@ -35,6 +35,7 @@ finished: true
 opensource: true
 externalLink: google.com
 idMainImg: id1
+idBgImg: null
 images:
   - title: image title
     id: img1
@@ -43,6 +44,7 @@ images:
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text
   - title: image title
+    id: img2
     include: true
     caption: image caption
     url: https://docs.astro.build/assets/rose.webp

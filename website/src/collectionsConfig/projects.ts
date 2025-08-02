@@ -74,7 +74,8 @@ definition[collection] = defineCollection({
         )
         .nullable()
         .optional(),
-      idMainImg: z.string(),
+      idMainImg: z.string().nullable().optional(),
+      idBgImg: z.string().nullable().optional(),
       videos: z
         .array(
           z.object({

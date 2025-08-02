@@ -38,10 +38,11 @@ techstack:
   - id: markdown
     include: true
 repository: www.github.com
-externalLink: https://meurl.netlify.app/
+externalLink: meurl.netlify.app
 finished: true
 opensource: true
-idMainImg: 
+idMainImg: null
+idBgImg: null
 images:
   - title: image title
     id: id1
