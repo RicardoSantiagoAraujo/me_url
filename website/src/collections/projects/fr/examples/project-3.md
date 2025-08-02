@@ -34,9 +34,11 @@ repository: www.github.com
 finished: true
 opensource: true
 externalLink: google.com
+idMainImg: id1
 images:
   - title: image title
-    include: true
+    id: img1
+    include: false
     caption: image caption
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text
@@ -47,11 +49,13 @@ images:
     alt: Alternative text
 videos:
   - title: video title
+    id: img2
     include: true
     caption: video caption
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text
   - title: video title
+    id: img3
     include: true
     caption: video caption
     url: https://docs.astro.build/assets/rose.webp

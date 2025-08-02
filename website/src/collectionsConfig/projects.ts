@@ -65,6 +65,7 @@ definition[collection] = defineCollection({
         .array(
           z.object({
             title: z.string(),
+            id: z.string(),
             include: z.boolean(),
             caption: z.string(),
             url: z.string(),
@@ -73,10 +74,12 @@ definition[collection] = defineCollection({
         )
         .nullable()
         .optional(),
+      idMainImg: z.string(),
       videos: z
         .array(
           z.object({
             title: z.string(),
+            id: z.string(),
             include: z.boolean(),
             caption: z.string(),
             url: z.string(),

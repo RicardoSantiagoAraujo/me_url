@@ -3,6 +3,8 @@ const {data} = Astro.props;
 import { getLangFromUrl } from "../../../i18n/utils";
 import TechstackIcon from "../../TechstackIcon.astro";
 const lang = getLangFromUrl(Astro.url);
+const cardImg = data.images.find((img: any) => img.id === data.idMainImg) || null;
+console.log("cardImg", cardImg);
 ---
     <li class="collection-item">
         <div  class="collection-item__header">
@@ -26,10 +28,10 @@ const lang = getLangFromUrl(Astro.url);
                     </ul>
                 </div>
             </div>
-            <div class="collection-item__body__right">
-                <div class="collection-item__body__image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
-            </div>
-            <div class="collection-item__body__bg-image-container"><img src={data.images[0].url} alt={data.images[0].alt}   ></div>
+            {cardImg && <div class="collection-item__body__right">
+                 <div class="collection-item__body__image-container"><img src={cardImg.url} alt={cardImg.alt}/></div>
+            </div>}
+            {cardImg && <div class="collection-item__body__bg-image-container"><img src={cardImg.url} alt={cardImg.alt}/></div> }
         </div>
         <div class="collection-item__footer">
             <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>

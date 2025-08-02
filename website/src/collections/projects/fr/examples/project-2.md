@@ -2,8 +2,7 @@
 title: Project Title A
 subtitle: project subtitle A
 include: true
-description: More detailed description of project A goes here. Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.Shorter description of project A goes here.
-descriptionShort: Shorter description of project A goes here.
+description: More detailed description of project A goes here.
 datePublication: 2022-07-01
 authors:
   - name: Name
@@ -34,9 +33,11 @@ repository: www.github.com
 finished: true
 opensource: true
 externalLink: google.com
+idMainImg: id1
 images:
   - title: image title
-    include: true
+    id: img1
+    include: false
     caption: image caption
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text
@@ -47,11 +48,13 @@ images:
     alt: Alternative text
 videos:
   - title: video title
+    id: img2
     include: true
     caption: video caption
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text
   - title: video title
+    id: img3
     include: true
     caption: video caption
     url: https://docs.astro.build/assets/rose.webp
