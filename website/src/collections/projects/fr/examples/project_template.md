@@ -4,61 +4,61 @@ subtitle: Subtitle of project
 include: true
 description: Detailed description of the project
 descriptionShort: Short description of the project
-datePublication: 2000-1-1
+datePublication: 2000-01-01
 authors:
-    - name: Author A name
-      surname: Author A surname
-      include: true
-    - name: Author B name
-      surname: Author B surname
-      include: true
+  - name: Author A name
+    surname: Author A surname
+    include: true
+  - name: Author B name
+    surname: Author B surname
+    include: true
 tags:
-    - name: tag A
-      include: true
-    - name: tag B
-      include: true
-    - name: tag C
-      include: false
+  - name: tag A
+    include: true
+  - name: tag B
+    include: true
+  - name: tag C
+    include: false
 techstack:
-    - id: techstack_a
-      include: true
-    - id: techstack_b
-      include: true
-    - id: techstack_c
-      include: true
+  - id: techstack_a
+    include: true
+  - id: techstack_b
+    include: true
+  - id: techstack_c
+    include: true
 fields:
-    - name: field A
-      include: true
-    - name: field B
-      include: true
-    - name: field C
-      include: true
+  - name: field A
+    include: true
+  - name: field B
+    include: true
+  - name: field C
+    include: true
 repository: www.github.com
 finished: true
 opensource: true
 externalLink: google.com
 images:
-    - title: image title
-      include: true
-      caption: 'image caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
-    - title: image title
-      include: true
-      caption: image caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
+  - title: image title
+    include: true
+    caption: image caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
+  - title: image title
+    include: true
+    caption: image caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
 videos:
-    - title: video title
-      include: true
-      caption: video caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
-    - title: video title
-      include: true
-      caption: video caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
+  - title: video title
+    include: true
+    caption: video caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
+  - title: video title
+    include: true
+    caption: video caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
 ---
 
 Here goes the body of the project entry. It get injected into the website at the place where the tag **<slot />** is placed in your **.astro** file.
@@ -67,13 +67,11 @@ You can use standard **markdown** syntax to organise your content, which then ge
 
 # Header level 1
 
-Heading level 1 (alternative syntax)
-===============
+# Heading level 1 (alternative syntax)
 
 ## Header level 2
 
-Heading level 2 (alternative syntax)
----------------
+## Heading level 2 (alternative syntax)
 
 ### Header level 3
 
@@ -87,15 +85,15 @@ Heading level 2 (alternative syntax)
 
 ## Bold
 
-There are two ways to create: either with **double asterisks** or with __double underscores__.
+There are two ways to create: either with **double asterisks** or with **double underscores**.
 
 ## Italic
 
-There are two ways to create: either with *a single asterisk* or with _a single underscore_.
+There are two ways to create: either with _a single asterisk_ or with _a single underscore_.
 
 ## Bold and Italic
 
-There are two ways to create: either with ***triple asterisks*** or with ___triple underscores___.
+There are two ways to create: either with **_triple asterisks_** or with **_triple underscores_**.
 
 # Blockquotes
 
@@ -103,10 +101,11 @@ There are two ways to create: either with ***triple asterisks*** or with ___trip
 
 > Additionally, it is possible to create multi-paragraph blockquotes.
 >
-> Additionally: 
+> Additionally:
+>
 > - You can add other formatting elements
 >
->> Nested blockquotes are added with a double **>>**.
+> > Nested blockquotes are added with a double **>>**.
 
 # Lists
 
@@ -117,16 +116,17 @@ To create an ordered list, add line items with numbers followed by periods. The 
 1. First item
 2. Second item
 3. Third item
-  1. First indented item
-  2. Second indented item
+4. First indented item
+5. Second indented item
 
 ## Unordered Lists
 
-To create an unordered list, add dashes (**-**), asterisks (__*__), or plus signs (**+**) in front of line items. Indent one or more items to create a nested list.
+To create an unordered list, add dashes (**-**), asterisks (**\***), or plus signs (**+**) in front of line items. Indent one or more items to create a nested list.
 
 - First item
 - Second item
 - Third item
+
   - First indented item
   - Second indented item
 
@@ -134,15 +134,15 @@ To create an unordered list, add dashes (**-**), asterisks (__*__), or plus sign
 
   Code blocks are normally indented four spaces or one tab. When they’re in a list, indent them eight spaces or two tabs.
 
-  1. Open the file.
-  2. Find the following code block on line 21:
+  1.  Open the file.
+  2.  Find the following code block on line 21:
 
           <html>
             <head>
               <title>Test</title>
             </head>
 
-  3. Update the title to match the name of your website.
+  3.  Update the title to match the name of your website.
 
 ## Code
 
@@ -150,7 +150,7 @@ Code is denoted with `backticks`.
 
 ## Images
 
-![Image alt text](/assets/placeholders/placeholder_image.jpg  "Optional title")
+![Image alt text](/assets/placeholders/placeholder_image.jpg "Optional title")
 
 ## Links
 
@@ -164,9 +164,11 @@ To quickly turn a URL or email address into a link, enclose it in angle brackets
 
 Use any of the following:
 
-***
 ---
-___
+
+---
+
+---
 
 ## HTML
 

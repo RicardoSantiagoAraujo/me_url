@@ -2,7 +2,7 @@
 import '../styles/variables/_colors.scss';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { generalParameters } from '../data/general';
+import { generalParameters } from '../data/_general';
 const imagePath = generalParameters.logo;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,svg}')

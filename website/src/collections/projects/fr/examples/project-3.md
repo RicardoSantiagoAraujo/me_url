@@ -6,56 +6,56 @@ description: More detailed description of project A goes here.
 descriptionShort: Shorter description of project A goes here.
 datePublication: 2022-07-01
 authors:
-    - name: Name
-      surname: Surname
-      include: true
+  - name: Name
+    surname: Surname
+    include: true
 tags:
-    - name: tag A
-      include: true
-    - name: tag B
-      include: true
-    - name: tag C
-      include: false
+  - name: tag A
+    include: true
+  - name: tag B
+    include: true
+  - name: tag C
+    include: false
 techstack:
-    - id: techstack_a
-      include: true
-    - id: techstack_b
-      include: true
-    - id: techstack_c
-      include: true
+  - id: techstack_a
+    include: true
+  - id: techstack_b
+    include: true
+  - id: techstack_c
+    include: true
 fields:
-    - name: fields A
-      include: true
-    - name: fields B
-      include: true
-    - name: fields C
-      include: true
+  - name: fields A
+    include: true
+  - name: fields B
+    include: true
+  - name: fields C
+    include: true
 repository: www.github.com
 finished: true
 opensource: true
 externalLink: google.com
 images:
-    - title: image title
-      include: true
-      caption: 'image caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
-    - title: image title
-      include: true
-      caption: image caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
+  - title: image title
+    include: true
+    caption: image caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
+  - title: image title
+    include: true
+    caption: image caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
 videos:
-    - title: video title
-      include: true
-      caption: video caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
-    - title: video title
-      include: true
-      caption: video caption
-      url: https://docs.astro.build/assets/rose.webp
-      alt: Alternative text
+  - title: video title
+    include: true
+    caption: video caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
+  - title: video title
+    include: true
+    caption: video caption
+    url: https://docs.astro.build/assets/rose.webp
+    alt: Alternative text
 ---
 
 Welcome to my template for a projects entry.

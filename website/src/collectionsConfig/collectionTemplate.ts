@@ -28,7 +28,12 @@ definition[collection] = defineCollection({
         url: z.string(),
         alt: z.string(),
       }),
-      tags: z.array(z.string()),
+      tags: z.array(
+        z.object({
+          name: z.string(),
+          include: z.boolean(),
+        })
+      ),
     })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });

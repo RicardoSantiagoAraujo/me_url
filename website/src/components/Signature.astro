@@ -2,7 +2,7 @@
 import '../styles/variables/_colors.scss';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { generalParameters } from '../data/general';
+import { generalParameters } from '../data/_general';
 import { getLangFromUrl, useTranslatedPath } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);

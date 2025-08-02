@@ -90,7 +90,7 @@ export const generalParametersUser: GeneralParameters = {
     },
     "psytoolkit": {
         name: "PsyToolkit",
-        icon: "tech/psytoolkit",
+        icon: "tech/r_colorless",
         link: "https://www.psytoolkit.org/experiment-library/",
     },
     "jsx": {
@@ -130,27 +130,27 @@ export const generalParametersUser: GeneralParameters = {
     },
     "luatex": {
       name: "LuaTeX",
-      icon: "tech/lua",
+      icon: "tech/lua_colorless",
       link: "https://www.luatex.org/",
     },
     "r": {
       name: "R",
-      icon: "tech/r",
+      icon: "tech/r_colorless",
       link: "https://www.r-project.org/",
     },
     "d3": {
       name: "D3.js",
-      icon: "tech/d3",
+      icon: "tech/d3_colorless",
       link: "https://d3js.org/",
     },
     "angularjs": {
       name: "AngularJS",
-      icon: "tech/angularjs",
+      icon: "tech/angularjs_colorless",
       link: "https://angularjs.org/",
     },
     "angular2": {
     name: "Angular 2",
-      icon: "tech/angular2",
+      icon: "tech/angular2_colorless",
       link: "https://angular.dev/",
     },
     "techstack_a": {
