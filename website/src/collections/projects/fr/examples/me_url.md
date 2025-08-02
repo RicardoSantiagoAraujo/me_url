@@ -2,7 +2,7 @@
 title: me_url
 subtitle: A personal website template built with Astro
 include: true
-description: > 
+description: >
   A static website template built with Astro that allows you to quickly and conveniently set up a highly-modular and customizable personal website to showcase anything you want, relying on Markdown files and tags to to automatically generate and organise contents. The website you are visiting is created using this template.
 
 descriptionShort: A static website template built with Astro that allows you to quickly and conveniently set up a highly-modular and customizable personal website to showcase anything you want.
@@ -38,7 +38,7 @@ techstack:
   - id: markdown
     include: true
 repository: www.github.com
-externalLink: 
+externalLink: https://meurl.netlify.app/
 finished: true
 opensource: true
 images:
@@ -64,4 +64,3 @@ videos:
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text"
 ---
-

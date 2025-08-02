@@ -4,6 +4,11 @@
 
 $margin-left-description: 50px;
 
+// card element heights should add up to 100%
+$header-height: 13%;
+$body-height: 75%;
+$footer-height: 12%;
+
 .collection-card-list {
     width: 100%;
     position: relative;
@@ -34,6 +39,7 @@ $margin-left-description: 50px;
             position: relative;
             padding: 5px 50px;
             width: 100%;
+            height: $header-height;
 
             &>a {
                 text-decoration: none;
@@ -77,20 +83,38 @@ $margin-left-description: 50px;
             place-items: center;
             display: flex;
             position: relative;
-            height: 100%;
+            height: $body-height;
 
             .collection-item__body__left {
                 height: 100%;
                 padding: $margin-left-description 10px 10px 50px;
                 z-index: 1;
-                width: 50%;
+                width: 66%;
 
                 .collection-item__body__description {
                     z-index: 1;
                     width: 100%;
-                    height: auto;
+                    height: 70%;
                     font-size: medium;
                     text-align: justify;
+                    overflow: auto;
+                    padding-right: 10px;
+                    /* Make the scrollbar background transparent */
+                    &::-webkit-scrollbar {
+                    width: 10px; /* or height: 12px for horizontal scrollbar */
+                    background-color: transparent;
+                    }
+
+                    /* Optional: Style the thumb */
+                    &::-webkit-scrollbar-thumb {
+                    background-color: rgba(100, 100, 100, 0.5); /* semi-transparent thumb */
+                    border-radius: 10px;
+                    }
+
+                    /* Optional: Track (still transparent if you want) */
+                    &::-webkit-scrollbar-track {
+                    background-color: transparent;
+                    }
                 }
 
                 .tags-container {
@@ -133,7 +157,7 @@ $margin-left-description: 50px;
 
             // CARD IMAGE
             .collection-item__body__right {
-                width: 50%;
+                width: 33%;
 
                 .collection-item__body__image-container {
                     z-index: 1;
@@ -172,6 +196,7 @@ $margin-left-description: 50px;
 
         .collection-item__footer {
             width: 100%;
+            height: $footer-height;
             display: flex;
             align-items: center;
             justify-content: space-between;
