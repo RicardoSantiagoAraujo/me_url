@@ -41,30 +41,24 @@ repository: www.github.com
 externalLink: meurl.netlify.app
 finished: true
 opensource: true
-idMainImg: null
+idMainImg: img_id1
 idBgImg: null
 images:
   - title: image title
-    id: id1
+    id: img_id1
     include: true
     caption: image caption
-    url: https://docs.astro.build/assets/rose.webp
-    alt: Alternative text"
-  - title: image title
-    id: id2
-    include: true
-    caption: image caption
-    url: https://docs.astro.build/assets/rose.webp
+    url: /src/assets/collections/projects/me_url/signature.png
     alt: Alternative text"
 videos:
   - title: video title
-    id: id1
+    id: vid_id1
     include: true
     caption: video caption
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text"
   - title: video title
-    id: id2
+    id: vid_id2
     include: true
     caption: video caption
     url: https://docs.astro.build/assets/rose.webp

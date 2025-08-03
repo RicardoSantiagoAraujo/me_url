@@ -2,8 +2,14 @@
 title: Title of project
 subtitle: Subtitle of project
 include: true
-description: Detailed description of the project
-descriptionShort: Short description of the project
+description: Detailed description of the project.
+
+  Veniam do dolor voluptate ad elit eiusmod occaecat. Proident aute veniam tempor nulla id nostrud ad voluptate occaecat. Ipsum eiusmod officia laborum dolor mollit.
+
+  Incididunt laboris magna pariatur sit ad et aliqua do laborum commodo ea. Magna velit occaecat laborum magna eiusmod mollit incididunt aliquip. Voluptate ex dolore esse sunt laborum qui id do fugiat ea commodo laboris et. Deserunt eiusmod est nulla occaecat minim ullamco tempor.
+
+  Amet fugiat consectetur qui pariatur tempor tempor. Cupidatat exercitation aliquip aute cupidatat et. Voluptate labore ex ea sit cillum ut culpa occaecat incididunt amet magna non. Esse in exercitation proident consectetur tempor cupidatat labore cillum. Mollit enim sit laboris amet veniam nisi exercitation occaecat consequat eu cupidatat irure tempor. Deserunt nisi reprehenderit quis laboris culpa nisi Lorem laboris nisi minim ad. Excepteur proident esse id culpa in dolore cupidatat velit non magna.
+descriptionShort: Short description of the project.
 datePublication: 2000-01-01
 authors:
   - name: Author A name
@@ -37,21 +43,15 @@ repository: www.github.com
 finished: true
 opensource: true
 externalLink: google.com
-idMainImg: id1
+idMainImg: img_id1
 idBgImg: null
 images:
   - title: image title
-    id: id1
+    id: img_id1
     include: true
     caption: image caption
-    url: https://docs.astro.build/assets/rose.webp
-    alt: Alternative text
-  - title: image title
-    id: id2
-    include: true
-    caption: image caption
-    url: https://docs.astro.build/assets/rose.webp
-    alt: Alternative text
+    url: /src/assets/placeholders/placeholder_image.jpg
+    alt: Alternative text"
 videos:
   - title: video title
     id: id1
