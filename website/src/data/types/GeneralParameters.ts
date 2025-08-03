@@ -13,6 +13,7 @@ export interface GeneralParameters {
     city: string;
     country: string;
     postcode: string;
+    addressLink: string;
     birthYear:  number;
     birthMonth:   number;
     birthDay:   number;

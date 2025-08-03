@@ -67,10 +67,3 @@ videos:
     url: https://docs.astro.build/assets/rose.webp
     alt: Alternative text
 ---
-
-Welcome to my template for a projects entry.
-
-## Making a list
-
-1. **Item one**: description
-2. **Item two**: description

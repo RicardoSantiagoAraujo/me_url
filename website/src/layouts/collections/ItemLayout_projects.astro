@@ -39,31 +39,40 @@ frontmatter.lang = currentLang;
     {frontmatter.externalLink && <a href={"https://"+frontmatter.externalLink} class="page__links__external-link"><i class="fas fa-external-link"></i></a>}
   </div>
 
+  <div class="project-page__tags">
+    <span class="tags_prefix">Tags:</span>
+    <div class="tags">
+      {frontmatter.tags.map((item: string) => (
+        <p class="tag"><a href={`/${currentLang}/tags/projects/${item.name}`}>{item.name}</a></p>
+      ))}
+    </div>
+  </div>
 
-    Fields:
-  <ul>
-    {frontmatter.fields.map((item: any) => item.include && <li class="author-list__item">{item.name}  </li> )}
-  </ul>
-    Techstack:
-  <ul>
-    {frontmatter.techstack.map((item: any) => item.include && <li class="author-list__item">{item.id} </li> )}
-  </ul>
+
+  <div class="project-page__lists">
+    <div class="project-page__list project-page__techstack">
+        <ul>
+          {frontmatter.techstack.map((item: any) => item.include && <li class="author-list__item">
+            {<TechstackIcon tech_id={item.id}></TechstackIcon>}
+            </li> )}
+        </ul>
+    </div>
+    <div class="project-page__list project-page__fields">
+        <ul>
+          {frontmatter.fields.map((item: any, index: number,array: any[]) => item.include && <li class="author-list__item">
+            {item.name}
+            {index < array.length - 1 ? ', ' : ''}
+            </li> )}
+        </ul>
+    </div>
+  </div>
   <!-- <p>{f rontmatter.datePublication.toLocaleDateString()}</p> -->
 
   <p><em>{frontmatter.description}</em></p>
 
-  <div> Images:
+  <div class="project-page__images">
     {frontmatter.images.map((item: any) => item.include && <div class="tag-list__item"> <img width="300px" alt={item.caption} src={item.url}/> </div> )}
   </div>
-
-  Tags:
-  <div class="tags">
-    {frontmatter.tags.map((item: string) => (
-      <p class="tag"><a href={`/${currentLang}/tags/projects/${item.name}`}>{item.name}</a></p>
-    ))}
-  </div>
-
-
 
 
   <slot /> <!-- slot injects contents of .md file  -->

@@ -19,6 +19,7 @@ const generalParametersPlaceholder: GeneralParameters = {
   street: "rue de Cockayne, 1234",
   city: "Cockayne",
   country: "UK",
+  addressLink: "https://maps.app.goo.gl/WVy79Q7bq66XKHYZ8",
   postcode: "99999",
   birthYear: 1990,
   birthMonth: 1,

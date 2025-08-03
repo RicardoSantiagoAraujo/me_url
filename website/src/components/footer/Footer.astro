@@ -1,7 +1,7 @@
 ---
-import ExternalLink from './ExternalLink.astro';
+import ExternalLink from './../ExternalLink.astro';
 import instagramIcon from '../icons/instagram.svg';
-import { generalParameters } from '../data/_general';
+import { generalParameters } from '../../data/_general';
 ---
 
 
@@ -18,7 +18,7 @@ import { generalParameters } from '../data/_general';
         }
         <!-- <ExternalLink name="instagram" height="7px" icon={instagramIcon} faIcon={"fa-instagram"} address={"instagram.com"} /> -->
       </div>
-      <a href="https://maps.app.goo.gl/8jWCija68AREpJKh6"><i class="fa fa-home"></i> {generalParameters.address} </a>
+      <a href={generalParameters.addressLink}><i class="fa fa-home"></i> {generalParameters.street}, {generalParameters.city}, {generalParameters.country} </a>
     </div>
     <!-- FOOTER ROW 2 -->
     <div class="footer_row footer__row2">
