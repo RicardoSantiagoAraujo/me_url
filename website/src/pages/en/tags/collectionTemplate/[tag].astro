@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts';
+
+export async function getStaticPaths() {
+  return generateTagRoute("collectionTemplate");
+}
+import GenericList from '../../../../components/collection/_generic/GenericList.astro';
+
+const { tag } = Astro.params;
+// console.log(items);
+---
+<BaseLayout pageTitle={tag}>
+  <p>Collection template items tagged with {tag}</p>
+  <GenericList listItemComponent="CollectionTemplateLink" collectionName="collectionTemplate"/>
+</BaseLayout>

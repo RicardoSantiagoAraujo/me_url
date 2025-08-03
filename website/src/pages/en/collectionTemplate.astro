@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GenericList from "../../components/collection/_generic/GenericList.astro";
+const pageTitle = "My Collection Example";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <p>This are projects I have worked on.</p>
+  <GenericList listItemComponent="CollectionTemplateLink" collectionName="collectionTemplate"/>
+
+</BaseLayout>

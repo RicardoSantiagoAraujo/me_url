@@ -6,8 +6,8 @@ export const languages = {
 };
 export type Language = keyof typeof languages;
 
-export const defaultLangStart = "fr"; // default language for the app when accessing the root URL
-export const defaultLang = "fr"; // fallback language in the absence of a translation
+export const defaultLangStart = "en"; // default language for the app when accessing the root URL
+export const defaultLang = "en"; // fallback language in the absence of a translation
 
 export const ui: Record<Language, Record<string, string>> = {
   fr: {
