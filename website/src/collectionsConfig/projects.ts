@@ -30,7 +30,7 @@ definition[collection] = defineCollection({
           surname: z.string(),
           include: z.boolean(),
         })
-      ),
+      ).nullable().optional(),
       repository: z.string().nullable().optional(),
       externalLink: z.string().nullable().optional(),
       datePublication: z.date().nullable().optional(),

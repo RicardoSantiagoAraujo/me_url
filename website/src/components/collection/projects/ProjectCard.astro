@@ -3,12 +3,11 @@ const {data} = Astro.props;
 import { getLangFromUrl } from "../../../i18n/utils";
 import TechstackIcon from "../../TechstackIcon.astro";
 import Image from "astro/components/Image.astro";
+import {getImageFromProject} from '../../../scripts/projects';
 const lang = getLangFromUrl(Astro.url);
-const cardImgObj = data.images.find((img: any) => img.id === data.idMainImg) || null;
-const bgImgObj = data.images.find((img: any) => img.id === data.idBgImg) || null;
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,svg}')
-const cardImg = cardImgObj ? images[cardImgObj.url] ? images[cardImgObj.url]() : cardImgObj.url : null;
-const bgImg = bgImgObj ? images[bgImgObj.url] ? images[bgImgObj.url]() : bgImgObj.url : null;
+
+const cardImg = getImageFromProject("idMainImg", data)
+const bgImg = getImageFromProject("idBgImg", data)
 
 
 ---
@@ -26,7 +25,7 @@ const bgImg = bgImgObj ? images[bgImgObj.url] ? images[bgImgObj.url]() : bgImgOb
         </div>
         <div class="collection-item__body">
             <div class="collection-item__body__left">
-                <div class="collection-item__body__description">{data.description}</div>
+                <div class="collection-item__body__description">{data.descriptionShort}</div>
                 <div class="tags-container">
                     <span>Tags:</span>
                     <ul class="tag-list">
@@ -34,13 +33,13 @@ const bgImg = bgImgObj ? images[bgImgObj.url] ? images[bgImgObj.url]() : bgImgOb
                     </ul>
                 </div>
             </div>
-                {cardImgObj &&<div class="collection-item__body__right">
+                {cardImg.meta &&<div class="collection-item__body__right">
                     <div class="collection-item__body__image-container">
-                        <Image  src={cardImg} alt={cardImgObj.alt} inferSize={true}/>
+                        <Image  src={cardImg.img} alt={cardImg.meta.alt} inferSize={true}/>
                     </div>
                 </div>}
-                {bgImgObj && <div class="collection-item__body__bg-image-container">
-                    <img src={bgImg} alt={bgImgObj.alt}/>
+                {bgImg.meta && <div class="collection-item__body__bg-image-container">
+                    <img src={bgImg.img} alt={bgImg.meta.alt}/>
                 </div>}
         </div>
         <div class="collection-item__footer">

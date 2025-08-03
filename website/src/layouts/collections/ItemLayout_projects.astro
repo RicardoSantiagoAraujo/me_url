@@ -2,20 +2,44 @@
 import BaseLayout from './../BaseLayout.astro';
 import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
+import TechstackIcon from '../../components/TechstackIcon.astro';
+import Image from "astro/components/Image.astro";
+import {getImageFromProject} from './../../scripts/projects';
+import './../../styles/collection/projects/layout.scss';
+
 
 const { frontmatter } = Astro.props;
-// console.log(frontmatter)
+const cardImg = getImageFromProject("idMainImg", frontmatter);
+const bgImg = getImageFromProject("idBgImg", frontmatter);
 frontmatter.lang = currentLang;
 ---
-<BaseLayout pageTitle={frontmatter.title}>
-  <h2>{frontmatter.subtitle}</h2>
-  <h3>{frontmatter.repository}</h3>
-  <h3>{frontmatter.externalLink}</h3>
+<BaseLayout>
+  <div class="project-page__header">
+    <div class="project-page__header__bg">
+      {bgImg.meta && <img src={bgImg.img} alt={bgImg.meta.alt}/>}
+    </div>
+    <div class="project-page__header__titles">
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.subtitle && <h2>{frontmatter.subtitle}</h2>}
+    </div>
+    {frontmatter.authors &&
+    <div class="project-page__header__authors">
+        <span class="authors_prefix">Authors:</span>
+          {frontmatter.authors.map((item: any, index: number,array: any[]) => item.include &&
+          <span class="author-list__item">
+            {item.name} {item.surname}
+            {index < array.length - 1 ? ', ' : ''}
+          </span> )}
+    </div>
+    }
+  </div>
 
-  Authors:
-  <ul>
-    {frontmatter.authors.map((item: any) => item.include && <li class="author-list__item">{item.name} {item.surname} </li> )}
-  </ul>
+  <div class="project-page__links">
+    {frontmatter.repository && <a href={"https://"+frontmatter.repository} class="page__links__repository"><i class="fa-brands fa-github"></i></a>}
+    {frontmatter.externalLink && <a href={"https://"+frontmatter.externalLink} class="page__links__external-link"><i class="fas fa-external-link"></i></a>}
+  </div>
+
+
     Fields:
   <ul>
     {frontmatter.fields.map((item: any) => item.include && <li class="author-list__item">{item.name}  </li> )}
@@ -44,24 +68,3 @@ frontmatter.lang = currentLang;
 
   <slot /> <!-- slot injects contents of .md file  -->
 </BaseLayout>
-
-
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>

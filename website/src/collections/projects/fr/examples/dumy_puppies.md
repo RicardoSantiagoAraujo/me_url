@@ -7,7 +7,10 @@ descriptionShort: A dummy project about puppies to demonstrate the functionaliti
 datePublication: 2020-12-25
 authors:
   - name: Puppy
-    surname: Owner
+    surname: Owner A
+    include: true
+  - name: Puppy
+    surname: Owner B
     include: true
 tags:
   - name: pooddle

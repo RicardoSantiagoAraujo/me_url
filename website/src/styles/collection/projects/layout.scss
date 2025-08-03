@@ -1,0 +1,67 @@
+@use '../../variables/colors' as c;
+@use '../../variables/dimensions' as d;
+
+$project-header-height: 20vh;
+.project-page__header {
+    position: relative;
+    height: $project-header-height;
+
+    .project-page__header__bg {
+        width: 100vw;
+        height: $project-header-height*2;
+        position: absolute;
+        left: 50%;
+        bottom: 0%;
+        transform: translate(-50%, 0%);
+        overflow: hidden;
+        z-index: 0;
+        background-color: rgba(255, 255, 255, 0.508);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+        img {
+            width: 100%;
+            opacity: 0.2;
+            // position: absolute;
+            // left: 50%;
+            // top: 50%;
+            // transform: translate(-50%, -50%);
+        }
+    }
+
+    .project-page__header__titles{
+        position: relative;
+        z-index: 0;
+        h1, h2{
+            text-align: left;
+        }
+    }
+    .project-page__header__authors{
+        background: linear-gradient(0.25turn, transparent, white 2% , transparent);
+        position:absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 0px 20px;
+        // transform: translateY(50%);
+        .authors_prefix{
+            font-weight: bolder;
+        }
+    }
+}
+
+
+a {
+    color: #00539F;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+}
