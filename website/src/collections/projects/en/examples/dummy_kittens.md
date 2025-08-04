@@ -2,8 +2,8 @@
 title: Kitten Project
 subtitle: a project about kittens
 include: true
-description: A dummy project about kittens to demonstrate the functionalities of me_url.
-descriptionShort: A dummy project about kittens to demonstrate the functionalities of me_url.
+description: A mock project about kittens to demonstrate the functionalities of me_url.
+descriptionShort: A mock project about kittens to demonstrate the functionalities of me_url.
 datePublication: 2020-12-25
 authors:
   - name: Puppy
