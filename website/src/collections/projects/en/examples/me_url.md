@@ -42,7 +42,7 @@ externalLink: meurl.netlify.app
 finished: true
 opensource: true
 idMainImg: img_id1
-idBgImg: null
+idBgImg: img_id1
 images:
   - title: image title
     id: img_id1
