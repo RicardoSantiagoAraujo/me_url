@@ -164,8 +164,7 @@ $project-header-height: 20vh;
     flex-wrap: wrap;
 
     .project-page__images__image-container {
-        position: relative;
-        background-color: red;
+        position: relative; 
         width: 20vw;
         height: fit-content;
         border: 3px solid black;
