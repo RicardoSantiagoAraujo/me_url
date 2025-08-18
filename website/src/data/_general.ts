@@ -84,6 +84,11 @@ const generalParametersPlaceholder: GeneralParameters = {
       icon: "tech/jquery",
       link: "https://jquery.com/",
     },
+    bootstrap: {
+      name: "Bootstrap",
+      icon: "tech/bootstrap",
+      link: "https://getbootstrap.com/",
+    },
     python: {
       name: "Python",
       icon: "tech/python",
