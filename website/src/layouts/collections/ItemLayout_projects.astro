@@ -9,14 +9,17 @@ import './../../styles/collection/projects/layout.scss';
 
 
 const { frontmatter } = Astro.props;
-const cardImg = getImageFromProject("idMainImg", frontmatter);
+// const cardImg = getImageFromProject("idMainImg", frontmatter);
 const bgImg = getImageFromProject("idBgImg", frontmatter);
+const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 frontmatter.lang = currentLang;
 ---
 <BaseLayout>
   <div class="project-page__header">
-    <div class="project-page__header__bg">
-      {bgImg.meta && <img src={bgImg.img} alt={bgImg.meta.alt}/>}
+    <div class="project-page__header__bg-container">
+      {bgImg.meta &&
+      <Image  src={bgImg.img} alt={bgImg.meta.alt} inferSize={true} class="project-page__header__bg-img"/>
+      }
     </div>
     <div class="project-page__header__titles">
       <h1>{frontmatter.title}</h1>
@@ -71,7 +74,9 @@ frontmatter.lang = currentLang;
   <p><em>{frontmatter.description}</em></p>
 
   <div class="project-page__images">
-    {frontmatter.images.map((item: any) => item.include && <div class="tag-list__item"> <img width="300px" alt={item.caption} src={item.url}/> </div> )}
+    {frontmatter.images.map((item: any) => item.include && <div class="project-page__images__image-container">
+    <Image  src={images[item.url] ? images[item.url]() : item.url} alt={item.alt} inferSize={true} class="project-page__images__image"/>
+    </div> )}
   </div>
 
 

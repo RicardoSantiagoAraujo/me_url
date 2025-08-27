@@ -7,7 +7,7 @@ $project-header-height: 20vh;
     position: relative;
     height: $project-header-height;
 
-    .project-page__header__bg {
+    .project-page__header__bg-container {
         width: 100vw;
         height: $project-header-height*2;
         position: absolute;
@@ -19,13 +19,14 @@ $project-header-height: 20vh;
         background-color: rgba(255, 255, 255, 0.508);
         border-bottom: 1px solid rgba(0, 0, 0, 0.27);
 
-        img {
+        .project-page__header__bg-img {
             width: 100%;
+            height: auto;
             opacity: 0.2;
-            // position: absolute;
-            // left: 50%;
-            // top: 50%;
-            // transform: translate(-50%, -50%);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 
@@ -78,8 +79,10 @@ $project-header-height: 20vh;
         text-align: center;
         text-decoration: none;
         transition: 0.1s ease-in-out;
-        *{
-        color: c.$color-text;}
+
+        * {
+            color: c.$color-text;
+        }
 
         &:hover {
             transform: scale(1.1);
@@ -159,8 +162,20 @@ $project-header-height: 20vh;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    img{
-        border: 1px solid black;
-        background-color: white;
+
+    .project-page__images__image-container {
+        position: relative; 
+        width: 20vw;
+        height: fit-content;
+        border: 3px solid black;
+
+        .project-page__images__image {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: auto;
+            background-color: white;
+        }
     }
+
 }
