@@ -13,7 +13,7 @@ const generalParametersPlaceholder: GeneralParameters = {
   portfolioTitle: "My Portfolio",
   logo: "/src/assets/placeholders/generic_portrait.svg",
   signature: "/src/assets/placeholders/generic_signature.png",
-  signatureLinkTo: "./projects",
+  signatureLinkTo: "",
   portrait: "/src/assets/placeholders/generic_portrait.svg",
   email: "johndoe@email.com",
   phone: "9999999999",

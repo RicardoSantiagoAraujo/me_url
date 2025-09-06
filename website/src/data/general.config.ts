@@ -10,7 +10,7 @@ export const generalParametersUser: GeneralParameters = {
   logo: "/src/assets/placeholders/generic_portrait.svg",
   signature: "/src/assets/placeholders/generic_signature.png",
   portrait: "/src/assets/placeholders/generic_portrait.svg",
-  signatureLinkTo: "./projects",
+  signatureLinkTo: "",
   email: "johndoe@email.com",
   phone: "9999999999",
   street: "rue de Cockayne, 1234",
