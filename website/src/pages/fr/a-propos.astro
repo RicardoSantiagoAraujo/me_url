@@ -1,23 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generalParameters as gp} from '../../data/_general';
+import { calculateAge, formatWordList } from '../../scripts/utils';
+import Image from 'astro/components/Image.astro';
 const pageTitle = "About me";
-const identity = {
-  firstName: "Sarah",
-  country: "Canada",
-  occupation: "Technical Writer",
-  hobbies: ["photography", "birdwatching", "baseball"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
-
-const happy = true;
-const finished = true;
-const goal = 3;
 
 const skillColor = "navy";
 const fontWeight = "bold";
 const textCase = "uppercase";
+
+
+const imagePath = gp.portrait;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,svg}')
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,svg}"`);
+
 
 ---
 
@@ -27,37 +23,44 @@ const textCase = "uppercase";
     <style  is:global define:vars={{skillColor, fontWeight, textCase}}>
         h1 {
           color: purple;
-          font-size: 4rem;
+          font-size: 3rem;
         }
-        .skill {
+        .tech {
           color: var(--skillColor);
           font-weight: var(--fontWeight);
           text-transform: var(--textCase);
         }
       </style>
 
-    <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+    <div class="about__container">
+      <div class="about__container__left">
+        <p>
+        <span>Hello! My name is {gp.name} {gp.surname}.</span>
+        <span>I am {gp.nationality} and {calculateAge(gp.birthYear,gp.birthMonth,gp.birthDay)} years old.</span>
+        </p>
+        {
+          gp.hobbies.length > 0 &&
+          <p>Some of my hobbies are {formatWordList(gp.hobbies)}. </p>
+        }
+        { gp.cvLink &&
+          <p>You can download my CV as a pdf file <a href={gp.cvLink} target="_blank" rel="noopener noreferrer">here</a>.</p>
+        }
+      </div>
+      <div class="about__container__right">
+        <div class ="portrait" style="max-width: 300px; margin: 20px 0;">
+        <Image  src={images[imagePath]()} alt={"My portrait"} inferSize={true}/>
+        </div>
+      </div>
+    </div>
 
-    <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
 
-    <p>Here are a few facts about me:</p>
-    <ul>
-    <li>My name is {identity.firstName}.</li>
-    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-    {identity.hobbies.length >= 2 &&
-        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+    {Object.values(gp.techstack).length > 0 &&
+      <p>Here are some tools in tech that I use:</p>
+      <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; list-style-type: none; padding: 0;">
+      {Object.values(gp.techstack).map((tool) => <li class="tech">{tool.name}</li>)}
+      </ul>
     }
-    </ul>
-    <p>My skills are:</p>
-    <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
 
 
-    {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 
 </BaseLayout>
