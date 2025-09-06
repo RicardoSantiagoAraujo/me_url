@@ -10,9 +10,20 @@ export const defaultLangStart = "en"; // default language for the app when acces
 export const defaultLang = "en"; // fallback language in the absence of a translation
 
 export const ui: Record<Language, Record<string, string>> = {
+    en: {
+    "nav.home": "Home",
+    "nav.about": "About Me",
+    "nav.experience": "Experience",
+    "nav.projects": "Projects",
+    "nav.collectionTemplate": "Collection Template Tab",
+    "nav.blog": "Blog",
+    "nav.contact": "Contact",
+    "nav.example-dropdownGroup": "Dropdown Group",
+    "nav.example-dropdownItem": "Dropdown Item",
+  },
   fr: {
     "nav.home": "Accueil",
-    "nav.about": "À propos",
+    "nav.about": "À propos de moi",
     "nav.experience": "Expérience",
     "nav.projects": "Projets",
     "nav.collectionTemplate": "Collection Template Tab",
@@ -20,14 +31,6 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.example-dropdownGroup": "Dropdown Group",
     "nav.example-dropdownItem": "Dropdown Item",
-  },
-  en: {
-    "nav.home": "Home",
-    "nav.about": "About",
-    "nav.experience": "Experience",
-    "nav.projects": "Projects",
-    "nav.blog": "Blog",
-    "nav.contact": "Contact",
   },
   pt: {
     "nav.home": "Início",

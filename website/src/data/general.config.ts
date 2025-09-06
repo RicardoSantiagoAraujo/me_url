@@ -1,5 +1,6 @@
 import type { GeneralParameters } from "./types/GeneralParameters";
 
+
 // DEFINE USER PARAMETERS IN HERE;
 // OTHERWISE PLACEHOLDER PARAMETERS WILL BE USED
 export const generalParametersUser: GeneralParameters = {
@@ -8,6 +9,7 @@ export const generalParametersUser: GeneralParameters = {
   portfolioTitle: "My Portfolio",
   logo: "/src/assets/placeholders/generic_portrait.svg",
   signature: "/src/assets/placeholders/generic_signature.png",
+  portrait: "/src/assets/placeholders/generic_portrait.svg",
   signatureLinkTo: "./projects",
   email: "johndoe@email.com",
   phone: "9999999999",
@@ -15,6 +17,7 @@ export const generalParametersUser: GeneralParameters = {
   city: "Cockayne",
   country: "UK",
   addressLink: "https://maps.app.goo.gl/WVy79Q7bq66XKHYZ8",
+  cvLink: "https://cversatile-demo.netlify.app/profiles/examples/johnDoe/published_pdfs/cv_johnDoe_FEN.pdf",
   postcode: "99999",
   birthYear: 1990,
   birthMonth: 1,
@@ -22,6 +25,7 @@ export const generalParametersUser: GeneralParameters = {
   nationality: "English",
   gender: "male",
   drivingLicense: "B",
+  hobbies: ["reading", "coding", "running"],
   siteCopyright:
     "© me_url template website built with Astro by by Ricardo Santiago Araújo.",
   externalLinks: [

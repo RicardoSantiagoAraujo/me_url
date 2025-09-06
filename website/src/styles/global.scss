@@ -3,6 +3,8 @@
 // VARIABLES
 @use 'variables/colors' as c;
 @use 'variables/dimensions' as d;
+// PAGES
+@use 'about/_about';
 // COMPONENTS
 @use 'header/header';
 @use 'collection/_genericCards';

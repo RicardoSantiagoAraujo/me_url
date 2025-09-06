@@ -4,6 +4,7 @@ import { getLangFromUrl } from "../../../i18n/utils";
 import TechstackIcon from "../../TechstackIcon.astro";
 import Image from "astro/components/Image.astro";
 import {getImageFromProject} from '../../../scripts/projects';
+
 const lang = getLangFromUrl(Astro.url);
 
 const cardImg = getImageFromProject("idMainImg", data)

@@ -14,12 +14,14 @@ const generalParametersPlaceholder: GeneralParameters = {
   logo: "/src/assets/placeholders/generic_portrait.svg",
   signature: "/src/assets/placeholders/generic_signature.png",
   signatureLinkTo: "./projects",
+  portrait: "/src/assets/placeholders/generic_portrait.svg",
   email: "johndoe@email.com",
   phone: "9999999999",
   street: "rue de Cockayne, 1234",
   city: "Cockayne",
   country: "UK",
   addressLink: "https://maps.app.goo.gl/WVy79Q7bq66XKHYZ8",
+  cvLink: "https://cversatile-demo.netlify.app/profiles/examples/johnDoe/published_pdfs/cv_johnDoe_FEN.pdf",
   postcode: "99999",
   birthYear: 1990,
   birthMonth: 1,
@@ -27,6 +29,7 @@ const generalParametersPlaceholder: GeneralParameters = {
   nationality: "English",
   gender: "male",
   drivingLicense: "B",
+  hobbies: ["reading", "coding", "running"],
   siteCopyright:
     "© me_url template website built with Astro by by Ricardo Santiago Araújo.",
   externalLinks: [

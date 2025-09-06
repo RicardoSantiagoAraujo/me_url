@@ -1,0 +1,25 @@
+@use '../variables/colors' as c;
+@use '../variables/dimensions' as d;
+@use 'sass:color';
+
+.about__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .about__container__left {
+        width: 80%;
+    }
+
+    .about__container__right {
+        width: 20%;
+
+        img {
+            display: block;
+            width: 75%;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
