@@ -14,28 +14,33 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.home": "Home",
     "nav.about": "About Me",
     "nav.experience": "Experience",
+    "nav.education": "Education",
     "nav.projects": "Projects",
-    "nav.collectionTemplate": "Collection Template Tab",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
     "nav.example-dropdownGroup": "Dropdown Group",
     "nav.example-dropdownItem": "Dropdown Item",
+    // EXAMPLE
+    "nav.collectionTemplate": "Collection Template Tab",
   },
   fr: {
     "nav.home": "Accueil",
     "nav.about": "À propos de moi",
     "nav.experience": "Expérience",
+    "nav.education": "Éducation",
     "nav.projects": "Projets",
-    "nav.collectionTemplate": "Collection Template Tab",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
     "nav.example-dropdownGroup": "Dropdown Group",
     "nav.example-dropdownItem": "Dropdown Item",
+    // EXAMPLE
+    "nav.collectionTemplate": "Collection Template Tab",
   },
   pt: {
     "nav.home": "Início",
     "nav.about": "Sobre",
     "nav.experience": "Experiência",
+    "nav.education": "Educação",
     "nav.projects": "Projectos",
     "nav.blog": "Blog",
     "nav.contact": "Contacto",
@@ -44,6 +49,7 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.home": "Startseite",
     "nav.about": "Über mich",
     "nav.experience": "Erfahrung",
+    "nav.education": "Ausbildung",
     "nav.projects": "Projekte",
     "nav.blog": "Blog",
     "nav.contact": "Kontakt",
@@ -57,25 +63,30 @@ export type Page =
   | "blog"
   | "projects"
   | "experience"
+  | "education"
   | "contact"
   | "collectionTemplate";
 export const routes: Record<Language, Record<Page, string>> = {
-  fr: {
-    home: "",
-    about: "a-propos",
-    blog: "blog",
-    projects: "projets",
-    experience: "experience",
-    contact: "contact",
-    collectionTemplate: "collectionTemplate",
-  },
   en: {
     home: "",
     about: "about",
     blog: "blog",
     projects: "projects",
     experience: "experience",
+    education: "education",
     contact: "contact",
+    // EXAMPLE
+    collectionTemplate: "collectionTemplate",
+  },
+  fr: {
+    home: "",
+    about: "a-propos",
+    blog: "blog",
+    projects: "projets",
+    experience: "experience",
+    education: "education",
+    contact: "contact",
+    // EXAMPLE
     collectionTemplate: "collectionTemplate",
   },
   pt: {
@@ -84,7 +95,9 @@ export const routes: Record<Language, Record<Page, string>> = {
     blog: "blog",
     projects: "projectos",
     experience: "experiencia",
+    education: "educacao",
     contact: "contacto",
+    // EXAMPLE
     collectionTemplate: "collectionTemplate",
   },
   de: {
@@ -93,7 +106,9 @@ export const routes: Record<Language, Record<Page, string>> = {
     blog: "blog",
     projects: "projekte",
     experience: "erfahrung",
+    education: "ausbildung",
     contact: "kontakt",
+    // EXAMPLE
     collectionTemplate: "collectionTemplate",
   },
 };

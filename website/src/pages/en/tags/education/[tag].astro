@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts';
+export async function getStaticPaths() {
+  return generateTagRoute("education");
+}
+import GenericCardList from '../../../../components/collection/_generic/GenericCardList.astro';
+
+const { tag } = Astro.params;
+---
+<BaseLayout pageTitle={tag}>
+  <p>Education tagged with {tag}</p>
+  <GenericCardList listItemComponent="EducationCard" collectionName="education"/>
+</BaseLayout>

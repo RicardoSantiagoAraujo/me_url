@@ -19,21 +19,48 @@ definition[collection] = defineCollection({
     base: `./src/collections/${collection}`,
   }),
   schema: collectionBase
-    .extend({
-      title: z.string(),
-      pubDate: z.date(),
-      description: z.string(),
-      author: z.string(),
-      image: z.object({
-        url: z.string(),
-        alt: z.string(),
-      }),
-      tags: z.array(
-        z.object({
-          name: z.string(),
-          include: z.boolean(),
-        })
-      ),
-    })
+  .extend({
+    title: z.string(),
+    startDate: z.date(), 
+    endDate: z.date(), 
+    description: z.string(),
+    shortDescription: z.string().optional(),
+    externalLink: z.string().nullable().optional(),
+    dateStart: z.date().nullable().optional(),
+    dateEnd: z.date().nullable().optional(),
+    degree: z.string().nullable().optional(),
+    employer: z.string().nullable().optional(),
+    contract: z.string().nullable().optional(), 
+    location: z.string().nullable().optional(),
+    finished: z.boolean().nullable().optional(),
+    image: z.object({
+      url: z.string(),
+      alt: z.string(),
+    }),
+    tags: z.array(
+      z.object({
+        name: z.string(),
+        include: z.boolean(),
+      })
+    ),
+    fields: z
+    .array(
+      z.object({
+        name: z.string(),
+        include: z.boolean(),
+      })
+    )
+    .nullable()
+    .optional(),
+  techstack: z
+    .array(
+      z.object({
+        id: z.string(),
+        include: z.boolean(),
+      })
+    )
+    .nullable()
+    .optional(),
+  })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });
