@@ -30,10 +30,17 @@ definition[collection] = defineCollection({
       institution: z.string().nullable().optional(),
       location: z.string().nullable().optional(),
       finished: z.boolean().nullable().optional(),
-      image: z.object({
-        url: z.string(),
-        alt: z.string(),
-      }),
+      images: z
+        .array(
+          z.object({
+            title: z.string(),
+            id: z.string(),
+            include: z.boolean(),
+            caption: z.string(),
+            url: z.string(),
+            alt: z.string(),
+          })
+        ),
       tags: z.array(
         z.object({
           name: z.string(),

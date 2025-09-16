@@ -26,15 +26,21 @@ definition[collection] = defineCollection({
     externalLink: z.string().nullable().optional(),
     dateStart: z.date().nullable().optional(),
     dateEnd: z.date().nullable().optional(),
-    degree: z.string().nullable().optional(),
     employer: z.string().nullable().optional(),
     contract: z.string().nullable().optional(), 
     location: z.string().nullable().optional(),
     finished: z.boolean().nullable().optional(),
-    image: z.object({
-      url: z.string(),
-      alt: z.string(),
-    }),
+    images: z
+    .array(
+      z.object({
+        title: z.string(),
+        id: z.string(),
+        include: z.boolean(),
+        caption: z.string(),
+        url: z.string(),
+        alt: z.string(),
+      })
+    ),
     tags: z.array(
       z.object({
         name: z.string(),
