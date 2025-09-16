@@ -5,6 +5,7 @@ import type { arrayOutputType } from "astro:schema";
 const componentMap = {
   projects:   import('../projects/ProjectCard.astro') ,
   experience:    import('../experience/ExperienceCard.astro'),
+  education:    import('../education/EducationCard.astro'),
 } as const;
 const targetCollectionName = Astro.props.collectionName as keyof typeof componentMap;
 const ListItem = (await componentMap[targetCollectionName]).default;

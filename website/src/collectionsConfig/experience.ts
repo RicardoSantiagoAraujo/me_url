@@ -20,9 +20,7 @@ definition[collection] = defineCollection({
   }),
   schema: collectionBase
   .extend({
-    title: z.string(),
-    startDate: z.date(), 
-    endDate: z.date(), 
+    title: z.string(), 
     description: z.string(),
     shortDescription: z.string().optional(),
     externalLink: z.string().nullable().optional(),

@@ -1,9 +1,9 @@
 ---
-title: "My First Blog Post"
-pubDate: 2022-07-01
+title: "My First Blog Post" 
 include: true
-description: "This is the first post of my new Astro blog."
-author: "Astro Learner"
+description: "This is the first post of my new Astro blog." 
+dateStart: 2000-01-01
+dateEnd: 2000-01-02
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."

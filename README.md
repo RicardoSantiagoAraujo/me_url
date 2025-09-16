@@ -4,13 +4,21 @@ Online portfolio template built with Astro for projects.
 
 ### Website
 
+#### Initial set-up
+The first time setting up me_url, go inside the **website** folder install all necessary packages.
+```
+npm intall
+```
+
+#### Local dev
+
 Website uses the SSG Astro. To lauch it locally for dev, navigate into the **website** folder and run
 
 ```
 npm run dev
 ```
 
-### Local build
+#### Local build
 
 To create a local build, run:
 
@@ -22,15 +30,15 @@ You can preview the built website:
 ```
 npm run preview
 ```
-### Deployment
+#### Deployment
 
 When the **main** branch is pushed to Github, Netflify automatically pulls from it and performs a new build, so a new version is deployed.
 
 To avoid undesired/untested deployments, any code changes should be developed in the **develop** branch and only be merged to **main** once ready for deployment.
 
-### Collections
+#### Collections
 
-#### Adding a new collection
+##### Adding a new collection
 
 1. Define collection with loader and schema in new file **src/collectionsConfig/[collection-key]**;
 2. Import collection definition into **src/content.config.ts** and add it to **collections** object;

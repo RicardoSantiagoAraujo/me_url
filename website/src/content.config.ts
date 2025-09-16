@@ -3,7 +3,7 @@ import { definition as blog } from "./collectionsConfig/blog";
 import { definition as projects  } from "./collectionsConfig/projects";
 import { definition as collectionTemplate } from "./collectionsConfig/collectionTemplate";
 import { definition as experience} from "./collectionsConfig/experience";
-import { education as education} from "./collectionsConfig/education";
+import { definition as education} from "./collectionsConfig/education";
 
 // Export a single `collections` object to register your collection(s)
 export const collections = {
