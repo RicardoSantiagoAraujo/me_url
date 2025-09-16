@@ -4,13 +4,13 @@ import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 import TechstackIcon from '../../components/TechstackIcon.astro';
 import Image from "astro/components/Image.astro";
-import {getImageFromProject} from './../../scripts/projects';
+import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collection/projects/layout.scss';
 
 
 const { frontmatter } = Astro.props;
-// const cardImg = getImageFromProject("idMainImg", frontmatter);
-const bgImg = getImageFromProject("idBgImg", frontmatter);
+// const cardImg = getImageFromZArray("idMainImg", frontmatter);
+const bgImg = getImageFromZArray("idBgImg", frontmatter);
 const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 frontmatter.lang = currentLang;
 ---
@@ -45,7 +45,7 @@ frontmatter.lang = currentLang;
   <div class="project-page__tags">
     <span class="tags_prefix">Tags:</span>
     <div class="tags">
-      {frontmatter.tags.map((item: string) => (
+      {frontmatter.tags.map((item: any) => (
         <p class="tag"><a href={`/${currentLang}/tags/projects/${item.name}`}>{item.name}</a></p>
       ))}
     </div>

@@ -13,6 +13,5 @@ export const collections = {
   blog: blog.blog,
   projects: projects.projects ,
   experience: experience.experience,
-  education: education.education 
+  education: education.education
 };
-

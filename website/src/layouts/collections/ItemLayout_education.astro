@@ -2,39 +2,83 @@
 import BaseLayout from './../BaseLayout.astro';
 import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
+import TechstackIcon from '../../components/TechstackIcon.astro';
+import Image from "astro/components/Image.astro";
+import {getImageFromZArray} from './../../scripts/utils';
+import './../../styles/collection/experience/layout.scss';
+
 
 const { frontmatter } = Astro.props;
+// const cardImg = getImageFromZArray("idMainImg", frontmatter);
+const bgImg = getImageFromZArray("idBgImg", frontmatter);
+const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 frontmatter.lang = currentLang;
 ---
-<BaseLayout pageTitle={frontmatter.title}>
-  <p><em>{frontmatter.description}</em></p>  
-
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-
-  <div class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/${currentLang}/tags/education/${tag}`}>{tag}</a></p>
-    ))}
+<BaseLayout>
+  <div class="education-page__header">
+    <div class="education-page__header__bg-container">
+      {bgImg.meta &&
+      <Image  src={bgImg.img} alt={bgImg.meta.alt} inferSize={true} class="education-page__header__bg-img"/>
+      }
+    </div>
+    <div class="education-page__header__titles">
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.subtitle && <h2>{frontmatter.subtitle}</h2>}
+    </div>
+    {frontmatter.authors &&
+    <div class="education-page__header__authors">
+        <span class="authors_prefix">Authors:</span>
+          {frontmatter.authors.map((item: any, index: number,array: any[]) => item.include &&
+          <span class="author-list__item">
+            {item.name} {item.surname}
+            {index < array.length - 1 ? ', ' : ''}
+          </span> )}
+    </div>
+    }
   </div>
 
-  <slot />
+  <div class="education-page__links">
+    {frontmatter.repository && <a href={"https://"+frontmatter.repository} class="page__links__repository"><i class="fa-brands fa-github"></i></a>}
+    {frontmatter.externalLink && <a href={"https://"+frontmatter.externalLink} class="page__links__external-link"><i class="fas fa-external-link"></i></a>}
+  </div>
+
+  <div class="education-page__tags">
+    <span class="tags_prefix">Tags:</span>
+    <div class="tags">
+      {frontmatter.tags.map((item: any) => (
+        <p class="tag"><a href={`/${currentLang}/tags/experience/${item.name}`}>{item.name}</a></p>
+      ))}
+    </div>
+  </div>
+
+
+  <div class="education-page__lists">
+    <div class="education-page__list education-page__techstack">
+        <ul>
+          {frontmatter.techstack.map((item: any) => item.include && <li class="author-list__item">
+            {<TechstackIcon tech_id={item.id}></TechstackIcon>}
+            </li> )}
+        </ul>
+    </div>
+    <div class="education-page__list education-page__fields">
+        <ul>
+          {frontmatter.fields.map((item: any, index: number,array: any[]) => item.include && <li class="author-list__item">
+            {item.name}
+            {index < array.length - 1 ? ', ' : ''}
+            </li> )}
+        </ul>
+    </div>
+  </div>
+  <!-- <p>{f rontmatter.datePublication.toLocaleDateString()}</p> -->
+
+  <p><em>{frontmatter.description}</em></p>
+
+  <div class="education-page__images">
+    {frontmatter.images.map((item: any) => item.include && <div class="education-page__images__image-container">
+    <Image  src={images[item.url] ? images[item.url]() : item.url} alt={item.alt} inferSize={true} class="education-page__images__image"/>
+    </div> )}
+  </div>
+
+
+  <slot /> <!-- slot injects contents of .md file  -->
 </BaseLayout>
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>

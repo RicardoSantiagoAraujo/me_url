@@ -3,12 +3,12 @@ const {data} = Astro.props;
 import { getLangFromUrl } from "../../../i18n/utils";
 import TechstackIcon from "../../TechstackIcon.astro";
 import Image from "astro/components/Image.astro";
-import {getImageFromProject} from '../../../scripts/projects';
+import {getImageFromZArray} from '../../../scripts/utils';
 
 const lang = getLangFromUrl(Astro.url);
 
-const cardImg = getImageFromProject("idMainImg", data)
-const bgImg = getImageFromProject("idBgImg", data)
+const cardImg = getImageFromZArray("idMainImg", data)
+const bgImg = getImageFromZArray("idBgImg", data)
 
 
 ---
