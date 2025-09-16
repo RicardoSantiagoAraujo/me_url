@@ -2,8 +2,8 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-import { collectionBase } from "./collectionBase.js";
-import { excludedFolder } from "../options.config.js";
+import { collectionBase } from "./collectionBase.ts";
+import { excludedFolder } from "../options.config.ts";
 
 // Define a `loader` and `schema` for collection
 export const definition: Record<string, any> = {};
