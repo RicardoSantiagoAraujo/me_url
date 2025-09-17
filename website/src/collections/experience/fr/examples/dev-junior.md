@@ -1,35 +1,40 @@
 ---
-title: "Junior Software Developer" 
+title: "Junior Frontend Developer" 
 include: true
-description: "This is the first post of my new Astro blog."
-shortDescription: "trtttrtr"
+description: "Worked as a frontend developer for a Big Tech company."
+descriptionShort: "Worked as a frontend developer for a Big Tech company."
+descriptionList:
+  - item: Developed and maintained responsive, user-friendly web interfaces using modern frontend frameworks.
+  - item: Collaborated with designers and backend developers to deliver seamless digital solutions.
+  - item: Optimized website performance and ensured cross-browser compatibility.
+  - item: Translated client requirements into intuitive and accessible user experiences.
 dateStart: 2020-01-01
 dateEnd: 2022-06-02
-externalLink:
-employer: 
-contract:  
-location: 
+externalLink: www.google.com/
+employer: Google
+contract: Temporary 
+location: London
 finished: true
 images:
-  - title: laying kitten
-    id: laying_kitten
+  - title: Company logo
+    id: company_logo
     include: true
-    caption: image of a laying kitten
-    url: https://image.petmd.com/files/styles/863x625/public/2023-04/kitten-development.jpeg
+    caption: Company logo
+    url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/375px-Google_2015_logo.svg.png
     alt: Alternative text
 tags:
-  - name: astro
+  - name: software
     include: true
-  - name: blogging
+  - name: junior
     include: true
-  - name: learning in public
+  - name: beginner
     include: true
 fields:
-  - name: astro
+  - name: software development
     include: true
-  - name: blogging
+  - name: frontend
     include: true
-  - name: learning in public
+  - name: webdev
     include: true
 techstack:
   - id: astro

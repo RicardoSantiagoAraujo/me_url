@@ -1,42 +1,46 @@
 ---
-title: "Senior Software Developer" 
+title: "Senior Frontend Developer" 
 include: true
-description: "This is the first post of my new Astro blog."
-shortDescription: "trtttrtr"
+description: "Worked as a fullstack developer for a Big Tech company."
+descriptionShort: "Worked as a fullstack developer for a Big Tech company."
+descriptionList:
+  - item: Led the design and implementation of scalable web applications across the full technology stack.
+  - item: Developed and optimized RESTful and GraphQL APIs to support high-performance front-end applications.
+  - item: Built reusable frontend components and implemented best practices in responsive design and accessibility.
+  - item: Managed databases (SQL/NoSQL), ensuring data integrity, performance tuning, and secure access.
+  - item: Mentored junior developers through code reviews, pair programming, and technical guidance.
 dateStart: 2020-01-01
 dateEnd: 2022-06-02
-externalLink:
-employer: 
-contract:  
-location: 
+externalLink: www.facebook.com/
+employer: Google
+contract: Temporary 
+location: London
 finished: true
 images:
-  - title: laying kitten
-    id: laying_kitten
+  - title: Company logo
+    id: company_logo
     include: true
-    caption: image of a laying kitten
-    url: https://image.petmd.com/files/styles/863x625/public/2023-04/kitten-development.jpeg
+    caption: Company logo
+    url: https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png
     alt: Alternative text
 tags:
-  - name: astro
+  - name: software
     include: true
-  - name: blogging
-    include: true
-  - name: learning in public
-    include: true
+  - name: senior
+    include: true 
 fields:
-  - name: astro
+  - name: software development
     include: true
-  - name: blogging
+  - name: fullstack
     include: true
-  - name: learning in public
+  - name: webdev
     include: true
 techstack:
-  - id: astro
+  - id: angular2
     include: true
-  - id: html
+  - id: mysql
     include: true
-  - id: javascript
+  - id: typescript
     include: true
 ---
  

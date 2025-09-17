@@ -22,7 +22,12 @@ definition[collection] = defineCollection({
   .extend({
     title: z.string(), 
     description: z.string(),
-    shortDescription: z.string().optional(),
+    descriptionShort: z.string().optional(),
+    descriptionList: z.array(
+      z.object({
+        item: z.string()
+      })
+    ),
     externalLink: z.string().nullable().optional(),
     dateStart: z.date().nullable().optional(),
     dateEnd: z.date().nullable().optional(),

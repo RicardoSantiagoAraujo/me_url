@@ -2,7 +2,11 @@
 title: "Bootcamp" 
 include: true
 description: "This is the first post of my new Astro blog."
-shortDescription: "trtttrtr"
+descriptionShort: "trtttrtr"
+descriptionList:
+  - item: laying kitten 
+  - item: laying kitten 
+  - item: laying kitten 
 dateStart: 2020-01-01
 dateEnd: 2022-06-02
 externalLink:

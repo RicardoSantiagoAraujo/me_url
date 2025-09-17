@@ -1,10 +1,14 @@
 ---
-title: "Bachelor Thesis" 
+title: "Bachelor in Computer Science" 
 include: true
-description: "This is the first post of my new Astro blog."
-shortDescription: "trtttrtr"
-dateStart: 2020-01-01
-dateEnd: 2022-06-02
+description: "3 year bachelor in computer science."
+descriptionShort: "3 year bachelor in computer science."
+descriptionList:
+  - item:   
+  - item:  
+  - item:  
+dateStart: 2015-01-01
+dateEnd: 2018-06-02
 externalLink:
 degree: 
 institution:  

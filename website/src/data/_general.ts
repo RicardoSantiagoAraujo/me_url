@@ -128,14 +128,14 @@ const generalParametersPlaceholder: GeneralParameters = {
       link: "https://sass-lang.com/",
     },
     mysql: {
-      name: "SCSS",
-      icon: "tech/sass",
-      link: "https://sass-lang.com/",
+      name: "SQL",
+      icon: "tech/tech",
+      link: "https://www.mysql.com/",
     },
     spring: {
-      name: "SCSS",
-      icon: "tech/sass",
-      link: "https://sass-lang.com/",
+      name: "Java Spring",
+      icon: "tech/tech",
+      link: "https://spring.io/", 
     },
     markdown: {
       name: "Markdown",
