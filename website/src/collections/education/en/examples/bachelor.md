@@ -4,9 +4,9 @@ include: true
 description: "3 year bachelor in computer science."
 descriptionShort: "3 year bachelor in computer science."
 descriptionList:
-  - item:   
-  - item:  
-  - item:  
+  - item: ""   
+  - item:  ""
+  - item:  ""
 dateStart: 2015-01-01
 dateEnd: 2018-06-02
 externalLink:
