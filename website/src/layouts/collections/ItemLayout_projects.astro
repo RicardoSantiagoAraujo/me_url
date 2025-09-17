@@ -6,6 +6,7 @@ import TechstackIcon from '../../components/TechstackIcon.astro';
 import Image from "astro/components/Image.astro";
 import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collection/projects/layout.scss';
+import Figure from '../../components/Figure.astro';
 
 
 const { frontmatter } = Astro.props;
@@ -75,7 +76,7 @@ frontmatter.lang = currentLang;
 
   <div class="project-page__images">
     {frontmatter.images.map((item: any) => item.include && <div class="project-page__images__image-container">
-    <Image  src={images[item.url] ? images[item.url]() : item.url} alt={item.alt} inferSize={true} class="project-page__images__image"/>
+    <Figure imageData={item} />
     </div> )}
   </div>
 

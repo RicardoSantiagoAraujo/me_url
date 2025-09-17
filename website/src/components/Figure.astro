@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+const { imageData } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
+---
+
+
+<figure class="fig numbered fig_left fig_gif">
+    <img src="../assets/grimoire/gifs/main_menu.png" />
+    <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={imageData.alt} inferSize={true} class="project-page__images__image"/>
+    <figcaption>
+        <span class="figcaption_text">
+            {imageData.caption}
+        </span>
+        <div class="extra_info_collapsible">
+            <button class="collapsible"></button>
+            <div class="extra_information">
+                {imageData.title} : {imageData.caption}
+            </div>
+        </div>
+    </figcaption>
+</figure>
