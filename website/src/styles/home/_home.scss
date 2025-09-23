@@ -1,0 +1,42 @@
+// style for home page (index.astro)
+@use '../variables/colors' as c;
+@use '../variables/dimensions' as d;
+@use 'sass:color';
+
+.home-intro{
+    // font-size: d.$font-size-large;
+    margin-top: 20px;
+    a{
+        color: c.$color-secondary;
+        font-weight: bolder;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.home-collections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 50px;
+    .collection-container {
+        border: 1px solid color.adjust(c.$color-primary, $alpha: -0.8);
+        border-radius: 6px;
+        padding: 10px;
+        min-width: 20%;
+        ul{
+            list-style-type: none;
+            padding-left: 0;
+            a{
+                text-decoration: none;
+                color: c.$color-secondary;
+                &:hover {
+                    // text-decoration: underline;
+                }
+            }
+        }
+    }
+}

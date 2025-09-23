@@ -4,6 +4,7 @@
 @use 'variables/colors' as c;
 @use 'variables/dimensions' as d;
 // PAGES
+@use 'home/_home';
 @use 'about/_about';
 // COMPONENTS
 @use 'header/header';

@@ -3,9 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Greeting from '../../components/Greeting'; ;
 import ParallaxImage from '../../components/ParallaxImage.astro';
 import myImg from "../../assets/placeholders/placeholder_image.jpg";
+import { collections } from '../../content.config';
+const keys = Object.keys(collections) as (keyof typeof collections)[];
 import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 import { ui , defaultLang} from "../../i18n/ui";
+import { generateItemRoutes } from '../../scripts/dynamicRoutes';
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
@@ -16,14 +19,34 @@ const pageSubtitle = ""
 ---
 <BaseLayout pageTitle={pageTitle}  pageSubtitle={pageSubtitle}>
 
-  Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
+  <div class="home-intro">
+    Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
+  </div>
+
+
+  <div class="home-collections">
+  {keys.map(async collection =>{
+    var route = await generateItemRoutes(collection);
+    route = route.filter(item=>item.params.lang == lang); // include only current lang
+    route = route.filter(item=>item.props.data.include == true); // include only included items
+    console.log(route);
+    return (
+      <div class="collection-container">{collection} ({route.length})  :
+        <ul>{route.map(item=>(item.params.lang == lang ?
+          <li>
+            <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`}>{item.props.data.title}</a>
+          </li>
+          : null))}
+        </ul>
+      </div>
+    );
+  })}
+  </div>
 
 
   <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 
   <!-- <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}/> -->
-
-  <!-- <p>Landing page text.</p> -->
 
 
 </BaseLayout>
