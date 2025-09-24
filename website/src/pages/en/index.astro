@@ -29,12 +29,14 @@ const pageSubtitle = ""
     var route = await generateItemRoutes(collection);
     route = route.filter(item=>item.params.lang == lang); // include only current lang
     route = route.filter(item=>item.props.data.include == true); // include only included items
-    console.log(route);
+    // console.log(route);
     return (
-      <div class="collection-container">{collection} ({route.length})  :
+      <div class="collection-container">
+        <h3><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></h3>
         <ul>{route.map(item=>(item.params.lang == lang ?
           <li>
             <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`}>{item.props.data.title}</a>
+            {/* {item.props.data.descriptionShort} */}
           </li>
           : null))}
         </ul>
