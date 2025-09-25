@@ -23,27 +23,31 @@ const pageSubtitle = ""
     Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
   </div>
 
-
-  <div class="home-collections">
-  {keys.map(async collection =>{
-    var route = await generateItemRoutes(collection);
-    route = route.filter(item=>item.params.lang == lang); // include only current lang
-    route = route.filter(item=>item.props.data.include == true); // include only included items
-    // console.log(route);
-    return (
-      <div class="collection-container">
-        <h3><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></h3>
-        <ul>{route.map(item=>(item.params.lang == lang ?
-          <li>
-            <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`}>{item.props.data.title}</a>
-            {/* {item.props.data.descriptionShort} */}
-          </li>
-          : null))}
-        </ul>
-      </div>
-    );
-  })}
-  </div>
+  <section class="home-collections-wrapper">
+    <h2>{"Site contents"}</h2>
+    <div class="home-collections">
+    {keys.map(async collection =>{
+      var route = await generateItemRoutes(collection);
+      route = route.filter(item=>item.params.lang == lang); // include only current lang
+      route = route.filter(item=>item.props.data.include == true); // include only included items
+      // console.log(route);
+      return (
+        <div class="collection-container">
+          <h3>
+            <a href={`${lang}/${collection}`}><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></a>
+          </h3>
+          <ul>{route.map(item=>(item.params.lang == lang ?
+            <li>
+              <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`}>{item.props.data.title}</a>
+              {/* {item.props.data.descriptionShort} */}
+            </li>
+            : null))}
+          </ul>
+        </div>
+      );
+    })}
+    </div>
+  </section>
 
 
   <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->

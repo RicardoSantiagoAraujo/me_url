@@ -18,19 +18,28 @@
     }
 }
 
+.home-collections-wrapper{
+    margin-top: 50px;
+    h2{
+        color: c.$color-primary;
+        margin-bottom: 20px;
+        text-transform: capitalize;
+    }
+}
 
 .home-collections {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 50px;
+    align-items: flex-start;
+    justify-content: flex-start;
 
     .collection-container {
         border: 1px solid color.adjust(c.$color-primary, $alpha: -0.8);
         border-radius: 6px;
         background-color: color.adjust(c.$color-bg, $lightness: +10%);
         padding: 20px 20px 10px;
-        min-width: 20%;
+        min-width: 23%;
+        margin: 1%;
 
         h3 {
             margin: 0px;
