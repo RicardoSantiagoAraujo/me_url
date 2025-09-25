@@ -5,7 +5,7 @@ import type { ImageMetadata } from 'astro';
 const imagePath = icon;
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,svg}')
 ---
-<a class="external-link" href={`https://www.${address}`}>
+<a class="external-link" href={`https://www.${address}`} data-tooltip={`Go to ${name} at www.${address}`}>
   {icon !== null ? <Image class="external-link-icon" src={images[imagePath]()}  alt={`icon for ${name}`}/> : null}
   {faIcon !== null ? <span class={`external-link-faicon fa ${faIcon}`}></span> : null}
   <span class="external-link-text">{name}</span>
