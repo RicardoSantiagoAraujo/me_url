@@ -1,5 +1,5 @@
----
-import { getCollection } from "astro:content";
+--- 
+import { generateItemRoutes } from "../../../scripts/dynamicRoutes";
 import { getLangFromUrl } from "../../../i18n/utils";
 const componentMap = {
   blog:    import('../blog/BlogPostLink.astro'),
@@ -10,20 +10,24 @@ const ListItem = (await componentMap[targetCollectionName]).default;
 
 const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
-const allItems = await getCollection(collectionName);
+const allItems = await generateItemRoutes(collectionName);
+
 ---
   <ul class="collection-list">
     {
       allItems
-      .filter((item)=> item.data.include !== false) // filter out excluded items
+      // .filter((item)=> item.props.data.include !== false) // filter out excluded items
+      .sort((a, b) => {
+        return a.props.id.localeCompare(b.props.id, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
+      })
       .map((item) => {
-        const itemLang = item.id.split('/')[0];
+        const itemLang = item.props.id.split('/')[0];
         if (itemLang !== lang) {
           return null; // Skip items that don't match the current language
         }
         const data = {
-            ...item.data,
-            url: "/" + item.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
+            ...item.props.data,
+            url: "/" + item.props.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
         };
         // const itemLang = item.id.split('/')[0];
         return <ListItem   data={data} />

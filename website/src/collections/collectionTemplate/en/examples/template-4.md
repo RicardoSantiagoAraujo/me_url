@@ -1,7 +1,7 @@
 ---
 title: "Forth Example"
 pubDate: 2022-07-01
-include: true
+include: false
 description: "Description."
 descriptionShort: "Short description."
 author: "Astro Learner"

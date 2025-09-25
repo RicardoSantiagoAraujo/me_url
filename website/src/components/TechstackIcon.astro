@@ -15,7 +15,7 @@ const icon_content = generalParameters.techstack[tech_id]
 ---
 
 <div class="tech__container">
-    <a href={icon_content.link} class="tech__link">
+    <a href={icon_content.link} class="tech__link" data-tooltip={icon_content.name}>
         <Icon size="25px" name={icon_content.icon}/>
         <!-- <span>{icon_content.name}</span> -->
     </a>

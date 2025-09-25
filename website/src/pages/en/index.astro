@@ -31,7 +31,7 @@ const pageSubtitle = ""
       route = route.filter(item=>item.params.lang == lang); // include only current lang
       route = route.filter(item=>item.props.data.include == true); // include only included items 
       route = route.sort((a, b) => { 
-        return b.params.slug!.localeCompare(a.params.slug!, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
+        return a.params.slug!.localeCompare(b.params.slug!, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
       });  
       // console.log(route);
       return (

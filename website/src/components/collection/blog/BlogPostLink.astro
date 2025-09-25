@@ -2,4 +2,4 @@
 const {data} = Astro.props
 ---
 
-<li><a href={data.url}>{data.title}</a></li>
+<li><a href={data.url} data-tooltip={data.descriptionShort}>{data.title}</a></li>

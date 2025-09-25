@@ -19,9 +19,9 @@ const bgImg = getImageFromZArray("idBgImg", data)
                 {data.subtitle &&  <span class="collection-item__header__subtitle">: {data.subtitle}</span>}
             </a>
             <div class="collection-item__header__link-group">
-                 <a href={data.url} class="collection-item__header__repository"><i class="fa-solid fa-book-open"></i></a>
-                {data.repository && <a href={"https://"+data.repository} class="collection-item__header__repository"><i class="fa-brands fa-github"></i></a>}
-                {data.externalLink && <a href={"https://"+data.externalLink} class="collection-item__header__external-link"><i class="fas fa-external-link"></i></a>}
+                 <a href={data.url} class="collection-item__header__repository" data-tooltip=`Go to project details`><i class="fa-solid fa-book-open"></i></a>
+                {data.repository && <a href={"https://"+data.repository} data-tooltip={`Go to repository at ${data.repository}`} class="collection-item__header__repository"><i class="fa-brands fa-github"></i></a>}
+                {data.externalLink && <a href={"https://"+data.externalLink} data-tooltip={`Go to demo at ${data.externalLink}`} class="collection-item__header__external-link"><i class="fas fa-external-link"></i></a>}
             </div>
         </div>
         <div class="collection-item__body">
@@ -44,8 +44,8 @@ const bgImg = getImageFromZArray("idBgImg", data)
                 </div>}
         </div>
         <div class="collection-item__footer">
-            <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>
-            <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
+            <ul class="techstack-list">{data.techstack.map((item: any) => {return item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li>} )}</ul>
+            <ul class="field-list">{data.fields.map((item: any) => {return item.include && <li class="tag-list__item"><a>{item.name}</a></li>} )}</ul>
         </div>
 
     </li>
