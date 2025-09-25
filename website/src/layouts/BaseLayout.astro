@@ -5,7 +5,7 @@ import BackToTopButton from '../components/BackToTopButton.astro';
 import '../styles/global.scss';
 const { pageTitle, pageSubtitle } = Astro.props;
 import { getLangFromUrl } from '../i18n/utils';
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url);  
 ---
 <html lang={lang}>
   <head>
@@ -29,6 +29,8 @@ const lang = getLangFromUrl(Astro.url);
     <Footer />
     <script>
       import "../scripts/menu.ts";
+      import { initTooltips } from '../scripts/tooltip.js';
+      initTooltips();
     </script>
   </body>
 </html>

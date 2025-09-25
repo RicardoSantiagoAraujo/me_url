@@ -12,6 +12,7 @@
 @use 'footer/footer';
 // @use 'timetable/timetable';
 @use 'dark_mode';
+@use 'tooltip';
 
 html {
   // background: linear-gradient(0.25turn, c.$color_bg, c.$color-white d.$header__panel-width*1 (100% - d.$header__panel-width*1), c.$color_bg);
@@ -88,3 +89,5 @@ h1 {
     background-color: c.$color_body_bg;
   }
 }
+
+

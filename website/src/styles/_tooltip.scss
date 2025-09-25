@@ -1,0 +1,15 @@
+@use 'sass:color';
+// @use 'timetable/timetable';
+@use 'variables/colors' as c;
+@use 'variables/dimensions' as d;
+
+// Tooltips made with tippy.js
+
+.tippy-box[data-theme~='me_url'] {
+    background-color: color.adjust(c.$color-primary, $lightness: +51%);; /* dark gray */
+    *{color: c.$color-text;};
+    opacity: 1;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }

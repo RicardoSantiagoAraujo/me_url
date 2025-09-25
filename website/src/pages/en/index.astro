@@ -21,7 +21,7 @@ const pageSubtitle = ""
 
   <div class="home-intro">
     Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
-  </div>
+  </div> 
 
   <section class="home-collections-wrapper">
     <h2>{"Site contents"}</h2>
@@ -37,9 +37,10 @@ const pageSubtitle = ""
             <a href={`${lang}/${collection}`}><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
           <ul>{route.map(item=>(item.params.lang == lang ?
-            <li>
-              <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`}>{item.props.data.title}</a>
-              {/* {item.props.data.descriptionShort} */}
+            <li > 
+              <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
+                {item.props.data.title}
+              </a>
             </li>
             : null))}
           </ul>
