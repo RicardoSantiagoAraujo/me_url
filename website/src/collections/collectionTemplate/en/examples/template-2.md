@@ -1,5 +1,5 @@
 ---
-title: "My Second Blog Post"
+title: "Second Example"
 pubDate: 2022-07-01
 include: true
 description: "Description."

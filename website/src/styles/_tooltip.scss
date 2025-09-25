@@ -7,9 +7,9 @@
 
 .tippy-box[data-theme~='me_url'] {
     background-color: color.adjust(c.$color-primary, $lightness: +51%);; /* dark gray */
-    *{color: c.$color-text;};
     opacity: 1;
     border-radius: 8px;
     padding: 6px 10px;
     font-size: 0.85rem;
+    *{color: c.$color-text;};
   }

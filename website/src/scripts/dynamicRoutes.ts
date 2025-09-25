@@ -13,6 +13,10 @@ export async function generateItemRoutes(
   allItems = allItems.filter((item) => {
     return item.data.include !== false;
   });
+  // Order items
+  allItems = allItems.sort((a, b) => { 
+    return b.id.localeCompare(a.id, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
+  }); 
   const paths = allItems.map((item) => { 
     const [lang, ...slug] = item.id.split("/");
     return { params: { lang, slug: slug.join("/") || undefined }, props: item };

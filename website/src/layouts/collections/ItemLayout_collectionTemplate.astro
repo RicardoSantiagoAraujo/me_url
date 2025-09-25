@@ -12,7 +12,7 @@ frontmatter.lang = currentLang;
 
   <p>Written by: {frontmatter.author}</p>
 
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  <img src={frontmatter.images[0].url} width="300" alt={frontmatter.images[0].alt} />
 
   <div class="tags">
     {frontmatter.tags.map((tag: string) => (

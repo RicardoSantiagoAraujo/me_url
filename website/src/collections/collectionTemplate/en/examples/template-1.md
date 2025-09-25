@@ -1,5 +1,5 @@
 ---
-title: "My Second Blog Post"
+title: "First Example"
 pubDate: 2022-07-01
 include: true
 description: "Description."
@@ -20,6 +20,7 @@ tags:
   - name: tag 3
     include: true
 ---
+ 
 
 # Generic Blog Post
  

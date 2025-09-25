@@ -29,20 +29,25 @@ const pageSubtitle = ""
     {keys.map(async collection =>{
       var route = await generateItemRoutes(collection);
       route = route.filter(item=>item.params.lang == lang); // include only current lang
-      route = route.filter(item=>item.props.data.include == true); // include only included items
+      route = route.filter(item=>item.props.data.include == true); // include only included items 
+      route = route.sort((a, b) => { 
+        return b.params.slug!.localeCompare(a.params.slug!, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
+      });  
       // console.log(route);
       return (
         <div class="collection-container">
           <h3>
             <a href={`${lang}/${collection}`}><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
-          <ul>{route.map(item=>(item.params.lang == lang ?
+          <ul>{route.map(item=>{
+            return (item.params.lang == lang ?
             <li > 
               <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
                 {item.props.data.title}
               </a>
             </li>
-            : null))}
+            : null
+            )})}
           </ul>
         </div>
       );

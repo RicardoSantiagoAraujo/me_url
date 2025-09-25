@@ -23,11 +23,21 @@ definition[collection] = defineCollection({
       title: z.string(),
       pubDate: z.date(),
       description: z.string(),
+      descriptionShort: z.string(),
       author: z.string(),
-      image: z.object({
-        url: z.string(),
-        alt: z.string(),
-      }),
+      idMainImg: z.string().nullable().optional(),
+      idBgImg: z.string().nullable().optional(),
+      images: z
+        .array(
+          z.object({
+            title: z.string(),
+            id: z.string(),
+            include: z.boolean(),
+            caption: z.string(),
+            url: z.string(),
+            alt: z.string(),
+          })
+        ),
       tags: z.array(
         z.object({
           name: z.string(),
