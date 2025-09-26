@@ -21,15 +21,119 @@ tags:
     include: true
 ---
  
+Here goes the body of the project entry. It get injected into the website at the place where the tag **<slot />** is placed in your **.astro** file.
 
-# Generic Blog Post
- 
-Lorem ipsum dolor sit amet  [Google](https://google.com), consectetur adipiscing elit. Aliquam consectetur, nibh vitae vehicula sodales, libero urna malesuada justo, rhoncus ullamcorper ipsum ligula sed nulla. Vestibulum porttitor, purus et placerat viverra, ligula sem fermentum massa, eget dignissim nulla diam ut velit. Morbi a condimentum nibh, non ultricies neque. Duis ipsum purus, pretium in scelerisque vel, imperdiet vel risus. Nam in justo et velit consectetur consectetur a non magna. Nam aliquet turpis eget tincidunt malesuada. In a laoreet est.
+You can use standard **markdown** syntax to organise your content, which then gets transformed by Astro into appropriate **html**.
 
+# Header level 1
 
-## List 
+# Heading level 1 (alternative syntax)
 
-1. **Item A**: Proin et nulla malesuada, pellentesque diam a, venenatis lacus. Nulla facilisi. Nunc et dignissim velit, vel interdum nisl. Nam sit amet sem commodo, efficitur dolor eget, finibus est. Donec porttitor dui sit amet felis pellentesque, a elementum quam gravida. Nulla vitae scelerisque nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+## Header level 2
 
+## Heading level 2 (alternative syntax)
 
-2. **Item B**: Suspendisse magna magna, aliquet ac justo sollicitudin, ornare tincidunt libero. Sed ultrices semper sagittis. Sed sed leo quis ligula pretium tincidunt. Mauris convallis, orci a interdum varius, leo tellus iaculis sem, vitae tincidunt metus nisi sed neque. Vivamus gravida aliquet tempus. Aenean cursus augue turpis, id aliquet dolor congue id. Aenean non ante neque. Proin venenatis, magna eu dictum tincidunt, turpis dui feugiat libero, id imperdiet felis diam sed odio. Etiam dapibus felis orci. Nulla tincidunt dui a sem imperdiet scelerisque. Nulla facilisi. Quisque massa ex, sodales sit amet ligula nec, fermentum consequat velit.
+### Header level 3
+
+#### Header level 4
+
+##### Header level 5
+
+###### Heading level 6
+
+# Emphasis
+
+## Bold
+
+There are two ways to create: either with **double asterisks** or with **double underscores**.
+
+## Italic
+
+There are two ways to create: either with _a single asterisk_ or with _a single underscore_.
+
+## Bold and Italic
+
+There are two ways to create: either with **_triple asterisks_** or with **_triple underscores_**.
+
+# Blockquotes
+
+> To create a blockquote, add a **>** in front of a paragraph.
+
+> Additionally, it is possible to create multi-paragraph blockquotes.
+>
+> Additionally:
+>
+> - You can add other formatting elements
+>
+> > Nested blockquotes are added with a double **>>**.
+
+# Lists
+
+## Ordered Lists
+
+To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but the list should start with the number one.
+
+1. First item
+2. Second item
+3. Third item
+4. First indented item
+5. Second indented item
+
+## Unordered Lists
+
+To create an unordered list, add dashes (**-**), asterisks (**\***), or plus signs (**+**) in front of line items. Indent one or more items to create a nested list.
+
+- First item
+- Second item
+- Third item
+
+  - First indented item
+  - Second indented item
+
+  ## Code Blocks
+
+  Code blocks are normally indented four spaces or one tab. When they’re in a list, indent them eight spaces or two tabs.
+
+  1.  Open the file.
+  2.  Find the following code block on line 21:
+
+          <html>
+            <head>
+              <title>Test</title>
+            </head>
+
+  3.  Update the title to match the name of your website.
+
+## Code
+
+Code is denoted with `backticks`.
+
+## Images
+
+![Image alt text](/assets/placeholders/placeholder_image.jpg "Optional title")
+
+## Links
+
+[Google](https://google.com "This optional text appears when you hover the link")
+
+To quickly turn a URL or email address into a link, enclose it in angle brackets.
+
+<https://www.google.com>
+
+## Horizontal rulers
+
+Use any of the following:
+
+---
+
+---
+
+---
+
+## HTML
+
+Many Markdown applications allow you to use HTML tags in Markdown-formatted text. This is helpful if you prefer certain HTML tags to Markdown syntax. For example, some people find it easier to use HTML tags for images. Using HTML is also helpful when you need to change the attributes of an element, like specifying the color of text or changing the width of an image.
+
+To use HTML, place the tags in the text of your Markdown-formatted file.
+
+This **word** is bold. This <em>word</em> is italic.
