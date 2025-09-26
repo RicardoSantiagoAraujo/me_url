@@ -39,8 +39,8 @@ frontmatter.lang = currentLang;
   </div>
 
   <div class="project-page__links">
-    {frontmatter.repository && <a href={"https://"+frontmatter.repository} class="page__links__repository"><i class="fa-brands fa-github"></i></a>}
-    {frontmatter.externalLink && <a href={"https://"+frontmatter.externalLink} class="page__links__external-link"><i class="fas fa-external-link"></i></a>}
+    {frontmatter.repository && <a data-tooltip={`Go to repository at www.${frontmatter.repository}`} data-tippy-placement="left" href={"https://"+frontmatter.repository} class="page__links__repository"><i class="fa-brands fa-github"></i></a>}
+    {frontmatter.externalLink && <a data-tooltip={`Go to demo at www.${frontmatter.repository}`} data-tippy-placement="left" href={"https://"+frontmatter.externalLink} class="page__links__external-link"><i class="fas fa-external-link"></i></a>}
   </div>
 
   <div class="project-page__tags">

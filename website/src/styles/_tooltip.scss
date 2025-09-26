@@ -6,10 +6,17 @@
 // Tooltips made with tippy.js
 
 .tippy-box[data-theme~='me_url'] {
-    background-color: color.adjust(c.$color-primary, $lightness: +51%);; /* dark gray */
+    $tooltip-color: color.adjust(c.$color-primary, $lightness: +51%); /* dark gray */
+    background-color: $tooltip-color; /* dark gray */
     opacity: 1;
     border-radius: 8px;
     padding: 6px 10px;
     font-size: 0.85rem;
-    *{color: c.$color-text;};
+    *{color: c.$color-text;}; // color of text inside tooltip
+    svg{  
+      // background-color: red !important; 
+      polygon{
+        fill: $tooltip-color;
+      }
+    }
   }
