@@ -2,7 +2,8 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-import { collectionBase } from "./collectionBase.ts";
+import { collectionBase } from "./collectionTools/collectionBase.ts";
+import { imageBase } from "./collectionTools/image.ts";
 import { excludedFolder } from "../options.config.ts";
 
 // Define a `loader` and `schema` for collection
@@ -20,13 +21,12 @@ definition[collection] = defineCollection({
   }),
   schema: collectionBase
     .extend({
-      title: z.string(), 
+      title: z.string(),
       description: z.string(),
       descriptionShort: z.string().optional(),
-      descriptionList: z
-      .array(
+      descriptionList: z.array(
         z.object({
-          item: z.string()
+          item: z.string(),
         })
       ),
       externalLink: z.string().nullable().optional(),
@@ -36,17 +36,7 @@ definition[collection] = defineCollection({
       institution: z.string().nullable().optional(),
       location: z.string().nullable().optional(),
       finished: z.boolean().nullable().optional(),
-      images: z
-        .array(
-          z.object({
-            title: z.string(),
-            id: z.string(),
-            include: z.boolean(),
-            caption: z.string(),
-            url: z.string(),
-            alt: z.string(),
-          })
-        ),
+      images: z.array(imageBase),
       tags: z.array(
         z.object({
           name: z.string(),
@@ -54,23 +44,23 @@ definition[collection] = defineCollection({
         })
       ),
       fields: z
-      .array(
-        z.object({
-          name: z.string(),
-          include: z.boolean(),
-        })
-      )
-      .nullable()
-      .optional(),
-    techstack: z
-      .array(
-        z.object({
-          id: z.string(),
-          include: z.boolean(),
-        })
-      )
-      .nullable()
-      .optional(),
+        .array(
+          z.object({
+            name: z.string(),
+            include: z.boolean(),
+          })
+        )
+        .nullable()
+        .optional(),
+      techstack: z
+        .array(
+          z.object({
+            id: z.string(),
+            include: z.boolean(),
+          })
+        )
+        .nullable()
+        .optional(),
     })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });

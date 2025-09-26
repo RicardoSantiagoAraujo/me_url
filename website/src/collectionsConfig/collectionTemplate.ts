@@ -2,7 +2,8 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-import { collectionBase } from "./collectionBase.ts";
+import { collectionBase } from "./collectionTools/collectionBase.ts";
+import { imageBase } from "./collectionTools/image.ts";
 import { excludedFolder } from "../options.config.ts";
 
 // Define a `loader` and `schema` for collection
@@ -27,17 +28,7 @@ definition[collection] = defineCollection({
       author: z.string(),
       idMainImg: z.string().nullable().optional(),
       idBgImg: z.string().nullable().optional(),
-      images: z
-        .array(
-          z.object({
-            title: z.string(),
-            id: z.string(),
-            include: z.boolean(),
-            caption: z.string(),
-            url: z.string(),
-            alt: z.string(),
-          })
-        ),
+      images: z.array(imageBase),
       tags: z.array(
         z.object({
           name: z.string(),

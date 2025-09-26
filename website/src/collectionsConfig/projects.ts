@@ -2,7 +2,9 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-import { collectionBase } from "./collectionBase.ts";
+import { collectionBase } from "./collectionTools/collectionBase.ts";
+import { imageBase } from "./collectionTools/image.ts";
+import { videoBase } from "./collectionTools/video.ts";
 import { excludedFolder } from "../options.config.ts";
 
 // Define a `loader` and `schema` for collection
@@ -24,13 +26,16 @@ definition[collection] = defineCollection({
       subtitle: z.string().nullable().optional(),
       description: z.string(),
       descriptionShort: z.string().nullable().optional(),
-      authors: z.array(
-        z.object({
-          name: z.string(),
-          surname: z.string(),
-          include: z.boolean(),
-        })
-      ).nullable().optional(),
+      authors: z
+        .array(
+          z.object({
+            name: z.string(),
+            surname: z.string(),
+            include: z.boolean(),
+          })
+        )
+        .nullable()
+        .optional(),
       repository: z.string().nullable().optional(),
       externalLink: z.string().nullable().optional(),
       datePublication: z.date().nullable().optional(),
@@ -61,34 +66,10 @@ definition[collection] = defineCollection({
         )
         .nullable()
         .optional(),
-      images: z
-        .array(
-          z.object({
-            title: z.string(),
-            id: z.string(),
-            include: z.boolean(),
-            caption: z.string(),
-            url: z.string(),
-            alt: z.string(),
-          })
-        )
-        .nullable()
-        .optional(),
+      images: z.array(imageBase).nullable().optional(),
       idMainImg: z.string().nullable().optional(),
       idBgImg: z.string().nullable().optional(),
-      videos: z
-        .array(
-          z.object({
-            title: z.string(),
-            id: z.string(),
-            include: z.boolean(),
-            caption: z.string(),
-            url: z.string(),
-            alt: z.string(),
-          })
-        )
-        .nullable()
-        .optional(),
+      videos: z.array(videoBase).nullable().optional(),
     })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });

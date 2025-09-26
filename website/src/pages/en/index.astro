@@ -21,7 +21,7 @@ const pageSubtitle = ""
 
   <div class="home-intro">
     Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
-  </div> 
+  </div>
 
   <section class="home-collections-wrapper">
     <h2>{"Site contents"}</h2>
@@ -29,10 +29,10 @@ const pageSubtitle = ""
     {keys.map(async collection =>{
       var route = await generateItemRoutes(collection);
       route = route.filter(item=>item.params.lang == lang); // include only current lang
-      route = route.filter(item=>item.props.data.include == true); // include only included items 
-      route = route.sort((a, b) => { 
+      route = route.filter(item=>item.props.data.include == true); // include only included items
+      route = route.sort((a, b) => {
         return a.params.slug!.localeCompare(b.params.slug!, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
-      });  
+      });
       // console.log(route);
       return (
         <div class="collection-container">
@@ -41,8 +41,8 @@ const pageSubtitle = ""
           </h3>
           <ul>{route.map(item=>{
             return (item.params.lang == lang ?
-            <li > 
-              <a href={`${item.params.lang}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
+            <li >
+              <a href={`/${item.params.lang}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
                 {item.props.data.title}
               </a>
             </li>
