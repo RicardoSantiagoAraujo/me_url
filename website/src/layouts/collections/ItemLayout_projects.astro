@@ -83,3 +83,27 @@ frontmatter.lang = currentLang;
 
   <slot /> <!-- slot injects contents of .md file  -->
 </BaseLayout>
+
+<script>
+//////////////////////////////////////////////////////////////////////////////
+/** make text appear in the innerHTML of the element, one character at a time per timeBetween */
+function appearChars(str: string, elem: HTMLElement, timeBetween: number) {
+  var index = -1;
+  (function go() {
+    if (++index < str.length) {
+      elem.innerHTML = elem.innerHTML + str.charAt(index);
+      setTimeout(go, timeBetween);
+    }
+  })();
+}
+
+var elem = document.querySelector<HTMLElement>('.project-page__header__titles h1')!;
+var inner_text = elem.innerHTML; // store content
+elem.innerHTML = ""; // empty element
+var timeBetween = 50;
+setTimeout(() => {
+  appearChars(inner_text, elem, timeBetween);
+}, 500) // wait a little bit before starting
+
+
+</script>
