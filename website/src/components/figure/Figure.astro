@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import '../styles/components/_figure.scss'; 
+import '../../styles/components/figure/_main.scss';
 const { imageData } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 ---

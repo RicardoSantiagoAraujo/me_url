@@ -1,0 +1,334 @@
+// @use './mixins' as *;
+// @use './variables' as *;
+
+/* ============== Fullscreen on click ============== */
+
+
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.fullpage {
+  display: block;
+  opacity: 0;
+  position: fixed;
+  z-index: 0;
+  background-size: auto 100%;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  pointer-events: none;
+
+  .fullpage_extras {
+    opacity: 0;
+  }
+}
+
+.fullpage_active {
+  transition: all $fullscreen_animation_duration,
+    background-image $fullscreen_image_transition;
+  background-size: auto 80%;
+
+  .fullpage_extras {
+    animation: fullpage_extras_appear 0.5s forwards;
+    animation-delay: $fullscreen_animation_duration * 1;
+
+    @keyframes fullpage_extras_appear {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+
+    }
+  }
+}
+
+.fullpage__bg {
+  pointer-events: none;
+  opacity: 0;
+  display: block;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparentize($color: $col-bg, $amount: 0);
+  transition: var(--trans-slow);
+
+  &.fullpage__bg_active {
+    // make visible
+    animation: go_fullscreen $fullscreen_animation_duration/1 forwards;
+  }
+}
+
+
+@keyframes go_fullscreen {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#fullpage__caption {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: $padding-caption/4;
+  width: 100% - $padding-caption;
+  margin-left: $padding-caption/2;
+  height: (100 - $fullscreen_image_height)/2 - $padding-caption;
+  background: rgba(255, 255, 255, 0.499);
+  font-size: 1.5vw;
+  color: white;
+  border-radius: $fullscreen_extras_border_radius;
+  transition: 0.5s;
+}
+
+
+#fullpage__btn__exit {
+  cursor: pointer;
+  background-color: transparent;
+  filter: invert(100%);
+  position: absolute;
+  $size: 3vw;
+  width: $size;
+  height: $size;
+  top: 1vw;
+  right: 1vw;
+  border-width: 0px;
+  overflow: hidden;
+  color: $col-white;
+
+  img {
+    width: 100%;
+    height: 100%;
+    animation: pulse 1s infinite alternate;
+  }
+
+  transition: 0.1s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: rotate(-180deg);
+    ;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.fullpage__btns {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: $fullscreen_image_height;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.fullpage__btns button {
+  // background-color: $col-white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  width: 33%;
+  transition: 0.2s;
+  opacity: 0.5;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  img {
+    height: 10%;
+    filter: invert(1);
+    margin: 2vw;
+  }
+
+  &#fullpage__btn__prev {
+    justify-content: flex-start;
+
+    img {
+      transform: scaleX(-1);
+    }
+  }
+
+  &#fullpage__btn__next {
+    justify-content: flex-end;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+
+#fullpage__btn__info {
+  cursor: help;
+  pointer-events: all;
+  font-size: 1vw;
+  font-weight: bold;
+  background-color: transparentize($color: $col-white, $amount: 0.5);
+  padding: 0.5rem;
+  position: absolute;
+  width: 4%;
+  $height: 4%; // as percentage
+  height: $height;
+  margin: auto;
+  right: $padding-caption/2;
+  bottom: (100% - $fullscreen_image_height)/2;
+  border: none;
+  border-radius: $fullscreen_extras_border_radius;
+  color: $col-white;
+  opacity: 0.5;
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // animation: text_pulse 2s infinite;
+  &:hover {
+    transform: scale(1.2);
+    transform-origin: center;
+    /* font-weight: bold; */
+    background-color: $col-bg;
+    color: $col-white;
+    animation: none;
+  }
+}
+
+$info_duration: 0.5s;
+#fullpage__info_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  #fullpage_extra_information {
+    cursor: default;
+    display: block;
+    align-items: center;
+    font-size: 1rem;
+    // font-weight: bold;
+    // background-color: $col-bg;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    padding: 2rem;
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    // width: fit-content;
+    //overflow: hidden;
+    //white-space: nowrap;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    // border-radius: 3rem;
+    color: var(--col-pri-light);
+    opacity: 0;
+    transition: var(--trans-slow);
+
+    // z-index: 4;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+      transition: $info_duration;
+      transform: scaleX(0.5);
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 10% 90%, rgba(0, 0, 0, 0) 100%);
+    }
+  }
+}
+
+//Where extra information about figure is stored
+.extra_details {
+  display: block;
+}
+
+
+
+#fullpage_extra_information div {
+  display: flex;
+  color: $col-white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  transition: var(--trans-slow);
+  // transform: scale(0.1)
+  opacity: 0;
+  text-align: justify;
+  a{
+    text-decoration: none;
+    color: $col-white;
+  }
+}
+
+
+#fullpage__btn__info:hover+#fullpage_extra_information {
+  div {
+    $ratio: 0.7;
+    animation: fullscreen_text_fade_in $info_duration * (1-$ratio);
+    animation-delay: $info_duration * $ratio;
+    animation-fill-mode: forwards;
+  }
+  &:after{
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fullscreen_text_fade_in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

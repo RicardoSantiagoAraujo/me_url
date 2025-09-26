@@ -2,10 +2,11 @@
 import Header from '../components/header/Header.astro';
 import Footer from '../components/footer/Footer.astro';
 import BackToTopButton from '../components/BackToTopButton.astro';
+import FullscreenFigure from '../components/figure/FullscreenFigure.astro';
 import '../styles/global.scss';
 const { pageTitle, pageSubtitle } = Astro.props;
 import { getLangFromUrl } from '../i18n/utils';
-const lang = getLangFromUrl(Astro.url);  
+const lang = getLangFromUrl(Astro.url);
 ---
 <html lang={lang}>
   <head>
@@ -26,10 +27,11 @@ const lang = getLangFromUrl(Astro.url);
       <slot />
     </div>
     <BackToTopButton />
+    <FullscreenFigure
     <Footer />
     <script>
       import "../scripts/menu.ts";
-      import "../scripts/figure.ts";
+      import "../scripts/figure/main.ts";
       import { initTooltips } from '../scripts/tooltip.js';
       initTooltips();
     </script>

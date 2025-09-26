@@ -1,0 +1,325 @@
+// @use './mixins' as *;
+// @use './variables' as *;
+
+
+// width of all components
+$content_width: 70%;
+
+// Adjust width of break to fit rest of components
+$break_width_adj: 0.9;
+
+// letter spacing in title
+$title_letter_spacing: 0.2rem;
+
+
+
+
+
+
+
+$fig-padding: 2vw;
+.fig,
+.vid {
+    width: 50%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: $fig-padding;
+    border-radius: 1vw;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        cursor: zoom-in;
+        transition: 0.5s;
+
+        &:hover {
+            transform: scale(1.01);
+        }
+    }
+
+
+    iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+        border: none;
+        border-radius: 10px;
+    }
+
+
+    figcaption {
+        font-weight: 500;
+        // text-transform: uppercase;
+        // letter-spacing: 2px;
+        font-size: 0.8em;
+        padding: 1em;
+        text-align: center;
+        color: #fff;
+        background: darken($color: $gray, $amount: 10);
+        position: relative;
+
+        .numbering {}
+    }
+}
+
+
+.fig_left {
+    float: left;
+    margin: 0 1em .5em 0;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+}
+
+.fig_right {
+    float: right;
+    margin: 0 0 .5em 1em;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+}
+
+.fig_right img,
+.fig_left img {
+    max-width: 400px !important;
+    /* Adjust to suit your needs */
+}
+
+.fig_gif{
+    position: relative;
+        &:after{
+            content: "hover to animate";
+            margin: $fig-padding*0.5 0;
+            position: absolute;
+            width: fit-content;
+            padding: 5px 15px;
+            text-align: center;
+            height: fit-content;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%,0%);
+            background-color: lighten($color: $gray, $amount: 50);
+            box-shadow: 0 0 10px black;
+            transition: 0.5s;
+            animation: animateMessageGIF 0.5s alternate infinite;
+
+            @keyframes animateMessageGIF {
+                from{
+                    color: black;
+                }
+                to{
+                    color: rgba(0, 0, 0, 0.65)
+                }
+
+            }
+        }
+
+
+        &:hover::after{
+            opacity: 0.1;
+        }
+
+
+}
+
+.fig_group {
+    width: 90%;
+    >.fig_wrapper {
+        display: flex;
+        gap:1%;
+
+        .fig_sub {}
+    }
+    .fig_sub{
+        padding: 0 0 1.7%;
+    }
+}
+
+.fig.no_caption figcaption {
+    display: none;
+}
+
+.img_grid {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: grid;
+    width: 100%;
+    height: fit-content;
+    // margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3vw;
+    grid-auto-rows: minmax(100px, auto);
+
+    .fig{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background: none;
+    }
+}
+
+
+// //// Figure numbering THROUGH CSS
+// // start counter
+// body {
+//     counter-reset: numbered_figures;
+// }
+// // increment counter
+// .fig.numbered >figcaption {
+//     counter-increment: numbered_figures;
+// }
+// // display counter
+// .fig.numbered >figcaption:before {
+//     content: 'Fig. ' counter(numbered_figures) ' - ';
+// }
+
+
+
+
+
+//   ACCORDION TO COLLAPSE SECTION
+.accordion_btn {
+    background-color: rgba(215, 215, 215, 0);
+    color: darken($color: $gray, $amount: 10%);
+    cursor: pointer;
+    // padding: 18px;
+    // width: fit-content;
+    width: 100%;
+    height: fit-content;
+    border: none;
+    border-radius: 50px;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    position: relative;
+
+    h3 {
+        margin-top: 5vh;
+        margin-left: 4%;
+        padding-right: 10%;
+        transition: 0.3s;
+        // text-decoration:underline;
+        // text-transform:capitalize;
+        // font-variant-caps: small-caps;
+    }
+}
+
+.accordion_btn:hover {
+    background-color: rgba(215, 215, 215, 0);
+
+    &:after {
+        // transform: translateY(-50%)scale(1.3);
+        color: black;
+    }
+
+    h3 {
+        // margin-left: 4.5%
+        color: black;
+    }
+}
+
+.active_accordion_btn {
+    background-color: rgba(215, 215, 215, 0);
+}
+
+
+.accordion_btn:after {
+    content: '\002B';
+    color: $gray;
+    font-weight: bold;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5%;
+    text-align: center;
+    transition: 0.3s;
+
+}
+
+.active_accordion_btn:after {
+    content: "\2212";
+}
+
+.accordion_panel {
+    padding: 0 18px;
+    // background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        scroll-margin-top: 7.5vh;
+    }
+
+    h4,
+    h5,
+    h6 {
+        color: $gray;
+    }
+
+    p{
+        font-weight: 100;
+    }
+    ul{
+        list-style-type: square;
+
+        ul{
+            list-style-type: "- ";
+        }
+    }
+
+    ul, ol{
+        li::marker{
+            color: $gray;
+            font-size: 1rem;
+        }
+    }
+    a{
+        text-decoration: none;
+        font-weight: 500;
+        // font-style: italic;
+        color: black;
+        transition: 0.2s;
+        &:hover{
+            color: $gray;
+        }
+    }
+}
+
+
+
+
+//  HEADING COUNTERS
+body {
+    counter-reset: h3_counter;
+}
+.accordion_btn{
+    counter-reset: h4_counter;
+}
+h4.h_numbered {
+    counter-reset: h5_counter;
+}
+h5.h_numbered {
+    counter-reset: h6_counter;
+}
+.accordion_btn h3.h_numbered:before {
+    counter-increment: h3_counter;
+    content: counter(h3_counter) ". ";
+}
+h4.h_numbered:before {
+    counter-increment: h4_counter;
+    content: counter(h3_counter) "." counter(h4_counter) ". ";
+}
+h5.h_numbered:before {
+    counter-increment: h5_counter;
+    content: counter(h3_counter) "." counter(h4_counter) "." counter(h5_counter) ". ";
+}
+h6.h_numbered:before {
+    counter-increment: h6_counter;
+    content: counter(h3_counter) "." counter(h4_counter) "." counter(h5_counter) "." counter(h6_counter) ". ";
+}
