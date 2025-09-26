@@ -14,7 +14,7 @@ export function initTooltips() {
       duration: [200, 150], // [show, hide] duration in ms 
       // animation: 'shift-away',
       theme: 'me_url',
-      flip: true, // Allow flipping to keep the tooltip in view
+      // flip: true, // Allow flipping to keep the tooltip in view
       maxWidth: 350, // Maximum width of the tooltip
       offset: [0, 10], // [skidding, distance] offset of the tooltip
     });
