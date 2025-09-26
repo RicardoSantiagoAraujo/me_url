@@ -9,7 +9,7 @@ export function initTooltips() {
       trigger: 'mouseenter focus',
       zIndex: 9999,
       placement: 'top', // 'top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'
-      arrow: arrowSvg, // Custom SVG for the arrow (arrowSvg), else you can use true for default arrow or false for no arrow,
+      arrow: true, // Custom SVG for the arrow (arrowSvg), else you can use true for default arrow or false for no arrow,
       delay: [100, 50], // [show, hide] delay in ms
       duration: [200, 150], // [show, hide] duration in ms 
       // animation: 'shift-away',

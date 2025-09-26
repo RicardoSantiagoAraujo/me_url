@@ -13,10 +13,26 @@
     padding: 6px 10px;
     font-size: 0.85rem;
     *{color: c.$color-text;}; // color of text inside tooltip
-    svg{  
-      // background-color: red !important; 
-      polygon{
-        fill: $tooltip-color;
+    // if in "tippy-arrow" mode
+    &[data-placement="top"] .tippy-arrow::before{ 
+      border-top-color: $tooltip-color !important;  
+    };
+    &[data-placement="bottom"] .tippy-arrow::before{ 
+      border-bottom-color: $tooltip-color !important;  
+    };
+    &[data-placement="left"] .tippy-arrow::before{
+      border-left-color: $tooltip-color !important;  
+    };
+    &[data-placement="right"] .tippy-arrow::before{ 
+      border-right-color: $tooltip-color !important;  
+    };
+    .tippy-arrow, .tippy-svg-arrow{  
+      // if in "tippy-svg-arrow" mode
+      svg{  
+        // background-color: red !important; 
+        polygon{
+          fill: $tooltip-color;
+        }
       }
-    }
+    };
   }
