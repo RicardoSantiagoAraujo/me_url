@@ -20,6 +20,7 @@ const lang = getLangFromUrl(Astro.url);
   <body>
     <Header />
     <div class="page-container">
+      <div class="parallax_bg"></div>
       <div class="page-titles">
         <h1>{pageTitle}</h1>
         <h2>{pageSubtitle}</h2>
@@ -27,13 +28,14 @@ const lang = getLangFromUrl(Astro.url);
       <slot />
     </div>
     <BackToTopButton />
-    <FullscreenFigure
+    <FullscreenFigure/>
     <Footer />
     <script>
       import "../scripts/menu.ts";
       import "../scripts/figure/main.ts";
       import { initTooltips } from '../scripts/tooltip.js';
       initTooltips();
+
     </script>
   </body>
 </html>

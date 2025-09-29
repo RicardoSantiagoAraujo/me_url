@@ -1,0 +1,20 @@
+---
+const { captionData } = Astro.props;
+
+---
+
+
+<figcaption>
+    <span class="figcaption_text">
+        {captionData.caption}
+    </span>
+    <div class="extra_info_collapsible">
+        <button class="collapsible" ></button>
+        <div class="extra_information">
+            {captionData.title} : {captionData.caption}
+        </div>
+    </div>
+</figcaption>
+
+<!-- Load client-side JS -->
+<script type="module" client:* src="../../scripts/figure/collapsible.ts"></script>

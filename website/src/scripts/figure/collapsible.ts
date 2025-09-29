@@ -1,6 +1,6 @@
-export function Collapsible() {
+export function activateCollapsibleCaptions() {
 
-var coll = document.getElementsByClassName("collapsible");
+var coll = document.getElementsByClassName("collapsible") as HTMLCollectionOf<HTMLElement>;
 var i;
 
 for (i = 0; i < coll.length; i++) {

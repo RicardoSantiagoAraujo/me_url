@@ -1,7 +1,7 @@
 import {Projects} from "./projects.js"
-import { Collapsible } from "./collapsible.js"
+import { activateCollapsibleCaptions } from "./collapsible.js"
 import { Fullscreen_slideshow } from "./fullscreen_slideshow.js"
 
-Projects();
+// Projects();
 Fullscreen_slideshow();
-Collapsible();
+activateCollapsibleCaptions();
