@@ -155,8 +155,8 @@ To create an unordered list, add dashes (**-**), asterisks (**\***), or plus sig
 Code is denoted with `backticks`.
 
 ## Images
-
-![Image alt text](/assets/placeholders/placeholder_image.jpg "Optional title")
+import placeholder from '../assets/placeholders/placeholder_image.jpg';
+![Image alt text](placeholder  "Optional title")
 
 ## Links
 

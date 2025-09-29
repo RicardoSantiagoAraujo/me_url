@@ -1,23 +1,24 @@
-export function activateCollapsibleCaptions() {
+export function activateCollapsibleCaptions(collapsibleElement: HTMLElement) : void {
+    // if the value is an empty string, remove collapsible
+    if (collapsibleElement.nextElementSibling!.innerHTML.replace(/\s+/g,'') == ""){
+      collapsibleElement.parentElement!.style.display="none";
+    }
+    collapsibleElement.addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling! as HTMLElement; 
+      if (content.style.maxHeight){
+        content.style.maxHeight = "";
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
 
-var coll = document.getElementsByClassName("collapsible") as HTMLCollectionOf<HTMLElement>;
+var coll = document.getElementsByClassName("collapsible")! as HTMLCollectionOf<HTMLElement>;
 var i;
 
 for (i = 0; i < coll.length; i++) {
-
-  // if the value is an empty string, remove collapsible
-  if (coll[i].nextElementSibling.innerHTML.replace(/\s+/g,'') == ""){
-    coll[i].parentElement.style.display="none";
-  }
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
+  activateCollapsibleCaptions(coll[i]);
 }
-
-}
+ 
+ 

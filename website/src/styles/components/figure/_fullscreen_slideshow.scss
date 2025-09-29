@@ -1,5 +1,6 @@
-// @use './mixins' as *;
-// @use './variables' as *;
+@use 'sass:color';
+@use './mixins' as *;
+@use './variables' as *;
 
 /* ============== Fullscreen on click ============== */
 
@@ -56,12 +57,12 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: transparentize($color: $col-bg, $amount: 0);
+  background-color:  color.scale($col-bg, $alpha: 0%);
   transition: var(--trans-slow);
 
   &.fullpage__bg_active {
     // make visible
-    animation: go_fullscreen $fullscreen_animation_duration/1 forwards;
+    animation: go_fullscreen calc($fullscreen_animation_duration/1) forwards;
   }
 }
 
@@ -85,10 +86,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: $padding-caption/4;
+  margin-bottom: calc($padding-caption/4);
   width: 100% - $padding-caption;
-  margin-left: $padding-caption/2;
-  height: (100 - $fullscreen_image_height)/2 - $padding-caption;
+  margin-left: calc($padding-caption/2);
+  height:calc( (100% - $fullscreen_image_height)/2) - $padding-caption;
   background: rgba(255, 255, 255, 0.499);
   font-size: 1.5vw;
   color: white;
@@ -199,15 +200,15 @@
   pointer-events: all;
   font-size: 1vw;
   font-weight: bold;
-  background-color: transparentize($color: $col-white, $amount: 0.5);
+  background-color: color.scale($gray, $alpha: -50%);
   padding: 0.5rem;
   position: absolute;
   width: 4%;
   $height: 4%; // as percentage
   height: $height;
   margin: auto;
-  right: $padding-caption/2;
-  bottom: (100% - $fullscreen_image_height)/2;
+  right: calc($padding-caption/2);
+  bottom: calc((100% - $fullscreen_image_height)/2);
   border: none;
   border-radius: $fullscreen_extras_border_radius;
   color: $col-white;

@@ -1,7 +1,7 @@
 @use '../../variables/colors' as c;
 @use '../../variables/dimensions' as d;
 
-@import "_variables";
-@import "projects";
-@import "fullscreen_slideshow.scss";
-@import "collapsible";
+@use "_variables";
+@use "projects";
+@use "fullscreen_slideshow";
+@use "collapsible";

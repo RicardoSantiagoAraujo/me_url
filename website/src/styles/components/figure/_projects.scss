@@ -1,5 +1,6 @@
-// @use './mixins' as *;
-// @use './variables' as *;
+@use 'sass:color';
+@use './mixins' as *;
+@use './variables' as *;
 
 
 // width of all components
@@ -55,7 +56,7 @@ $fig-padding: 2vw;
         padding: 1em;
         text-align: center;
         color: #fff;
-        background: darken($color: $gray, $amount: 10);
+        background: color.adjust($gray, $lightness: -10%);
         position: relative;
 
         .numbering {}
@@ -98,7 +99,7 @@ $fig-padding: 2vw;
             top: 0%;
             left: 50%;
             transform: translate(-50%,0%);
-            background-color: lighten($color: $gray, $amount: 50);
+            background-color: color.adjust($gray, $lightness: 50%);
             box-shadow: 0 0 10px black;
             transition: 0.5s;
             animation: animateMessageGIF 0.5s alternate infinite;
@@ -180,7 +181,7 @@ $fig-padding: 2vw;
 //   ACCORDION TO COLLAPSE SECTION
 .accordion_btn {
     background-color: rgba(215, 215, 215, 0);
-    color: darken($color: $gray, $amount: 10%);
+    color: color.adjust($gray, $lightness: -10%);
     cursor: pointer;
     // padding: 18px;
     // width: fit-content;

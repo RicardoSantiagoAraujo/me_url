@@ -12,7 +12,7 @@ const collection = "collectionTemplate";
 definition[collection] = defineCollection({
   loader: glob({
     pattern: [
-      "**/[^_]*.md",
+      "**/[^_]*.{md,mdx}",
       ...excludedFolder
         .filter((item) => item !== "")
         .map((item) => `!**/${item}/**`),
