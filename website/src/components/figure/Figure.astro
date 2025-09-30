@@ -7,8 +7,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{j
 ---
 
 
-<figure class="fig numbered fig_left fig_gif">
+<figure class="fig fig_left fig_gif">
     <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={imageData.alt} inferSize={true} class="project-page__images__image"/>
     <FigureCaption captionData={imageData} />
 </figure>
-

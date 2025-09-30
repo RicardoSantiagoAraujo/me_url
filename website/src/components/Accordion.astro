@@ -1,0 +1,16 @@
+---
+import '../styles/components/_accordion.scss';
+const { title } = Astro.props;
+---
+
+<!-- back-to-top button -->
+<button type="button" class="accordion__btn">
+    <div class="accordion__title">{title}</div>
+</button>
+<div class="accordion__panel">
+    <div class="accordion-content">
+        <slot />
+    </div>
+</div>
+<!-- Load client-side JS -->
+<script type="module"  src="/src/scripts/accordion.ts"></script>
