@@ -1,5 +1,5 @@
-import {Projects} from "./projects.js" 
+import {activateGifBehavior} from "./gifBehavior.js" 
 import { Fullscreen_slideshow } from "./fullscreen_slideshow.js"
 
-// Projects();
+activateGifBehavior();
 Fullscreen_slideshow();
