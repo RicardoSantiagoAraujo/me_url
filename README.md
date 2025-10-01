@@ -50,3 +50,9 @@ To avoid undesired/untested deployments, any code changes should be developed in
 8. For each available language [language], add collection page at **src/pages/[language]/[collection-key]**;
 9. Create the collection **ItemLayout\_[collection-key]** at **src/layouts/collections/**;
 10. For each available language [language], add collection tags pages at **src/pages/[language]/tags/[collection-key]**.
+
+##### Choosing between .MD and .MDX Files for collection items
+
+**.md** files in Astro are plain Markdown—simple, static, and can’t use components or imported assets, while **.mdx** files allow JSX, component imports, and optimized images, offering more dynamic content at the cost of slightly more complexity.
+Use **.md** for simple, static content like plain blog posts, documentation, or tutorials where you don’t need components or imported assets.
+Use **.mdx** for dynamic or interactive content where you want to embed components, import images from /src/assets, or include JSX/interactive elements.

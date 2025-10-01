@@ -1,71 +1,28 @@
 ---
-title: Title of project
-subtitle: Subtitle of project
+title: "Third Example"
+pubDate: 2022-07-01
 include: true
-description: Detailed description of the project.
-
-  Veniam do dolor voluptate ad elit eiusmod occaecat. Proident aute veniam tempor nulla id nostrud ad voluptate occaecat. Ipsum eiusmod officia laborum dolor mollit.
-
-  Incididunt laboris magna pariatur sit ad et aliqua do laborum commodo ea. Magna velit occaecat laborum magna eiusmod mollit incididunt aliquip. Voluptate ex dolore esse sunt laborum qui id do fugiat ea commodo laboris et. Deserunt eiusmod est nulla occaecat minim ullamco tempor.
-
-  Amet fugiat consectetur qui pariatur tempor tempor. Cupidatat exercitation aliquip aute cupidatat et. Voluptate labore ex ea sit cillum ut culpa occaecat incididunt amet magna non. Esse in exercitation proident consectetur tempor cupidatat labore cillum. Mollit enim sit laboris amet veniam nisi exercitation occaecat consequat eu cupidatat irure tempor. Deserunt nisi reprehenderit quis laboris culpa nisi Lorem laboris nisi minim ad. Excepteur proident esse id culpa in dolore cupidatat velit non magna.
-descriptionShort: Short description of the project.
-datePublication: 2000-01-01
-authors:
-  - name: Author A name
-    surname: Author A surname
-    include: true
-  - name: Author B name
-    surname: Author B surname
-    include: true
-tags:
-  - name: tag A
-    include: true
-  - name: tag B
-    include: true
-  - name: tag C
-    include: false
-techstack:
-  - id: techstack_a
-    include: true
-  - id: techstack_b
-    include: true
-  - id: techstack_c
-    include: true
-fields:
-  - name: field A
-    include: true
-  - name: field B
-    include: true
-  - name: field C
-    include: true
-repository: www.github.com
-finished: true
-opensource: true
-externalLink: google.com
-idMainImg: img_id1
-idBgImg: img_id1
+description: "Description."
+descriptionShort: "Short description."
+author: "Astro Learner"
 images:
-  - title: image title
-    id: img_id1
+  - title: Image example
+    id: image_id
     include: true
-    caption: image caption
-    url: /src/assets/placeholders/placeholder_image.jpg
-    alt: Alternative text"
-videos:
-  - title: video title
-    id: id1
+    caption: Image caption
+    url: https://static.thenounproject.com/png/526867-200.png
+    alt: alt text
+tags:
+  - name: tag 1
     include: true
-    caption: video caption
-    url: https://docs.astro.build/assets/rose.webp
-    alt: Alternative text
-  - title: video title
-    id: id2
+  - name: tag 2
     include: true
-    caption: video caption
-    url: https://docs.astro.build/assets/rose.webp
-    alt: Alternative text
+  - name: tag 3
+    include: true
 ---
+import { Image } from "astro:assets"; 
+import placeholder_image from '@/assets/placeholders/placeholder_image.jpg';
+
 
 Here goes the body of the project entry. It get injected into the website at the place where the tag **<slot />** is placed in your **.astro** file.
 
@@ -142,11 +99,12 @@ To create an unordered list, add dashes (**-**), asterisks (**\***), or plus sig
 
   1.  Open the file.
   2.  Find the following code block on line 21:
-
+          ```html
           <html>
             <head>
               <title>Test</title>
             </head>
+          ```
 
   3.  Update the title to match the name of your website.
 
@@ -155,8 +113,15 @@ To create an unordered list, add dashes (**-**), asterisks (**\***), or plus sig
 Code is denoted with `backticks`.
 
 ## Images
-import placeholder from '../assets/placeholders/placeholder_image.jpg';
-![Image alt text](placeholder  "Optional title")
+
+### If asset is in the **src** folder:
+Keep imports at the very top. This method provides optimization, responsive sizes, lazy loading.
+<Image src={placeholder_image} alt="My cat" widths={[320, 640, 1280]} />
+
+### If asset is in the **public** folder:
+No optimization (Astro won’t generate multiple sizes or lazy-load).
+![Image alt text](/icons/favicon.svg  "Optional title")
+
 
 ## Links
 
@@ -164,7 +129,7 @@ import placeholder from '../assets/placeholders/placeholder_image.jpg';
 
 To quickly turn a URL or email address into a link, enclose it in angle brackets.
 
-<https://www.google.com>
+[Google](https://www.google.com)
 
 ## Horizontal rulers
 

@@ -1,7 +1,7 @@
 ---
-title: "Third Example"
+title: "Forth Example"
 pubDate: 2022-07-01
-include: true
+include: false
 description: "Description."
 descriptionShort: "Short description."
 author: "Astro Learner"
@@ -20,6 +20,9 @@ tags:
   - name: tag 3
     include: true
 ---
+import { Image } from "astro:assets"; 
+import placeholder_image from '@/assets/placeholders/placeholder_image.jpg';
+
 
 Here goes the body of the project entry. It get injected into the website at the place where the tag **<slot />** is placed in your **.astro** file.
 
@@ -96,11 +99,12 @@ To create an unordered list, add dashes (**-**), asterisks (**\***), or plus sig
 
   1.  Open the file.
   2.  Find the following code block on line 21:
-
+          ```html
           <html>
             <head>
               <title>Test</title>
             </head>
+          ```
 
   3.  Update the title to match the name of your website.
 
@@ -110,7 +114,14 @@ Code is denoted with `backticks`.
 
 ## Images
 
-![Image alt text](/assets/placeholders/placeholder_image.jpg "Optional title")
+### If asset is in the **src** folder:
+Keep imports at the very top. This method provides optimization, responsive sizes, lazy loading.
+<Image src={placeholder_image} alt="My cat" widths={[320, 640, 1280]} />
+
+### If asset is in the **public** folder:
+No optimization (Astro won’t generate multiple sizes or lazy-load).
+![Image alt text](/icons/favicon.svg  "Optional title")
+
 
 ## Links
 
@@ -118,7 +129,7 @@ Code is denoted with `backticks`.
 
 To quickly turn a URL or email address into a link, enclose it in angle brackets.
 
-<https://www.google.com>
+[Google](https://www.google.com)
 
 ## Horizontal rulers
 
