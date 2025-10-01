@@ -1,6 +1,6 @@
 export function Fullscreen_slideshow() {
     /////////////////// Fullscreen images on click ///////////////////
-    var imgs
+    var imgs : NodeListOf<HTMLImageElement> | HTMLImageElement[] = [];
 
     function scanForImages() {
         // imgs = document.querySelectorAll('#gallery .swiper img, #collections .collections__gallery img');
@@ -11,8 +11,8 @@ export function Fullscreen_slideshow() {
     scanForImages()
 
 
-    function checkIfGif(img) {
-        if (img.parentElement.classList.contains("fig_gif")) // check if figure is a gif
+    function checkIfGif(img : HTMLImageElement) {
+        if (img.parentElement!.classList.contains("fig_gif")) // check if figure is a gif
         {
             return img.src.replace(".png", ".gif");
         } else {
@@ -21,18 +21,18 @@ export function Fullscreen_slideshow() {
     }
 
     // to pass image into fullscreen background
-    const fullPage = document.querySelector('.fullpage');
+    const fullPage = document.querySelector('.fullpage') as HTMLElement;
     // background in fullpage mode
-    const fullPage_bg = document.querySelector('.fullpage__bg');
+    const fullPage_bg = document.querySelector('.fullpage__bg') as HTMLElement;
     // caption in fullpage mode
-    const fullPage_caption = document.querySelector('#fullpage__caption');
+    const fullPage_caption = document.querySelector('#fullpage__caption') as HTMLElement;
     // all extras (caption, btns) in fullpage mode
-    const fullPage_extras = document.querySelector('#fullpage__extras');
+    const fullPage_extras = document.querySelector('#fullpage__extras') as HTMLElement;
     // to pass extra text into information button
-    var info_btn = document.getElementById("fullpage__btn__info");
-    var info_display = document.getElementById("fullpage_extra_information");
+    var info_btn = document.getElementById("fullpage__btn__info") as HTMLElement;
+    var info_display = document.getElementById("fullpage_extra_information") as HTMLElement;
 
-    var current_img;
+    var current_img: HTMLImageElement;
     function getImgs() { //
         // console.log(imgs);
         imgs.forEach(img => {
@@ -76,8 +76,8 @@ export function Fullscreen_slideshow() {
                     updateFullscreenCaption(img)
 
                     // get transition into fullscreen duration from css
-                    let transition_delay = parseFloat(window.getComputedStyle(document.querySelector(".fullpage_active")).transitionDuration) * 1000;
-                    document.querySelector('#mini_header').classList.add("mini_header_fullscreen");
+                    let transition_delay = parseFloat(window.getComputedStyle(document.querySelector(".fullpage_active") as HTMLElement).transitionDuration) * 1000;
+                    document.querySelector<HTMLElement>('#mini_header')!.classList.add("mini_header_fullscreen");
                     setTimeout(() => { // SET FINAL PROPERTIES ON FULLSCREEN AT END OF ANIMATION
                         fullPage.style.pointerEvents = "all";
                     }, transition_delay);
@@ -87,17 +87,17 @@ export function Fullscreen_slideshow() {
         });
     }
 
-    function updateFullscreenCaption(img) {
+    function updateFullscreenCaption(img: HTMLImageElement) {
         // Replacing fullpage caption contents
-        fullPage_caption.innerHTML = img.parentElement.querySelector(".figcaption_text").innerHTML;
+        fullPage_caption.innerHTML = img.parentElement!.querySelector<HTMLElement>(".figcaption_text")!.innerHTML;
     }
 
 
-    getImgs(imgs)
+    getImgs();
 
 
     // next image in fullscreen mode
-    const btn_next = document.getElementById("fullpage__btn__next")
+    const btn_next = document.getElementById("fullpage__btn__next") as HTMLElement;
     btn_next.addEventListener("click", nextImage);
 
     function nextImage() {
@@ -124,11 +124,11 @@ export function Fullscreen_slideshow() {
 
 
     // previous image in fullscreen mode
-    const btn_prev = document.getElementById("fullpage__btn__prev")
+    const btn_prev = document.getElementById("fullpage__btn__prev") as HTMLElement;
     btn_prev.addEventListener("click", prevImage);
 
     function prevImage() {
-        var arr_position = imgs.indexOf(current_img); // find it´s index
+        var arr_position = [...imgs].indexOf(current_img); // find it´s index
         if (arr_position >= 1) {
             var prev_img = imgs[arr_position - 1]
         } else {
@@ -145,7 +145,7 @@ export function Fullscreen_slideshow() {
     }
 
     // close fullscreen mode
-    const btn_close = document.getElementById("fullpage__btn__exit")
+    const btn_close = document.getElementById("fullpage__btn__exit") as HTMLElement;
     btn_close.addEventListener("click", exit_fullPage);
     function exit_fullPage() {
         fullPage.style.opacity = '0';
@@ -153,7 +153,7 @@ export function Fullscreen_slideshow() {
         fullPage.classList.remove("fullpage_active");
         fullPage_bg.classList.remove("fullpage__bg_active");
         fullPage_bg.style.pointerEvents = "none";
-        document.querySelector('#mini_header').classList.remove("mini_header_fullscreen");
+        document.querySelector<HTMLElement>('#mini_header')!.classList.remove("mini_header_fullscreen");
         // Enable scrolling
         document.body.classList.remove('no-scroll');
         // Reveal images in page
@@ -219,9 +219,9 @@ export function Fullscreen_slideshow() {
 
 
 
-    function info_update(target) {
+    function info_update(target : HTMLImageElement) {
         // content excluding space
-        let content = target.parentElement.querySelector(".extra_information").innerHTML.replace(/\s+/g, ' ');
+        let content = target.parentElement!.querySelector<HTMLElement>(".extra_information")!.innerHTML.replace(/\s+/g, ' ');
         console.log(content);
         if (content != "" && content != null) {
             content = content.charAt(0).toUpperCase() + content.slice(1); // capitalize first letter of sentence
