@@ -1,6 +1,8 @@
 @use 'sass:color';
 @use './mixins' as *;
 @use './variables' as *;
+@use '../../variables/colors' as c;
+@use '../../variables/dimensions' as d;
 
 
 // width of all components

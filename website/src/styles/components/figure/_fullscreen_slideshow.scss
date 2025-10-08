@@ -1,6 +1,8 @@
 @use 'sass:color';
 @use './mixins' as *;
 @use './variables' as *;
+@use '../../variables/colors' as c;
+@use '../../variables/dimensions' as d;
 
 /* ============== Fullscreen on click ============== */
 
@@ -106,7 +108,7 @@
   $size: 3vw;
   width: $size;
   height: $size;
-  top: 1vw;
+  top: calc(1vw + d.$header-height-desktop );
   right: 1vw;
   border-width: 0px;
   overflow: hidden;

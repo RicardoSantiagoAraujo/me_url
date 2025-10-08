@@ -1,5 +1,7 @@
 @use './mixins' as *;
 @use './variables' as *;
+@use '../../variables/colors' as c;
+@use '../../variables/dimensions' as d;
 
 $duration: 0.3s;
 $color_inactive: rgba(122, 122, 122, 0.882);
