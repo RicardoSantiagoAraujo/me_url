@@ -45,7 +45,7 @@ To avoid undesired/untested deployments, any code changes should be developed in
 3. Add collection to navigation at **src/components/navigation/Navigation.astro**;
 4. Set translations for **ui** and **routes** for collection at **src/i18n/ui.ts**;
 5. Add collection folder for new collection at \*\*src/collections/[collection-key]/, create entry files inside;
-6. Add components folder for new collection at \*\*src/components/collection/[collection-key]/, create appropriate files inside;
+6. Add components folder for new collection at \*\*src/components/collections/[collection-key]/, create appropriate files inside;
 7. Add collection item page at **src/pages/[lang]/[collection-key]/[...slug].astro**;
 8. For each available language [language], add collection page at **src/pages/[language]/[collection-key]**;
 9. Create the collection **ItemLayout\_[collection-key]** at **src/layouts/collections/**;

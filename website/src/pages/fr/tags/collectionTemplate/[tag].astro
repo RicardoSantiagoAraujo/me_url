@@ -5,7 +5,7 @@ import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts';
 export async function getStaticPaths() {
   return generateTagRoute("collectionTemplate");
 }
-import GenericList from '../../../../components/collection/_generic/GenericList.astro';
+import GenericList from '../../../../components/collections/_generic/GenericList.astro';
 
 const { tag } = Astro.params;
 // console.log(items);

@@ -4,7 +4,7 @@ import {generateTagRoute} from '../../../../scripts/dynamicRoutes.ts';
 export async function getStaticPaths() {
   return generateTagRoute("education");
 }
-import GenericCardList from '../../../../components/collection/_generic/GenericCardList.astro';
+import GenericCardList from '../../../../components/collections/_generic/GenericCardList.astro';
 
 const { tag } = Astro.params;
 ---
