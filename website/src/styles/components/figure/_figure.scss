@@ -1,0 +1,83 @@
+@use 'sass:color';
+@use './mixins' as *;
+@use './variables' as *;
+
+
+// width of all components
+$content_width: 70%;
+
+// Adjust width of break to fit rest of components
+$break_width_adj: 0.9;
+
+// letter spacing in title
+$title_letter_spacing: 0.2rem;
+
+ 
+
+$fig-padding: 1vw;
+.fig,
+.vid {
+    width: 100%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: $fig-padding;
+    border-radius: 1vw;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        cursor: zoom-in;
+        transition: 0.5s;
+
+        &:hover {
+            transform: scale(1.01);
+        }
+    }
+
+
+    iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+        border: none;
+        border-radius: 10px;
+    }
+
+
+    figcaption {
+        font-weight: 500;
+        // text-transform: uppercase;
+        // letter-spacing: 2px;
+        font-size: 0.8em;
+        padding: 1em;
+        text-align: center;
+        color: #fff;
+        background: color.adjust($gray, $lightness: -10%);
+        position: relative;
+
+        .numbering {}
+    }
+}
+
+
+.fig_group {
+    width: 90%;
+    >.fig_wrapper {
+        display: flex;
+        gap:1%;
+
+        .fig_sub {}
+    }
+    .fig_sub{
+        padding: 0 0 1.7%;
+    }
+}
+
+.fig.no_caption figcaption {
+    display: none;
+}
+
+ 
+
+
+

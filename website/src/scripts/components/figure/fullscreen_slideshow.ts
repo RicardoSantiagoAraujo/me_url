@@ -10,15 +10,7 @@ export function Fullscreen_slideshow() {
     }
     scanForImages()
 
-
-    function checkIfGif(img : HTMLImageElement) {
-        if (img.parentElement!.classList.contains("fig_gif")) // check if figure is a gif
-        {
-            return img.src.replace(".png", ".gif");
-        } else {
-            return img.src;
-        }
-    }
+ 
 
     // to pass image into fullscreen background
     const fullPage = document.querySelector('.fullpage') as HTMLElement;
@@ -107,8 +99,7 @@ export function Fullscreen_slideshow() {
             next_img = imgs[0]
         } else {
             var next_img = imgs[arr_position + 1]
-        }
-        fullPage.style.backgroundImage = 'url(' + checkIfGif(next_img) + ')';
+        } 
         // Replacing fullpage caption contents
         updateFullscreenCaption(next_img)
 
@@ -133,8 +124,7 @@ export function Fullscreen_slideshow() {
             var prev_img = imgs[arr_position - 1]
         } else {
             var prev_img = imgs[imgs.length - 1]
-        }
-        fullPage.style.backgroundImage = 'url(' + checkIfGif(prev_img) + ')';
+        } 
         // Replacing fullpage caption contents
         updateFullscreenCaption(prev_img);
 
