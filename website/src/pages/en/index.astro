@@ -37,7 +37,7 @@ const pageSubtitle = ""
       return (
         <div class="collection-container">
           <h3>
-            <a href={`${lang}/${collection}`}><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></a>
+            <a href={`/${lang}/${collection}`}><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
           <ul>{route.map(item=>{
             return (item.params.lang == lang ?
