@@ -5,12 +5,11 @@ export function Fullscreen_slideshow() {
     function scanForImages() {
         // imgs = document.querySelectorAll('#gallery .swiper img, #collections .collections__gallery img');
         imgs = document.querySelectorAll('figure img');
-        console.log(imgs)
         imgs = Array.prototype.slice.call(imgs);
     }
     scanForImages()
 
- 
+
 
     // to pass image into fullscreen background
     const fullPage = document.querySelector('.fullpage') as HTMLElement;
@@ -39,7 +38,7 @@ export function Fullscreen_slideshow() {
                 img.style.opacity = "0";
 
                 // set fullpage background as image
-                fullPage.style.backgroundImage = 'url(' + img.src + ')';
+                fullPage.style.backgroundImage = `url(${img.src})`;
                 //// set starting position of image zoom-in
                 // OPTION 1: Centered on mouse click ++++++++++++++++++
                 // fullPage.style.left = event.clientX + (-img_width/2) + "px";
@@ -62,14 +61,12 @@ export function Fullscreen_slideshow() {
                     fullPage_bg.classList.add("fullpage__bg_active");
                     fullPage.style.width = "100vw";
                     fullPage.style.height = "100vh";
-                    // Disable scrolling
                     document.body.classList.add('no-scroll');
                     // Replacing fullpage caption contents
                     updateFullscreenCaption(img)
 
                     // get transition into fullscreen duration from css
                     let transition_delay = parseFloat(window.getComputedStyle(document.querySelector(".fullpage_active") as HTMLElement).transitionDuration) * 1000;
-                    document.querySelector<HTMLElement>('#mini_header')!.classList.add("mini_header_fullscreen");
                     setTimeout(() => { // SET FINAL PROPERTIES ON FULLSCREEN AT END OF ANIMATION
                         fullPage.style.pointerEvents = "all";
                     }, transition_delay);
@@ -99,7 +96,9 @@ export function Fullscreen_slideshow() {
             next_img = imgs[0]
         } else {
             var next_img = imgs[arr_position + 1]
-        } 
+        }
+        fullPage.style.backgroundImage = `url(${next_img.src})`;
+
         // Replacing fullpage caption contents
         updateFullscreenCaption(next_img)
 
@@ -124,7 +123,8 @@ export function Fullscreen_slideshow() {
             var prev_img = imgs[arr_position - 1]
         } else {
             var prev_img = imgs[imgs.length - 1]
-        } 
+        }
+        fullPage.style.backgroundImage = `url(${prev_img.src})`;
         // Replacing fullpage caption contents
         updateFullscreenCaption(prev_img);
 
@@ -143,7 +143,6 @@ export function Fullscreen_slideshow() {
         fullPage.classList.remove("fullpage_active");
         fullPage_bg.classList.remove("fullpage__bg_active");
         fullPage_bg.style.pointerEvents = "none";
-        document.querySelector<HTMLElement>('#mini_header')!.classList.remove("mini_header_fullscreen");
         // Enable scrolling
         document.body.classList.remove('no-scroll');
         // Reveal images in page
@@ -211,7 +210,9 @@ export function Fullscreen_slideshow() {
 
     function info_update(target : HTMLImageElement) {
         // content excluding space
+        console.log(target);
         let content = target.parentElement!.querySelector<HTMLElement>(".extra_information")!.innerHTML.replace(/\s+/g, ' ');
+        console.log("Raw content:");
         console.log(content);
         if (content != "" && content != null) {
             content = content.charAt(0).toUpperCase() + content.slice(1); // capitalize first letter of sentence

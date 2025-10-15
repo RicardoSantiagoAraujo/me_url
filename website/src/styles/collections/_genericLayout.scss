@@ -3,6 +3,7 @@
 
 $genericLayout-header-height: 20vh;
 
+ 
 .genericLayout-page__header {
     position: relative;
     height: $genericLayout-header-height;
@@ -98,16 +99,15 @@ $genericLayout-header-height: 20vh;
 .genericLayout-page__tags {
     width: 100%;
     position: relative;
-
     &::before {
-        content: "test";
+        content: "";
         background-color: c.$color-black;
         opacity: 0.5;
         transform: translateX(50%);
         right: 50%;
         position: absolute;
         height: 100%;
-        width: 200%;
+        width: 100vw;
         z-index: 0;
     }
 

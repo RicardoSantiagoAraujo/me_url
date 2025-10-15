@@ -16,7 +16,7 @@
   display: block;
   opacity: 0;
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   background-size: auto 100%;
   background-repeat: no-repeat no-repeat;
   background-position: center center;
@@ -54,7 +54,7 @@
   opacity: 0;
   display: block;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100vw;
@@ -108,7 +108,7 @@
   $size: 3vw;
   width: $size;
   height: $size;
-  top: calc(1vw + d.$header-height-desktop );
+  top: calc(1vw + d.$header-height-desktop * 0);
   right: 1vw;
   border-width: 0px;
   overflow: hidden;
@@ -312,6 +312,7 @@ $info_duration: 0.5s;
 
 
 #fullpage__btn__info:hover+#fullpage_extra_information {
+  opacity: 1;
   div {
     $ratio: 0.7;
     animation: fullscreen_text_fade_in $info_duration * (1-$ratio);

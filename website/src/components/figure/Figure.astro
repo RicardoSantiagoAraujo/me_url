@@ -8,6 +8,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{j
 
 
 <figure class="fig">
-    <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={imageData.alt} inferSize={true} class="fig__img"/>
+    <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={imageData.alt} inferSize={true} class="fig__img" data-title=`${imageData.title}` data-caption=`${imageData.caption}`/>
     <FigureCaption captionData={imageData} />
 </figure>
