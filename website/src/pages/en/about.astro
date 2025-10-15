@@ -57,13 +57,14 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
     </Accordion>
 
 
-
-    {Object.values(gp.techstack).length > 0 &&
-      <p>Here are some tools in tech that I use:</p>
-      <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; list-style-type: none; padding: 0;">
-      {Object.values(gp.techstack).map((tool) => <li class="tech">{tool.name}</li>)}
-      </ul>
-    }
+    <Accordion title="My techstack">
+      {Object.values(gp.techstack).length > 0 &&
+        <p>Here are some tools in tech that I use:</p>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; list-style-type: none; padding: 0;">
+        {Object.values(gp.techstack).map((tool) => <li class="tech">{tool.name}</li>)}
+        </ul>
+      }
+    </Accordion>
 
 
 

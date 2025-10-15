@@ -14,9 +14,10 @@ $break_width_adj: 0.9;
 // letter spacing in title
 $title_letter_spacing: 0.2rem;
 
- 
+
 
 $fig-padding: 1vw;
+
 .fig,
 .vid {
     width: 100%;
@@ -64,13 +65,15 @@ $fig-padding: 1vw;
 
 .fig_group {
     width: 90%;
+
     >.fig_wrapper {
         display: flex;
-        gap:1%;
+        gap: 1%;
 
         .fig_sub {}
     }
-    .fig_sub{
+
+    .fig_sub {
         padding: 0 0 1.7%;
     }
 }
@@ -79,7 +82,12 @@ $fig-padding: 1vw;
     display: none;
 }
 
- 
 
 
-
+.fig__img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: white;
+}
