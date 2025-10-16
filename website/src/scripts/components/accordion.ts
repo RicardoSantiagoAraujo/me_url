@@ -20,7 +20,7 @@ export default function accordionScript() {
     // Open panel by default if content is not "TODO" and no "start_collapsed" class
     const startCollapsed = button.classList.contains("start_collapsed");
     const firstContent = button.nextElementSibling?.childNodes[0]?.textContent?.trim().toUpperCase();
-    if (firstContent && firstContent !== "TODO" && !startCollapsed) {
+    if (!startCollapsed) {
       button.click();
     }
   }
@@ -32,4 +32,7 @@ export default function accordionScript() {
   });
 }
 
-accordionScript()
+
+setTimeout(() => {
+  accordionScript()
+}, 200);

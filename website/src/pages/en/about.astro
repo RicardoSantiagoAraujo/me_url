@@ -55,7 +55,7 @@ const aboutFigure = {
     </Accordion>
 
 
-    <Accordion title="My techstack">
+    <Accordion title="My techstack" startCollapsed={false}>
       {Object.values(gp.techstack).length > 0 &&
         <p>Here are some tools in tech that I use:</p>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; list-style-type: none; padding: 0;">
