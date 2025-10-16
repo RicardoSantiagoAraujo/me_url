@@ -2,11 +2,15 @@
 @use '../variables/dimensions' as d;
 
 $genericLayout-header-height: 20vh;
+$genericLayout-header-height-with-img: 33vh;
 
- 
+
 .genericLayout-page__header {
     position: relative;
     height: $genericLayout-header-height;
+    &.with-bg {
+        height: $genericLayout-header-height-with-img;
+    }
 
     .genericLayout-page__header__bg-container {
         width: 100vw;
@@ -34,14 +38,26 @@ $genericLayout-header-height: 20vh;
     .genericLayout-page__header__titles {
         position: relative;
         z-index: 0;
+        height: 100%;
+
+        &:not(.with-subtitle) {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-direction: column;
+        }
 
         h1,
         h2 {
             text-align: left;
             color: c.$color-text;
         }
-        h1{
-            height: 70px;
+
+        h1 {
+            height: 60px;
+        }
+        h2{
+            opacity: 0;
         }
     }
 
@@ -99,6 +115,7 @@ $genericLayout-header-height: 20vh;
 .genericLayout-page__tags {
     width: 100%;
     position: relative;
+
     &::before {
         content: "";
         background-color: c.$color-black;

@@ -17,13 +17,13 @@ const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{j
 frontmatter.lang = currentLang;
 ---
 <BaseLayout>
-  <div class="genericLayout-page__header">
+  <div class=`genericLayout-page__header ${bgImg.meta ? 'with-bg' : ''}`>
     <div class="genericLayout-page__header__bg-container">
       {bgImg.meta &&
       <Image  src={bgImg.img} alt={bgImg.meta.alt} inferSize={true} class="genericLayout-page__header__bg-img"/>
       }
     </div>
-    <div class="genericLayout-page__header__titles">
+    <div class=`genericLayout-page__header__titles ${frontmatter.subtitle && 'with-subtitle'}`>
       <h1>{frontmatter.title}</h1>
       {frontmatter.subtitle && <h2>{frontmatter.subtitle}</h2>}
     </div>
@@ -108,9 +108,10 @@ function appearChars(str: string, elem: HTMLElement, timeBetween: number) {
   })();
 }
 
-var elem = document.querySelector<HTMLElement>('.genericLayout-page__header__titles h1')!;
+var elem = document.querySelector<HTMLElement>('.genericLayout-page__header__titles h2')!;
 var inner_text = elem.innerHTML; // store content
 elem.innerHTML = ""; // empty element
+elem.style.opacity = "1"; // make element visible (was hidden with opacity:0 in CSS)
 var timeBetween = 50;
 setTimeout(() => {
   appearChars(inner_text, elem, timeBetween);
