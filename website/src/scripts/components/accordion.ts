@@ -1,4 +1,4 @@
-export default function AccordionClient() {
+export default function accordionScript() {
   if (typeof window === "undefined") return; // only run in browser
 
   const acc = document.getElementsByClassName("accordion__btn") as HTMLCollectionOf<HTMLElement>;
@@ -31,3 +31,5 @@ export default function AccordionClient() {
     if (id) heading.setAttribute("id", id);
   });
 }
+
+accordionScript()
