@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { generalParameters as gp} from '../../data/_general';
-import { calculateAge, formatWordList } from '../../scripts/utils';
-import Image from 'astro/components/Image.astro';
+import { calculateAge, formatWordList } from '../../scripts/utils'; 
+import Figure from '@/components/figure/Figure.astro';
 import Accordion from '../../components/Accordion.astro';
 const pageTitle = "About me";
 
@@ -10,15 +10,13 @@ const skillColor = "navy";
 const fontWeight = "bold";
 const textCase = "uppercase";
 
-
-const imagePath = gp.portrait;
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,svg}')
-if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,svg}"`);
-
-
+const aboutFigure = {
+  url: gp.portrait,
+  alt: "About me portrait",
+  title: "About me",
+  caption: `A photo of me, ${gp.name}.`
+}
 ---
-
-
 
 <BaseLayout pageTitle={pageTitle}>
     <style  is:global define:vars={{skillColor, fontWeight, textCase}}>
@@ -50,7 +48,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
         </div>
         <div class="about__container__right">
           <div class ="portrait" style="max-width: 300px; margin: 20px 0;">
-          <Image  src={images[imagePath]()} alt={"My portrait"} inferSize={true}/>
+          <Figure imageData={aboutFigure}  showCaption={false} allowZoom={false}/>
           </div>
         </div>
       </div>

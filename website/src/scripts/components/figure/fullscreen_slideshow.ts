@@ -4,7 +4,7 @@ export function Fullscreen_slideshow() {
 
   function scanForImages() {
     // imgs = document.querySelectorAll('#gallery .swiper img, #collections .collections__gallery img');
-    imgs = document.querySelectorAll("figure img");
+    imgs = document.querySelectorAll("figure.fig.allowZoom img");
     imgs = Array.prototype.slice.call(imgs);
   }
   scanForImages();
@@ -191,7 +191,6 @@ export function Fullscreen_slideshow() {
     ".fullpage__btns, #fullpage__caption, #fullpage__btn__exit"
   );
 
-
   // HOVER EFFECT FOR BOTH INFO + META BUTTONS
   [info_btn].forEach((btn) => {
     btn.addEventListener("mouseenter", () => {
@@ -224,12 +223,11 @@ export function Fullscreen_slideshow() {
     info_display.style.opacity = "0";
   });
 
-
   function info_update(target: HTMLImageElement) {
     // content excluding space
     let content = target
       .parentElement!.querySelector<HTMLElement>(".extra_information")!
-      .innerHTML.replace(/\s+/g, " "); 
+      .innerHTML.replace(/\s+/g, " ");
     if (content != "" && content != null) {
       content = content.charAt(0).toUpperCase() + content.slice(1); // capitalize first letter of sentence
       content = content.replace(/<a[^>]*>|<\/a>/g, ""); // remove all anchor tags

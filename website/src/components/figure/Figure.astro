@@ -2,12 +2,12 @@
 import { Image } from 'astro:assets';
 import FigureCaption from './FigureCaption.astro';
 import '../../styles/components/figure/_main.scss';
-const { imageData } = Astro.props;
+const { imageData, showCaption = true, allowZoom = true } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 ---
 
 
-<figure class="fig">
-    <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={imageData.alt} inferSize={true} class="fig__img" data-title=`${imageData.title}` data-caption=`${imageData.caption}`/>
-    <FigureCaption captionData={imageData} />
+<figure class=`fig ${allowZoom && 'allowZoom'} ${!showCaption && 'no_caption'}`>
+    <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={imageData.alt} inferSize={true} class=`fig__img` data-title=`${imageData.title}` data-caption=`${imageData.caption}`/>
+    <FigureCaption captionData={imageData}   />
 </figure>
