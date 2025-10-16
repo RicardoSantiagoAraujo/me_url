@@ -1,5 +1,8 @@
 ---
 import '../../styles/components/figure/_main.scss';
+import Image from 'astro/components/Image.astro';
+import Arrow from '../../icons/ui/arrow.svg';
+import Cross from '../../icons/ui/cross.svg';
 ---
 
 <!-- to view images in fullscreen mode -->
@@ -8,15 +11,15 @@ import '../../styles/components/figure/_main.scss';
     <div class="fullpage_extras">
         <div id="fullpage__caption">Caption container</div>
         <div class="fullpage__btns">
-            <button id="fullpage__btn__prev">
-                <img src="/src/icons/ui/arrow.svg" alt="arrow previous image">
+            <button id="fullpage__btn__prev"> 
+                <Image src={Arrow} alt={"arrow previous image"}  />
             </button>
-            <button id="fullpage__btn__next">
-                <img src="/src/icons/ui/arrow.svg" alt="arrow previous image">
+            <button id="fullpage__btn__next"> 
+                <Image src={Arrow} alt={"arrow next image"}   />
             </button>
         </div>
-        <button id="fullpage__btn__exit">
-            <img src="/src/icons/ui/cross.svg" alt="close fullscreen image" />
+        <button id="fullpage__btn__exit"> 
+            <Image src={Cross} alt={"close fullscreen image"}   />
         </button>
         <div id="fullpage__info_container">
             <button id="fullpage__btn__info"> More </button>
