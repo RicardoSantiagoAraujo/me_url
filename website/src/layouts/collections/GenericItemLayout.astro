@@ -75,6 +75,16 @@ frontmatter.lang = currentLang;
 
   <p><em>{frontmatter.description}</em></p>
 
+  {frontmatter.descriptionList &&  frontmatter.descriptionList.length > 0 ?
+  <ul class="descriptionList">
+  {frontmatter.descriptionList?.map((item: any) =>
+  <li >
+  {item.item}
+  </li>
+  )}
+  </ul> : ""}
+
+
   <div class="genericLayout-page__images">
     {frontmatter.images?.map((item: any) => item.include && <div class="genericLayout-page__images__image-container">
     <Figure imageData={item} />

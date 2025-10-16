@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { generalParameters as gp} from '../../data/_general';
-import { calculateAge, formatWordList } from '../../scripts/utils'; 
+import { calculateAge, formatWordList } from '../../scripts/utils';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '../../components/Accordion.astro';
 const pageTitle = "About me";
@@ -59,7 +59,7 @@ const aboutFigure = {
       {Object.values(gp.techstack).length > 0 &&
         <p>Here are some tools in tech that I use:</p>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; list-style-type: none; padding: 0;">
-        {Object.values(gp.techstack).map((tool) => <li class="tech">{tool.name}</li>)}
+        {Object.values(gp.techstack).map((tool) => <li class="tech"><a href={tool.link} style="text-decoration: none; color: black">{tool.name}</a></li>)}
         </ul>
       }
     </Accordion>

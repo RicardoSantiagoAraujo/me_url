@@ -31,7 +31,7 @@ definition[collection] = defineCollection({
         z.object({
           item: z.string(),
         })
-      ),
+      ).nullable().optional(),
       externalLink: z.string().nullable().optional(),
       dateStart: z.date().nullable().optional(),
       dateEnd: z.date().nullable().optional(),
