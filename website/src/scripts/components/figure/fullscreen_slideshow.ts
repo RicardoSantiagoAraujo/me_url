@@ -4,8 +4,7 @@ export function Fullscreen_slideshow() {
 
     function scanForImages() {
         // imgs = document.querySelectorAll('#gallery .swiper img, #collections .collections__gallery img');
-        imgs = document.querySelectorAll('figure img');
-        console.log(imgs)
+        imgs = document.querySelectorAll('figure img'); 
         imgs = Array.prototype.slice.call(imgs);
     }
     scanForImages()

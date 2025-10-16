@@ -1,5 +1,6 @@
 ---
 import '../styles/components/_accordion.scss';
+import AccordionClient from "../scripts/components/accordion";
 const { title } = Astro.props;
 ---
 
@@ -13,4 +14,4 @@ const { title } = Astro.props;
     </div>
 </div>
 <!-- Load client-side JS -->
-<script type="module"  src="/src/scripts/components/accordion.ts"></script>
+<AccordionClient client:load />
