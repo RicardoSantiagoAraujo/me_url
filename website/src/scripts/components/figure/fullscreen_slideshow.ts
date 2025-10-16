@@ -136,6 +136,7 @@ export function Fullscreen_slideshow() {
   ) as HTMLElement;
   btn_prev.addEventListener("click", prevImage);
 
+
   function prevImage() {
     var arr_position = [...imgs].indexOf(current_img); // find it´s index
     if (arr_position >= 1) {
@@ -151,6 +152,12 @@ export function Fullscreen_slideshow() {
     let match = prev_img.src.match(/[a-zA-Z0-9\-_]+\.(?:jpg|png|jpeg|svg)/);
     // updating info text with info of new image
     info_update(prev_img);
+  }
+
+  // hide next/prev buttons if only one image
+  if (imgs.length == 1) {
+    btn_prev.style.display = "none";
+    btn_next.style.display = "none";
   }
 
   // close fullscreen mode
