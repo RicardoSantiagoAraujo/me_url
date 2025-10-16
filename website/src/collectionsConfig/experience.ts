@@ -5,6 +5,9 @@ import { z, defineCollection } from "astro:content";
 import { collectionBase } from "./collectionTools/collectionBase.ts";
 import { imageBase } from "./collectionTools/image.ts";
 import { excludedFolder } from "../options.config.ts";
+import { tag } from "./collectionTools/tag.ts";
+import { tech } from "./collectionTools/tech.ts";
+import { field } from "./collectionTools/field.ts";
 
 // Define a `loader` and `schema` for collection
 export const definition: Record<string, any> = {};
@@ -36,31 +39,10 @@ definition[collection] = defineCollection({
       contract: z.string().nullable().optional(),
       location: z.string().nullable().optional(),
       finished: z.boolean().nullable().optional(),
-      images: z.array(imageBase),
-      tags: z.array(
-        z.object({
-          name: z.string(),
-          include: z.boolean(),
-        })
-      ),
-      fields: z
-        .array(
-          z.object({
-            name: z.string(),
-            include: z.boolean(),
-          })
-        )
-        .nullable()
-        .optional(),
-      techstack: z
-        .array(
-          z.object({
-            id: z.string(),
-            include: z.boolean(),
-          })
-        )
-        .nullable()
-        .optional(),
+      images: z.array(imageBase).nullable().optional(),
+      tags: z.array(tag).nullable().optional(),
+      fields: z.array(field).nullable().optional(),
+      techstack: z.array(tech).nullable().optional(),
     })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });

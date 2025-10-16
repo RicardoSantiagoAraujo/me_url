@@ -1,10 +1,10 @@
 @use '../variables/colors' as c;
-@use '../variables/dimensions' as d; 
+@use '../variables/dimensions' as d;
 
 
 #btn-back-to-top {
     position: fixed;
-    z-index: 0;
+    z-index: 10;
     bottom: 5px;
     right: 10px;
     width: 3vw;
