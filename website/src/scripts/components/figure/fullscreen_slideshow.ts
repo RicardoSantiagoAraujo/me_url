@@ -2,6 +2,7 @@ export function Fullscreen_slideshow() {
   /////////////////// Fullscreen images on click ///////////////////
   var imgs: NodeListOf<HTMLImageElement> | HTMLImageElement[] = [];
 
+
   function scanForImages() {
     // imgs = document.querySelectorAll('#gallery .swiper img, #collections .collections__gallery img');
     imgs = document.querySelectorAll("figure.fig.allowZoom img");

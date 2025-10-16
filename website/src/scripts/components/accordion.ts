@@ -1,13 +1,15 @@
-  //////////////////////////////////////////////////////////////////////////////
-  //  Accordion panels
+export default function accordionScript() {
+  if (typeof window === "undefined") return; // only run in browser
 
-  var acc = document.getElementsByClassName("accordion__btn") as HTMLCollectionOf<HTMLElement>;
-  var i;
+  const acc = document.getElementsByClassName("accordion__btn") as HTMLCollectionOf<HTMLElement>;
 
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
+  for (let i = 0; i < acc.length; i++) {
+    const button = acc[i];
+
+    // Click toggle behavior
+    button.addEventListener("click", function () {
       this.classList.toggle("accordion__btn--active");
-      var panel = this.nextElementSibling! as HTMLElement;
+      const panel = this.nextElementSibling as HTMLElement;
       if (panel.style.maxHeight) {
         panel.style.maxHeight = "";
       } else {
@@ -15,19 +17,19 @@
       }
     });
 
-    // click on load to start out open if there is content other than TODO or specified in class
-    let start_collapsed = acc[i].classList.contains("start_collapsed") // class to collapse by default on load
-    let first_content = acc[i].nextElementSibling!.childNodes[0]!.textContent!.trim().toUpperCase() // content of very first node
-    // console.log(first_content)
-    console.log(start_collapsed)
-    if (first_content != "TODO" && !start_collapsed) // exclusion criteria: panel must have "TODO" (and nothing more) as content of very first node AND not have the start_collapsed class
-      acc[i].click()
+    // Open panel by default if content is not "TODO" and no "start_collapsed" class
+    const startCollapsed = button.classList.contains("start_collapsed");
+    const firstContent = button.nextElementSibling?.childNodes[0]?.textContent?.trim().toUpperCase();
+    if (firstContent && firstContent !== "TODO" && !startCollapsed) {
+      button.click();
+    }
   }
 
-
-  // Automatic add anchors to headings based on title text
+  // Add anchors to headings based on title text
   document.querySelectorAll(".accordion__title").forEach((heading) => {
-    // console.log(heading)
-    let id = heading.innerHTML.trim().toLowerCase().replaceAll(" ", "_")
-    heading.setAttribute("id", id)
-  })
+    const id = heading.textContent?.trim().toLowerCase().replaceAll(" ", "_");
+    if (id) heading.setAttribute("id", id);
+  });
+}
+
+accordionScript()
