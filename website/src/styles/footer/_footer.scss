@@ -3,6 +3,7 @@
 @use 'sass:color';
 
 footer {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +13,7 @@ footer {
     padding-bottom: 1rem;
     background-color: c.$color_footer_bg;
     min-height: d.$footer-height-desktop;
+    overflow: hidden;
 
     a {
         color: c.$color-footer-text;
@@ -51,7 +53,7 @@ footer {
 
     a {
         color: c.$color-footer-text;
-        text-decoration: none; 
+        text-decoration: none;
 
         i {
             padding-right: 5px;

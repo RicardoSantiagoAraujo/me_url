@@ -32,12 +32,13 @@ header {
   justify-content: space-between;
   align-content: center;
   height: 100%;
+  width: 100%;
   background-color: c.$color_header_bg;
 }
 
 
 
-
+// ==============  Media Query for SMALLER screens
 @media screen and (max-width: 636px) {
   .header__panel {
     padding: 0px;
