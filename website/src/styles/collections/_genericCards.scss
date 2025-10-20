@@ -259,7 +259,7 @@ $footer-height: 12%;
                     transition: 0.3s ease-in-out;
 
                     &:hover {
-                        color: color.change(c.$color-text, $lightness: -100%);
+                        color: color.change(c.$color-text, $lightness: 0%);
                     }
                 }
             }
