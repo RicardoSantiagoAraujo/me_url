@@ -27,6 +27,7 @@ body {
   // // max-width: 80ch;
   padding: 0rem;
   line-height: 1.5;
+  overflow: hidden;
 }
 
 .page-container {
@@ -53,7 +54,7 @@ h1 {
 }
 
 
-
+// ==============  Media Query for SMALLER screens
 @media screen and (max-width: d.$mobile-screen-width-threshold) {
   h1 {
 
@@ -67,7 +68,7 @@ h1 {
   }
 }
 
-
+// ==============  Media Query for LARGER screens
 @media screen and (min-width: d.$mobile-screen-width-threshold) {
   h1 {
     margin: 0;

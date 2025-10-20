@@ -44,7 +44,7 @@ html {
     scroll-behavior: smooth;
 }
 
-
+// ==============  Media Query for SMALLER screens
 @media screen and (max-width: d.$mobile-screen-width-threshold) {
     #btn-back-to-top {
         display: none;
