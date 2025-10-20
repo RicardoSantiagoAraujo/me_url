@@ -125,6 +125,7 @@ nav {
   // border-bottom: 1px solid c.$color-primary;
   // background-color: color.scale(c.$color-bg, $lightness: 10%);
   position: relative;
+
   // Tappering line
   &:before {
     content: "";
@@ -175,7 +176,7 @@ nav {
   top: 0px;
   left: 50%;
   transform: translate(-50%, 0%);
-  width: 50vw;
+  width: d.$header__center-width;
   background-color: c.$color-white;
   box-shadow: 0px 0px 10px c.$color-black;
 
@@ -226,7 +227,7 @@ nav {
 
 
 // ==============  Media Query for LARGER screens
-@media screen and (min-width: 636px) {
+@media screen and (min-width: d.$mobile-screen-width-threshold) {
 
   #header__bar {
     &:after {

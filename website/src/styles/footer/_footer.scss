@@ -19,9 +19,11 @@ footer {
         color: c.$color-footer-text;
         text-decoration: none;
     }
+
     position: relative;
+
     // Tappering line
-    &:after{
+    &:after {
         content: "";
         position: absolute;
         top: 0;
@@ -31,7 +33,7 @@ footer {
         border-left: $taper solid transparent;
         border-right: $taper solid transparent;
 
-        }
+    }
 }
 
 
@@ -96,7 +98,7 @@ footer {
 
 
 
-@media screen and (max-width: 636px) {
+@media screen and (max-width: d.$mobile-screen-width-threshold) {
     footer {
         padding: 2px;
     }

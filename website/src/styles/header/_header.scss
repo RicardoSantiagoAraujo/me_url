@@ -39,7 +39,7 @@ header {
 
 
 // ==============  Media Query for SMALLER screens
-@media screen and (max-width: 636px) {
+@media screen and (max-width: d.$mobile-screen-width-threshold) {
   .header__panel {
     padding: 0px;
     width: d.$header__panel-width;
@@ -77,7 +77,7 @@ header {
 
 
 // ==============  Media Query for LARGER screens
-@media screen and (min-width: 636px) {
+@media screen and (min-width: d.$mobile-screen-width-threshold) {
   header {
     // background-color: c.$color-black;
     width: 100%;
