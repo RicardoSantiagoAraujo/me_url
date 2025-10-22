@@ -40,6 +40,8 @@ definition[collection] = defineCollection({
       location: z.string().nullable().optional(),
       finished: z.boolean().nullable().optional(),
       images: z.array(imageBase).nullable().optional(),
+      idMainImg: z.string().nullable().optional(),
+      idBgImg: z.string().nullable().optional(),
       tags: z.array(tag).nullable().optional(),
       fields: z.array(field).nullable().optional(),
       techstack: z.array(tech).nullable().optional(),
