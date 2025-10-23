@@ -1,3 +1,7 @@
+/**
+ * Handles collapsible captions functionality.
+ * @param collapsibleElement - The collapsible element to activate.
+ */
 export function activateCollapsibleCaptions(collapsibleElement: HTMLElement) : void {
     // if the value is an empty string, remove collapsible
     if (collapsibleElement.nextElementSibling!.innerHTML.replace(/\s+/g,'') == ""){

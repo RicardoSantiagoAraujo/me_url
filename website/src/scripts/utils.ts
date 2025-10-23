@@ -1,3 +1,11 @@
+/**
+ * Calculates the age based on the provided birth date.
+ * 
+ * @param birthYear - The year of birth.
+ * @param birthMonth - The month of birth (1-12).
+ * @param birthDay - The day of birth (1-31).
+ * @returns The calculated age in years.
+ */
 export function calculateAge(
   birthYear: number,
   birthMonth: number,
@@ -20,6 +28,12 @@ export function calculateAge(
   return age;
 }
 
+/**
+ * Formats an array of words into a human-readable list.
+ * 
+ * @param words - Array of words to format into a list.
+ * @returns A formatted string representing the list of words.
+ */
 export function formatWordList(words: string[]): string {
   const length = words.length;
 
@@ -32,6 +46,13 @@ export function formatWordList(words: string[]): string {
   return `${allButLast}, and ${last}`;
 }
 
+/**
+ * Retrieves an image and its metadata from a specified data object.
+ * 
+ * @param whichImgId - "idMainImg" or "idBgImg"
+ * @param data - The data object containing image information.
+ * @returns An object containing the image and its metadata.
+ */
 export function getImageFromZArray(
   whichImgId: "idMainImg" | "idBgImg",
   data: any

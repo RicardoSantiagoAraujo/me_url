@@ -1,8 +1,13 @@
+/**
+ * Handles fullscreen slideshow functionality for images within figures.
+ */
 export function Fullscreen_slideshow() {
   /////////////////// Fullscreen images on click ///////////////////
   var imgs: NodeListOf<HTMLImageElement> | HTMLImageElement[] = [];
 
-
+  /**
+   * Scans the document for images within figures that have the 'allowZoom' class.
+   */
   function scanForImages() {
     // imgs = document.querySelectorAll('#gallery .swiper img, #collections .collections__gallery img');
     imgs = document.querySelectorAll("figure.fig.allowZoom img");
@@ -29,6 +34,9 @@ export function Fullscreen_slideshow() {
   ) as HTMLElement;
 
   var current_img: HTMLImageElement;
+  /**
+   * Initializes click event listeners on images to enable fullscreen slideshow functionality.
+   */
   function getImgs() {
     //
     // console.log(imgs);
@@ -89,6 +97,10 @@ export function Fullscreen_slideshow() {
     });
   }
 
+  /**
+   *  Updates the caption in fullscreen mode based on the provided image.
+   * @param img - The image element whose caption is to be updated.
+   */
   function updateFullscreenCaption(img: HTMLImageElement) {
     // Replacing fullpage caption contents
     fullPage_caption.innerHTML =
@@ -105,6 +117,9 @@ export function Fullscreen_slideshow() {
   ) as HTMLElement;
   btn_next.addEventListener("click", nextImage);
 
+  /**
+   * Advances to the next image in fullscreen mode.
+   */
   function nextImage() {
     imgs = Array.prototype.slice.call(imgs);
     var arr_position = imgs.indexOf(current_img); // find it´s index
@@ -136,7 +151,9 @@ export function Fullscreen_slideshow() {
   ) as HTMLElement;
   btn_prev.addEventListener("click", prevImage);
 
-
+  /**
+   * Moves to the previous image in fullscreen mode.
+   */
   function prevImage() {
     var arr_position = [...imgs].indexOf(current_img); // find it´s index
     if (arr_position >= 1) {

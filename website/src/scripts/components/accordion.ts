@@ -1,4 +1,8 @@
-export default function accordionScript() {
+/**
+ * Handles accordion functionality for collapsible sections.
+ * @returns void
+ */
+export default function accordionScript() : void {
   if (typeof window === "undefined") return; // only run in browser
 
   const acc = document.getElementsByClassName("accordion__btn") as HTMLCollectionOf<HTMLElement>;

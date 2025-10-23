@@ -96,8 +96,12 @@ frontmatter.lang = currentLang;
 </BaseLayout>
 
 <script>
-//////////////////////////////////////////////////////////////////////////////
-/** make text appear in the innerHTML of the element, one character at a time per timeBetween */
+/**
+ * Handles the appearance of characters in the specified element.
+ * @param str - The string to display.
+ * @param elem - The element to update.
+ * @param timeBetween - The time interval between each character.
+ */
 function appearChars(str: string, elem: HTMLElement, timeBetween: number) {
   var index = -1;
   (function go() {

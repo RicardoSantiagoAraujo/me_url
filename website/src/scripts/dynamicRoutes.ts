@@ -1,10 +1,15 @@
 // Functins used to dynamically generate routes for specified collections in Astro.
 
 import { getCollection, render } from "astro:content";
-import { collections } from "../content.config.ts";
-import { object } from "astro:schema";
+import { collections } from "../content.config.ts"; 
 
-// Creating a page for each item in a collection, generating dynamic routes.
+ 
+/**
+ * Generates dynamic routes for items in a specified collection.
+ * 
+ * @param collection_name - The name of the collection to generate routes for.
+ * @returns An array of route parameters and props for each item.
+ */
 export async function generateItemRoutes(
   collection_name: keyof typeof collections
 ) {
@@ -25,7 +30,12 @@ export async function generateItemRoutes(
   return paths;
 }
 
-// Creating a page for each tag in a collection, filtering items by tags.
+/**
+ * Generates dynamic routes for tags in a specified collection.
+ * 
+ * @param collection_name - The name of the collection to generate tag routes for.
+ * @returns An array of route parameters and props for each tag.
+ */
 export async function generateTagRoute(
   collection_name: keyof typeof collections
 ) {

@@ -6,7 +6,7 @@ Online portfolio template built with Astro for projects.
 
 #### Initial set-up
 The first time setting up me_url, go inside the **website** folder install all necessary packages.
-```
+``` bash
 npm intall
 ```
 
@@ -14,7 +14,7 @@ npm intall
 
 Website uses the SSG Astro. To lauch it locally for dev, navigate into the **website** folder and run
 
-```
+``` bash
 npm run dev
 ```
 
@@ -22,12 +22,12 @@ npm run dev
 
 To create a local build, run:
 
-```
+``` bash
 npm run build
 ```
 
 You can preview the built website:
-```
+``` bash
 npm run preview
 ```
 #### Deployment
@@ -56,3 +56,13 @@ To avoid undesired/untested deployments, any code changes should be developed in
 **.md** files in Astro are plain Markdown—simple, static, and can’t use components or imported assets, while **.mdx** files allow JSX, component imports, and optimized images, offering more dynamic content at the cost of slightly more complexity.
 Use **.md** for simple, static content like plain blog posts, documentation, or tutorials where you don’t need components or imported assets.
 Use **.mdx** for dynamic or interactive content where you want to embed components, import images from /src/assets, or include JSX/interactive elements.
+
+
+#### Documentation with JSDoc
+JSDoc 3 is an API documentation generator for JavaScript/Typescript, similar to Javadoc or phpDocumentor. You add documentation comments directly to your source code, right alongside the code itself. The JSDoc tool will scan your source code and generate an HTML documentation website for you.
+
+Once your code is commented, you can use the JSDoc 3 tool to generate an HTML website from your source files.
+
+``` bash
+jsdoc book.js
+```
