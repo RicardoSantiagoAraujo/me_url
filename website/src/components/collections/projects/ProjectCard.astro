@@ -5,10 +5,10 @@ import TechstackIcon from "../../TechstackIcon.astro";
 import Image from "astro/components/Image.astro";
 import {getImageFromZArray} from '../../../scripts/utils';
 
-const lang = getLangFromUrl(Astro.url);
+const lang : string = getLangFromUrl(Astro.url);
 
-const cardImg = getImageFromZArray("idMainImg", data)
-const bgImg = getImageFromZArray("idBgImg", data)
+const cardImg   = getImageFromZArray("idMainImg", data);
+const bgImg = getImageFromZArray("idBgImg", data);
 
 
 ---

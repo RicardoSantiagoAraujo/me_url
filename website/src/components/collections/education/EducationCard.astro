@@ -3,24 +3,25 @@ const {data} = Astro.props;
 import { getLangFromUrl } from "../../../i18n/utils";
 import TechstackIcon from "../../TechstackIcon.astro";
 import Image from "astro/components/Image.astro";
-import {getImageFromZArray} from '../../../scripts/utils';
+import {getImageFromZArray, getDateRangeString} from '../../../scripts/utils'; 
+const lang : string = getLangFromUrl(Astro.url);
 
-const lang = getLangFromUrl(Astro.url);
+const cardImg   = getImageFromZArray("idMainImg", data);
+const bgImg = getImageFromZArray("idBgImg", data);
 
-// const cardImg = getImageFromZArray("idMainImg", data)
-// const bgImg = getImageFromZArray("idBgImg", data)
-
-
+ 
+const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
 ---
 <li class="collection-item">
     <div  class="collection-item__header">
         <a href={data.url}>
             <span class="collection-item__header__title">{data.title}</span>
-            <!-- {data.subtitle &&  <span class="collection-item__header__subtitle">: {data.subtitle}</span>} -->
+            {data.institution &&  <span class="collection-item__header__subtitle">: {data.institution}</span>}
+            {data.location &&  <span class="collection-item__header__subtitle">: {data.location}</span>} 
+            {<span>{dateRangeString}</span>}
         </a>
         <div class="collection-item__header__link-group">
             <a href={data.url} class="collection-item__header__repository"><i class="fa-solid fa-book-open"></i></a>
-            <!-- {data.repository && <a href={"https://"+data.repository} class="collection-item__header__repository"><i class="fa-brands fa-github"></i></a>} -->
             {data.externalLink && <a href={"https://"+data.externalLink} class="collection-item__header__external-link"><i class="fas fa-external-link"></i></a>}
         </div>
     </div>
@@ -34,14 +35,14 @@ const lang = getLangFromUrl(Astro.url);
                 </ul>
             </div>
         </div>
-            <!-- {cardImg.meta &&<div class="collection-item__body__right">
+            {cardImg.meta &&<div class="collection-item__body__right">
                 <div class="collection-item__body__image-container">
                     <Image  src={cardImg.img} alt={cardImg.meta.alt} inferSize={true}/>
                 </div>
             </div>}
             {bgImg.meta && <div class="collection-item__body__bg-image-container">
                 <Image  src={bgImg.img} alt={bgImg.meta.alt} inferSize={true} class="collection-item__body__bg-image"/>
-            </div>} -->
+            </div>}
     </div>
     <div class="collection-item__footer">
         <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>

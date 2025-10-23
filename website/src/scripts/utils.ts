@@ -44,3 +44,25 @@ export function getImageFromZArray(
   const img = meta ? (images[meta.url] ? images[meta.url]() : meta.url) : null;
   return { img, meta };
 }
+
+
+
+// Handling date display
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "2-digit",
+  }).format(date)
+  .replace("-", "/"); // Convert "YYYY-MM" → "YYYY/MM";
+};
+
+export function getDateRangeString(dateStart: string, dateEnd?: string | null): string {
+  let dateRange : string;
+  if (!dateEnd) {
+    dateRange = `${formatDate(dateStart)} - Present`;
+  } else {
+    dateRange = `${formatDate(dateStart)} - ${formatDate(dateEnd)}`;
+  }
+  return dateRange;
+}
