@@ -6,11 +6,7 @@
 // PAGES
 @use 'home/_home';
 @use 'about/_about';
-// COMPONENTS
-@use 'header/header';
-@use 'collections/_genericCards';
-@use 'footer/footer';
-// @use 'timetable/timetable';
+// OTHERS  
 @use 'dark_mode';
 @use 'tooltip';
 

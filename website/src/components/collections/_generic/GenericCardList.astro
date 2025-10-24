@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import { getLangFromUrl } from "../../../i18n/utils";
-import type { arrayOutputType } from "astro:schema";
+import { getLangFromUrl } from "../../../i18n/utils"; 
+import "./../../../styles/collections/_genericCards.scss";
 const componentMap = {
   projects:   import('../projects/ProjectCard.astro') ,
   experience:    import('../experience/ExperienceCard.astro'),
