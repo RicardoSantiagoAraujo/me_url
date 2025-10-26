@@ -4,13 +4,14 @@ import "./../../../styles/collections/education/_cards.scss";
 import { getLangFromUrl } from "../../../i18n/utils";
 import TechstackIcon from "../../TechstackIcon.astro";
 import Image from "astro/components/Image.astro";
-import {getImageFromZArray, getDateRangeString} from '../../../scripts/utils'; 
+import Figure from "@/components/figure/Figure.astro";
+import {getImageFromZArray, getDateRangeString} from '../../../scripts/utils';
 const lang : string = getLangFromUrl(Astro.url);
 
 const cardImg   = getImageFromZArray("idMainImg", data);
 const bgImg = getImageFromZArray("idBgImg", data);
 
- 
+
 const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
 ---
 <li class="collection-item">
@@ -18,7 +19,7 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
         <a href={data.url}>
             <span class="collection-item__header__title">{data.title}</span>
             {data.institution &&  <span class="collection-item__header__subtitle">: {data.institution}</span>}
-            {data.location &&  <span class="collection-item__header__subtitle">: {data.location}</span>} 
+            {data.location &&  <span class="collection-item__header__subtitle">: {data.location}</span>}
             {<span>{dateRangeString}</span>}
         </a>
         <div class="collection-item__header__link-group">
@@ -36,13 +37,13 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
                 </ul>
             </div>
         </div>
-            {cardImg.meta &&<div class="collection-item__body__right">
+            {cardImg &&<div class="collection-item__body__right">
                 <div class="collection-item__body__image-container">
-                    <Image  src={cardImg.img} alt={cardImg.meta.alt} inferSize={true}/>
+                    <Figure imageData={cardImg} showCaption={false} allowZoom={true}/>
                 </div>
             </div>}
-            {bgImg.meta && <div class="collection-item__body__bg-image-container">
-                <Image  src={bgImg.img} alt={bgImg.meta.alt} inferSize={true} class="collection-item__body__bg-image"/>
+            {bgImg && <div class="collection-item__body__bg-image-container">
+                <Image  src={bgImg.url} alt={bgImg.alt} inferSize={true} class="collection-item__body__bg-image"/>
             </div>}
     </div>
     <div class="collection-item__footer">
