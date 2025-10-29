@@ -6,7 +6,7 @@ export const imageBase = z.object({
   title: z.string(),
   id: z.string(),
   include: z.boolean(),
-  caption: z.string(),
   url: z.string(),
-  alt: z.string(),
+  caption: z.string().nullable().optional(),
+  alt: z.string().nullable().optional(),
 });
