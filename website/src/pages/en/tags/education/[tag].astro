@@ -10,5 +10,5 @@ const { tag } = Astro.params;
 ---
 <BaseLayout pageTitle={tag}>
   <p>Education tagged with {tag}</p>
-  <GenericCardList listItemComponent="EducationCard" collectionName="education"/>
+  <GenericCardList listItemComponent="EducationCard" collectionName="education" orderBy={null} sortOrder = "desc"/>
 </BaseLayout>
