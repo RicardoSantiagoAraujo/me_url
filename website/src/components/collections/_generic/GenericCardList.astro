@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
-import "./../../../styles/collections/_genericCards.scss";
+import { proccessCollectionItems } from '@/scripts/collections.ts';
+import "@/styles/collections/_genericCards.scss";
 const componentMap = {
   projects:   import('../projects/ProjectCard.astro') ,
   experience:    import('../experience/ExperienceCard.astro'),
@@ -12,41 +13,15 @@ const ListItem = (await componentMap[targetCollectionName]).default;
 
 const collectionName = Astro.props.collectionName as keyof typeof import('@/content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
+const orderBy = Astro.props.orderBy || null;
+const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
 
 var { items } = Astro.props;
 // If no items are passed, fetch the whole collection by default
 if (!items) {
   items = await getCollection(collectionName);
 }
-
-const processedItems = items
-       // filter out excluded items
-      .filter((item: any)=> item.data.include !== false)
-      // filter items that match the current language
-      .filter((item: any) => item.id.split('/')[0] === lang)
-
-// Conditionally sort items by a specified field
-const orderBy = Astro.props.orderBy || null;
-const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
-const sortedItems = orderBy
-  ? [...processedItems].sort((a: any, b: any) => {
-      // Access the value of the sortBy property on each item
-      const getValue = (obj: any, path: string) =>
-        path.split('.').reduce((acc, key) => acc?.[key], obj);
-
-      const aValue = getValue(a, orderBy) ?? '';
-      const bValue = getValue(b, orderBy) ?? '';
-
-      // Perform string comparison or fallback to number comparison
-      if (typeof aValue === 'string' && typeof bValue === 'string') {
-        return aValue.localeCompare(bValue);
-      }
-      return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
-    })
-  : processedItems;
-
-// Reverse sort order if sortOrder is "desc"
-const finalItems = sortOrder === 'desc' ? sortedItems.reverse() : sortedItems;
+const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
 
 ---
   <ul class="collection-card-list">

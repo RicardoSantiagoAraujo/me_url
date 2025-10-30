@@ -3,8 +3,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Greeting from '@/components/Greeting'; ;
 import ParallaxImage from '@/components/ParallaxImage.astro';
 import myImg from "@/assets/placeholders/placeholder_image.jpg";
-import { collections } from '@/content.config';
-const keys = Object.keys(collections) as (keyof typeof collections)[];
+import {collectionsMetadata , collections} from '@/content.config';
+import { proccessCollectionItems } from '@/scripts/collections';
+const collections_list = Object.entries(collectionsMetadata);
 import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 import { ui , defaultLang} from "@/i18n/ui";
@@ -26,18 +27,29 @@ const pageSubtitle = ""
   <section class="home-collections-wrapper">
     <h2>{"Site contents"}</h2>
     <div class="home-collections">
-    {keys.map(async collection =>{
-      var route = await generateItemRoutes(collection);
+    {collections_list.map(async ([key, val]) =>{
+      var route = await generateItemRoutes(key as keyof typeof collections);
       route = route.filter(item=>item.params.lang == lang); // include only current lang
       route = route.filter(item=>item.props.data.include == true); // include only included items
-      route = route.sort((a, b) => {
-        return a.params.slug!.localeCompare(b.params.slug!, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
-      });
-      // console.log(route);
+      // sort by specified field
+      if (val.orderBy){
+        route = route.sort((a, b) => {
+          const aValue = a.props.data[val.orderBy as keyof typeof a.props.data];
+          const bValue = b.props.data[val.orderBy as keyof typeof b.props.data];
+          if (aValue < bValue) return -1;
+          if (aValue > bValue) return 1;
+          return 0;
+        });
+      }
+      // Reverse order if descending
+      if (val.sortOrder == "desc"){
+        route = route.reverse();
+      }
+
       return (
         <div class="collection-container">
           <h3>
-            <a href={`/${lang}/${collection}`}><span class="collection-title">{collection}</span> <span class="collection-item-count">({route.length})</span></a>
+            <a href={`/${lang}/${key}`}><span class="collection-title">{key}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
           <ul>{route.map(item=>{
             return (item.params.lang == lang ?
