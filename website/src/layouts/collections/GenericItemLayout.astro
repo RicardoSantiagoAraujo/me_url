@@ -7,7 +7,7 @@ import Image from "astro/components/Image.astro";
 import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collections/_genericLayout.scss';
 import Figure from '@/components/figure/Figure.astro';
-
+import Accordion from '@/components/Accordion.astro';
 
 const { frontmatter, collection } = Astro.props;
 
@@ -86,11 +86,14 @@ frontmatter.lang = currentLang;
   </ul> : ""}
 
 
+<Accordion title="Figures" startCollapsed={false}>
   <div class="genericLayout-page__images">
     {frontmatter.images?.map((item: any) => item.include && <div class="genericLayout-page__images__image-container">
     <Figure imageData={item} />
     </div> )}
   </div>
+</Accordion>
+
 
 
   <slot /> <!-- slot injects contents of .md file  -->
