@@ -3,28 +3,22 @@ import { definition as blog } from "./collectionsConfig/blog";
 import { definition as projects  } from "./collectionsConfig/projects";
 import { definition as collectionTemplate } from "./collectionsConfig/collectionTemplate";
 import { definition as experience} from "./collectionsConfig/experience";
-import { definition as education} from "./collectionsConfig/education";
+import { definition as education} from "./collectionsConfig/education"; 
 
 
- // Export a single `collections` object to register your collection(s)
-export const collections = {
-  // Template collection that can be used as base to create new collections:
-  collectionTemplate: collectionTemplate.collectionTemplate ,
-  // My collections:
-  blog: blog.blog,
-  projects: projects.projects ,
-  experience: experience.experience,
-  education: education.education
-};
-
-
-//Metadata for each collection defined in collections object
+//Metadata for each collection
 export const collectionsMetadata = {
   // Template collection that can be used as base to create new collections:
-  collectionTemplate: collectionTemplate.collectionTemplate ,
+  collectionTemplate: {{ definition: collectionTemplate.collectionTemplate , include: true, orderBy: null, sortOrder: "asc" } as CollectionMetadata },
   // My collections:
-  blog: { metadata: { include: true, orderBy: null, orderDirection: "desc" } as CollectionMetadata },
-  projects: { metadata: { include: true, orderBy: null, orderDirection: "desc" } as CollectionMetadata },
-  experience: { metadata: { include: true, orderBy: null, orderDirection: "desc" } as CollectionMetadata },
-  education: { metadata: { include: true, orderBy: null, orderDirection: "desc" } as CollectionMetadata },
+  blog: {definition: blog.blog , include: true, orderBy: null, sortOrder: "desc" } as CollectionMetadata },
+  projects: {definition: projects.projects , include: true, orderBy: null, sortOrder: "desc" } as CollectionMetadata },
+  experience: {definition: experience.experience , include: true, orderBy: null, sortOrder: "desc" } as CollectionMetadata },
+  education: {definition: education.education , include: true, orderBy: null, sortOrder: "desc" } as CollectionMetadata },
 };
+
+// Generate collections dictionary from metadata definitions
+export const collections = Object.entries(collectionsMetadata).reduce((acc, [key, value]) => ({
+  ...acc,
+  [key]: value.metadata.definition
+}), {});

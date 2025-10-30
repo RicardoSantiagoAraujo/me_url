@@ -1,5 +1,6 @@
 export type CollectionMetadata = { 
+    definition: any;
     include: boolean;
     orderBy: string | null;
-    orderDirection: "asc" | "desc";
+    sortOrder: "asc" | "desc";
   }

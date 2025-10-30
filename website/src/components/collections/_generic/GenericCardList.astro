@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getLangFromUrl } from "../../../i18n/utils"; 
+import { getLangFromUrl } from "../../../i18n/utils";
 import "./../../../styles/collections/_genericCards.scss";
 const componentMap = {
   projects:   import('../projects/ProjectCard.astro') ,
@@ -18,16 +18,41 @@ var { items } = Astro.props;
 if (!items) {
   items = await getCollection(collectionName);
 }
+
+const processedItems = items
+       // filter out excluded items
+      .filter((item: any)=> item.data.include !== false)
+      // filter items that match the current language
+      .filter((item: any) => item.id.split('/')[0] === lang)
+
+// Conditionally sort items by a specified field
+const orderBy = Astro.props.orderBy || null;
+const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
+const sortedItems = orderBy
+  ? [...processedItems].sort((a: any, b: any) => {
+      // Access the value of the sortBy property on each item
+      const getValue = (obj: any, path: string) =>
+        path.split('.').reduce((acc, key) => acc?.[key], obj);
+
+      const aValue = getValue(a, orderBy) ?? '';
+      const bValue = getValue(b, orderBy) ?? '';
+
+      // Perform string comparison or fallback to number comparison
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return aValue.localeCompare(bValue);
+      }
+      return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+    })
+  : processedItems;
+
+// Reverse sort order if sortOrder is "desc"
+const finalItems = sortOrder === 'desc' ? sortedItems.reverse() : sortedItems;
+
 ---
   <ul class="collection-card-list">
     {
-      items
-      .filter((item: any)=> item.data.include !== false) // filter out excluded items
+      finalItems
       .map((item: any) => {
-        const itemLang = item.id.split('/')[0];
-        if (itemLang !== lang) {
-          return null; // Skip items that don't match the current language
-        }
         const data = {
             ...item.data,
             url: "/" + item.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
