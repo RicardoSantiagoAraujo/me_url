@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getLangFromUrl } from "../../../i18n/utils";
+import { getLangFromUrl } from "@/i18n/utils";
 import "./../../../styles/collections/_genericCards.scss";
 const componentMap = {
   projects:   import('../projects/ProjectCard.astro') ,
@@ -10,7 +10,7 @@ const componentMap = {
 const targetCollectionName = Astro.props.collectionName as keyof typeof componentMap;
 const ListItem = (await componentMap[targetCollectionName]).default;
 
-const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
+const collectionName = Astro.props.collectionName as keyof typeof import('@/content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
 
 var { items } = Astro.props;

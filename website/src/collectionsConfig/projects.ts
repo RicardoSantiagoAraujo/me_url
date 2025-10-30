@@ -5,7 +5,7 @@ import { z, defineCollection } from "astro:content";
 import { collectionBase } from "./collectionTools/collectionBase.ts";
 import { imageBase } from "./collectionTools/image.ts";
 import { videoBase } from "./collectionTools/video.ts";
-import { excludedFolder } from "../options.config.ts";
+import { excludedFolder } from "@/options.config.ts";
 import { tag } from "./collectionTools/tag.ts";
 import { tech } from "./collectionTools/tech.ts";
 import { field } from "./collectionTools/field.ts";

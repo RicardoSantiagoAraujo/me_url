@@ -3,7 +3,7 @@ import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
 import { collectionBase } from "./collectionTools/collectionBase.ts";
-import { excludedFolder } from "../options.config.ts";
+import { excludedFolder } from "@/options.config.ts";
 import { imageBase } from "./collectionTools/image.ts";
 import { tag } from "./collectionTools/tag.ts";
 

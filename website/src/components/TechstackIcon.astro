@@ -1,7 +1,7 @@
 ---
-import '../styles/variables/_colors.scss';
+import '@/styles/variables/_colors.scss';
 import { Icon } from 'astro-icon/components'
-import { generalParameters } from '../data/_general';
+import { generalParameters } from '@/data/_general';
 
 const { tech_id } = Astro.props;
 
@@ -54,6 +54,6 @@ const icon_content = generalParameters.techstack[tech_id]
 
 <script>
     // const logoEl = document.querySelector<HTMLElement>('.logo__container');
-    // logoEl!.style.background = "red url('../assets/IRMÃOSS_logo1.svg')";
+    // logoEl!.style.background = "red url('@/assets/IRMÃOSS_logo1.svg')";
     // logoEl!.innerHTML = "world";
 </script>

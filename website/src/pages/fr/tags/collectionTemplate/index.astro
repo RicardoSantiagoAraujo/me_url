@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 const allItems = await getCollection("collectionTemplate");
 const tags = [...new Set(allItems.map((item) => item.data.tags).flat())];
 const pageTitle = "Tag Index";

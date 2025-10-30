@@ -1,8 +1,8 @@
 ---
-import '../styles/variables/_colors.scss';
+import '@/styles/variables/_colors.scss';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { generalParameters } from '../data/_general';
+import { generalParameters } from '@/data/_general';
 const imagePath = generalParameters.logo;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,svg}')
@@ -63,6 +63,6 @@ const colorActive="blue";
 
 <script>
     // const logoEl = document.querySelector<HTMLElement>('.logo__container');
-    // logoEl!.style.background = "red url('../assets/IRMÃOSS_logo1.svg')";
+    // logoEl!.style.background = "red url('@/assets/IRMÃOSS_logo1.svg')";
     // logoEl!.innerHTML = "world";
 </script>

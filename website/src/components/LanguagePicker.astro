@@ -1,6 +1,6 @@
---- 
-import { languages, type Language } from '../i18n/ui';
-import { getLangFromUrl, useTranslatedPath ,translateRoute} from '../i18n/utils';
+---
+import { languages, type Language } from '@/i18n/ui';
+import { getLangFromUrl, useTranslatedPath ,translateRoute} from '@/i18n/utils';
 const url = Astro.url;
 const pathname = url.pathname;
 const pathnameWithoutLang = pathname.replace(`/${getLangFromUrl(url)}/`, ''); // Remove the current language from the path

@@ -13,7 +13,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{j
 
 <style  lang="scss" define:vars={{ height }}>
     @use 'sass:color';
-    @use '../styles/variables/colors' as c;
+    @use '@/styles/variables/colors' as c;
     a.external-link {
       display: flex;
       align-items: center;

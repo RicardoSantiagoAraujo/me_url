@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Greeting from '../../components/Greeting'; ;
-import ParallaxImage from '../../components/ParallaxImage.astro';
-import myImg from "../../assets/placeholders/placeholder_image.jpg";
-import { collections } from '../../content.config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Greeting from '@/components/Greeting'; ;
+import ParallaxImage from '@/components/ParallaxImage.astro';
+import myImg from "@/assets/placeholders/placeholder_image.jpg";
+import { collections } from '@/content.config';
 const keys = Object.keys(collections) as (keyof typeof collections)[];
-import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '../../i18n/utils';
+import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
-import { ui , defaultLang} from "../../i18n/ui";
-import { generateItemRoutes } from '../../scripts/dynamicRoutes';
+import { ui , defaultLang} from "@/i18n/ui";
+import { generateItemRoutes } from '@/scripts/dynamicRoutes';
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 

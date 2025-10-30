@@ -1,14 +1,14 @@
 ---
 import {render } from 'astro:content';
-import ItemLayout_experience from '../../../layouts/collections/ItemLayout_experience.astro';
-import {generateItemRoutes} from '../../../scripts/dynamicRoutes.ts'
+import ItemLayout_experience from '@/layouts/collections/ItemLayout_experience.astro';
+import {generateItemRoutes} from '@/scripts/dynamicRoutes.ts'
 
 export async function getStaticPaths() {
   return generateItemRoutes("experience");
 }
 
 const { lang, slug } = Astro.params;
-const page = Astro.props; 
+const page = Astro.props;
 const { Content } = await render(page);
 ---
 <ItemLayout_experience frontmatter={page.data}>

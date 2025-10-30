@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Greeting from '../../components/Greeting'; ;
-import ParallaxImage from '../../components/ParallaxImage.astro';
-import myImg from "../../assets/placeholders/placeholder_image.jpg";
-import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '../../i18n/utils';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Greeting from '@/components/Greeting'; ;
+import ParallaxImage from '@/components/ParallaxImage.astro';
+import myImg from "@/assets/placeholders/placeholder_image.jpg";
+import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
-import { ui , defaultLang} from "../../i18n/ui";
+import { ui , defaultLang} from "@/i18n/ui";
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 

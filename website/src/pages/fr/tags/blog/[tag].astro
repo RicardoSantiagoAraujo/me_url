@@ -1,10 +1,10 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import {generateTagRoute} from '../../../../scripts/dynamicRoutes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import {generateTagRoute} from '@/scripts/dynamicRoutes';
 export async function getStaticPaths() {
   return generateTagRoute("blog");
 }
-import GenericList from '../../../../components/collections/_generic/GenericList.astro';
+import GenericList from '@/components/collections/_generic/GenericList.astro';
 
 const { tag } = Astro.params;
 

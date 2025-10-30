@@ -1,7 +1,7 @@
 ---
 import Logo from "./../Logo.astro"
-import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '../../i18n/utils';
-import { ui , defaultLang} from "../../i18n/ui";
+import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '@/i18n/utils';
+import { ui , defaultLang} from "@/i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);

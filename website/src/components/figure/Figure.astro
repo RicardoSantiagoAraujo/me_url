@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import FigureCaption from './FigureCaption.astro';
-import '../../styles/components/figure/_main.scss';
+import '@/styles/components/figure/_main.scss';
 const { imageData, showCaption = true, allowZoom = true } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 const fig_caption = imageData.caption ? imageData.caption : imageData.title;

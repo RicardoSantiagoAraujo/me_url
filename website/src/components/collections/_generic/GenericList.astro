@@ -1,6 +1,6 @@
---- 
-import { generateItemRoutes } from "../../../scripts/dynamicRoutes";
-import { getLangFromUrl } from "../../../i18n/utils";
+---
+import { generateItemRoutes } from "@/scripts/dynamicRoutes";
+import { getLangFromUrl } from "@/i18n/utils";
 const componentMap = {
   blog:    import('../blog/BlogPostLink.astro'),
   collectionTemplate:    import('../collectionTemplate/CollectionTemplateLink.astro'),
@@ -8,7 +8,7 @@ const componentMap = {
 const targetCollectionName = Astro.props.collectionName as keyof typeof componentMap;
 const ListItem = (await componentMap[targetCollectionName]).default;
 
-const collectionName = Astro.props.collectionName as keyof typeof import('../../../content.config.ts').collections;
+const collectionName = Astro.props.collectionName as keyof typeof import('@/content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
 const allItems = await generateItemRoutes(collectionName);
 

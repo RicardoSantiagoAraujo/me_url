@@ -1,10 +1,15 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import GenericCardList from "../../components/collections/_generic/GenericCardList.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GenericCardList from "@/components/collections/_generic/GenericCardList.astro";
+import { collectionsMetadata } from "@/content.config";
 const pageTitle = "";
+const collectionName : string = "experience";
+const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <p>Here are some of the projects I have worked on over the years.</p>
-  <GenericCardList listItemComponent="ExperienceCard" collectionName="experience" orderBy={null} sortOrder = "desc"/>
+
+  <p>Here is my professional experience.</p>
+
+  <GenericCardList collectionName={collectionName} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
 
 </BaseLayout>

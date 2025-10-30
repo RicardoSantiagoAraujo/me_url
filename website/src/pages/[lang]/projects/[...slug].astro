@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
-import ItemLayout_projects from '../../../layouts/collections/ItemLayout_projects.astro';
-import {generateItemRoutes} from '../../../scripts/dynamicRoutes.ts'
+import ItemLayout_projects from '@/layouts/collections/ItemLayout_projects.astro';
+import {generateItemRoutes} from '@/scripts/dynamicRoutes.ts'
 
 export async function getStaticPaths() {
   return generateItemRoutes("projects");

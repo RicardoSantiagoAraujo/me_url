@@ -1,11 +1,11 @@
 ---
-import Header from '../components/header/Header.astro';
-import Footer from '../components/footer/Footer.astro';
-import BackToTopButton from '../components/BackToTopButton.astro';
-import FullscreenFigure from '../components/figure/FullscreenFigure.astro';
-import '../styles/_global.scss';
+import Header from '@/components/header/Header.astro';
+import Footer from '@/components/footer/Footer.astro';
+import BackToTopButton from '@/components/BackToTopButton.astro';
+import FullscreenFigure from '@/components/figure/FullscreenFigure.astro';
+import '@/styles/_global.scss';
 const { pageTitle, pageSubtitle } = Astro.props;
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl } from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 <html lang={lang}>
@@ -33,7 +33,7 @@ const lang = getLangFromUrl(Astro.url);
     <script>
       import "../scripts/menu.ts";
       import "../scripts/components/figure/main.ts";
-      import { initTooltips } from '../scripts/tooltip.js';
+      import { initTooltips } from '@/scripts/tooltip.js';
       initTooltips();
 
     </script>

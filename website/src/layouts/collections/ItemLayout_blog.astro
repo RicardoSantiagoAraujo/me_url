@@ -17,7 +17,7 @@ frontmatter.lang = currentLang;
 
   Tags:
   <div class="tags">
-    {frontmatter.tags.map((item: string) => (
+    {frontmatter.tags.map((item: any) => (
       <p class="tag"><a href={`/${currentLang}/tags/blog/${item.name}`}>{item.name}</a></p>
     ))}
   </div>

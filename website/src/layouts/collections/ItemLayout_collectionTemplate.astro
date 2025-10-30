@@ -14,9 +14,10 @@ frontmatter.lang = currentLang;
 
   <img src={frontmatter.images[0].url} width="300" alt={frontmatter.images[0].alt} />
 
+  Tags:
   <div class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/${currentLang}/tags/collectionTemplate/${tag}`}>{tag}</a></p>
+    {frontmatter.tags.map((item: any) => (
+      <p class="tag"><a href={`/${currentLang}/tags/collectionTemplate/${item.name}`}>{item.name}</a></p>
     ))}
   </div>
 

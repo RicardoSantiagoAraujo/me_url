@@ -1,8 +1,8 @@
 ---
 
 import {render } from 'astro:content';
-import ItemLayout_blog from '../../../layouts/collections/ItemLayout_blog.astro';
-import {generateItemRoutes} from '../../../scripts/dynamicRoutes.ts'
+import ItemLayout_blog from '@/layouts/collections/ItemLayout_blog.astro';
+import {generateItemRoutes} from '@/scripts/dynamicRoutes.ts'
 
 export async function getStaticPaths() {
   return generateItemRoutes("blog");

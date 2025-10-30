@@ -1,12 +1,11 @@
 // Functins used to dynamically generate routes for specified collections in Astro.
 
 import { getCollection, render } from "astro:content";
-import { collections } from "../content.config.ts"; 
+import { collections } from "@/content.config.ts";
 
- 
 /**
  * Generates dynamic routes for items in a specified collection.
- * 
+ *
  * @param collection_name - The name of the collection to generate routes for.
  * @returns An array of route parameters and props for each item.
  */
@@ -19,10 +18,10 @@ export async function generateItemRoutes(
     return item.data.include !== false;
   });
   // Order items
-  allItems = allItems.sort((a, b) => { 
+  allItems = allItems.sort((a, b) => {
     return b.id.localeCompare(a.id, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
-  }); 
-  const paths = allItems.map((item) => { 
+  });
+  const paths = allItems.map((item) => {
     const [lang, ...slug] = item.id.split("/");
     return { params: { lang, slug: slug.join("/") || undefined }, props: item };
   });
@@ -32,7 +31,7 @@ export async function generateItemRoutes(
 
 /**
  * Generates dynamic routes for tags in a specified collection.
- * 
+ *
  * @param collection_name - The name of the collection to generate tag routes for.
  * @returns An array of route parameters and props for each tag.
  */
