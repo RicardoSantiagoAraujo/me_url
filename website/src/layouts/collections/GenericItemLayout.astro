@@ -13,14 +13,15 @@ const { frontmatter, collection } = Astro.props;
 
 // const cardImg = getImageFromZArray("idMainImg", frontmatter);
 const bgImg = getImageFromZArray("idBgImg", frontmatter);
-const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
+const bgImg_alt = bgImg?.alt ? bgImg?.alt : bgImg?.title;
+// const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
 frontmatter.lang = currentLang;
 ---
 <BaseLayout>
-  <div class=`genericLayout-page__header ${bgImg.meta ? 'with-bg' : ''}`>
+  <div class=`genericLayout-page__header ${bgImg ? 'with-bg' : ''}`>
     <div class="genericLayout-page__header__bg-container">
-      {bgImg.meta &&
-      <Image  src={bgImg.img} alt={bgImg.meta.alt} inferSize={true} class="genericLayout-page__header__bg-img"/>
+      {bgImg &&
+      <Image  src={bgImg.url} alt={bgImg_alt} inferSize={true} class="genericLayout-page__header__bg-img"/>
       }
     </div>
     <div class=`genericLayout-page__header__titles ${frontmatter.subtitle && 'with-subtitle'}`>

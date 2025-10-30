@@ -27,11 +27,14 @@ definition[collection] = defineCollection({
       title: z.string(),
       description: z.string(),
       descriptionShort: z.string().optional(),
-      descriptionList: z.array(
-        z.object({
-          item: z.string(),
-        })
-      ).nullable().optional(),
+      descriptionList: z
+        .array(
+          z.object({
+            item: z.string(),
+          })
+        )
+        .nullable()
+        .optional(),
       externalLink: z.string().nullable().optional(),
       dateStart: z.date().nullable().optional(),
       dateEnd: z.date().nullable().optional(),
@@ -40,6 +43,8 @@ definition[collection] = defineCollection({
       institution: z.string().nullable().optional(),
       location: z.string().nullable().optional(),
       images: z.array(imageBase).nullable().optional(),
+      idMainImg: z.string().nullable().optional(),
+      idBgImg: z.string().nullable().optional(),
       tags: z.array(tag).nullable().optional(),
       fields: z.array(field).nullable().optional(),
       techstack: z.array(tech).nullable().optional(),

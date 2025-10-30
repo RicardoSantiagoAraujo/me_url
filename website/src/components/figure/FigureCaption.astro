@@ -1,20 +1,25 @@
 ---
 const { captionData } = Astro.props;
-
+const fig_caption = captionData.caption ? captionData.caption : captionData.title;
+const fig_alt = captionData.alt ? captionData.alt : fig_caption;
+const extra_info = `${captionData.title} : ${fig_caption}`;
 ---
-
 
 <figcaption>
     <span class="figcaption_text">
-        {captionData.caption}
+        {`${fig_caption}`}
     </span>
     <div class="extra_info_collapsible">
-        <button class="collapsible" ></button>
+        <!-- allow caption expand if  there is something to show -->
+        { captionData.caption &&
+            <button class="collapsible" ></button>
+        }
         <div class="extra_information">
-            {captionData.title} : {captionData.caption}
+            {extra_info}
         </div>
     </div>
 </figcaption>
+
 
 <!-- Scripts -->
 <script  src="../../scripts/components/figure/collapsible.ts"></script>

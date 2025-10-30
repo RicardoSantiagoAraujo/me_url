@@ -1,6 +1,6 @@
 /**
  * Calculates the age based on the provided birth date.
- * 
+ *
  * @param birthYear - The year of birth.
  * @param birthMonth - The month of birth (1-12).
  * @param birthDay - The day of birth (1-31).
@@ -30,7 +30,7 @@ export function calculateAge(
 
 /**
  * Formats an array of words into a human-readable list.
- * 
+ *
  * @param words - Array of words to format into a list.
  * @returns A formatted string representing the list of words.
  */
@@ -48,7 +48,7 @@ export function formatWordList(words: string[]): string {
 
 /**
  * Retrieves an image and its metadata from a specified data object.
- * 
+ *
  * @param whichImgId - "idMainImg" or "idBgImg"
  * @param data - The data object containing image information.
  * @returns An object containing the image and its metadata.
@@ -62,11 +62,18 @@ export function getImageFromZArray(
   const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/**/*.{jpeg,jpg,webp,png,gif,svg}"
   );
-  const img = meta ? (images[meta.url] ? images[meta.url]() : meta.url) : null;
-  return { img, meta };
+  if (meta) {
+    const img = images[meta.url] ? images[meta.url]() : meta.url;
+    return {
+      url: img,
+      alt: meta.alt,
+      title: meta.title,
+      caption: meta.caption,
+    };
+  } else {
+    return null;
+  }
 }
-
-
 
 // Handling date display
 export const formatDate = (dateString: string): string => {
@@ -74,12 +81,16 @@ export const formatDate = (dateString: string): string => {
   return new Intl.DateTimeFormat("en-CA", {
     year: "numeric",
     month: "2-digit",
-  }).format(date)
-  .replace("-", "/"); // Convert "YYYY-MM" → "YYYY/MM";
+  })
+    .format(date)
+    .replace("-", "/"); // Convert "YYYY-MM" → "YYYY/MM";
 };
 
-export function getDateRangeString(dateStart: string, dateEnd?: string | null): string {
-  let dateRange : string;
+export function getDateRangeString(
+  dateStart: string,
+  dateEnd?: string | null
+): string {
+  let dateRange: string;
   if (!dateEnd) {
     dateRange = `${formatDate(dateStart)} - Present`;
   } else {

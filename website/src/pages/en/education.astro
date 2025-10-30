@@ -5,6 +5,7 @@ import { collectionsMetadata } from "@/content.config";
 const pageTitle = "";
 ---
 <BaseLayout pageTitle={pageTitle}>
+
   <p>Here are some of the projects I have worked on over the years.</p> 
   {collectionsMetadata.education.sortOrder}
   <GenericCardList listItemComponent="EducationCard" collectionName="education" orderBy={null} sortOrder = {collectionsMetadata.education.sortOrder} />

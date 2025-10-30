@@ -14,21 +14,22 @@ $break_width_adj: 0.9;
 // letter spacing in title
 $title_letter_spacing: 0.2rem;
 
-
-
-$fig-padding: 1vw;
+$fig-padding: 0vw;
 
 .fig,
 .vid {
     width: 100%;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    // background-color: rgba(255, 255, 255, 0.75);
     padding: $fig-padding;
-    border-radius: 1vw;
+    border-radius: 0vw;
 
-    img {
-        max-width: 100%;
-        max-height: 100%;
+    .fig__img {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        background-color: white;
     }
 
 
@@ -51,8 +52,6 @@ $fig-padding: 1vw;
         color: #fff;
         background: color.adjust($gray, $lightness: -10%);
         position: relative;
-
-        .numbering {}
     }
 }
 
@@ -83,13 +82,4 @@ $fig-padding: 1vw;
     &:hover {
         transform: scale(1.01);
     }
-}
-
-
-.fig__img {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: auto;
-    background-color: white;
 }
