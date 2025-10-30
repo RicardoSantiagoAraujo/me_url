@@ -34,7 +34,7 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
             <div class="tags-container">
                 <span>Tags:</span>
                 <ul class="tag-list">
-                    {data.tags.map((item: any) =>  item.include && <li class="tag-list__item"><a href={`/${lang}/tags/projects/${item.name}`}>{item.name}</a></li>)}
+                    {data.tags.map((item: any) =>  item.include && <li class="tag-list__item"><a href={`/${lang}/tags/education/${item.name}`}>{item.name}</a></li>)}
                 </ul>
             </div>
         </div>
