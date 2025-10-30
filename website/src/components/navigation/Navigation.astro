@@ -2,18 +2,13 @@
 import Logo from "./../Logo.astro"
 import NavigationItem from "./NavigationItem.astro";
 import NavigationGroup from "./NavigationGroup.astro";
-
-
+import { collectionsMetadata } from "@/content.config";
 
 ---
 <div class="nav-links">
     <!-- <Logo /> -->
     <NavigationItem dir={"."} target="about"/>
-    <NavigationItem  dir={"."}  target="projects"/>
-    <NavigationItem  dir={"."}  target="experience"/>
-    <NavigationItem  dir={"."}  target="education"/>
-    <!-- <NavigationItem dir={"."} target="experience"/> -->
-    <NavigationItem  dir={"."}  target="blog"/>
-    <NavigationItem  dir={"."}  target="collectionTemplate"/>
+    {Object.entries(collectionsMetadata).map(([key, val])=>
+                         <NavigationItem  dir={"."}  target={key}/>)}
     <NavigationGroup groupName={`example-dropdownGroup`} dir={"dropdownGroup"} targets={['example-dropdownItem','example-dropdownItem']} />
 </div>
