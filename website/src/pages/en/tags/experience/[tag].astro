@@ -1,17 +1,13 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import TaggedItemListLayout from '@/layouts/tags/TaggedItemListLayout.astro';
 import {generateTagRoute} from '@/scripts/dynamicRoutes.ts';
-import GenericCardList from '@/components/collections/_generic/GenericCardList.astro';
 import { collections } from '@/content.config';
 export const collectionName = "experience"  as keyof typeof collections;
 export async function getStaticPaths() {
   return generateTagRoute(collectionName);
 }
-import { collectionsMetadata } from "@/content.config";
-const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
 
-const { tag } = Astro.params;
-const { items } = Astro.props;
-import TaggedItemListLayout from '@/layouts/tags/TaggedItemListLayout.astro';
+
 ---
-<TaggedItemListLayout tag={tag} items={items} col={"rrrrrrrrra"}/>
+
+<TaggedItemListLayout {...Astro.props} collectionName={collectionName}/>
