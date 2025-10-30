@@ -47,10 +47,10 @@ export const collectionsMetadata = {
 };
 
 // Generate collections dictionary from metadata definitions
-export const collections = {
-  collectionTemplate: collectionTemplate.collectionTemplate,
-  blog: blog.blog,
-  projects: projects.projects,
-  experience: experience.experience,
-  education: education.education,
-}
+export const collections = Object.entries(collectionsMetadata).reduce(
+  (acc, [key, value]) => ({
+    ...acc,
+    [key]: value.definition,
+  }),
+  {}
+);

@@ -1,18 +1,18 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import {generateTagRoute} from '@/scripts/dynamicRoutes.ts';
-import GenericCardList from '@/components/collections/_generic/GenericCardList.astro';
-import { collections } from '@/content.config';
-export const collectionName = "collectionTemplate"  as keyof typeof collections;
+import {generateTagRoute} from '@/scripts/dynamicRoutes';
 export async function getStaticPaths() {
-  return generateTagRoute(collectionName);
+  return generateTagRoute("collectionTemplate");
 }
-import { collectionsMetadata } from "@/content.config";
-const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
+import GenericList from '@/components/collections/_generic/GenericList.astro';
 
 const { tag } = Astro.params;
+
+const { items } = Astro.props;
 ---
 <BaseLayout pageTitle={tag}>
-  <p> <span style="text-transform: capitalize">{String(collectionName)}</span> entries tagged with {tag}</p>
-  <GenericCardList collectionName={collectionName} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+
+  <p>Posts tagged with {tag}</p>
+  <GenericList listItemComponent="BlogPostLink" collectionName="blog" items={items}/>
+
 </BaseLayout>
