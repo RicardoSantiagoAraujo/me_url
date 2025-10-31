@@ -12,7 +12,6 @@ const lang : string = getLangFromUrl(Astro.url);
 const cardImg   = getImageFromZArray("idMainImg", data);
 const bgImg = getImageFromZArray("idBgImg", data);
 const bgImg_alt = bgImg?.alt ? bgImg?.alt : bgImg?.title;
-console.log(cardImg);
 
 ---
     <li class="collection-item">

@@ -67,7 +67,6 @@ export function getImageFromZArray(
     // Build result object based on imageBase schema
     const result: { [key: string]: any } = {};
     Object.keys(imageBase.shape).forEach((key) => {
-      console.log(key);
       result[key] = meta[key as keyof typeof meta]; // Ensure type safety when accessing meta
     });
     // Replace url with imported image if available
