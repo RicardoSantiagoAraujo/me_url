@@ -1,3 +1,4 @@
+import { imageBase } from "@/collectionsConfig/collectionTools/image";
 /**
  * Calculates the age based on the provided birth date.
  *
@@ -63,14 +64,17 @@ export function getImageFromZArray(
     "/src/assets/**/*.{jpeg,jpg,webp,png,gif,svg}"
   );
   if (meta) {
-    const img = images[meta.url] ? images[meta.url]() : meta.url; 
-    return {
-      url: img,
-      alt: meta.alt,
-      title: meta.title,
-      caption: meta.caption,
-      style: meta.style,
-    };
+    // Build result object based on imageBase schema
+    const result: { [key: string]: any } = {};
+    Object.keys(imageBase.shape).forEach((key) => {
+      console.log(key);
+      result[key] = meta[key as keyof typeof meta]; // Ensure type safety when accessing meta
+    });
+    // Replace url with imported image if available
+    result.url = images[meta.url]
+      ? (result.url = images[meta.url]())
+      : meta.url;
+    return result;
   } else {
     return null;
   }
