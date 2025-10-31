@@ -12,7 +12,10 @@ import { collections } from "@/content.config.ts";
 export async function generateItemRoutes(
   collection_name: keyof typeof collections
 ) {
-  let allItems = await getCollection(collection_name); // name of the collection from content.config.ts
+  let allItems = (await getCollection(collection_name)) as Array<{
+    id: string;
+    data: { include?: boolean };
+  }>; // name of the collection from content.config.ts
   // Filter out excluded items
   allItems = allItems.filter((item) => {
     return item.data.include !== false;

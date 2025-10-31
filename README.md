@@ -58,11 +58,11 @@ Use **.md** for simple, static content like plain blog posts, documentation, or 
 Use **.mdx** for dynamic or interactive content where you want to embed components, import images from /src/assets, or include JSX/interactive elements.
 
 
-#### Documentation with JSDoc
-JSDoc 3 is an API documentation generator for JavaScript/Typescript, similar to Javadoc or phpDocumentor. You add documentation comments directly to your source code, right alongside the code itself. The JSDoc tool will scan your source code and generate an HTML documentation website for you.
+#### Documentation with TypeDoc
+TypeDoc converts comments in TypeScript's source code into HTML documentation or a JSON model.
 
-Once your code is commented, you can use the JSDoc 3 tool to generate an HTML website from your source files.
+Once your code is commented, you can use the TypeDoc tool to generate an HTML website from your source files.
 
 ``` bash
-npx jsdoc ./src/**/* --destination ./docs
+npx typedoc --entryPointStrategy Expand src
 ```
