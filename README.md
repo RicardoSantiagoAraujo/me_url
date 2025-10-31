@@ -64,5 +64,5 @@ JSDoc 3 is an API documentation generator for JavaScript/Typescript, similar to 
 Once your code is commented, you can use the JSDoc 3 tool to generate an HTML website from your source files.
 
 ``` bash
-jsdoc book.js
+npx jsdoc ./src/**/* --destination ./docs
 ```

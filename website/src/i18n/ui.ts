@@ -1,3 +1,4 @@
+// Define supported languages and their properties
 export const languages = {
   fr: { long: "Français", short: "fr", flag: "🇫🇷", isAvailable: true },
   en: { long: "English", short: "en", flag: "🇬🇧", isAvailable: true },
@@ -9,6 +10,7 @@ export type Language = keyof typeof languages;
 export const defaultLangStart = "en"; // default language for the app when accessing the root URL
 export const defaultLang = "en"; // fallback language in the absence of a translation
 
+// UI translations for different languages
 export const ui: Record<Language, Record<string, string>> = {
     en: {
     "nav.home": "Home",

@@ -1,6 +1,12 @@
 import { ui, defaultLang, routes, type Language, type Page } from "./ui";
 import { debugMode } from "@/options.config";
 
+/**
+ * Get language from URL
+ *
+ * @param url - The URL object to extract the language from
+ * @returns The language code if found in the URL, otherwise returns the default language
+ */
 export function getLangFromUrl(url: URL) {
   // Extract the language from the URL path: works if the URL is like /[lang]/some-page, i.e., the language is the first segment of the path.
   const [, lang] = url.pathname.split("/");
@@ -8,12 +14,24 @@ export function getLangFromUrl(url: URL) {
   return defaultLang;
 }
 
+/**
+ * Get translation function for a specific language
+ *
+ * @param lang - The language code to get translations for
+ * @returns A function that takes a translation key and returns the corresponding translated string
+ */
 export function useTranslations(lang: keyof typeof ui) {
   return function t(key: keyof (typeof ui)[typeof defaultLang]) {
     return ui[lang][key] || ui[defaultLang][key];
   };
 }
 
+/**
+ * Get path translation function for a specific language
+ *
+ * @param lang - The language code to get path translations for
+ * @returns A function that takes a path and returns the corresponding translated path
+ */
 export function useTranslatedPath(lang: Language) {
   return function translatePath(path: string, l: Language = lang) {
     // console.log("path: " + path);
@@ -34,6 +52,15 @@ export function useTranslatedPath(lang: Language) {
   };
 }
 
+
+/**
+ * Translate a given route path from one language to another
+ *
+ * @param path - the original path to be translated
+ * @param currentLang - the current language of the path
+ * @param targetLang - the language to translate the path to
+ * @returns the translated path, or the original path if no translation is found
+ */
 export function translateRoute(
   path: string,
   currentLang: Language,
@@ -53,6 +80,13 @@ export function translateRoute(
   }
 }
 
+/**
+ * Warn if a section name is missing in the translations
+ *
+ * @param section - the section identifier to check
+ * @param language - the language to check the translation for
+ * @returns - 0 if debugMode is off, otherwise logs warnings to the console
+ */
 export function warningMissingSectionName(section: string, language: Language) {
   if (!debugMode) {
     return 0;

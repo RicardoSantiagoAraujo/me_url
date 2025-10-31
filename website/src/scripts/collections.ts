@@ -1,3 +1,12 @@
+/**
+ * Process collection items by filtering and sorting them based on language and specified criteria.
+ *
+ * @param items - The collection items to be processed.
+ * @param lang - The current language to filter items by.
+ * @param orderBy - The field to sort items by (optional).
+ * @param sortOrder - The order of sorting: "asc" for ascending, "desc" for descending.
+ * @returns
+ */
 export function proccessCollectionItems(
   items: any,
   lang: string,
