@@ -2,14 +2,24 @@
 import { Image } from 'astro:assets';
 import FigureCaption from './FigureCaption.astro';
 import '@/styles/components/figure/_main.scss';
-const { imageData, showCaption = true, allowZoom = true } = Astro.props;
+const { figureData, showCaption = true, allowZoom = true } = Astro.props;
+const contentType: "img" | "vid" = Astro.props.contentType || "img";
 const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{jpeg,jpg,png,gif,svg}`);
-const fig_caption = imageData.caption ? imageData.caption : imageData.title;
-const fig_alt = imageData.alt ? imageData.alt : fig_caption;
+const fig_caption = figureData.caption ? figureData.caption : figureData.title;
+const fig_alt = figureData.alt ? figureData.alt : fig_caption;
 ---
 
 
 <figure class=`fig ${allowZoom && 'allowZoom'} ${!showCaption && 'no_caption'}`>
-    <Image  src={images[imageData.url] ? images[imageData.url]() : imageData.url} alt={`${fig_alt}`} inferSize={true} class=`fig__img` data-title=`${imageData.title}` data-caption=`${fig_caption}`/>
-    <FigureCaption captionData={imageData}   />
+    <!-- IMAGE -->
+    {contentType === "img" ?
+        <Image  class=`fig__img` src={images[figureData.url] ? images[figureData.url]() : figureData.url} alt={`${fig_alt}`} inferSize={true}  data-title=`${figureData.title}` data-caption=`${fig_caption}`/>
+    : null }
+    <!-- VIDEO -->
+    {contentType === "vid" ? 
+    <iframe class=`fig__vid` src={figureData.url}  title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+     : null
+    } 
+    <!-- CAPTION -->
+    <FigureCaption captionData={figureData} />
 </figure>

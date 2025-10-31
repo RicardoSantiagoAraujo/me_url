@@ -86,13 +86,27 @@ frontmatter.lang = currentLang;
   </ul> : ""}
 
 
-<Accordion title="Figures" startCollapsed={false}>
-  <div class="genericLayout-page__images">
-    {frontmatter.images?.map((item: any) => item.include && <div class="genericLayout-page__images__image-container">
-    <Figure imageData={item} />
-    </div> )}
-  </div>
-</Accordion>
+{frontmatter.images && frontmatter.images.length > 0 && 
+  <Accordion title="Figures" startCollapsed={false}>
+    <div class="genericLayout-page__images">
+      {frontmatter.images?.map((item: any) => item.include && <div class="genericLayout-page__images__image-container">
+      <Figure figureData={item} contentType="img" />
+      </div> )}
+    </div>
+  </Accordion>
+}
+
+
+
+{frontmatter.videos && frontmatter.videos.length > 0 && 
+  <Accordion title="Videos" startCollapsed={false}>
+    <div class="genericLayout-page__videos">
+      {frontmatter.videos?.map((item: any) => item.include && <div class="genericLayout-page__videos__video-container">
+      <Figure figureData={item} contentType="vid" />
+      </div> )}
+    </div>
+  </Accordion>
+}
 
 
 
