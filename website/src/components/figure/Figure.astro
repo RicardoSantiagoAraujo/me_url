@@ -11,9 +11,9 @@ const fig_alt = figureData.alt ? figureData.alt : fig_caption;
 
 
 <figure class=`fig ${allowZoom && 'allowZoom'} ${!showCaption && 'no_caption'}`>
-    <!-- IMAGE -->
+    <!-- IMAGE --> 
     {contentType === "img" ?
-        <Image  class=`fig__img` src={images[figureData.url] ? images[figureData.url]() : figureData.url} alt={`${fig_alt}`} inferSize={true}  data-title=`${figureData.title}` data-caption=`${fig_caption}`/>
+        <Image  class=`fig__img` src={images[figureData.url] ? images[figureData.url]() : figureData.url} alt={`${fig_alt}`} inferSize={true} style=`${figureData.style}` data-title=`${figureData.title}` data-caption=`${fig_caption}`/>
     : null }
     <!-- VIDEO -->
     {contentType === "vid" ? 

@@ -63,12 +63,13 @@ export function getImageFromZArray(
     "/src/assets/**/*.{jpeg,jpg,webp,png,gif,svg}"
   );
   if (meta) {
-    const img = images[meta.url] ? images[meta.url]() : meta.url;
+    const img = images[meta.url] ? images[meta.url]() : meta.url; 
     return {
       url: img,
       alt: meta.alt,
       title: meta.title,
       caption: meta.caption,
+      style: meta.style,
     };
   } else {
     return null;

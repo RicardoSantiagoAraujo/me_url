@@ -9,4 +9,5 @@ export const imageBase = z.object({
   url: z.string(),
   caption: z.string().nullable().optional(),
   alt: z.string().nullable().optional(),
+  style: z.string().nullable().optional(),
 });

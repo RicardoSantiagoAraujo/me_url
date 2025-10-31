@@ -86,7 +86,7 @@ frontmatter.lang = currentLang;
   </ul> : ""}
 
 
-{frontmatter.images && frontmatter.images.length > 0 && 
+{frontmatter.images && frontmatter.images.filter((img:any)=>img.include===true).length > 0 && 
   <Accordion title="Figures" startCollapsed={false}>
     <div class="genericLayout-page__images">
       {frontmatter.images?.map((item: any) => item.include && <div class="genericLayout-page__images__image-container">
