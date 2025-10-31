@@ -61,8 +61,10 @@ Use **.mdx** for dynamic or interactive content where you want to embed componen
 #### Documentation with TypeDoc
 TypeDoc converts comments in TypeScript's source code into HTML documentation or a JSON model.
 
-Once your code is commented, you can use the TypeDoc tool to generate an HTML website from your source files.
+Once your code is commented, you can use the TypeDoc tool to generate an HTML website from your source files. TypeDoc options are set i the **typedoc.json** file.
+
 
 ``` bash
-npx typedoc --entryPointStrategy Expand src
+npx typedoc --entryPointStrategy Expand
+
 ```

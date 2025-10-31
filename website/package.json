@@ -1,5 +1,6 @@
 {
-  "name": "website",
+  "name": "me_url",
+  "description": "A static site template built with Astro.",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
