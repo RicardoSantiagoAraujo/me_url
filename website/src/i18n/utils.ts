@@ -52,7 +52,7 @@ export function useTranslatedPath(lang: Language) {
       // console.log("Has translation, returning translated path");
       return `/${l}${translatedPath}`;
     } else {
-      console.log("No translation found, defaulting to " + defaultLang);
+      // console.log(`No translation found, defaulting to ${defaultLang}`);
       return `/${defaultLang}${path}`;
     }
   };
