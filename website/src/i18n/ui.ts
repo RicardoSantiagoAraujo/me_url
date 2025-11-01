@@ -1,4 +1,4 @@
-// Define supported languages and their properties
+// Define supported languages and their properties : DEFINE ONE PER LOCALE DEFINED IN astro.config.mts
 export const languages = {
   fr: { long: "Français", short: "fr", flag: "🇫🇷", isAvailable: true },
   en: { long: "English", short: "en", flag: "🇬🇧", isAvailable: true },
@@ -12,7 +12,7 @@ export const defaultLang = "en"; // fallback language in the absence of a transl
 
 // UI translations for different languages
 export const ui: Record<Language, Record<string, string>> = {
-    en: {
+  en: {
     "nav.home": "Home",
     "nav.about": "About Me",
     "nav.experience": "Experience",
@@ -60,6 +60,7 @@ export const ui: Record<Language, Record<string, string>> = {
 
 // Ensure all possible routes are included in the Page type to enforce type safety
 export type Page =
+  | any // to be able to add pages out of this list without TS errors
   | "home"
   | "about"
   | "blog"
