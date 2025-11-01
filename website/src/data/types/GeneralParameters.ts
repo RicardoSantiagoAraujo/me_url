@@ -28,7 +28,7 @@ export interface GeneralParameters {
   techstack: Record<string, Tech>;
 }
 
-type Tech = {
+export type Tech = {
   name: string;
   icon: string;
   link: string;

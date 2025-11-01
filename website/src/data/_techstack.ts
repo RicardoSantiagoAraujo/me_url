@@ -1,8 +1,4 @@
-export interface Tech {
-  name: string;
-  icon: string;
-  link: string;
-}
+import type { Tech } from "./types/GeneralParameters";
 
 export const techstackDefault: Record<string, Tech> = {
   astro: {
