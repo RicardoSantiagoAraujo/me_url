@@ -2,8 +2,8 @@
 export const languages = {
   fr: { long: "Français", short: "fr", flag: "🇫🇷", isAvailable: true },
   en: { long: "English", short: "en", flag: "🇬🇧", isAvailable: true },
-  pt: { long: "Português", short: "pt", flag: "🇵🇹", isAvailable: false }, //🇧🇷
-  de: { long: "Deutsch", short: "de", flag: "🇩🇪", isAvailable: false },
+  pt: { long: "Português", short: "pt", flag: "🇵🇹", isAvailable: true }, //🇧🇷
+  de: { long: "Deutsch", short: "de", flag: "🇩🇪", isAvailable: true },
 };
 export type Language = keyof typeof languages;
 
