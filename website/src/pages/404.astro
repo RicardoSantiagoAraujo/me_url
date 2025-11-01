@@ -6,7 +6,8 @@ import { defaultLang } from "@/i18n/ui";
 
 const pageTitle = "MISSING PAGE";
 const lang = getLangFromUrl(Astro.url);
-const path = Astro.url.pathname.replace(`/${lang}`, "").replaceAll("/", ""); // Remove trailing slashes
+// const path0 = Astro.url.pathname.replace(`/${lang}`, "").replaceAll("/", "");
+const path = Astro.request.url.slice(Astro.request.url.indexOf(`/${lang}`)).replace(`/${lang}`, "").replaceAll("/", "");
 const routeInDefaultLang = translateRoute(path, lang, defaultLang);
 
 ---
