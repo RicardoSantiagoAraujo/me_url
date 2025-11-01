@@ -6,6 +6,9 @@ import { defaultLang } from "@/i18n/ui";
 
 const pageTitle = "MISSING PAGE";
 const lang = getLangFromUrl(Astro.url);
+
+
+// REDIRECTING TO TRANSLATED PATH: ONLY WORKING ON DEV ENV
 const path = Astro.url.pathname.replace(`/${lang}`, "").replaceAll("/", "");
 const routeInDefaultLang = translateRoute(path, lang, defaultLang);
 const redirectPath = `/${defaultLang}/${routeInDefaultLang}`;
@@ -67,6 +70,7 @@ if (routeInDefaultLang && routeInDefaultLang !== path){ // A translation exists
     countdownInterval = setInterval(updateCountdown,  freq);
   } else {
     console.log("NO TRANSLATION FOUND FOR THIS ROUTE IN DEFAULT LANG");
+    console.log(window.location.href)
   }
 
 </script>
