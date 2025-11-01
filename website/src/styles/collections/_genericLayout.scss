@@ -187,7 +187,8 @@ $genericLayout-header-height-with-img: 33vh;
         position: relative;
         width: 20vw;
         height: fit-content;
-        border: 3px solid black;
+        // border: 3px solid black;
+        overflow: hidden;
     }
 
 }
@@ -202,11 +203,11 @@ $genericLayout-header-height-with-img: 33vh;
     justify-content: space-evenly;
     flex-wrap: wrap;
 
-    .genericLayout-page__images__image-container {
+    .genericLayout-page__videos__video-container {
         position: relative;
         width: 20vw;
         height: fit-content;
-        border: 3px solid black;
+        // border: 3px solid black;
     }
 
 }

@@ -44,7 +44,7 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
                 </div>
             </div>}
             {bgImg && <div class="collection-item__body__bg-image-container">
-                <Image  src={bgImg.url} alt={bgImg_alt} inferSize={true} class="collection-item__body__bg-image"/>
+                <Image  src={bgImg.url} alt={bgImg_alt} style={bgImg.styleAsBg} inferSize={true} class="collection-item__body__bg-image"/>
             </div>}
     </div>
     <div class="collection-item__footer">

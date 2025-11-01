@@ -21,7 +21,7 @@ frontmatter.lang = currentLang;
   <div class=`genericLayout-page__header ${bgImg ? 'with-bg' : ''}`>
     <div class="genericLayout-page__header__bg-container">
       {bgImg &&
-      <Image  src={bgImg.url} alt={bgImg_alt} inferSize={true} class="genericLayout-page__header__bg-img"/>
+      <Image  src={bgImg.url} alt={bgImg_alt} style={bgImg.styleAsBg} inferSize={true} class="genericLayout-page__header__bg-img"/>
       }
     </div>
     <div class=`genericLayout-page__header__titles ${frontmatter.subtitle && 'with-subtitle'}`>
@@ -86,7 +86,7 @@ frontmatter.lang = currentLang;
   </ul> : ""}
 
 
-{frontmatter.images && frontmatter.images.filter((img:any)=>img.include===true).length > 0 && 
+{frontmatter.images && frontmatter.images.filter((img:any)=>img.include===true).length > 0 &&
   <Accordion title="Figures" startCollapsed={false}>
     <div class="genericLayout-page__images">
       {frontmatter.images?.map((item: any) => item.include && <div class="genericLayout-page__images__image-container">
@@ -98,7 +98,7 @@ frontmatter.lang = currentLang;
 
 
 
-{frontmatter.videos && frontmatter.videos.length > 0 && 
+{frontmatter.videos && frontmatter.videos.length > 0 &&
   <Accordion title="Videos" startCollapsed={false}>
     <div class="genericLayout-page__videos">
       {frontmatter.videos?.map((item: any) => item.include && <div class="genericLayout-page__videos__video-container">
