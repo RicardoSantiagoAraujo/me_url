@@ -44,14 +44,19 @@ export function useTranslatedPath(lang: Language) {
     // console.log("pathName: " + pathName);
     const hasTranslation =
       routes[l] !== undefined && routes[l][pathName] !== undefined;
-    // console.log("hasTranslation: " + hasTranslation);
+    // console.log("");
+    // console.log("\t hasTranslation: " + hasTranslation);
     const translatedPath = hasTranslation ? "/" + routes[l][pathName] : path;
     // console.log("translatedPath: " + translatedPath);
-    // console.log("");
-    return `/${l}${translatedPath}`;
+    if (hasTranslation) {
+      // console.log("Has translation, returning translated path");
+      return `/${l}${translatedPath}`;
+    } else {
+      console.log("No translation found, defaulting to " + defaultLang);
+      return `/${defaultLang}${path}`;
+    }
   };
 }
-
 
 /**
  * Translate a given route path from one language to another
@@ -71,6 +76,10 @@ export function translateRoute(
     (k) => currentRoutes[k as keyof typeof currentRoutes] === path
   ) as keyof (typeof routes)[Language];
   const translatedRoute = routes[targetLang][key];
+  // console.log("routes[targetLang]: " + JSON.stringify(routes[targetLang]));
+  // console.log("path: " + path);
+  // console.log("key: " + key);
+  // console.log(`\t Translated route: "${translatedRoute}"`);
   if (translatedRoute) {
     return translatedRoute;
   } else if (path) {
