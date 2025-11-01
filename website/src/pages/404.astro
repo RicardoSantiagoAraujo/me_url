@@ -6,16 +6,14 @@ import { defaultLang } from "@/i18n/ui";
 
 const pageTitle = "MISSING PAGE";
 const lang = getLangFromUrl(Astro.url);
-// const path0 = Astro.url.pathname.replace(`/${lang}`, "").replaceAll("/", "");
-const requestUrl = Astro.request.url;
-const path = Astro.request.url.slice(Astro.request.url.indexOf(`/${lang}`)).replace(`/${lang}`, "").replaceAll("/", "");
+const path = Astro.url.pathname.replace(`/${lang}`, "").replaceAll("/", "");
 const routeInDefaultLang = translateRoute(path, lang, defaultLang);
 
 ---
 <BaseLayout pageTitle={pageTitle}>
 
   <!-- Element to hold data attributes for client side script -->
-  <div id="data" data-request={requestUrl} data-defaultlang={defaultLang} data-path={path} data-routeindefaultlang={routeInDefaultLang}></div>
+  <div id="data"  data-defaultlang={defaultLang} data-path={path} data-routeindefaultlang={routeInDefaultLang}></div>
 
   {routeInDefaultLang && routeInDefaultLang !== path ? (
     <p style="color: red; text-align: center; font-size: 30px">
@@ -31,10 +29,8 @@ const routeInDefaultLang = translateRoute(path, lang, defaultLang);
 <script is:inline>
     data = document.getElementById('data').dataset;
     const routeInDefaultLang = data.routeindefaultlang;
-    const request = data.request;
     const path = data.path
     const defaultLang = data.defaultlang;
-
 
     // Set the starting time in seconds (for example, 10 seconds)
     let timeRemaining = 1000;
@@ -67,9 +63,8 @@ const routeInDefaultLang = translateRoute(path, lang, defaultLang);
   } else {
     console.log("NO TRANSLATION FOUND FOR THIS ROUTE IN DEFAULT LANG");
   }
-  console.log("routeInDefaultLang:", routeInDefaultLang);
-  console.log("path:", path);
-  console.log("defaultLang:", defaultLang);
-  console.log("request:", request);
+  // console.log("routeInDefaultLang:", routeInDefaultLang);
+  // console.log("path:", path);
+  // console.log("defaultLang:", defaultLang);
 
 </script>
