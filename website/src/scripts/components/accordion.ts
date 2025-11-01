@@ -14,6 +14,7 @@ export default function accordionScript() : void {
     button.addEventListener("click", function () {
       this.classList.toggle("accordion__btn--active");
       const panel = this.nextElementSibling as HTMLElement;
+      panel.classList.toggle("accordion__panel--active");
       if (panel.style.maxHeight) {
         panel.style.maxHeight = "";
       } else {

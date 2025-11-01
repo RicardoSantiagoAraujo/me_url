@@ -89,6 +89,7 @@ frontmatter.lang = currentLang;
   </ul> : ""}
 
 
+<!-- IMAGES -->
 {frontmatter.images && frontmatter.images.filter((img:any)=>img.include===true).length > 0 &&
   <Accordion title="Figures" startCollapsed={false}>
     <div class="genericLayout-page__images">
@@ -100,7 +101,7 @@ frontmatter.lang = currentLang;
 }
 
 
-
+<!-- VIDEOS -->
 {frontmatter.videos && frontmatter.videos.length > 0 &&
   <Accordion title="Videos" startCollapsed={false}>
     <div class="genericLayout-page__videos">
@@ -111,9 +112,14 @@ frontmatter.lang = currentLang;
   </Accordion>
 }
 
+<!-- SLOT CONTENTS -->
+{Astro.slots.default  && (await Astro.slots.render('default')).replace(/\s/g, "").length > 0  &&
+    <Accordion title="Contents" startCollapsed={true}>
+    <slot /> <!-- slot injects contents of .md file  -->
+  </Accordion>
+}
 
 
-  <slot /> <!-- slot injects contents of .md file  -->
 </BaseLayout>
 
 <script>
