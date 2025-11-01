@@ -3,11 +3,13 @@ import BaseLayout from './../BaseLayout.astro';
 import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 import TechstackIcon from '@/components/TechstackIcon.astro';
+import IconLink from '@/components/IconLink.astro';
 import Image from "astro/components/Image.astro";
 import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collections/_genericLayout.scss';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '@/components/Accordion.astro';
+
 
 const { frontmatter, collection } = Astro.props;
 
@@ -41,8 +43,9 @@ frontmatter.lang = currentLang;
   </div>
 
   <div class="genericLayout-page__links">
-    {frontmatter.repository && <a data-tooltip={`Go to repository at www.${frontmatter.repository}`} data-tippy-placement="left" href={"https://"+frontmatter.repository} class="page__links__repository"><i class="fa-brands fa-github"></i></a>}
-    {frontmatter.externalLink && <a data-tooltip={`Go to demo at www.${frontmatter.repository}`} data-tippy-placement="left" href={"https://"+frontmatter.externalLink} class="page__links__external-link"><i class="fas fa-external-link"></i></a>}
+    <IconLink link={frontmatter.repository} faIcon="fa-brands fa-github" tooltip=`Go to repository at ${frontmatter.repository}` tooltipPlacement="left"/>
+    <IconLink link={frontmatter.documentation} faIcon="fa-solid fa-question" tooltip=`Go to documentation at ${frontmatter.documentation}` tooltipPlacement="left"/>
+    <IconLink link={frontmatter.externalLink} faIcon="fas fa-external-link" tooltip=`Go to demo at ${frontmatter.externalLink}` tooltipPlacement="left"/>
   </div>
 
   <div class="genericLayout-page__tags">

@@ -33,6 +33,7 @@ definition[collection] = defineCollection({
       authors: z.array(author).nullable().optional(),
       repository: z.string().nullable().optional(),
       externalLink: z.string().nullable().optional(),
+      documentation: z.string().nullable().optional(),
       datePublication: z.date().nullable().optional(),
       finished: z.boolean().nullable().optional(),
       opensource: z.boolean().nullable().optional(),

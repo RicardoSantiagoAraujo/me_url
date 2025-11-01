@@ -1,0 +1,5 @@
+---
+const {link, faIcon, tooltip, tooltipPlacement} = Astro.props;
+---
+
+{link && <a href={"https://"+link} data-tooltip={tooltip} data-tippy-placement={tooltipPlacement} class="collection-item__header__link"><i class={faIcon}></i></a>}
