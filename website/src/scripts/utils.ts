@@ -1,4 +1,4 @@
-import { imageBase } from "@/collectionsConfig/collectionTools/image";
+import { imageBase } from "@/collectionsConfig/collectionObjects/image";
 /**
  * Calculates the age based on the provided birth date.
  *

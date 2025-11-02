@@ -2,12 +2,13 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
 import { z, defineCollection } from "astro:content";
-import { collectionBase } from "./collectionTools/collectionBase.ts";
-import { imageBase } from "./collectionTools/image.ts";
+import { collectionBase } from "./collectionObjects/collectionBase.ts";
+import { imageBase } from "./collectionObjects/image.ts";
 import { excludedFolder } from "@/options.config.ts";
-import { tag } from "./collectionTools/tag.ts";
-import { tech } from "./collectionTools/tech.ts";
-import { field } from "./collectionTools/field.ts";
+import { tag } from "./collectionObjects/tag.ts";
+import { tech } from "./collectionObjects/tech.ts";
+import { field } from "./collectionObjects/field.ts";
+import { uniqueArray } from "./utils/utils.ts";
 
 // Define a `loader` and `schema` for collection
 export const definition: Record<string, any> = {};
@@ -42,12 +43,12 @@ definition[collection] = defineCollection({
       employer: z.string().nullable().optional(),
       contract: z.string().nullable().optional(),
       location: z.string().nullable().optional(),
-      images: z.array(imageBase).nullable().optional(),
+      images: uniqueArray(imageBase).nullable().optional(),
       idMainImg: z.string().nullable().optional(),
       idBgImg: z.string().nullable().optional(),
-      tags: z.array(tag).nullable().optional(),
-      fields: z.array(field).nullable().optional(),
-      techstack: z.array(tech).nullable().optional(),
+      tags: uniqueArray(tag).nullable().optional(),
+      fields: uniqueArray(field).nullable().optional(),
+      techstack: uniqueArray(tech).nullable().optional(),
     })
     .strict(), //  enforce a specific set of keys and prevent additional unknown keys (strict mode),
 });
