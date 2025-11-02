@@ -21,7 +21,7 @@ html.dark {
 }
 
 .dark#header__bar {
-  background-color: c.$color-bg-darkmode ;
+  background: c.$color-bg-darkmode ;
   color: c.$color-text-darkmode ;
   &:after{
     background: linear-gradient(c.$color-bg-darkmode, transparent);
@@ -49,7 +49,7 @@ footer.dark{
 
 footer.dark,
 footer.dark .footer_row {
-  background-color: c.$color-bg-darkmode ;
+  background: c.$color-bg-darkmode ;
   color: c.$color-text-darkmode ;
 }
 

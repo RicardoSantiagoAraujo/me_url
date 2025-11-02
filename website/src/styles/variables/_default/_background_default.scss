@@ -1,0 +1,7 @@
+@use 'sass:color';
+// recover values from default files
+@use 'colors_default' as c; // to use default values directly in this file
+
+$background-html : c.$color_body_bg;
+$background-header : c.$color_body_bg;
+$background-footer : c.$color_body_bg;

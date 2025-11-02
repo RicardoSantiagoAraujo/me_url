@@ -3,16 +3,17 @@
 // VARIABLES
 @use 'variables/colors' as c;
 @use 'variables/dimensions' as d;
+@use 'variables/background' as bg;
 // PAGES
 @use 'home/_home';
 @use 'about/_about';
-// OTHERS  
+// OTHERS
 @use 'dark_mode';
 @use 'tooltip';
 
 html {
   // background: linear-gradient(0.25turn, c.$color_bg, c.$color-white d.$header__panel-width*1 (100% - d.$header__panel-width*1), c.$color_bg);
-  background: c.$color_body_bg;
+  background: bg.$background-html;
   font-family: serif;
   color: c.$color-text;
 }
@@ -31,7 +32,7 @@ body {
   width: d.$body-width-mobile;
   margin: 0 auto;
   min-height: 100vh - d.$header-height-desktop; //- d.$footer-height-desktop;
-  background-color: c.$color_body_bg;
+  background-color: transparent;
 
   .page-titles {
     padding-bottom: 1rem;
@@ -84,6 +85,6 @@ h1 {
     width: d.$body-width-desktop;
     margin: 0 auto 0;
     min-height: 100vh; //- d.$footer-height-desktop;
-    background-color: c.$color_body_bg;
+    background-color: transparent;
   }
 }

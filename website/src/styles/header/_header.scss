@@ -1,5 +1,6 @@
 @use '../variables/colors' as c;
 @use '../variables/dimensions' as d;
+@use '../variables/background' as bg;
 @use 'sass:color';
 @use './navigation/navigation';
 
@@ -33,7 +34,7 @@ header {
   align-content: center;
   height: 100%;
   width: 100%;
-  background-color: c.$color_header_bg;
+  background: bg.$background-header;
 }
 
 
