@@ -140,13 +140,16 @@ function appearChars(str: string, elem: HTMLElement, timeBetween: number) {
 }
 
 var elem = document.querySelector<HTMLElement>('.genericLayout-page__header__titles h2')!;
-var inner_text = elem.innerHTML; // store content
-elem.innerHTML = ""; // empty element
-elem.style.opacity = "1"; // make element visible (was hidden with opacity:0 in CSS)
-var timeBetween = 50;
-setTimeout(() => {
-  appearChars(inner_text, elem, timeBetween);
-}, 500) // wait a little bit before starting
+if (elem != null){
+  var inner_text = elem.innerHTML; // store content
+  elem.innerHTML = ""; // empty element
+  elem.style.opacity = "1"; // make element visible (was hidden with opacity:0 in CSS)
+  var timeBetween = 50;
+  setTimeout(() => {
+    appearChars(inner_text, elem, timeBetween);
+  }, 500) // wait a little bit before starting
+}
+
 
 
 </script>

@@ -65,7 +65,7 @@ $color_inactive: rgba(122, 122, 122, 0.882);
   overflow: hidden;
   transition: max-height $duration ease-out, padding $duration ease-out;
   background-color: #f1f1f1;
-  color: $gray;
+  color: c.$color-black;
 }
 
 

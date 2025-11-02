@@ -1,8 +1,6 @@
 ---
-const { captionData } = Astro.props;
+const { captionData, extraInfo } = Astro.props;
 const fig_caption = captionData.caption ? captionData.caption : captionData.title;
-const fig_alt = captionData.alt ? captionData.alt : fig_caption;
-const extra_info = `${captionData.title} : ${fig_caption}`;
 ---
 
 <figcaption>
@@ -15,7 +13,7 @@ const extra_info = `${captionData.title} : ${fig_caption}`;
             <button class="collapsible" ></button>
         }
         <div class="extra_information">
-            {extra_info}
+            {extraInfo}
         </div>
     </div>
 </figcaption>

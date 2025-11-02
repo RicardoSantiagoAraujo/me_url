@@ -104,9 +104,9 @@ export function Fullscreen_slideshow() {
   function updateFullscreenCaption(img: HTMLImageElement) {
     // Replacing fullpage caption contents
     let newCaption =
-      img.parentElement!.querySelector<HTMLElement>(".figcaption_text");
+      img.parentElement!.dataset.caption;
     if (newCaption) {
-      fullPage_caption.innerHTML = newCaption.innerHTML;
+      fullPage_caption.innerHTML = newCaption;
     }
   }
 
@@ -256,14 +256,14 @@ export function Fullscreen_slideshow() {
    * @returns
    */
   function info_update(target: HTMLImageElement) {
-    let infoEl =
-      target.parentElement!.querySelector<HTMLElement>(".extra_information");
-    if (infoEl == null) {
+    let infoExtra =
+      target.parentElement!.dataset.extra;
+    if (infoExtra == null) {
       info_btn.style.visibility = "hidden";
       // fullPage_caption.style.visibility = "hidden";
       return 0;
     }
-    let content = infoEl.innerHTML;
+    let content = infoExtra;
     if (content != "" && content != null) {
       content = content.replace(/\s+/g, " "); // replaces multiple spaces with single spaces
       content = content.charAt(0).toUpperCase() + content.slice(1); // capitalize first letter of sentence
@@ -271,9 +271,7 @@ export function Fullscreen_slideshow() {
       info_display.innerHTML = "<div>" + content + "</div>";
       info_btn.style.visibility = "visible";
       // fullPage_caption.style.visibility = "visible";
-      console.log("BYE");
     } else {
-      console.log("HELLO");
       info_btn.style.visibility = "hidden";
     }
   }

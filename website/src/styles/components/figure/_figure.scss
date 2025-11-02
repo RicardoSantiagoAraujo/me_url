@@ -50,8 +50,8 @@ $fig-padding: 0vw;
         font-size: 0.8em;
         padding: 1em;
         text-align: center;
-        color: #fff;
-        background: color.adjust($gray, $lightness: -10%);
+        color: c.$color-white;
+        background: color.adjust(c.$color-black, $lightness: -10%);
         position: relative;
     }
 }

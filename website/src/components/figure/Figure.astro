@@ -12,9 +12,10 @@ const images = import.meta.glob<{ default: ImageMetadata }>(`/src/assets/**/*.{j
 // Fallbacks for caption and alt
 const fig_caption = figureData.caption || figureData.title;
 const fig_alt = figureData.alt || fig_caption;
+const extra_info = `${figureData.title} : ${fig_caption}`;
 ---
 
-<figure class={`fig ${allowZoom && 'allowZoom'} ${!showCaption && 'no_caption'}`}>
+<figure class={`fig ${allowZoom && 'allowZoom'} ${!showCaption && 'no_caption'}`}             data-title={figureData.title} data-caption={fig_caption} data-extra={extra_info}>
     <!-- IMAGE -->
     {contentType === "img" ? (
         <Image
@@ -23,8 +24,6 @@ const fig_alt = figureData.alt || fig_caption;
             alt={fig_alt}
             inferSize={true}
             style={figureData.style}
-            data-title={figureData.title}
-            data-caption={fig_caption}
         />
     ) : null }
 
@@ -41,5 +40,5 @@ const fig_alt = figureData.alt || fig_caption;
     ) : null }
 
     <!-- CAPTION -->
-    {showCaption && <FigureCaption captionData={figureData} />}
+    {showCaption && <FigureCaption captionData={figureData} extraInfo={extra_info} />}
 </figure>
