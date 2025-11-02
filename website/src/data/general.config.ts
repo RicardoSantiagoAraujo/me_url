@@ -1,6 +1,6 @@
-import type { GeneralParameters } from "./types/GeneralParameters";
-import { techstackDefault } from "./_techstack";
-
+import type { GeneralParameters } from "../types/GeneralParameters";
+import { techstackDefault } from "./base/_techstack";
+import { techstackUser } from "./techstack.config";
 // DEFINE USER PARAMETERS IN HERE;
 // OTHERWISE PLACEHOLDER PARAMETERS WILL BE USED
 export const generalParametersUser: GeneralParameters = {
@@ -65,11 +65,6 @@ export const generalParametersUser: GeneralParameters = {
   ],
   techstack: {
     ...techstackDefault,
-    // HERE YOU MAY ADD TO THE DEFAULT TECHSTACK OR OVERWRITE EXISTING TECHSTACK ENTRIES
-    astro: {
-      name: "Astro",
-      icon: "tech/astro",
-      link: "https://astro.build/",
-    },
+    ...techstackUser,
   },
 };

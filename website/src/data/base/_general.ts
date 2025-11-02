@@ -1,6 +1,6 @@
 // This file sets the general parameters for the application
-import type { GeneralParameters } from "./types/GeneralParameters";
-import { generalParametersUser } from "./general.config";
+import type { GeneralParameters } from "../../types/GeneralParameters";
+import { generalParametersUser } from "../general.config";
 import { techstackDefault } from "./_techstack";
 // DEFINE USER PARAMETERS IN general.config.ts IN SAME DIRECTORY AS THIS FILE
 
@@ -21,7 +21,8 @@ const generalParametersPlaceholder: GeneralParameters = {
   city: "Cockayne",
   country: "UK",
   addressLink: "https://maps.app.goo.gl/WVy79Q7bq66XKHYZ8",
-  cvLink: "https://cversatile-demo.netlify.app/profiles/examples/johnDoe/published_pdfs/cv_johnDoe_FEN.pdf",
+  cvLink:
+    "https://cversatile-demo.netlify.app/profiles/examples/johnDoe/published_pdfs/cv_johnDoe_FEN.pdf",
   postcode: "99999",
   birthYear: 1990,
   birthMonth: 1,
@@ -66,7 +67,7 @@ const generalParametersPlaceholder: GeneralParameters = {
       hyperref: "instagram.com",
     },
   ],
-  techstack: techstackDefault
+  techstack: techstackDefault,
 };
 
 // Check if userGeneralParameters is defined and not empty

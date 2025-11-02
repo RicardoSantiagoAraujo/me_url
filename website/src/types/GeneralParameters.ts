@@ -1,5 +1,5 @@
 import type { ExternalLink } from "./ExternalLink";
-
+import type { Tech } from "./Tech";
 export interface GeneralParameters {
   name: string;
   surname: string;
@@ -27,9 +27,3 @@ export interface GeneralParameters {
   externalLinks: ExternalLink[];
   techstack: Record<string, Tech>;
 }
-
-export type Tech = {
-  name: string;
-  icon: string;
-  link: string;
-};

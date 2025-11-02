@@ -1,4 +1,4 @@
-import type { Tech } from "./types/GeneralParameters";
+import type { Tech } from "../../types/Tech";
 
 export const techstackDefault: Record<string, Tech> = {
   astro: {
