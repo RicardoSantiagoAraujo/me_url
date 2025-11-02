@@ -1,16 +1,15 @@
 ---
-
 import {render } from 'astro:content';
 import ItemLayout_blog from '@/layouts/collections/ItemLayout_blog.astro';
-import {generateItemRoutes} from '@/scripts/dynamicRoutes.ts'
+import {generateItemRoutes} from '@/scripts/dynamicRoutes.ts';
+import { collections } from "@/content.config.ts";
 
 export async function getStaticPaths() {
-  return generateItemRoutes("blog");
+  return generateItemRoutes("blog" as keyof typeof collections);
 }
 
 const { lang, slug } = Astro.params;
-const page = Astro.props;
-const formattedDate = page.data.pubDate.toLocaleString(lang);
+const page: any = Astro.props;
 const { Content } = await render(page);
 ---
 <ItemLayout_blog frontmatter={page.data}>

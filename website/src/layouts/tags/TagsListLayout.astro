@@ -9,10 +9,18 @@ const lang = getLangFromUrl(Astro.url);
 var tagsPerCollection  = {} as {[key: string]: any[]};
 for (let collectionName of collectionNames){
   const allItems = await getCollection(collectionName as keyof DataEntryMap);
-  const tags = [...new Set(allItems.map((item : any) => item.data.tags).flat())];
+  //filter out excluded items
+  const includedItems = allItems
+  .filter((item: any)=>item.data.include==true);
+  // Get tags from all items
+  const tags = [...new Set(includedItems.map((item : any) => item.data.tags).flat())]
+  // Filter out excluded tags
+  .filter((tag)=>tag.include==true)
+  // Remove duplicates
   const uniqueTags = [...new Map(tags.map(tag => [tag.name, tag])).values()];
   tagsPerCollection[collectionName] = uniqueTags;
 }
+// console.log(tagsPerCollection["projects"])
 
 
 const pageTitle = "Tag Index";

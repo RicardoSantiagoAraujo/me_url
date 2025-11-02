@@ -34,8 +34,8 @@ const pageSubtitle = ""
       // sort by specified field
       if (val.orderBy){
         route = route.sort((a, b) => {
-          const aValue = a.props.data[val.orderBy as keyof typeof a.props.data];
-          const bValue = b.props.data[val.orderBy as keyof typeof b.props.data];
+          const aValue = a.props.data[val.orderBy as keyof typeof a.props.data]!;
+          const bValue = b.props.data[val.orderBy as keyof typeof b.props.data]!;
           if (aValue < bValue) return -1;
           if (aValue > bValue) return 1;
           return 0;
@@ -51,7 +51,7 @@ const pageSubtitle = ""
           <h3>
             <a href={`/${lang}/${key}`}><span class="collection-title">{key}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
-          <ul>{route.map(item=>{
+          <ul>{route.map((item:any)=>{
             return (item.params.lang == lang ?
             <li >
               <a href={`/${item.params.lang}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
