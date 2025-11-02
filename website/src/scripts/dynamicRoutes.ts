@@ -1,7 +1,7 @@
 // Functins used to dynamically generate routes for specified collections in Astro.
 
 import { getCollection, render } from "astro:content";
-import { collections,collectionsMetadata } from "@/content.config.ts";
+import { collections,collectionsMetadata0 } from "@/content.config.ts";
 
 /**
  * Generates dynamic routes for items in a specified collection.
@@ -12,9 +12,9 @@ import { collections,collectionsMetadata } from "@/content.config.ts";
 export async function generateItemRoutes(
   collection_name: keyof typeof collections
 ) {
-  if (!Object.keys(collectionsMetadata).includes(collection_name))
+  if (!Object.keys(collectionsMetadata0).includes(collection_name))
   {
-    throw `The collection name '**${collection_name}**' is not a valid. collection name ! Available collections: ${Object.keys(collectionsMetadata).join(", ")}.`
+    throw `The collection name '**${collection_name}**' is not valid ! Available collections: ${Object.keys(collectionsMetadata0).join(", ")}.`
   }
   let allItems = (await getCollection(collection_name)) as Array<{
     id: string;

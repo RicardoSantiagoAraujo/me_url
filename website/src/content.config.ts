@@ -6,7 +6,7 @@ import { definition as experience } from "./collectionsConfig/experience";
 import { definition as education } from "./collectionsConfig/education";
 
 //Metadata for each collection
-const collectionsMetadata0: { [collection_id: string]: CollectionMetadata } = {
+export const collectionsMetadata0: { [collection_id: string]: CollectionMetadata } = {
   // Template collection that can be used as base to create new collections:
   collectionTemplate: {
     definition: collectionTemplate.collectionTemplate,
