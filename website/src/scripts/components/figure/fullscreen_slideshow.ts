@@ -103,10 +103,11 @@ export function Fullscreen_slideshow() {
    */
   function updateFullscreenCaption(img: HTMLImageElement) {
     // Replacing fullpage caption contents
-    fullPage_caption.innerHTML =
-      img.parentElement!.querySelector<HTMLElement>(
-        ".figcaption_text"
-      )!.innerHTML;
+    let newCaption =
+      img.parentElement!.querySelector<HTMLElement>(".figcaption_text");
+    if (newCaption) {
+      fullPage_caption.innerHTML = newCaption.innerHTML;
+    }
   }
 
   getImgs();
@@ -248,17 +249,31 @@ export function Fullscreen_slideshow() {
     info_display.style.opacity = "0";
   });
 
+  /**
+   * Update information in fullscreen caption
+   *
+   * @param target
+   * @returns
+   */
   function info_update(target: HTMLImageElement) {
-    // content excluding space
-    let content = target
-      .parentElement!.querySelector<HTMLElement>(".extra_information")!
-      .innerHTML.replace(/\s+/g, " ");
+    let infoEl =
+      target.parentElement!.querySelector<HTMLElement>(".extra_information");
+    if (infoEl == null) {
+      info_btn.style.visibility = "hidden";
+      // fullPage_caption.style.visibility = "hidden";
+      return 0;
+    }
+    let content = infoEl.innerHTML;
     if (content != "" && content != null) {
+      content = content.replace(/\s+/g, " "); // replaces multiple spaces with single spaces
       content = content.charAt(0).toUpperCase() + content.slice(1); // capitalize first letter of sentence
       content = content.replace(/<a[^>]*>|<\/a>/g, ""); // remove all anchor tags
       info_display.innerHTML = "<div>" + content + "</div>";
       info_btn.style.visibility = "visible";
+      // fullPage_caption.style.visibility = "visible";
+      console.log("BYE");
     } else {
+      console.log("HELLO");
       info_btn.style.visibility = "hidden";
     }
   }
