@@ -23,7 +23,7 @@ const pageTitle = "Tag Index";
   {
     Object.entries(tagsPerCollection).map(([collectionName, cleanedTags]) => (
       <div class={collectionName}>
-        <h3 style="text-transform: capitalize;">{collectionName}</h3>
+        <h3 style="text-transform: capitalize;"><a href="" style="text-decoration: none; color: black">{collectionName}</a></h3>
         <div class="tags">
         {cleanedTags
           .sort((a, b) => a.name.localeCompare(b.name)) // Sort by collection ID

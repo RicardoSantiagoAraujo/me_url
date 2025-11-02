@@ -20,9 +20,10 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.projects": "Projects",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
+    "nav.tags": "Tags",
+    // EXAMPLE
     "nav.example-dropdownGroup": "Dropdown Group",
     "nav.example-dropdownItem": "Dropdown Item",
-    // EXAMPLE
     "nav.collectionTemplate": "Collection Template Tab",
   },
   fr: {
@@ -33,9 +34,9 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.projects": "Projets",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
+    // EXAMPLE
     "nav.example-dropdownGroup": "Dropdown Group",
     "nav.example-dropdownItem": "Dropdown Item",
-    // EXAMPLE
     "nav.collectionTemplate": "Collection Template Tab",
   },
   pt: {
