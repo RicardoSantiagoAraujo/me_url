@@ -20,6 +20,7 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.projects": "Projects",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
+    "nav.more": "More",
     "nav.tags": "Tags",
     // EXAMPLE
     "nav.example-dropdownGroup": "Dropdown Group",
