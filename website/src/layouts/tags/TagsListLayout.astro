@@ -6,13 +6,18 @@ import { getLangFromUrl} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const allItems = await getCollection(collectionName);
 const tags = [...new Set(allItems.map((item : any) => item.data.tags).flat())];
+const uniqueTags = [...new Map(tags.map(tag => [tag.name, tag])).values()];
+
 const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="tags">
     {
-      tags.map((tag) => (
+      uniqueTags
+      .sort((a, b) => a.name.localeCompare(b.name)) // Sort by collection ID
+      // .reverse()  // Reverse the sorted array to get descending order
+      .map((tag) => (
         <p class="tag">
           <a href={`/${lang}/tags/${collectionName}/${tag.name}`}>{tag.name}</a>
         </p>
@@ -36,6 +41,10 @@ const pageTitle = "Tag Index";
     border-radius: 0.5em;
     padding: 0.5em 1em;
     font-size: 1.15em;
-    background-color: #f8fcfd;
+    background-color: #d3d5d6;
+    a{
+      color: black;
+      text-decoration: none;
+    }
   }
 </style>
