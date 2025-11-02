@@ -1,0 +1,6 @@
+---
+import TagsListLayout from "@/layouts/tags/TagsListLayout.astro";
+import {collectionsMetadata} from "@/content.config";
+const collectionsNamesArray = Object.keys(collectionsMetadata);
+---
+<TagsListLayout collectionNames={collectionsNamesArray}/>

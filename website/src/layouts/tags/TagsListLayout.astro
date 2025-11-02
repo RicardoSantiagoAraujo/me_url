@@ -1,29 +1,42 @@
 ---
 import { getCollection } from "astro:content";
+import type { DataEntryMap } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-const { collectionName } = Astro.props;
+const { collectionNames } = Astro.props;
 import { getLangFromUrl} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
-const allItems = await getCollection(collectionName);
-const tags = [...new Set(allItems.map((item : any) => item.data.tags).flat())];
-const uniqueTags = [...new Map(tags.map(tag => [tag.name, tag])).values()];
+
+var tagsPerCollection  = {} as {[key: string]: any[]};
+for (let collectionName of collectionNames){
+  const allItems = await getCollection(collectionName as keyof DataEntryMap);
+  const tags = [...new Set(allItems.map((item : any) => item.data.tags).flat())];
+  const uniqueTags = [...new Map(tags.map(tag => [tag.name, tag])).values()];
+  tagsPerCollection[collectionName] = uniqueTags;
+}
+
 
 const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="tags">
-    {
-      uniqueTags
-      .sort((a, b) => a.name.localeCompare(b.name)) // Sort by collection ID
-      // .reverse()  // Reverse the sorted array to get descending order
-      .map((tag) => (
-        <p class="tag">
-          <a href={`/${lang}/tags/${collectionName}/${tag.name}`}>{tag.name}</a>
-        </p>
-      ))
-    }
-  </div>
+
+  {
+    Object.entries(tagsPerCollection).map(([collectionName, cleanedTags]) => (
+      <div class={collectionName}>
+        <h3 style="text-transform: capitalize;">{collectionName}</h3>
+        <div class="tags">
+        {cleanedTags
+          .sort((a, b) => a.name.localeCompare(b.name)) // Sort by collection ID
+          .map((tag) => (
+            <p class="tag">
+              <a href={`/${lang}/tags/${collectionName}/${tag.name}`}>{tag.name}</a>
+            </p>
+          ))}
+          </div>
+      </div>
+    ))
+  }
+
 </BaseLayout>
 <style>
   a {
