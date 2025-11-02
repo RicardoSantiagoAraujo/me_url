@@ -4,6 +4,7 @@ import { generalParameters as gp} from '@/data/base/_general';
 import { calculateAge, formatWordList } from '@/scripts/utils';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '@/components/Accordion.astro';
+import TechstackIcon from '@/components/TechstackIcon.astro';
 const pageTitle = "About me";
 
 const skillColor = "navy";
@@ -58,8 +59,14 @@ const aboutFigure = {
     <Accordion title="My techstack" startCollapsed={false}>
       {Object.values(gp.techstack).length > 0 &&
         <p>Here are some tools in tech that I use:</p>
-        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; list-style-type: none; padding: 0;">
-        {Object.values(gp.techstack).map((tool) => <li class="tech"><a href={tool.link} style="text-decoration: none; color: black">{tool.name}</a></li>)}
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; list-style-type: none; padding: 0;">
+        {Object.entries(gp.techstack)
+        .sort(([idA, toolA], [idB, toolB]) => toolA.name.localeCompare(toolB.name)) // Sort alphabetically by tool name
+        .map(([id, tool]) =>
+        <li class="tech" style="display: flex; align-items: center; gap:13px">
+          <TechstackIcon tech_id={id} showTooltip={false}></TechstackIcon>
+          <a href={tool.link} style="text-decoration: none; color: black">{tool.name}</a>
+        </li>)}
         </ul>
       }
     </Accordion>

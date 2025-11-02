@@ -76,12 +76,12 @@
 }
 
 .accordion__panel {
-    padding: 0px;
+    padding: 0px 50px ;
     background-color: color.scale(c.$color-white , $alpha: -85%);
     border-radius: 2px 2px 25px 25px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.2s ease-out, padding 0.2s ease-out;
 }
 
 .accordion__panel--active {

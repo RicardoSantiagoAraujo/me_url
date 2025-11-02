@@ -38,7 +38,7 @@ export const techstackDefault: Record<string, Tech> = {
   },
   pyspark: {
     name: "PySpark",
-    icon: "tech/pyspark2",
+    icon: "tech/spark2",
     link: "https://spark.apache.org/docs/latest/api/python/",
   },
   psytoolkit: {
@@ -66,10 +66,20 @@ export const techstackDefault: Record<string, Tech> = {
     icon: "tech/sass",
     link: "https://sass-lang.com/",
   },
-  mysql: {
+  sql: {
     name: "SQL",
-    icon: "tech/tech",
+    icon: "tech/database",
+    link: "https://fr.wikipedia.org/wiki/Structured_Query_Language",
+  },
+  mysql: {
+    name: "MySQL",
+    icon: "tech/mysql",
     link: "https://www.mysql.com/",
+  },
+  postgressql: {
+    name: "PostgreSQL",
+    icon: "tech/postgressql",
+    link: "https://www.postgresql.org/",
   },
   spring: {
     name: "Java Spring",
@@ -112,18 +122,18 @@ export const techstackDefault: Record<string, Tech> = {
     link: "https://angular.dev/",
   },
   techstack_a: {
-    name: "Tech A",
-    icon: "tech/tech",
+    name: "Generic Tech A",
+    icon: "tech/techA",
     link: "https://www.google.com/",
   },
   techstack_b: {
-    name: "Tech B",
-    icon: "tech/tech",
+    name: "Generic Tech B",
+    icon: "tech/techB",
     link: "https://www.google.com/",
   },
   techstack_c: {
-    name: "Tech C",
-    icon: "tech/tech",
+    name: "Generic Tech C",
+    icon: "tech/techC",
     link: "https://www.google.com/",
   },
 };

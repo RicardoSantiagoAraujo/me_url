@@ -3,7 +3,7 @@ import '@/styles/variables/_colors.scss';
 import { Icon } from 'astro-icon/components'
 import { generalParameters } from '@/data/base/_general';
 
-const { tech_id } = Astro.props;
+const { tech_id, showTooltip=true } = Astro.props;
 
 const color="white";
 const colorHover="red";
@@ -15,7 +15,7 @@ const icon_content = generalParameters.techstack[tech_id]
 ---
 
 <div class="tech__container">
-    <a href={icon_content.link} class="tech__link" data-tooltip={icon_content.name}>
+    <a href={icon_content.link} class="tech__link" data-tooltip={showTooltip ? icon_content.name : null}>
         <Icon size="25px" name={icon_content.icon}/>
         <!-- <span>{icon_content.name}</span> -->
     </a>
