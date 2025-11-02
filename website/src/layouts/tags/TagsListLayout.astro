@@ -11,7 +11,9 @@ for (let collectionName of collectionNames){
   const allItems = await getCollection(collectionName as keyof DataEntryMap);
   //filter out excluded items
   const includedItems = allItems
-  .filter((item: any)=>item.data.include==true);
+  .filter((item: any)=>item.data.include==true)
+  .filter((item:any)=>(item.id as string).startsWith(lang));
+  console.log(includedItems)
   // Get tags from all items
   const tags = [...new Set(includedItems.map((item : any) => item.data.tags).flat())]
   // Filter out excluded tags
