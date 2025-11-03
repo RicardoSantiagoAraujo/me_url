@@ -19,7 +19,7 @@ for (let collectionName of collectionNames){
   // Filter out excluded tags
   .filter((tag)=>tag.include==true)
   // Remove duplicates
-  const uniqueTags = [...new Map(tags.map(tag => [tag.name, tag])).values()];
+  const uniqueTags = [...new Map(tags.map(tag => [tag.id, tag])).values()];
   tagsPerCollection[collectionName] = uniqueTags;
 }
 // console.log(tagsPerCollection["projects"])
@@ -39,7 +39,7 @@ const pageTitle = "Tag Index";
           .sort((a, b) => a.name.localeCompare(b.name)) // Sort by collection ID
           .map((tag) => (
             <p class="tag">
-              <a href={`/${lang}/tags/${collectionName}/${tag.name}`}>{tag.name}</a>
+              <a href={`/${lang}/tags/${collectionName}/${tag.id}`}>{tag.id}</a>
             </p>
           ))}
           </div>

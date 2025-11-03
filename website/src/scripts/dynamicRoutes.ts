@@ -53,7 +53,7 @@ export async function generateTagRoute(
         .map((item: any) => item.data.tags)
         .flat()
         .filter((tag) => tag.include !== false)
-        .map((tag) => tag.name)
+        .map((tag) => tag.id)
     ),
   ];
 
