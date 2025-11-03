@@ -1,6 +1,6 @@
 import type { CollectionMetadata } from "./types/collectionMetadata";
 import { definition as blog } from "./collectionsConfig/blog";
-import { definition as projects } from "./collectionsConfig/projects";
+import { definition as projects, definition } from './collectionsConfig/projects';
 import { definition as collectionTemplate } from "./collectionsConfig/collectionTemplate";
 import { definition as experience } from "./collectionsConfig/experience";
 import { definition as education } from "./collectionsConfig/education";
@@ -52,6 +52,14 @@ export const collectionsMetadata = Object.fromEntries(
     .sort((a, b) => a[0].localeCompare(b[0])) // Sort by collection ID
     .reverse()  // Reverse the sorted array to get descending order
 );
+
+if (false){  // To print active collections to console on build
+  console.log("\nActive collections:")
+  for (let [key, val] of Object.entries(collectionsMetadata)){
+    console.log("\t" +  key);
+  }
+}
+
 
 // create collections export as needed by Astro
 export const collections = Object.entries(collectionsMetadata)

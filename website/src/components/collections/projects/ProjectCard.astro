@@ -2,6 +2,7 @@
 const {data} = Astro.props;
 import "./../../../styles/collections/projects/_cards.scss";
 import { getLangFromUrl } from "@/i18n/utils";
+import TagComponent from "@/components/TagComponent.astro";
 import TechstackIcon from "@/components/TechstackIcon.astro";
 import IconLink from "@/components/IconLink.astro";
 import Image from "astro/components/Image.astro";
@@ -34,7 +35,10 @@ const bgImg_alt = bgImg?.alt ? bgImg?.alt : bgImg?.title;
                 <div class="tags-container">
                     <span>Tags:</span>
                     <ul class="tag-list">
-                        {data.tags.map((item: any) =>  item.include && <li class="tag-list__item"><a href={`/${lang}/tags/projects/${item.name}`}>{item.name}</a></li>)}
+                        {data.tags.map((item: any) =>  item.include &&
+                            <li class="tag-list__item">
+                                <TagComponent collectionName={"projects"} tag_id={item.id}/>
+                            </li>)}
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,3 @@
-import Education from "@/pages/en/education.astro";
 import type { Tag } from "../../types/Tag";
 
 // DEFAULT AVAILABLE VALUES
@@ -56,11 +55,12 @@ export const tagsDefault: Record<string, Tag> = {
   },
   tag_example_1: {
     name: "Tag Example 1",
+    description: "Description of Tag"
   },
   tag_example_2: {
     name: "Tag Example 2",
   },
-  
+
   tag_example_3: {
     name: "Tag Example 3",
   },

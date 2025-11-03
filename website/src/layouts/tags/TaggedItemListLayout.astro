@@ -2,16 +2,26 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import GenericCardList from '@/components/collections/_generic/GenericCardList.astro';
 import { collectionsMetadata } from "@/content.config";
-
+import TagComponent from '@/components/TagComponent.astro';
+import type { Tag } from '@/types/Tag';
+import { generalParametersUser } from '@/data/general.config';
 // Destructure `tag`, `items`, and `collection` from Astro.params and Astro.props
-const { tag } = Astro.params;
+const { tag } = Astro.params as {tag: string};
 const { items, collectionName } = Astro.props;
 
 const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
 
+const tagObj = generalParametersUser.tags[tag] as Tag;
 
 ---
-<BaseLayout pageTitle={tag}>
-  <p> <span style="text-transform: capitalize">{String(collectionName)}</span> entries tagged with {tag}</p>
+<BaseLayout pageTitle={tagObj.name}>
+  <p> <span style="text-transform: capitalize">{String(collectionName)}</span> entries tagged with
+    <span style="font-weight: bold;">"{tagObj.name}"</span>.
+  <!-- <TagComponent collectionName={collectionName} tag_id={tag}> -->
+  </p>
+  <p>
+    <!-- tag description -->
+    {tagObj.description ?? tagObj.description}
+  </p>
   <GenericCardList collectionName={collectionName} items={items} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
 </BaseLayout>

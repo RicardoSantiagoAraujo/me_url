@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 const { collectionNames } = Astro.props;
 import { getLangFromUrl} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
+import TagComponent from "@/components/TagComponent.astro";
 
 var tagsPerCollection  = {} as {[key: string]: any[]};
 for (let collectionName of collectionNames){
@@ -36,11 +37,11 @@ const pageTitle = "Tag Index";
         <h3 style="text-transform: capitalize;"><a href="" style="text-decoration: none; color: black">{collectionName}</a></h3>
         <div class="tags">
         {cleanedTags
-          .sort((a, b) => a.name.localeCompare(b.name)) // Sort by collection ID
+          .sort((a, b) => a.id.localeCompare(b.id)) // Sort by tag id
           .map((tag) => (
-            <p class="tag">
-              <a href={`/${lang}/tags/${collectionName}/${tag.id}`}>{tag.id}</a>
-            </p>
+            <div class="tag">
+              <TagComponent collectionName={collectionName} tag_id={tag.id}/>
+            </div>
           ))}
           </div>
       </div>

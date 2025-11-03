@@ -59,7 +59,7 @@ export async function generateTagRoute(
 
   return filteredTags.map((tag) => {
     const filteredItems = allItems.filter((item: any) => {
-      let tags = item.data.tags.map((t: any) => t.name);
+      let tags = item.data.tags.map((t: any) => t.id);
       return tags.includes(tag);
     });
     return {

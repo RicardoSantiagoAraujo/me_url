@@ -3,6 +3,7 @@ import BaseLayout from './../BaseLayout.astro';
 import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 import TechstackIcon from '@/components/TechstackIcon.astro';
+import TagComponent from '@/components/TagComponent.astro';
 import IconLink from '@/components/IconLink.astro';
 import Image from "astro/components/Image.astro";
 import {getImageFromZArray} from './../../scripts/utils';
@@ -52,7 +53,7 @@ frontmatter.lang = currentLang;
     <span class="tags_prefix">Tags:</span>
     <div class="tags">
       {frontmatter.tags.map((item: any) => (
-        <p class="tag"><a href={`/${currentLang}/tags/${collection}/${item.name}`}>{item.name}</a></p>
+        <div class="tag"><TagComponent collectionName={collection} tag_id={item.id}/></div>
       ))}
     </div>
   </div>
