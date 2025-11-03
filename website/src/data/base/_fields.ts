@@ -1,10 +1,12 @@
-import { dev } from "astro";
 import type { Field } from "../../types/Field";
 
 // DEFAULT AVAILABLE VALUES
 export const fieldsDefault: Record<string, Field> = {
   data: {
-    name: "Astro", 
+    name: "Data", 
+  },
+  computer_science: {
+    name: "Computer Science",
   },
   data_engineering: {
     name: "Data Engineering",
@@ -18,16 +20,40 @@ export const fieldsDefault: Record<string, Field> = {
   software_engineering: {
     name: "Software Engineering",
   },
-  web_development: {
+  software_development: {
+    name: "Software Development",
+  },
+  web_dev: {
     name: "Web Development",
   },
   devops: {
     name: "DevOps",
   },
   backend: {
-    name: "Backend",
+    name: "Backend Development",
   },
   frontend: {
-    name: "Frontend",
+    name: "Frontend Development",
+  },
+  fullstack: {
+    name: "Fullstack Development",
+  },
+  biology: {
+    name: "Biology",
+  },
+  veterinary_medicine: {
+    name: "Veterinary Medicine",
+  },  
+  zoology: {
+    name: "Zoology",
+  },  
+  field_example_1: {
+    name: "Field Example 1",
+  },
+  field_example_2: {
+    name: "Field Example 2",
+  },
+  field_example_3: {
+    name: "Field Example 3",
   },
 };
