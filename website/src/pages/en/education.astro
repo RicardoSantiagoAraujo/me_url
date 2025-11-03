@@ -8,8 +8,8 @@ const collectionMetadata = collectionsMetadata[collectionName as keyof typeof co
 ---
 <BaseLayout pageTitle={pageTitle}>
 
-  <p>Here are some of the projects I have worked on over the years.</p>
+  <p>Here is information about my studies.</p>
 
-  <GenericCardList collectionName={collectionName} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+  <GenericCardList collectionName={collectionName} listItemComponent={collectionMetadata.itemListComponent} orderBy={collectionMetadata.orderBy} sortOrder={collectionMetadata.sortOrder} />
 
 </BaseLayout>

@@ -1,5 +1,6 @@
 import type { Tech } from "../../types/Tech";
 
+// DEFAULT AVAILABLE VALUES
 export const techstackDefault: Record<string, Tech> = {
   astro: {
     name: "Astro",

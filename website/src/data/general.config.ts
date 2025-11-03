@@ -1,6 +1,11 @@
 import type { GeneralParameters } from "../types/GeneralParameters";
 import { techstackDefault } from "./base/_techstack";
 import { techstackUser } from "./techstack.config";
+import { fieldsDefault } from "./base/_fields";
+import { fieldsUser } from "./fields.config";
+import { tagsDefault } from "./base/_tags";
+import { tagsUser } from "./tags.config";
+
 // DEFINE USER PARAMETERS IN HERE;
 // OTHERWISE PLACEHOLDER PARAMETERS WILL BE USED
 export const generalParametersUser: GeneralParameters = {
@@ -67,4 +72,12 @@ export const generalParametersUser: GeneralParameters = {
     ...techstackDefault,
     ...techstackUser,
   },
+  fields: {
+    ...fieldsDefault,
+    ...fieldsUser,
+  },
+  tags: {
+    ...tagsDefault,
+    ...tagsUser,
+  }
 };

@@ -1,5 +1,8 @@
 import type { ExternalLink } from "./ExternalLink";
 import type { Tech } from "./Tech";
+import type { Field } from "./Field";
+import type { Tag } from "./Tag";
+
 export interface GeneralParameters {
   name: string;
   surname: string;
@@ -26,4 +29,6 @@ export interface GeneralParameters {
   siteCopyright: string;
   externalLinks: ExternalLink[];
   techstack: Record<string, Tech>;
+  fields: Record<string, Field>;
+  tags: Record<string, Tag>;
 }

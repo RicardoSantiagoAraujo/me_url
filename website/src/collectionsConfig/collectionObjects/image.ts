@@ -11,4 +11,4 @@ export const imageBase = z.object({
   alt: z.string().nullable().optional(),
   style: z.string().nullable().optional(), // e.g., "padding: 10px; border-radius: 8px;" - use double quotes
   styleAsBg: z.string().nullable().optional(), // e.g., "padding: 10px; border-radius: 8px;" - use double quotes
-});
+}).strict(); // Enforce a specific set of keys and prevent additional unknown keys (strict mode)

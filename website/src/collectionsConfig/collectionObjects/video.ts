@@ -9,4 +9,4 @@ export const videoBase = z.object({
   url: z.string(),
   caption: z.string().nullable().optional(),
   alt: z.string().nullable().optional(),
-});
+}).strict(); // Enforce a specific set of keys and prevent additional unknown keys (strict mode)

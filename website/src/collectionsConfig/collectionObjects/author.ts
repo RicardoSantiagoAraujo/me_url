@@ -7,4 +7,4 @@ export const author = z.object({
   name: z.string().default(generalParametersUser["surname"]),
   surname: z.string().default(generalParametersUser["name"]),
   include: z.boolean(),
-});
+}).strict(); // Enforce a specific set of keys and prevent additional unknown keys (strict mode)

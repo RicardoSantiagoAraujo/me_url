@@ -1,7 +1,11 @@
 // This file sets the general parameters for the application
+import { field } from "@/collectionsConfig/collectionObjects/field";
 import type { GeneralParameters } from "../../types/GeneralParameters";
 import { generalParametersUser } from "../general.config";
 import { techstackDefault } from "./_techstack";
+import { fieldsDefault } from "./_fields";
+import { tagsDefault } from "./_tags";
+
 // DEFINE USER PARAMETERS IN general.config.ts IN SAME DIRECTORY AS THIS FILE
 
 // PLACEHOLDER GENERAL PARAMETERS
@@ -68,6 +72,8 @@ const generalParametersPlaceholder: GeneralParameters = {
     },
   ],
   techstack: techstackDefault,
+  fields: fieldsDefault,
+  tags: tagsDefault
 };
 
 // Check if userGeneralParameters is defined and not empty
