@@ -9,7 +9,7 @@ import { collections,collectionsMetadata0 } from "@/content.config.ts";
  * @param collection_name - The name of the collection to generate routes for.
  * @returns An array of route parameters and props for each item.
  */
-export async function generateItemRoutes(
+export async function generateCollectionItemRoutes(
   collection_name: keyof typeof collections
 ) {
   if (!Object.keys(collectionsMetadata0).includes(collection_name))

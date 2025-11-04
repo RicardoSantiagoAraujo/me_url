@@ -1,11 +1,11 @@
 ---
 import {render } from 'astro:content';
 import ItemLayout_collectionTemplate from '@/layouts/collections/ItemLayout_collectionTemplate.astro';
-import {generateItemRoutes} from '@/scripts/dynamicRoutes.ts';
+import {generateCollectionItemRoutes} from '@/scripts/dynamicRoutes.ts';
 import { collections } from "@/content.config.ts";
 
 export async function getStaticPaths() {
-  return generateItemRoutes("collectionTemplate" as keyof typeof collections);
+  return generateCollectionItemRoutes("collectionTemplate" as keyof typeof collections);
 }
 
 const { lang, slug } = Astro.params;

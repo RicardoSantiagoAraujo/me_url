@@ -9,7 +9,7 @@ const collections_list = Object.entries(collectionsMetadata);
 import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 import { ui , defaultLang} from "@/i18n/ui";
-import { generateItemRoutes } from '@/scripts/dynamicRoutes';
+import { generateCollectionItemRoutes } from '@/scripts/dynamicRoutes';
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
@@ -28,7 +28,7 @@ const pageSubtitle = ""
     <h2>{"Site contents"}</h2>
     <div class="home-collections">
     {collections_list.map(async ([key, val]) =>{
-      var route = await generateItemRoutes(key as keyof typeof collections);
+      var route = await generateCollectionItemRoutes(key as keyof typeof collections);
       route = route.filter(item=>item.params.lang == lang); // include only current lang
       route = route.filter(item=>item.props.data.include == true); // include only included items
       // sort by specified field
