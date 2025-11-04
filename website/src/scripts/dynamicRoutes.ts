@@ -1,8 +1,8 @@
 // Functins used to dynamically generate routes for specified collections in Astro.
 
 import { getCollection, render } from "astro:content";
-import { collections,collectionsMetadata0 } from "@/content.config.ts";
-
+import { collections, collectionsMetadata0 } from "@/content.config.ts";
+import { languages } from "@/i18n/ui";
 /**
  * Generates dynamic routes for items in a specified collection.
  *
@@ -12,9 +12,10 @@ import { collections,collectionsMetadata0 } from "@/content.config.ts";
 export async function generateCollectionItemRoutes(
   collection_name: keyof typeof collections
 ) {
-  if (!Object.keys(collectionsMetadata0).includes(collection_name))
-  {
-    throw `The collection name '**${collection_name}**' is not valid ! Available collections: ${Object.keys(collectionsMetadata0).join(", ")}.`
+  if (!Object.keys(collectionsMetadata0).includes(collection_name)) {
+    throw `The collection name '**${collection_name}**' is not valid ! Available collections: ${Object.keys(
+      collectionsMetadata0
+    ).join(", ")}.`;
   }
   let allItems = (await getCollection(collection_name)) as Array<{
     id: string;
@@ -45,8 +46,8 @@ export async function generateCollectionItemRoutes(
 export async function generateTagRoute(
   collection_name: keyof typeof collections
 ) {
-  const allItems = await getCollection(collection_name); // name of the collection from content.config.ts
-
+  const allItems = await getCollection(collection_name);
+  console.log(allItems)
   const filteredTags = [
     ...new Set(
       allItems
@@ -57,14 +58,22 @@ export async function generateTagRoute(
     ),
   ];
 
-  return filteredTags.map((tag) => {
-    const filteredItems = allItems.filter((item: any) => {
-      let tags = item.data.tags.map((t: any) => t.id);
-      return tags.includes(tag);
-    });
-    return {
-      params: { tag },
-      props: { items: filteredItems },
-    };
-  });
+  const paths = Object.keys(languages).flatMap((lang) =>
+    filteredTags.map((tag) => {
+      const filteredItems = allItems
+      .filter((item: any) => {
+        const tags = item.data.tags.map((t: any) => t.id);
+        return tags.includes(tag); 
+      })
+      .filter((item: any) => {
+        return item.id.startsWith(`${lang}/`) // include only the right language
+      })
+
+      return {
+        params: { tag, lang },
+        props: { items: filteredItems },
+      };
+    })
+  );
+  return paths;
 }

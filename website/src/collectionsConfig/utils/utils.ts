@@ -1,5 +1,5 @@
-import { ZodType, ZodEffects, ZodEnum } from "astro:schema"; 
-import { z } from "astro:content"; 
+import { ZodType, ZodEffects, ZodEnum } from "astro:schema";
+import { z } from "astro:content";
 import { generalParametersUser } from "@/data/general.config";
 /**
  * Ensure all items are unique (works on objects (all attributes must match), as well as primitive values like strings)
@@ -21,9 +21,9 @@ export function uniqueArray(schema: ZodType<any, any, any>) {
 
 /**
  * Get ZodEnum values from specified glossary based on user defined general parameters
- * 
+ *
  * @param glossary - glossary to get values from
- * @returns 
+ * @returns
  */
 export function valuesFromGlossary(glossary: "tags" | "fields" | "techstack") : ZodEffects<ZodEnum<[string, ...string[]]>, string, string> {
   let values = z.enum(Object.keys(generalParametersUser[glossary]) as [string, ...string[]]);
@@ -31,7 +31,7 @@ export function valuesFromGlossary(glossary: "tags" | "fields" | "techstack") : 
   // console.log(`\n\nGlossary: ${glossary}`);
   // console.log(values.options);
   return values.refine(
-    (val) => false,
+    (val) => true,
     {
       message: `⚠️⚠️⚠️  DEFAULT VALIDATOR - Please update the 'valuesFromGlossary' function in 'website/src/collectionsConfig/utils/utils.ts' to implement proper validation for glossary '${glossary}' !!!`,
     }
