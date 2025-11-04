@@ -1,10 +1,9 @@
 // This file sets the general parameters for the application
-import { field } from "@/collectionsConfig/collectionObjects/field";
 import type { GeneralParameters } from "../../types/GeneralParameters";
 import { generalParametersUser } from "../general.config";
-import { techstackDefault } from "./_techstack";
-import { fieldsDefault } from "./_fields";
-import { tagsDefault } from "./_tags";
+import { techstackDefault } from "./glossaries/_techstack";
+import { fieldsDefault } from "./glossaries/_fields";
+import { tagsDefault } from "./glossaries/_tags";
 
 // DEFINE USER PARAMETERS IN general.config.ts IN SAME DIRECTORY AS THIS FILE
 

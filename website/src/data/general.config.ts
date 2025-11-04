@@ -1,10 +1,10 @@
 import type { GeneralParameters } from "../types/GeneralParameters";
-import { techstackDefault } from "./base/_techstack";
-import { techstackUser } from "./techstack.config";
-import { fieldsDefault } from "./base/_fields";
-import { fieldsUser } from "./fields.config";
-import { tagsDefault } from "./base/_tags";
-import { tagsUser } from "./tags.config";
+import { techstackDefault } from "./base/glossaries/_techstack";
+import { techstackUser } from "./glossaries/techstack.config";
+import { fieldsDefault } from "./base/glossaries/_fields";
+import { fieldsUser } from "./glossaries/fields.config";
+import { tagsDefault } from "./base/glossaries/_tags";
+import { tagsUser } from "./glossaries/tags.config";
 
 // DEFINE USER PARAMETERS IN HERE;
 // OTHERWISE PLACEHOLDER PARAMETERS WILL BE USED
