@@ -9,34 +9,37 @@ import TagComponent from "@/components/TagComponent.astro";
 
 var tagsPerCollection  = {} as {[key: string]: any[]};
 for (let collectionName of collectionNames){
-  const allItems = await getCollection(collectionName as keyof DataEntryMap);
-  //filter out excluded items
-  const includedItems = allItems
+  const allCollectionItems = await getCollection(collectionName as keyof DataEntryMap);
+  //filter out excluded CollectionItems
+  const includedCollectionItems = allCollectionItems
   .filter((item: any)=>item.data.include==true)
   .filter((item:any)=>(item.id as string).startsWith(lang));
-  console.log(includedItems)
-  // Get tags from all items
-  const tags = [...new Set(includedItems.map((item : any) => item.data.tags).flat())]
+  console.log(includedCollectionItems)
+  // Get tags from all CollectionItems
+  const tags = [...new Set(includedCollectionItems.map((item : any) => item.data.tags).flat())]
   // Filter out excluded tags
   .filter((tag)=>tag.include==true)
   // Remove duplicates
   const uniqueTags = [...new Map(tags.map(tag => [tag.id, tag])).values()];
-  tagsPerCollection[collectionName] = uniqueTags;
-}
-// console.log(tagsPerCollection["projects"])
+  if (uniqueTags.length > 0){
+    tagsPerCollection[collectionName] = uniqueTags;
+  }
+} 
 
 
 const pageTitle = "Tag Index";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-
+<BaseLayout pageTitle={pageTitle}> 
   {
     Object.entries(tagsPerCollection).map(([collectionName, cleanedTags]) => (
       <div class={collectionName}>
         <h3 style="text-transform: capitalize;"><a href="" style="text-decoration: none; color: black">{collectionName}</a></h3>
         <div class="tags">
-        {cleanedTags
+        {// TAG LIST
+        cleanedTags.length == 0 ?
+        <p>No tags available.</p>  
+        :  cleanedTags
           .sort((a, b) => a.id.localeCompare(b.id)) // Sort by tag id
           .map((tag) => (
             <div class="tag">
