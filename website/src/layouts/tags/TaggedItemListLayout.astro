@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import GenericCardList from '@/components/collections/_generic/GenericCardList.astro';
+import GenericList from '@/components/collections/_generic/GenericList.astro';
 import { collectionsMetadata } from "@/content.config";
 import TagComponent from '@/components/TagComponent.astro';
 import type { Tag } from '@/types/Tag';
@@ -23,5 +24,14 @@ const tagObj = generalParametersUser.tags[tag] as Tag;
     <!-- tag description -->
     {tagObj.description ?? tagObj.description}
   </p>
-  <GenericCardList collectionName={collectionName} items={items} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+
+  <!-- CARD STYLE -->
+  {collectionMetadata.itemListComponent.endsWith("Card") ??
+    <GenericCardList collectionName={collectionName} items={items} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+  }
+  <!-- LINK STYLE -->
+   {collectionMetadata.itemListComponent.endsWith("Link") ??
+  <GenericList collectionName={collectionName} items={items} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+  }
+
 </BaseLayout>

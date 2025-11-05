@@ -13,7 +13,7 @@ export const collectionsMetadata0: { [collection_id: string]: CollectionMetadata
     include: true,
     orderBy: null,
     sortOrder: "asc",
-    itemListComponent: "",
+    itemListComponent: "CollectionTemplateLink",
   } as CollectionMetadata,
   // My collections:
   blog: {
@@ -21,7 +21,7 @@ export const collectionsMetadata0: { [collection_id: string]: CollectionMetadata
     include: true,
     orderBy: null,
     sortOrder: "desc",
-    itemListComponent: "BlogPostCard",
+    itemListComponent: "BlogPostLink",
   } as CollectionMetadata,
   projects: {
     definition: projects.projects,
