@@ -26,11 +26,11 @@ const tagObj = generalParametersUser.tags[tag] as Tag;
   </p>
 
   <!-- CARD STYLE -->
-  {collectionMetadata.itemListComponent.endsWith("Card") ??
+  {collectionMetadata.itemListComponent.endsWith("Card") &&
     <GenericCardList collectionName={collectionName} items={items} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
   }
   <!-- LINK STYLE -->
-   {collectionMetadata.itemListComponent.endsWith("Link") ??
+   {collectionMetadata.itemListComponent.endsWith("Link") &&
   <GenericList collectionName={collectionName} items={items} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
   }
 
