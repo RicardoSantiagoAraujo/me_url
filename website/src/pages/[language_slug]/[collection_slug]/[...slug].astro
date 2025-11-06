@@ -1,0 +1,47 @@
+---
+import ItemLayout_collectionTemplate from '@/layouts/collections/ItemLayout_blog.astro'; 
+import GenericItemLayout from '@/layouts/collections/GenericItemLayout.astro';
+import { getCollection, render } from "astro:content";
+import { collections, collectionsMetadata0 } from "@/content.config.ts";
+import { languages } from "@/i18n/ui"; 
+export const collection_slugs=Object.keys(collections) as (keyof typeof collections)[];
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (let collection_slug of collection_slugs) { 
+
+    if (!Object.keys(collectionsMetadata0).includes(collection_slug)) {
+      throw `The collection name '**${collection_slug}**' is not valid ! Available collections: ${Object.keys(
+        collectionsMetadata0
+      ).join(", ")}.`;
+    }
+    let allCollectionItems = (await getCollection(collection_slug)) as Array<{
+      id: string;
+      data: { include?: boolean };
+    }>; // name of the collection from content.config.ts
+    // Filter out excluded items
+    allCollectionItems = allCollectionItems.filter((item) => {
+      return item.data.include !== false;
+    });
+    // Order items
+    allCollectionItems = allCollectionItems.sort((a, b) => {
+      return b.id.localeCompare(a.id, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
+    });
+    paths.push(...allCollectionItems.map((item) => {
+      const [language_slug, ...slug] = item.id.split("/");
+      return { params: {collection_slug, language_slug, slug: slug.join("/") || undefined }, props: item };
+    }));
+
+  }
+  console.log(paths);
+  return paths;
+}
+
+const { language_slug, slug } = Astro.params;
+const page: any = Astro.props;
+const { Content } = await render(page);
+--- 
+
+<GenericItemLayout frontmatter={page.data}>
+  <Content />
+</GenericItemLayout>
