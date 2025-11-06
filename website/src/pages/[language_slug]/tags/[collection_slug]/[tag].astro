@@ -1,0 +1,45 @@
+---
+import TaggedItemListLayout from '@/layouts/tags/TaggedItemListLayout.astro'; 
+import { collections } from '@/content.config';
+import { getCollection } from 'astro:content';
+import { languages } from "@/i18n/ui"; 
+export const collection_slugs = Object.keys(collections) as (keyof typeof collections)[];
+export const language_slugs = Object.keys(languages);
+export async function getStaticPaths() {
+  const paths = [];
+  for (const collection_slug of collection_slugs) { 
+    const allItems = await getCollection(collection_slug); 
+    const filteredTags = [
+      ...new Set(
+        allItems
+          .map((item: any) => item.data.tags)
+          .flat()
+          .filter((tag) => tag.include !== false)
+          .map((tag) => tag.id)
+      ),
+    ];
+    for (const language_slug of language_slugs) { 
+      for (const tag of filteredTags) {
+        const filteredItems = allItems
+        .filter((item: any) => {
+          const tags = item.data.tags.map((t: any) => t.id);
+          return tags.includes(tag); 
+        })
+        .filter((item: any) => {
+          return item.id.startsWith(`${language_slug}/`) // include only the right language
+        })
+
+        paths.push({
+          params: { tag, collection_slug, language_slug },
+          props: { items: filteredItems, collection_slug, language_slug },
+        });
+      }
+    } 
+  }  
+  return paths;
+}
+
+const { collection_slug, language_slug } = Astro.props;
+
+--- 
+<TaggedItemListLayout {...Astro.props} collectionName={collection_slug}/>

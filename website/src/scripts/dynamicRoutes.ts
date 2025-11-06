@@ -30,50 +30,10 @@ export async function generateCollectionItemRoutes(
     return b.id.localeCompare(a.id, undefined, { numeric: true }); // order items: localeCompare works for any string and sorts based on Unicode order.
   });
   const paths = allItems.map((item) => {
-    const [lang, ...slug] = item.id.split("/");
-    return { params: { lang, slug: slug.join("/") || undefined }, props: item };
+    const [language_slug, ...slug] = item.id.split("/");
+    return { params: { language_slug, slug: slug.join("/") || undefined }, props: item };
   });
 
   return paths;
 }
 
-/**
- * Generates dynamic routes for tags in a specified collection.
- *
- * @param collection_name - The name of the collection to generate tag routes for.
- * @returns An array of route parameters and props for each tag.
- */
-export async function generateTagRoute(
-  collection_name: keyof typeof collections
-) {
-  const allItems = await getCollection(collection_name);
-  console.log(allItems)
-  const filteredTags = [
-    ...new Set(
-      allItems
-        .map((item: any) => item.data.tags)
-        .flat()
-        .filter((tag) => tag.include !== false)
-        .map((tag) => tag.id)
-    ),
-  ];
-
-  const paths = Object.keys(languages).flatMap((lang) =>
-    filteredTags.map((tag) => {
-      const filteredItems = allItems
-      .filter((item: any) => {
-        const tags = item.data.tags.map((t: any) => t.id);
-        return tags.includes(tag); 
-      })
-      .filter((item: any) => {
-        return item.id.startsWith(`${lang}/`) // include only the right language
-      })
-
-      return {
-        params: { tag, lang },
-        props: { items: filteredItems },
-      };
-    })
-  );
-  return paths;
-}

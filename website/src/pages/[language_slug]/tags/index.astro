@@ -6,9 +6,9 @@ import { languages } from "@/i18n/ui";
 
 export async function getStaticPaths() {
   // Return an array of route params and props
-  return Object.keys(languages).map((lang) => ({
-    params: { lang },        // The [lang] param
-    props: { lang },         // Pass it as a prop to the page
+  return Object.keys(languages).map((language_slug) => ({
+    params: { language_slug },        // The [language_slug] param
+    props: { language_slug },         // Pass it as a prop to the page
   }));
 }
 ---

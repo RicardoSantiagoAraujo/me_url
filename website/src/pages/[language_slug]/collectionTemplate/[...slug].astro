@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   return generateCollectionItemRoutes("collectionTemplate" as keyof typeof collections);
 }
 
-const { lang, slug } = Astro.params;
+const { language_slug, slug } = Astro.params;
 const page: any = Astro.props;
 const { Content } = await render(page);
 ---
