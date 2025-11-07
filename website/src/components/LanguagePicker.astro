@@ -8,12 +8,12 @@ const pathElements = pathnameWithoutLang.split('/').filter(Boolean); // Split th
 const firstElement = pathElements.shift()!; // Remove the first element from the path elements
 const currentLang = getLangFromUrl(url);
 const translatedPaths = Object.entries(languages)
-.filter(([key, value]) => value.isAvailable) // include only available languages
-.map(([lang, obj]) => ({
-  lang,
-  flag: obj.flag,
-  path:  `/${lang}/${translateRoute(firstElement, currentLang, lang as Language)}/${pathElements.join("/")}` // Translate the path to the target language
-}));
+  .filter(([key, value]) => value.isAvailable) // include only available languages
+  .map(([lang, obj]) => ({
+    lang,
+    flag: obj.flag,
+    path:  `/${lang}/${translateRoute(firstElement, currentLang, lang as Language)}/${pathElements.join("/")}` // Translate the path to the target language
+  }));
 ---
 
 <div id="language-select__container">
