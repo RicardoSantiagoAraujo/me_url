@@ -14,7 +14,7 @@ for (let collectionName of collectionNames){
   const includedCollectionItems = allCollectionItems
   .filter((item: any)=>item.data.include==true)
   .filter((item:any)=>(item.id as string).startsWith(lang));
-  console.log(includedCollectionItems)
+  // console.log(includedCollectionItems)  ;
   // Get tags from all CollectionItems
   const tags = [...new Set(includedCollectionItems.map((item : any) => item.data.tags).flat())]
   // Filter out excluded tags
