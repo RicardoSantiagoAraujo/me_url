@@ -1,7 +1,8 @@
 ---
 import TagsListLayout from "@/layouts/tags/TagsListLayout.astro";
 import { collections } from '@/content.config';
-import { languages } from "@/i18n/ui";
+import { languages, defaultLang } from "@/i18n/ui";
+import { translateRoute } from '@/i18n/utils';
 export const collection_slugs = Object.keys(collections);
 export const language_slugs = Object.keys(languages);
 
@@ -10,8 +11,14 @@ export async function getStaticPaths() {
   const paths = [];
   for (const language_slug of language_slugs) {
     for (const collection_slug of collection_slugs) {
+      const translated_collection_slug = translateRoute(
+          collection_slug,
+          defaultLang,
+          language_slug as keyof typeof languages
+        );
+      console.log(translated_collection_slug);
       paths.push( {
-        params: { language_slug, collection_slug },
+        params: { language_slug, collection_slug: translated_collection_slug },
         props: { language_slug, collection_slug },
       });
     }

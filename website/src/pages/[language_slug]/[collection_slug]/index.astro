@@ -1,0 +1,51 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GenericCardList from "@/components/collections/_generic/GenericCardList.astro";
+import GenericList from "@/components/collections/_generic/GenericList.astro";
+import { collectionsMetadata } from "@/content.config";
+import { collections } from "@/content.config";
+import { languages, defaultLang } from "@/i18n/ui";
+import { translateRoute } from '@/i18n/utils';
+export const collection_slugs = Object.keys(collections);
+export const language_slugs = Object.keys(languages);
+const pageTitle = "";
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const language_slug of language_slugs) {
+    for (const collection_slug of collection_slugs) {
+      const translated_collection_slug = translateRoute(
+          collection_slug,
+          defaultLang,
+          language_slug as keyof typeof languages
+        );
+      console.log(translated_collection_slug);
+      paths.push( {
+        params: { language_slug, collection_slug: translated_collection_slug },
+        props: { language_slug, collection_slug },
+      });
+    }
+  }
+  return paths;
+}
+
+const {collection_slug} = Astro.props;
+const collectionMetadata = collectionsMetadata[collection_slug];
+---
+<BaseLayout pageTitle={pageTitle}>
+
+  <p>Here is information about my studies.</p>
+
+
+  <!-- CARD STYLE -->
+  {collectionMetadata.itemListComponent.endsWith("Card") &&
+  <GenericCardList collectionName={collection_slug} itemListComponent={collectionMetadata.itemListComponent} orderBy={collectionMetadata.orderBy} sortOrder={collectionMetadata.sortOrder} />
+  }
+
+    <!-- LINK STYLE -->
+  {collectionMetadata.itemListComponent.endsWith("Link") &&
+  <GenericList itemListComponent={collectionMetadata.itemListComponent} collectionName={collection_slug}/>
+  }
+
+
+</BaseLayout>
