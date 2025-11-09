@@ -29,7 +29,7 @@ const pageSubtitle = ""
     <div class="home-collections">
     {collections_list.map(async ([key, val]) =>{
       var route = await generateCollectionItemRoutes(key as keyof typeof collections);
-      route = route.filter(item=>item.params.lang == lang); // include only current lang
+      route = route.filter(item=>item.params.language_slug == lang); // include only current lang
       route = route.filter(item=>item.props.data.include == true); // include only included items
       // sort by specified field
       if (val.orderBy){
@@ -52,9 +52,9 @@ const pageSubtitle = ""
             <a href={`/${lang}/${key}`}><span class="collection-title">{key}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
           <ul>{route.map((item:any)=>{
-            return (item.params.lang == lang ?
+            return (item.params.language_slug == lang ?
             <li >
-              <a href={`/${item.params.lang}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
+              <a href={`/${item.params.language_slug}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
                 {item.props.data.title}
               </a>
             </li>
