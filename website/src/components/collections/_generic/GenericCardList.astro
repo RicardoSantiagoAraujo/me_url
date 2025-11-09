@@ -2,16 +2,13 @@
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
 import { proccessCollectionItems } from '@/scripts/collections.ts';
+import { collections } from "@/content.config.ts";
 import "@/styles/collections/_genericCards.scss";
-const componentMap = {
-  projects:   import('../projects/ProjectCard.astro') ,
-  experience:    import('../experience/ExperienceCard.astro'),
-  education:    import('../education/EducationCard.astro'),
-} as const;
-const targetCollectionName = Astro.props.collectionName as keyof typeof componentMap;
-const ListItem = (await componentMap[targetCollectionName]).default;
+const targetCollectionName = Astro.props.collectionName as keyof typeof collections;
+const itemListComponent = Astro.props.itemListComponent;
+const componentImport =  import(`../${targetCollectionName}/${itemListComponent}.astro`);
+const ListItem = (await componentImport).default;
 
-const collectionName = Astro.props.collectionName as keyof typeof import('@/content.config.ts').collections;
 const lang = getLangFromUrl(Astro.url);
 const orderBy = Astro.props.orderBy || null;
 const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
@@ -19,10 +16,9 @@ const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
 var { items } = Astro.props;
 // If no items are passed, fetch the whole collection by default
 if (!items) {
-  items = await getCollection(collectionName);
+  items = await getCollection(targetCollectionName);
 }
 const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
-
 ---
   <ul class="collection-card-list">
     {
@@ -30,10 +26,11 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
       .map((item: any) => {
         const data = {
             ...item.data,
-            url: "/" + item.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
+            url: "/" + item.id.replace("/", `/${targetCollectionName}/`) // fix the URL to match the expected format
         };
         // const itemLang = item.id.split('/')[0];
         return <ListItem data={data} />
+        // return <li  style="background-color: yellow; margin-bottom: 1rem; border: 1px solid #ccc; display: block; ">{JSON.stringify(data, null, 2)}</li>
       })
     }
   </ul>

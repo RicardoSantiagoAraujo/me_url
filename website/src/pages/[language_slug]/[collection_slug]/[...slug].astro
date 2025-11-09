@@ -1,9 +1,9 @@
---- 
-import GenericItemLayout from '@/layouts/collections/GenericItemLayout.astro';
+---
 import { getCollection, render } from "astro:content";
 import { collections, collectionsMetadata0 } from "@/content.config.ts";
 import { languages, defaultLang } from "@/i18n/ui";
 import { translateRoute } from '@/i18n/utils';
+import { collectionsMetadata } from '@/content.config.ts';
 export const collection_slugs=Object.keys(collections) as (keyof typeof collections)[];
 export const language_slugs=Object.keys(languages) as (keyof typeof languages)[];
 
@@ -35,35 +35,40 @@ export async function getStaticPaths() {
     for (let item of allCollectionItems) {
       const [item_language, ...slug] = item.id.split("/");
       for (let language_slug of language_slugs) {
-        console.log(language_slugs);
+        // console.log(language_slugs);
         const translated_collection_slug = translateRoute(
           collection_slug,
           item_language as keyof typeof languages,
           language_slug as keyof typeof languages
         ) as never;
-        console.log(
-          `collection_slug ${collection_slug} (${item_language}) translated to ${language_slug}: ${translated_collection_slug}`
-        );
+        // console.log(
+        //   `collection_slug ${collection_slug} (${item_language}) translated to ${language_slug}: ${translated_collection_slug}`
+        // );
         paths.push({
           params: {
             collection_slug: translated_collection_slug,
             language_slug,
             slug: slug.join("/") || undefined,
           },
-          props: { item },
+          props: { item , collection_slug},
         });
       }
     }
   }
-  console.log(paths);
+  // console.log(paths)
   return paths;
 }
 
 const { language_slug, slug } = Astro.params;
-const { item }: any = Astro.props;
-const { Content } = await render(item);
---- 
-<pre>{JSON.stringify(item ,null, 2)}</pre>
-<!-- <GenericItemLayout frontmatter={item.data}>
+const { item, collection_slug }: any = Astro.props;
+const { Content } = await render(item); // mdx contents after header
+
+const layout = collectionsMetadata[collection_slug].itemLayout;
+const CollectionItemLayout = (await import(`../../../layouts/collections/${layout}.astro`)).default;
+
+---
+<!-- Comment out for debugging: -->
+<!-- <pre>{JSON.stringify(item ,null, 2)}</pre> -->
+<CollectionItemLayout frontmatter={item.data}>
   <Content />
-</GenericItemLayout> -->
+</CollectionItemLayout>

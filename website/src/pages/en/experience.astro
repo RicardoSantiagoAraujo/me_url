@@ -10,6 +10,6 @@ const collectionMetadata = collectionsMetadata[collectionName as keyof typeof co
 
   <p>Here is my professional experience.</p>
 
-  <GenericCardList collectionName={collectionName} listItemComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+  <GenericCardList collectionName={collectionName} itemListComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
 
 </BaseLayout>

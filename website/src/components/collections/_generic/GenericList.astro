@@ -1,16 +1,15 @@
 ---
 import { generateCollectionItemRoutes } from "@/scripts/dynamicRoutes";
 import { getLangFromUrl } from "@/i18n/utils";
-const componentMap = {
-  blog:    import('../blog/BlogPostLink.astro'),
-  collectionTemplate:    import('../collectionTemplate/CollectionTemplateLink.astro'),
-} as const;
-const targetCollectionName = Astro.props.collectionName as keyof typeof componentMap;
-const ListItem = (await componentMap[targetCollectionName]).default;
 
-const collectionName = Astro.props.collectionName as keyof typeof import('@/content.config.ts').collections;
+import { collections } from "@/content.config.ts";
+const targetCollectionName = Astro.props.collectionName as keyof typeof collections;
+const itemListComponent = Astro.props.itemListComponent;
+const componentImport =  import(`../${targetCollectionName}/${itemListComponent}.astro`);
+const ListItem = (await componentImport).default;
+
 const lang = getLangFromUrl(Astro.url);
-const allItems = await generateCollectionItemRoutes(collectionName);
+const allItems = await generateCollectionItemRoutes(targetCollectionName);
 
 ---
   <ul class="collection-list">
@@ -27,7 +26,7 @@ const allItems = await generateCollectionItemRoutes(collectionName);
         }
         const data = {
             ...item.props.data,
-            url: "/" + item.props.id.replace("/", `/${collectionName}/`) // fix the URL to match the expected format
+            url: "/" + item.props.id.replace("/", `/${targetCollectionName}/`) // fix the URL to match the expected format
         };
         // const itemLang = item.id.split('/')[0];
         return <ListItem   data={data} />

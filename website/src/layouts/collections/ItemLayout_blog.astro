@@ -1,6 +1,6 @@
 ---
-import BaseLayout from './../BaseLayout.astro';
-import { getLangFromUrl } from './../../i18n/utils';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getLangFromUrl } from '@/i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 
 const { frontmatter } = Astro.props;

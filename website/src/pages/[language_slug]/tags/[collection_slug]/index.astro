@@ -1,7 +1,7 @@
 ---
 import TagsListLayout from "@/layouts/tags/TagsListLayout.astro";
 import { collections } from '@/content.config';
-import { languages } from "@/i18n/ui";  
+import { languages } from "@/i18n/ui";
 export const collection_slugs = Object.keys(collections);
 export const language_slugs = Object.keys(languages);
 
@@ -15,10 +15,10 @@ export async function getStaticPaths() {
         props: { language_slug, collection_slug },
       });
     }
-  } 
+  }
   return paths;
 }
 const { collection_slug, language_slug } = Astro.props;
 ---
-collection_slug: {collection_slug}
-<!-- <TagsListLayout collectionNames={[collection_slug]}/> -->
+<!-- collection_slug: {collection_slug} -->
+<TagsListLayout collectionNames={[collection_slug]}/>
