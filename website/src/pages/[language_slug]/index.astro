@@ -5,13 +5,27 @@ import ParallaxImage from '@/components/ParallaxImage.astro';
 import myImg from "@/assets/placeholders/placeholder_image.jpg";
 import {collectionsMetadata , collections} from '@/content.config';
 import { proccessCollectionItems } from '@/scripts/collections';
-const collections_list = Object.entries(collectionsMetadata);
-import { getLangFromUrl, useTranslations , useTranslatedPath, warningMissingSectionName} from '@/i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-import { ui , defaultLang} from "@/i18n/ui";
+import { getLangFromUrl, useTranslations , useTranslatedPath, translateRoute, warningMissingSectionName} from '@/i18n/utils';
+import {languages,  ui , defaultLang} from "@/i18n/ui";
 import { generateCollectionItemRoutes } from '@/scripts/dynamicRoutes';
-const t = useTranslations(lang);
+
+
+const collections_list = Object.entries(collectionsMetadata);
+export const language_slugs = Object.keys(languages);
+
+
+export async function getStaticPaths() {
+  // Return an array of route params and props
+  return language_slugs.map((language_slug) => ({
+    params: { language_slug },        // The [language_slug] param
+    props: { language_slug },         // Pass it as a prop to the page
+  }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+// const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
+
 
 
 const parallaxEffect = 0.1;
@@ -49,7 +63,8 @@ const pageSubtitle = ""
       return (
         <div class="collection-container">
           <h3>
-            <a href={`/${lang}/${key}`}><span class="collection-title">{key}</span> <span class="collection-item-count">({route.length})</span></a>
+
+            <a href={`/${lang}/${key}`}><span class="collection-title">{translateRoute(key,defaultLang,lang)}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
           <ul>{route.map((item:any)=>{
             return (item.params.language_slug == lang ?
