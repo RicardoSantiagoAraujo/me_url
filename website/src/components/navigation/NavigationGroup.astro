@@ -13,14 +13,16 @@ const groupName_NoSpaces = groupNameTranslated.replaceAll(/\s/g, "");
 warningMissingSectionName(groupName, lang)
 
 ---
-<div class=`component__navigation-group nav_element navigation-group-${groupName_NoSpaces}`>
-    <div class="navigation-group-name">{groupNameTranslated}</div>
-    <div class="navigation-group-dropdown hidden">
-        {targets.map((target) => (
-            <NavigationItem target={target} dir={dir}/>
-        ))}
+{(targets.length > 0) &&
+    <div class={`component__navigation-group nav_element navigation-group-${groupName_NoSpaces}`}>
+        <div class="navigation-group-name">{groupNameTranslated}</div>
+        <div class="navigation-group-dropdown hidden">
+            {targets.map((target) => (
+                <NavigationItem target={target} dir={dir}/>
+            ))}
+        </div>
     </div>
-</div>
+}
 
 
 <script define:vars={{groupName_NoSpaces}}>

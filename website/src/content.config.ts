@@ -8,6 +8,7 @@ import {
 import { definition as collectionTemplate } from "./collectionsConfig/collectionTemplate";
 import { definition as experience } from "./collectionsConfig/experience";
 import { definition as education } from "./collectionsConfig/education";
+import { flattenDiagnosticMessageText } from "typescript";
 
 //Metadata for each collection
 export const collectionsMetadata0: {
@@ -57,15 +58,6 @@ export const collectionsMetadata0: {
   } as CollectionMetadata,
 };
 
-// Glossary types used on project
-export const glossaries: {
-  [glossary_id: string]: Glossary;
-} = {
-  tags: { name: "tags", include: true } as Glossary,
-  fields: { name: "fields", include: true } as Glossary,
-  techstack: { name: "techstack", include: true } as Glossary,
-};
-
 export const collectionsMetadata = Object.fromEntries(
   Object.entries(collectionsMetadata0)
     .filter(([key, item]) => item.include !== false) // Exclude entries where `include: false`
@@ -80,6 +72,26 @@ if (false) {
     console.log("\t" + key);
   }
 }
+
+
+// Glossary types used on project
+export const glossaries0: {
+  [glossary_id: string]: Glossary;
+} = {
+  tags: { name: "tags", include: true } as Glossary,
+  fields: { name: "fields", include: true } as Glossary,
+  techstack: { name: "techstack", include: true } as Glossary,
+};
+
+
+// Glossary types used on project
+export const glossaries = Object.fromEntries(
+  Object.entries(glossaries0)
+    .filter(([key, item]) => item.include !== false) // Exclude entries where `include: false`
+    .sort((a, b) => a[0].localeCompare(b[0])) // Sort by collection ID
+    .reverse() // Reverse the sorted array to get descending order
+);
+
 
 // create collections export as needed by Astro
 export const collections = Object.entries(collectionsMetadata)

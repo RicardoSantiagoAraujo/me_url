@@ -3,16 +3,17 @@ import Logo from "./../Logo.astro"
 import NavigationItem from "./NavigationItem.astro";
 import NavigationGroup from "./NavigationGroup.astro";
 import { collectionsMetadata } from "@/content.config";
-import { glossaries } from "@/content.config";
+import { glossaries , glossaries0} from "@/content.config";
 
 ---
+
 <div class="nav-links">
     <!-- <Logo /> -->
     <NavigationItem dir={"."} target="about"/>
     <!-- COLLECTIONS -->
     {Object.entries(collectionsMetadata).map(([key, val])=>
-                         <NavigationItem  dir={"."}  target={key}/>)}
+    <NavigationItem  dir={"."}  target={key}/>)}
     <!-- GLOSSARIES -->
-    <NavigationGroup groupName={`more`} dir={"."} targets={Object.keys(glossaries)} />
+    { <NavigationGroup groupName={`more`} dir={"."} targets={Object.keys(glossaries)} />}
     <!-- <NavigationGroup groupName={`example-dropdownGroup`} dir={"dropdownGroup"} targets={['example-dropdownItem','example-dropdownItem']} /> -->
 </div>
