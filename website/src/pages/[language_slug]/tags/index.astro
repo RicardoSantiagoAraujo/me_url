@@ -3,7 +3,7 @@ import TagsListLayout from "@/layouts/tags/TagsListLayout.astro";
 import {collectionsMetadata} from "@/content.config";
 const collectionsNamesArray = Object.keys(collectionsMetadata);
 import { languages } from "@/i18n/ui";
-const language_slugs = Object.keys(languages);
+export const language_slugs = Object.keys(languages);
 export async function getStaticPaths() {
   // Return an array of route params and props
   return language_slugs.map((language_slug) => ({
