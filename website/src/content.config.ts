@@ -1,4 +1,5 @@
 import type { CollectionMetadata } from "./types/collectionMetadata";
+import type { Glossary } from "./types/Glossary";
 import { definition as blog } from "./collectionsConfig/blog";
 import {
   definition as projects,
@@ -28,7 +29,7 @@ export const collectionsMetadata0: {
     orderBy: null,
     sortOrder: "desc",
     itemListComponent: "BlogPostLink",
-    itemLayout:  "ItemLayout_blog",
+    itemLayout: "ItemLayout_blog",
   } as CollectionMetadata,
   projects: {
     definition: projects.projects,
@@ -54,6 +55,15 @@ export const collectionsMetadata0: {
     itemListComponent: "EducationCard",
     itemLayout: "GenericItemLayout",
   } as CollectionMetadata,
+};
+
+// Glossary types used on project
+export const glossaries: {
+  [glossary_id: string]: Glossary;
+} = {
+  tags: { name: "tags", include: true } as Glossary,
+  fields: { name: "fields", include: true } as Glossary,
+  techstack: { name: "techstack", include: true } as Glossary,
 };
 
 export const collectionsMetadata = Object.fromEntries(

@@ -22,6 +22,8 @@ export const ui: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.more": "More",
     "nav.tags": "Tags",
+    "nav.fields": "Fields",
+    "nav.techstack": "Techstack",
     // EXAMPLE
     "nav.example-dropdownGroup": "Dropdown Group",
     "nav.example-dropdownItem": "Dropdown Item",
