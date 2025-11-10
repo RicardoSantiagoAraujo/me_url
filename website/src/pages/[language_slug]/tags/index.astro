@@ -1,5 +1,5 @@
 ---
-import TagsListLayout from "@/layouts/tags/TagsListLayout.astro";
+import GlossaryEntriesListLayout from "@/layouts/glossaries/GlossaryEntriesListLayout.astro";
 import {collectionsMetadata} from "@/content.config";
 const collectionsNamesArray = Object.keys(collectionsMetadata);
 import { languages } from "@/i18n/ui";
@@ -12,4 +12,4 @@ export async function getStaticPaths() {
   }));
 }
 ---
-<TagsListLayout collectionNames={collectionsNamesArray}/>
+<GlossaryEntriesListLayout glossaryType="fields" collectionNames={collectionsNamesArray}/>

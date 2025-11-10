@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import type { DataEntryMap } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { collections, glossaries } from "@/content.config";
+const { collectionNames, glossaryType } = Astro.props as {
+  collectionNames: (keyof typeof collections)[];
+  glossaryType: keyof typeof glossaries;
+};
+import { getLangFromUrl} from '@/i18n/utils';
+const lang = getLangFromUrl(Astro.url); 
+import GlossaryEntryComponent from "@/components/GlossaryEntryComponent.astro";
+
+var entriesPerCollection  = {} as {[key: string]: any[]};
+for (let collectionName of collectionNames){
+  const allCollectionItems = await getCollection(collectionName as keyof DataEntryMap);
+  //filter out excluded CollectionItems
+  const includedCollectionItems = allCollectionItems
+  .filter((item: any)=>item.data.include==true)
+  .filter((item:any)=>(item.id as string).startsWith(lang));
+  // console.log(includedCollectionItems)  ;
+  // Get entries from all CollectionItems
+  var entries = [...new Set(includedCollectionItems.map((item : any) => item.data[glossaryType]).flat())]
+  // Filter out excluded entries
+  if (entries[0] == undefined) // No entries found for this collection
+  {
+    continue; // skip to next collection
+  }
+  console.log(entries);
+  entries = entries.filter((entry)=>entry.include == true)
+  // Remove duplicates
+  const uniqueEntries = [...new Map(entries.map(entry => [entry.id, entry])).values()];
+  if (uniqueEntries.length > 0){
+    entriesPerCollection[collectionName] = uniqueEntries;
+  }
+} 
+
+
+const pageTitle = `${glossaryType} Index`;
+---
+
+<BaseLayout pageTitle={pageTitle}> 
+  {
+    Object.entries(entriesPerCollection).map(([collectionName, cleanedEntries]) => (
+      <div class={collectionName}>
+        <h3 style="text-transform: capitalize;"><a href="" style="text-decoration: none; color: black">{collectionName}</a></h3>
+        <div class="glossary-entries-list">
+        {// ENTRY LIST
+        cleanedEntries.length == 0 ?
+        <p>No entries available.</p>  
+        :  cleanedEntries
+          .sort((a, b) => a.id.localeCompare(b.id)) // Sort by entry id
+          .map((entry) => (
+            <div class="glossary-entry">
+              <GlossaryEntryComponent collectionName={collectionName} glossaryType={glossaryType} entry_id={entry.id}/>
+            </div>
+          ))}
+          </div>
+      </div>
+    ))
+  }
+
+</BaseLayout>
+<style>
+  a {
+    color: #00539f;
+  }
+
+  .glossary-entries-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .glossary-entry {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #d3d5d6;
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+</style>

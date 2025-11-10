@@ -92,6 +92,13 @@ export const glossaries = Object.fromEntries(
     .reverse() // Reverse the sorted array to get descending order
 );
 
+if (false) {
+  // To print active glossaries to console on build
+  console.log("\nGlossary types defined:");
+  for (let [key, val] of Object.entries(glossaries)) {
+    console.log("\t" + key);
+}
+}
 
 // create collections export as needed by Astro
 export const collections = Object.entries(collectionsMetadata)
