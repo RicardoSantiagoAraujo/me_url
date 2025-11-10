@@ -1,5 +1,5 @@
 ---
-import TagsListLayout from "@/layouts/tags/TagsListLayout.astro";
+import GlossaryEntriesListLayout from "@/layouts/glossaries/GlossaryEntriesListLayout.astro";
 import { collections } from '@/content.config';
 import { languages, defaultLang } from "@/i18n/ui";
 import { translateRoute } from '@/i18n/utils';
@@ -28,4 +28,4 @@ export async function getStaticPaths() {
 const { collection_slug, language_slug } = Astro.props;
 ---
 <!-- collection_slug: {collection_slug} -->
-<TagsListLayout collectionNames={[collection_slug]}/>
+<GlossaryEntriesListLayout glossaryType="tags" collectionNames={[collection_slug]}/>
