@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import GenericCardList from '@/components/collections/_generic/GenericCardList.astro';
+import GenericList from '@/components/collections/_generic/GenericList.astro';
+import { collectionsMetadata } from "@/content.config"; 
+import type { Tag } from '@/types/Tag';
+import { generalParametersUser } from '@/data/general.config';
+import { collections } from '@/content.config';
+import { glossaries } from '@/content.config';
+// Destructure `glossaryEntry`, `items`, and `collection` from Astro.params and Astro.props
+const { glossaryEntry } = Astro.params as {glossaryEntry: string};
+const { items, collectionName, glossaryType } = Astro.props as {
+  items: any[];
+  collectionName: keyof typeof collections;
+  glossaryType: keyof typeof glossaries;
+};
+ 
+
+const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
+
+const glossaryEntryObj = (generalParametersUser as any)[glossaryType][glossaryEntry];
+
+---
+<BaseLayout pageTitle={glossaryEntryObj.name}>
+  <p> <span style="text-transform: capitalize">{String(collectionName)}</span> entries marked with
+    <span style="font-weight: bold;">"{glossaryEntryObj.name}"</span>. 
+  </p>
+  <p>
+    <!-- Glossary Entry Description -->
+    {glossaryEntryObj.description ?? glossaryEntryObj.description}
+  </p>
+
+  <!-- CARD STYLE -->
+  {collectionMetadata.itemListComponent.endsWith("Card") &&
+    <GenericCardList collectionName={collectionName} items={items} itemListComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+  }
+  <!-- LINK STYLE -->
+   {collectionMetadata.itemListComponent.endsWith("Link") &&
+  <GenericList collectionName={collectionName} items={items} itemListComponent={collectionMetadata.itemListComponent}  orderBy={collectionMetadata.orderBy} sortOrder = {collectionMetadata.sortOrder} />
+  }
+
+</BaseLayout>
