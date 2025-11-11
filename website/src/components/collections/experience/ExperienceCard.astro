@@ -8,6 +8,7 @@ import IconLink from "@/components/IconLink.astro";
 import Image from "astro/components/Image.astro";
 import Figure from "@/components/figure/Figure.astro";
 import {getImageFromZArray, getDateRangeString} from '@/scripts/utils';
+import { generalParametersUser } from "@/data/general.config";
 const lang : string = getLangFromUrl(Astro.url);
 
 const cardImg   = getImageFromZArray("idMainImg", data);
@@ -52,8 +53,8 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
             </div>}
     </div>
     <div class="collection-item__footer">
-        <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tag-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>
-        <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="tag-list__item"><a>{item.name}</a></li> )}</ul>
+        <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tech-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>
+        <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="field-list__item"><a>{generalParametersUser.fields[item.id].name}</a></li> )}</ul>
     </div>
 
 </li>

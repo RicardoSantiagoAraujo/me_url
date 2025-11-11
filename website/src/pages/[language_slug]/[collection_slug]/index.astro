@@ -19,7 +19,7 @@ export async function getStaticPaths() {
           defaultLang,
           language_slug as keyof typeof languages
         );
-      console.log(translated_collection_slug);
+      // console.log(translated_collection_slug);
       paths.push( {
         params: { language_slug, collection_slug: translated_collection_slug },
         props: { language_slug, collection_slug },

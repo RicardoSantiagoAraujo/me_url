@@ -1,0 +1,34 @@
+---
+import GlossaryEntriesListLayout from "@/layouts/glossaries/GlossaryEntriesListLayout.astro";
+import { collections, glossaries } from '@/content.config';
+import { languages, defaultLang } from "@/i18n/ui";
+import { translateRoute } from '@/i18n/utils';
+export const collection_slugs = Object.keys(collections);
+export const language_slugs = Object.keys(languages);
+export const glossary_slugs = Object.keys(glossaries);
+
+export async function getStaticPaths() {
+  // Return an array of route params and props
+  const paths = [];
+  for (const language_slug of language_slugs) {
+    for (const glossary_slug of glossary_slugs){
+    for (const collection_slug of collection_slugs) {
+        const translated_collection_slug = translateRoute(
+            collection_slug,
+            defaultLang,
+            language_slug as keyof typeof languages
+          );
+        // console.log(translated_collection_slug);
+        paths.push( {
+          params: { language_slug, glossary_slug, collection_slug: translated_collection_slug },
+          props: { language_slug, glossary_slug, collection_slug },
+        });
+      }
+    }
+  }
+  return paths;
+}
+const { collection_slug, language_slug, glossary_slug } = Astro.props;
+---
+<!-- collection_slug: {collection_slug} -->
+<GlossaryEntriesListLayout glossaryType={glossary_slug} collectionNames={[collection_slug]}/>

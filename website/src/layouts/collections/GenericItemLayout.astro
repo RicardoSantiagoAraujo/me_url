@@ -10,6 +10,7 @@ import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collections/_genericLayout.scss';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '@/components/Accordion.astro';
+import { generalParameters } from '@/data/base/_general';
 
 
 const { frontmatter, collection } = Astro.props;
@@ -70,7 +71,7 @@ frontmatter.lang = currentLang;
     <div class="genericLayout-page__list genericLayout-page__fields">
         <ul>
           {frontmatter.fields.map((item: any, index: number,array: any[]) => item.include && <li class="author-list__item">
-            {item.name}
+            {generalParameters.fields[item.id].name}
             {index < array.length - 1 ? ', ' : ''}
             </li> )}
         </ul>

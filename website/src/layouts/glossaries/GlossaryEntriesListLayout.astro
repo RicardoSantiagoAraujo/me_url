@@ -8,7 +8,7 @@ const { collectionNames, glossaryType } = Astro.props as {
   glossaryType: keyof typeof glossaries;
 };
 import { getLangFromUrl} from '@/i18n/utils';
-const lang = getLangFromUrl(Astro.url); 
+const lang = getLangFromUrl(Astro.url);
 import GlossaryEntryComponent from "@/components/GlossaryEntryComponent.astro";
 
 var entriesPerCollection  = {} as {[key: string]: any[]};
@@ -26,20 +26,20 @@ for (let collectionName of collectionNames){
   {
     continue; // skip to next collection
   }
-  console.log(entries);
+  // console.log(entries);
   entries = entries.filter((entry)=>entry.include == true)
   // Remove duplicates
   const uniqueEntries = [...new Map(entries.map(entry => [entry.id, entry])).values()];
   if (uniqueEntries.length > 0){
     entriesPerCollection[collectionName] = uniqueEntries;
   }
-} 
+}
 
 
 const pageTitle = `${glossaryType} Index`;
 ---
 
-<BaseLayout pageTitle={pageTitle}> 
+<BaseLayout pageTitle={pageTitle}>
   {
     Object.entries(entriesPerCollection).map(([collectionName, cleanedEntries]) => (
       <div class={collectionName}>
@@ -47,7 +47,7 @@ const pageTitle = `${glossaryType} Index`;
         <div class="glossary-entries-list">
         {// ENTRY LIST
         cleanedEntries.length == 0 ?
-        <p>No entries available.</p>  
+        <p>No entries available.</p>
         :  cleanedEntries
           .sort((a, b) => a.id.localeCompare(b.id)) // Sort by entry id
           .map((entry) => (

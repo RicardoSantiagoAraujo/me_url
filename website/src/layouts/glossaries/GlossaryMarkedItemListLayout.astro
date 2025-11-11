@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import GenericCardList from '@/components/collections/_generic/GenericCardList.astro';
 import GenericList from '@/components/collections/_generic/GenericList.astro';
-import { collectionsMetadata } from "@/content.config"; 
+import { collectionsMetadata } from "@/content.config";
 import type { Tag } from '@/types/Tag';
 import { generalParametersUser } from '@/data/general.config';
 import { collections } from '@/content.config';
@@ -14,7 +14,7 @@ const { items, collectionName, glossaryType } = Astro.props as {
   collectionName: keyof typeof collections;
   glossaryType: keyof typeof glossaries;
 };
- 
+
 
 const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
 
@@ -23,12 +23,14 @@ const glossaryEntryObj = (generalParametersUser as any)[glossaryType][glossaryEn
 ---
 <BaseLayout pageTitle={glossaryEntryObj.name}>
   <p> <span style="text-transform: capitalize">{String(collectionName)}</span> entries marked with
-    <span style="font-weight: bold;">"{glossaryEntryObj.name}"</span>. 
+    <span style="font-weight: bold;">"{glossaryEntryObj.name}"</span>.
   </p>
   <p>
     <!-- Glossary Entry Description -->
     {glossaryEntryObj.description ?? glossaryEntryObj.description}
   </p>
+
+  <!-- <pre>{JSON.stringify(items, null, 2)}</pre> -->
 
   <!-- CARD STYLE -->
   {collectionMetadata.itemListComponent.endsWith("Card") &&
