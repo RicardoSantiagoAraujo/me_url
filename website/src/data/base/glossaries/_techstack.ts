@@ -1,4 +1,4 @@
-import type { Tech } from "../../types/Tech";
+import type { Tech } from "@/types/Tech";
 
 // DEFAULT AVAILABLE VALUES
 export const techstackDefault: Record<string, Tech> = {
@@ -126,15 +126,18 @@ export const techstackDefault: Record<string, Tech> = {
     name: "Generic Tech A",
     icon: "tech/techA",
     link: "https://www.google.com/",
+    description: "This is a description for Generic Tech A."
   },
   techstack_b: {
     name: "Generic Tech B",
     icon: "tech/techB",
     link: "https://www.google.com/",
+    description: "This is a description for Generic Tech B."
   },
   techstack_c: {
     name: "Generic Tech C",
     icon: "tech/techC",
     link: "https://www.google.com/",
+    description: "This is a description for Generic Tech C."
   },
 };

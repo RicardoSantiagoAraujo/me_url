@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import type { DataEntryMap } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import type { collections, glossaries } from "@/content.config";
+import  { collections, collectionsMetadata, glossaries } from "@/content.config";
 const { collectionNames, glossaryType } = Astro.props as {
   collectionNames: (keyof typeof collections)[];
   glossaryType: keyof typeof glossaries;
@@ -36,14 +36,16 @@ for (let collectionName of collectionNames){
 }
 
 
-const pageTitle = `${glossaryType} Index`;
+const pageTitle = `${glossaries[glossaryType].name} Index`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+  
+  <p>{glossaries[glossaryType].description}</p>
   {
     Object.entries(entriesPerCollection).map(([collectionName, cleanedEntries]) => (
       <div class={collectionName}>
-        <h3 style="text-transform: capitalize;"><a href="" style="text-decoration: none; color: black">{collectionName}</a></h3>
+        <h3 style="text-transform: capitalize;"><a href={`/${lang}/${collectionName}`}  data-tooltip={collectionsMetadata[collectionName]?.description}  data-tippy-placement="right" style="text-decoration: none; color: black">{collectionName}</a></h3>
         <div class="glossary-entries-list">
         {// ENTRY LIST
         cleanedEntries.length == 0 ?

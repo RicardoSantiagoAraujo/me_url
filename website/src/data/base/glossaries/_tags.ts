@@ -1,4 +1,4 @@
-import type { Tag } from "../../types/Tag";
+import type { Tag } from "@/types/Tag";
 
 // DEFAULT AVAILABLE VALUES
 export const tagsDefault: Record<string, Tag> = {

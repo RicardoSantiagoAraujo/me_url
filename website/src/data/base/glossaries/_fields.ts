@@ -1,4 +1,4 @@
-import type { Field } from "../../types/Field";
+import type { Field } from "@/types/Field";
 
 // DEFAULT AVAILABLE VALUES
 export const fieldsDefault: Record<string, Field> = {

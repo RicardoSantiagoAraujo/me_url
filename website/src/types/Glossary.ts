@@ -3,4 +3,5 @@ export type Glossary = {
     include: boolean;
     orderBy: string | null;
     sortOrder: "asc" | "desc";
+    description?: string;
   }

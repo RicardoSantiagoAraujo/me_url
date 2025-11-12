@@ -22,6 +22,7 @@ export const collectionsMetadata0: {
     sortOrder: "asc",
     itemListComponent: "CollectionTemplateLink",
     itemLayout: "ItemLayout_collectionTemplate",
+    description: "A template collection to use as a base for new collections.",
   } as CollectionMetadata,
   // My collections:
   blog: {
@@ -31,6 +32,7 @@ export const collectionsMetadata0: {
     sortOrder: "desc",
     itemListComponent: "BlogPostLink",
     itemLayout: "ItemLayout_blog",
+    description: "My blog posts.",
   } as CollectionMetadata,
   projects: {
     definition: projects.projects,
@@ -39,6 +41,7 @@ export const collectionsMetadata0: {
     sortOrder: "desc",
     itemListComponent: "ProjectCard",
     itemLayout: "GenericItemLayout",
+    description: "My personal projects.",
   } as CollectionMetadata,
   experience: {
     definition: experience.experience,
@@ -47,6 +50,7 @@ export const collectionsMetadata0: {
     sortOrder: "desc",
     itemListComponent: "ExperienceCard",
     itemLayout: "GenericItemLayout",
+    description: "My professional experiences.",
   } as CollectionMetadata,
   education: {
     definition: education.education,
@@ -55,6 +59,7 @@ export const collectionsMetadata0: {
     sortOrder: "desc",
     itemListComponent: "EducationCard",
     itemLayout: "GenericItemLayout",
+    description: "My educational background.",
   } as CollectionMetadata,
 };
 
@@ -78,9 +83,9 @@ if (false) {
 export const glossaries0: {
   [glossary_id: string]: Glossary;
 } = {
-  tags: { name: "tags", include: true } as Glossary,
-  fields: { name: "fields", include: true } as Glossary,
-  techstack: { name: "techstack", include: true } as Glossary,
+  tags: { name: "Tags", include: true } as Glossary,
+  fields: { name: "Fields", include: true } as Glossary,
+  techstack: { name: "Techstack", include: true, description: "Tech tools that I have used over time." } as Glossary,
 };
 
 

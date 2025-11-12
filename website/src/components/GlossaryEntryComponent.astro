@@ -1,26 +1,30 @@
 ---
 import '@/styles/variables/_colors.scss';
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 import { generalParameters } from '@/data/base/_general';
 import { getLangFromUrl } from "@/i18n/utils";
 import { glossaries } from '@/content.config';
+import { collections } from '@/content.config';
 const lang : string = getLangFromUrl(Astro.url);
 
 const { entry_id, collectionName, glossaryType, showTooltip=true } = Astro.props as {
   entry_id: string;
-  collectionName: string;
+  collectionName: keyof typeof collections | null;
   glossaryType: keyof typeof glossaries;
   showTooltip?: boolean;
 };
 
-const color="white";
+const color="black";
 const colorHover="red";
 const colorActive="blue";
 
 const entry = (generalParameters as any)[glossaryType][entry_id];
+
+const isLinkToPage = collectionName != null ;
+const glossaryPage = isLinkToPage ? `/${lang}/${glossaryType}/${collectionName}/${entry_id}` : null;
 ---
 <div class="glossary-entry__container">
-    <a href={`/${lang}/${glossaryType}/${collectionName}/${entry_id}`} style="text-decoration: none; color: black"
+    <a href={glossaryPage} 
     data-tooltip={showTooltip ? (entry.description ? entry.description : null) : null}>
         {entry.name}
     </a>
@@ -28,6 +32,14 @@ const entry = (generalParameters as any)[glossaryType][entry_id];
 
 
 <style define:vars={{ color, colorHover, colorActive}}>
+.glossary-entry__container a {
+    color: var(--color);
+    text-decoration: none;
+    /* border-bottom: 1px dashed var(--color); */
+    cursor: pointer;
+    /* transition: color 0.3s ease, border-color 0.3s ease; */
+    text-decoration: none; 
+}
 </style>
 
 
