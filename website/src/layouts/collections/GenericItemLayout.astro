@@ -53,7 +53,7 @@ frontmatter.lang = currentLang;
   <div class="genericLayout-page__tags">
     <span class="tags_prefix">Tags:</span>
     <div class="tags">
-      {frontmatter.tags.map((item: any) => (
+      {frontmatter.tags.map((item: any) => ( item.include &&
         <div class="tag"><GlossaryEntryComponent collectionName={collectionName} glossaryType="tags" entry_id={item.id}/></div>
       ))}
     </div>
