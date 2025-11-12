@@ -3,17 +3,17 @@ import BaseLayout from './../BaseLayout.astro';
 import { getLangFromUrl } from './../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 import TechstackIcon from '@/components/TechstackIcon.astro';
-import TagComponent from '@/components/TagComponent.astro';
+import GlossaryEntryComponent from '@/components/GlossaryEntryComponent.astro';
 import IconLink from '@/components/IconLink.astro';
 import Image from "astro/components/Image.astro";
 import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collections/_genericLayout.scss';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '@/components/Accordion.astro';
-import { generalParameters } from '@/data/base/_general';
 
 
-const { frontmatter, collection } = Astro.props;
+
+const { frontmatter, collectionName } = Astro.props;
 
 // const cardImg = getImageFromZArray("idMainImg", frontmatter);
 const bgImg = getImageFromZArray("idBgImg", frontmatter);
@@ -54,7 +54,7 @@ frontmatter.lang = currentLang;
     <span class="tags_prefix">Tags:</span>
     <div class="tags">
       {frontmatter.tags.map((item: any) => (
-        <div class="tag"><TagComponent collectionName={collection} tag_id={item.id}/></div>
+        <div class="tag"><GlossaryEntryComponent collectionName={collectionName} glossaryType="tags" entry_id={item.id}/></div>
       ))}
     </div>
   </div>
@@ -70,9 +70,9 @@ frontmatter.lang = currentLang;
     </div>
     <div class="genericLayout-page__list genericLayout-page__fields">
         <ul>
-          {frontmatter.fields.map((item: any, index: number,array: any[]) => item.include && <li class="author-list__item">
-            {generalParameters.fields[item.id].name}
-            {index < array.length - 1 ? ', ' : ''}
+          {frontmatter.fields.map((item: any, index: number,array: any[]) => item.include && <li class="field-list__item">
+            <GlossaryEntryComponent collectionName={collectionName} glossaryType="fields" entry_id={item.id}/>
+            {/* {index < array.length - 1 ? ', ' : ''} */}
             </li> )}
         </ul>
     </div>

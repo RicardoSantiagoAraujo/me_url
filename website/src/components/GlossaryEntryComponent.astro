@@ -1,9 +1,9 @@
-G---
+---
 import '@/styles/variables/_colors.scss';
 import { Icon } from 'astro-icon/components'
 import { generalParameters } from '@/data/base/_general';
 import { getLangFromUrl } from "@/i18n/utils";
-import { glossaries } from '@/content.config';  
+import { glossaries } from '@/content.config';
 const lang : string = getLangFromUrl(Astro.url);
 
 const { entry_id, collectionName, glossaryType, showTooltip=true } = Astro.props as {
@@ -17,10 +17,10 @@ const color="white";
 const colorHover="red";
 const colorActive="blue";
 
-const entry = (generalParameters as any)[glossaryType][entry_id]; 
---- 
+const entry = (generalParameters as any)[glossaryType][entry_id];
+---
 <div class="glossary-entry__container">
-    <a href={`/${lang}/${glossaryType}/${collectionName}/${entry_id}`}
+    <a href={`/${lang}/${glossaryType}/${collectionName}/${entry_id}`} style="text-decoration: none; color: black"
     data-tooltip={showTooltip ? (entry.description ? entry.description : null) : null}>
         {entry.name}
     </a>

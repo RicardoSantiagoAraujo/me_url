@@ -69,6 +69,6 @@ const CollectionItemLayout = (await import(`../../../layouts/collections/${layou
 ---
 <!-- Comment out for debugging: -->
 <!-- <pre>{JSON.stringify(item ,null, 2)}</pre> -->
-<CollectionItemLayout frontmatter={item.data}>
+<CollectionItemLayout frontmatter={item.data} collectionName={collection_slug}>
   <Content />
 </CollectionItemLayout>

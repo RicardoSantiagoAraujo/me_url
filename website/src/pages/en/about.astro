@@ -5,6 +5,7 @@ import { calculateAge, formatWordList } from '@/scripts/utils';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '@/components/Accordion.astro';
 import TechstackIcon from '@/components/TechstackIcon.astro';
+import GlossaryEntryComponent from '@/components/GlossaryEntryComponent.astro';
 const pageTitle = "About me";
 
 const skillColor = "navy";
@@ -65,7 +66,7 @@ const aboutFigure = {
         .map(([id, tool]) =>
         <li class="tech" style="display: flex; align-items: center; gap:13px">
           <TechstackIcon tech_id={id} showTooltip={false}></TechstackIcon>
-          <a href={tool.link} style="text-decoration: none; color: black">{tool.name}</a>
+          <GlossaryEntryComponent entry_id={id} collectionName={"projects"} glossaryType={"techstack"} />
         </li>)}
         </ul>
       }

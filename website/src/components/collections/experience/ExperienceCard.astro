@@ -3,7 +3,7 @@ const {data} = Astro.props;
 import "./../../../styles/collections/experience/_cards.scss";
 import { getLangFromUrl } from "@/i18n/utils";
 import TechstackIcon from "@/components/TechstackIcon.astro";
-import TagComponent from "@/components/TagComponent.astro";
+import GlossaryEntryComponent from "@/components/GlossaryEntryComponent.astro";
 import IconLink from "@/components/IconLink.astro";
 import Image from "astro/components/Image.astro";
 import Figure from "@/components/figure/Figure.astro";
@@ -14,7 +14,7 @@ const lang : string = getLangFromUrl(Astro.url);
 const cardImg   = getImageFromZArray("idMainImg", data);
 const bgImg = getImageFromZArray("idBgImg", data);
 const bgImg_alt = bgImg?.alt ? bgImg?.alt : bgImg?.title;
-
+const collectionName = "experience";
 
 const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
 ---
@@ -27,7 +27,7 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
             {<span>{dateRangeString}</span>}
         </a>
         <div class="collection-item__header__link-group">
-            <a href={data.url} class="collection-item__header__link" data-tooltip=`Go to project details`><i class="fa-solid fa-book-open"></i></a>
+            <a href={data.url} class="collection-item__header__link" data-tooltip=`Go to ${collectionName} details`><i class="fa-solid fa-book-open"></i></a>
             <IconLink link={data.externalLink} faIcon="fas fa-external-link" tooltip=`Go to demo at ${data.externalLink}`/>
         </div>
     </div>
@@ -38,7 +38,7 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
                 <span>Tags:</span>
                 <ul class="tag-list">
                     {data.tags.map((item: any) =>  item.include && <li class="tag-list__item">
-                        <TagComponent collectionName={"experience"} tag_id={item.id}/>
+                        <GlossaryEntryComponent collectionName={collectionName} glossaryType="tags" entry_id={item.id}/>
                         </li>)}
                 </ul>
             </div>
@@ -54,7 +54,7 @@ const dateRangeString = getDateRangeString(data.dateStart, data.dateEnd);
     </div>
     <div class="collection-item__footer">
         <ul class="techstack-list">{data.techstack.map((item: any) => item.include && <li class="tech-list__item"> <TechstackIcon tech_id={item.id}></TechstackIcon> </li> )}</ul>
-        <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="field-list__item"><a>{generalParametersUser.fields[item.id].name}</a></li> )}</ul>
+        <ul class="field-list">{data.fields.map((item: any) => item.include && <li class="field-list__item"><GlossaryEntryComponent collectionName={collectionName} glossaryType="fields" entry_id={item.id}/></li> )}</ul>
     </div>
 
 </li>
