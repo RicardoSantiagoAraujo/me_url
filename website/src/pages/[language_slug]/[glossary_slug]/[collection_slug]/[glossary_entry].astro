@@ -36,7 +36,7 @@ export async function getStaticPaths() {
           })
 
           paths.push({
-            params: { glossaryEntry: entry, collection_slug, language_slug, glossary_slug },
+            params: { glossary_entry: entry, collection_slug, language_slug, glossary_slug },
             props: { items: filteredItems, collection_slug, language_slug, glossary_slug },
           });
         }

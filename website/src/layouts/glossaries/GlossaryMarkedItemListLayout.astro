@@ -7,8 +7,8 @@ import type { Tag } from '@/types/Tag';
 import { generalParametersUser } from '@/data/general.config';
 import { collections } from '@/content.config';
 import { glossaries } from '@/content.config';
-// Destructure `glossaryEntry`, `items`, and `collection` from Astro.params and Astro.props
-const { glossaryEntry } = Astro.params as {glossaryEntry: string};
+// Destructure `glossary_entry`, `items`, and `collection` from Astro.params and Astro.props
+const { glossary_entry } = Astro.params as {glossary_entry: string};
 const { items, collectionName, glossaryType } = Astro.props as {
   items: any[];
   collectionName: keyof typeof collections;
@@ -18,7 +18,7 @@ const { items, collectionName, glossaryType } = Astro.props as {
 
 const collectionMetadata = collectionsMetadata[collectionName as keyof typeof collectionsMetadata];
 
-const glossaryEntryObj = (generalParametersUser as any)[glossaryType][glossaryEntry];
+const glossaryEntryObj = (generalParametersUser as any)[glossaryType][glossary_entry];
 
 ---
 <BaseLayout pageTitle={glossaryEntryObj.name}>
