@@ -11,6 +11,7 @@ export interface GeneralParameters {
   signature: string;
   signatureLinkTo: string;
   portrait: string;
+  favicon: string;
   email: string;
   phone: string;
   street: string;
