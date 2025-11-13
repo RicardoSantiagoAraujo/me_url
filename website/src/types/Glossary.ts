@@ -4,4 +4,5 @@ export type Glossary = {
     orderBy: string | null;
     sortOrder: "asc" | "desc";
     description?: string;
-  }
+    descriptionShort?: string;
+};
