@@ -1,11 +1,11 @@
 ---
 import '@/styles/components/_accordion.scss';
-const { title, startCollapsed=false } = Astro.props;
+const { title,  href=null, startCollapsed=false , tooltip=null, tooltipPlacement=null } = Astro.props;
 ---
 
 <!-- back-to-top button -->
 <button type="button" class=`accordion__btn ${startCollapsed && 'start_collapsed'}` >
-    <div class="accordion__title">{title}</div>
+    <a class="accordion__title" href={href} data-tooltip={tooltip}  data-tippy-placement={tooltipPlacement}>{title}</a>
 </button>
 <div class="accordion__panel">
     <div class="accordion-content">
@@ -15,3 +15,11 @@ const { title, startCollapsed=false } = Astro.props;
 
 <!-- Scripts -->
 <script src="../scripts/components/accordion"></script>
+
+<style>
+    .accordion__title{
+        text-transform: capitalize;
+        color: black;
+        text-decoration: none;
+    }
+</style>
