@@ -1,0 +1,373 @@
+@use '../../variables/colors' as c;
+@use '../../variables/dimensions' as d;
+@use 'sass:color';
+
+/* ------------------------------------ */
+/*------------- TIME LINE  -------------*/
+
+/* SET TIMELINE PROPERTIES HERE */
+:root {
+    --timeline-height: 250px;
+    --timeline-color: rgb(70, 70, 70);
+    /* !!!! balloon dimensions !!!! */
+    --height-balloon: 90px;
+    /* --width-balloon: 200px;
+    --width-balloon-half: 100px; */
+    --width-balloon: 24%;
+    --max-height-balloon: 300%;
+
+    /* !!!! transitions!!!! */
+    --transition: 0.5s;
+    --delay-transition: 0.3s;
+  }
+
+  .timeline {
+    color: var(--timeline-color);
+    position: relative;
+    list-style: none;
+    display: inline-flex;
+    visibility: hidden;
+    width: 100%;
+    flex-wrap: nowrap;
+    margin: 2% auto;
+    padding: 0;
+    box-sizing: border-box;
+    /* font: .95em Menlo, monospaced; */
+    /* set here the height of the timeline */
+    height: var(--timeline-height)
+  }
+
+  /* middle line */
+  .timeline:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2px);
+    width: 100%;
+    height: 4px;
+    background: var(--timeline-color);
+  }
+
+  /* arrow */
+  .timeline:after {
+    /* content: "▶"; */
+    content: "";
+    color: var(--timeline-color);
+    font-size: 1.2rem;
+    position: absolute;
+    /* top: calc(50% -3px); */
+    top: calc(46%);
+    right: -1%;
+    width: 0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-left-color: var(--timeline-color);
+    border-right-width: 0px;
+  }
+
+  .balloon {
+    border: 1px var(--timeline-color) solid;
+    border-radius: 30px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+    color: var(--timeline-color);
+    width: var(--width-balloon);
+    min-width: 100px;
+    background: #fff;
+    opacity: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: flex-start;
+  }
+
+  .event_date {
+    font-weight: normal;
+    display: block;
+    text-align: center;
+  }
+
+  .event {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* adjust distance between balloons  */
+  .timeline li:not(:last-child) {
+    /* margin: 0 -1px 0 0; */
+    /* margin-right: clamp(calc(-var(--width-balloon)/2), 0, var(--width-balloon)); */
+    margin-right: clamp(-10px, 3px, 10px);
+  }
+
+  /*  event in even position are bottom-aligned */
+  .timeline li:nth-child(2n),
+  .timeline li:nth-child(2n) div {
+    align-self: flex-end;
+  }
+
+  .balloon-text {
+    position: relative;
+    height: var(--height-balloon);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-left: 10px;
+  }
+
+  .balloon-text .detail {
+    padding-left: 10px;
+  }
+
+  /* style for the dots over the timeline */
+  .timeline li:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-left: calc(var(--width-balloon)/2);
+    transform: translate(-50%, -50%);
+    border: 1px rgb(131, 131, 131) solid;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--timeline-color);
+    cursor: pointer;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--timeline-color);
+    opacity: 1;
+    transition: var(--transition);
+    transition-delay: var(--delay-transition);
+  }
+
+
+  /* timeline dot on hover */
+  .balloon_revealed:hover::before {
+    /* animation: fade-out 0.3s;
+    animation-fill-mode: forwards; */
+    opacity: 0;
+    transform: scale(0);
+    transition-delay: 0s;
+  }
+
+
+  /* style for the event arrow */
+  .balloon-text:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 100%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -1px) rotateZ(45deg);
+    background: #fff;
+    transition-delay: 0.5s;
+  }
+
+  /* balloon arrow */
+  .balloon_revealed:hover div::before {
+    opacity: 0;
+    transform: scale(0.1);
+    transition-delay: 0s;
+  }
+
+  /* position of the event arrow in odd position */
+  .timeline li:nth-child(2n - 1) div:before {
+    top: 100%;
+    margin-top: -8px;
+    border-right: 1px var(--timeline-color) solid;
+    border-bottom: 1px var(--timeline-color) solid;
+  }
+
+  /* position of the event arrow in even position */
+  .timeline li:nth-child(2n) div:before {
+    top: 0;
+    margin-top: -10px;
+    border-left: 1px var(--timeline-color) solid;
+    border-top: 1px var(--timeline-color) solid;
+  }
+
+  /* css to keep text in down balloons alligned */
+  .timeline li:nth-child(2n) div:hover {
+    align-self: flex-start;
+    height: 100%;
+  }
+
+
+  .timeline .detail {
+    display: none;
+    opacity: 0
+  }
+
+
+
+
+
+  @keyframes fade-in-text {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* @keyframes grow-balloon {
+    0% {
+      height:var(--height-balloon);
+    }
+    100% {
+      height:100%;
+    }
+  } */
+
+  /* -------- applied with JS:------------ */
+  .timeline_reveal {
+    animation: extend 4s;
+    visibility: visible;
+  }
+
+  .balloon_reveal {
+    animation: inflate 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .balloon_revealed {
+    opacity: 1;
+    z-index: 5;
+    /* transition:2s; */
+    height: var(--height-balloon);
+    max-height: var(--max-height-balloon);
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -ms-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+    /* animation: deflate var(--transition); */
+    animation: pop 0.7s !important;
+    z-index: 999;
+
+    &::-webkit-scrollbar {
+      width: 0.5em;
+      // height: 0.5em;
+     }
+
+     &::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,.1);
+      border-radius: 3px;
+
+      &:hover {
+       background: rgba(255,255,255,.2);
+      }
+     }
+  }
+
+
+
+  .balloon_revealed .event {
+    animation: pop-text 0.7s;
+
+  }
+
+  /* balloon arrow */
+  .balloon_revealed div::before {
+    animation: pop 0.7s;
+    z-index: 1000;
+  }
+
+  .balloon_revealed:hover {
+    cursor: pointer;
+    /* height: 100%; */
+    z-index: 2;
+    color: #fff;
+    background: var(--timeline-color);
+    /* transition: 0.5s; */
+    /* animation: grow-balloon 1s;
+    animation-fill-mode: forwards; */
+    /* text-align: justify; */
+    opacity: 1;
+    /* animation-delay: 0s !important; */
+    height: 100%;
+    max-height: var(--max-height-balloon);
+    transition: height 0.5s ease-in-out;
+    overflow-y: auto;
+  }
+
+
+  .balloon_revealed:hover .detail {
+    display: block;
+    animation: fade-in-text 2s;
+    animation-fill-mode: forwards;
+    /* transform:translateY( - var(--height-balloon)) */
+  }
+
+  @keyframes extend {
+    0% {
+      width: 0%;
+      opacity: 0;
+    }
+
+    100% {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+
+  @keyframes inflate {
+    0% {
+      opacity: 0;
+      height: calc(var(--height-balloon)*0.6);
+    }
+
+    100% {
+      opacity: 1;
+      height: var(--height-balloon);
+    }
+  }
+
+  /* @keyframes deflate {
+      0% {
+        height: 100%;
+        background: var(--timeline-color);
+        color: white
+      }
+      100% {
+        height: var(--height-balloon);
+        background: white;
+        color: var(--timeline-color);
+      }
+    } */
+
+  @keyframes pop {
+    0% {
+      background-color: rgba(255, 255, 255, 1);
+      border-color: rgba(0, 0, 0, 1);
+    }
+
+    50% {
+      /* background-color: rgb(255, 255, 155, 1); */
+      background: linear-gradient(rgba(255, 255, 155, 0), rgb(255, 255, 155, 1));
+      border-color: rgba(0, 0, 0, 1);
+      border-width: 2px;
+    }
+
+    100% {
+      background-color: rgba(255, 255, 255, 1);
+      border-color: rgba(0, 0, 0, 1);
+    }
+  }
+
+  @keyframes pop-text {
+    0% {
+      /* font-size: normal; */
+      transform: scale(1);
+    }
+
+    50% {
+      /* font-size: xx-large; */
+      transform: scale(1.2);
+    }
+
+    100% {
+      /* font-size: normal; */
+      transform: scale(1);
+    }
+  }
