@@ -1,5 +1,5 @@
 ---
-import { languages, type Language } from '@/i18n/language.config';
+import { languagesAvailable, type Language } from '@/i18n/language.config';
 import { getLangFromUrl, useTranslatedPath ,translateRoute} from '@/i18n/utils';
 const url = Astro.url;
 const pathname = url.pathname;
@@ -7,8 +7,7 @@ const pathnameWithoutLang = pathname.replace(`/${getLangFromUrl(url)}`, ''); // 
 const pathElements = pathnameWithoutLang.split('/').filter(Boolean); // Split the path and remove empty segments
 const firstElement = pathElements.shift()!; // Remove the first element from the path elements
 const currentLang = getLangFromUrl(url);
-const translatedPaths = Object.entries(languages)
-  .filter(([key, value]) => value.isAvailable) // include only available languages
+const translatedPaths = Object.entries(languagesAvailable) 
   .map(([lang, obj]) => ({
     lang,
     flag: obj.flag,
