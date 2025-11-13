@@ -43,7 +43,7 @@ To avoid undesired/untested deployments, any code changes should be developed in
 1. Define collection with loader and schema in new file **src/collectionsConfig/[collection-key]**;
 2. Import collection definition into **src/content.config.ts** and add it to **collections** object;
 3. Add collection to navigation at **src/components/navigation/Navigation.astro**;
-4. Set translations for **ui** and **routes** for collection at **src/i18n/ui.ts**;
+4. Set translations for **ui** and **routes** for collection at **src/i18n/ui.ts** and **src/i18n/routes.ts**;
 5. Add collection folder for new collection at \*\*src/collections/[collection-key]/, create entry files inside;
 6. Add components folder for new collection at \*\*src/components/collections/[collection-key]/, create appropriate files inside;
 7. Add collection item page at **src/pages/[lang]/[collection-key]/[...slug].astro**;

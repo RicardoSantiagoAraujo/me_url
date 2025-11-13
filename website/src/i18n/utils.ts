@@ -1,4 +1,6 @@
-import { ui, defaultLang, routes, type Language, type Page } from "./ui";
+import { routes, type Page } from "@/i18n/routes";
+import { defaultLang, type Language } from "@/i18n/language.config";
+import { ui } from "@/i18n/ui";
 import { debugMode } from "@/options.config";
 
 /**

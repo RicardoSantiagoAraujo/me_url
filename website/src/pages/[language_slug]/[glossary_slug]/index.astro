@@ -2,7 +2,7 @@
 import GlossaryEntriesListLayout from "@/layouts/glossaries/GlossaryEntriesListLayout.astro";
 import {collectionsMetadata, glossaries} from "@/content.config";
 const collectionsNamesArray = Object.keys(collectionsMetadata);
-import { languages } from "@/i18n/ui";
+import { languages } from "@/i18n/language.config";
 export const language_slugs = Object.keys(languages);
 export const glossary_slugs = Object.keys(glossaries);
 export async function getStaticPaths() {

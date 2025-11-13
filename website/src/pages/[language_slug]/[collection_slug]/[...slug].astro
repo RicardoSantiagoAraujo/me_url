@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import { collections, collectionsMetadata0 } from "@/content.config.ts";
-import { languages, defaultLang } from "@/i18n/ui";
+import { languages, defaultLang } from "@/i18n/language.config";
 import { translateRoute } from '@/i18n/utils';
 import { collectionsMetadata } from '@/content.config.ts';
 export const collection_slugs=Object.keys(collections) as (keyof typeof collections)[];
