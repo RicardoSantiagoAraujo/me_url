@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import type { AstroUserConfig } from "astro";
+import { languages, defaultLang , } from "./src/i18n/ui";
+import type { Language } from "./src/i18n/ui";
 
 import preact from "@astrojs/preact";
 import icon from "astro-icon";
@@ -22,13 +24,13 @@ export const astroConfig: AstroUserConfig = {
   compressHTML: true,
   integrations: [preact(), icon(), mdx()],
   i18n: {
-    locales: ["en", "fr", "pt", "de"],
-    defaultLocale: "en",
+    locales: Object.keys(languages),
+    defaultLocale: defaultLang,
     fallback: {
-      fr: "en",
-      pt: "en",
-      de: "en",
-    },
+      fr: 'en',
+      pt: 'en',
+      de: 'en', 
+    } as Record<Language, Language>,
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: true,
@@ -36,8 +38,5 @@ export const astroConfig: AstroUserConfig = {
     },
   },
 };
-
-// Export the config object for later use
-export const customConfig = astroConfig;
 
 export default defineConfig(astroConfig);
