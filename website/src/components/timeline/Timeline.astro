@@ -6,25 +6,30 @@ import { getLangFromUrl } from "@/i18n/utils";
 import { proccessCollectionItems } from '@/scripts/collections.ts';
 import { collections } from "@/content.config.ts";
 import Baloon from './Baloon.astro';
-const targetCollectionNames = Astro.props.collectionNames as (keyof typeof collections)[];
+const collectionConfig = Astro.props.collectionConfig as [(keyof typeof collections), date : string][];
 
 const lang = getLangFromUrl(Astro.url);
 const orderBy = Astro.props.orderBy || null;
 const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
 const items = [] as any[];
-for (const collectionName of targetCollectionNames) {
-  const collectionItems = await getCollection(collectionName);
+for (const collection of collectionConfig) {
+  const collectionItems = await getCollection(collection[0]);
   for (const collectionItem of collectionItems) {
     // Add collection name to each item for URL construction later
-    (collectionItem as any).collectionName = collectionName;
+    (collectionItem as any).collectionName = collection[0];
+    // Add chosen date to be used for ordering
+    (collectionItem as any).timelineDate = (collectionItem as any).data[collection[1]];
+
   }
   items.push(...collectionItems);
 }
-const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
+const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder)
+.sort((a : any, b: any) => a.timelineDate - b.timelineDate)
+// .reverse();
 
 console.log("Timeline items:", finalItems);
 ---
- 
+
 <ul class="timeline">
     {
       finalItems
@@ -32,7 +37,7 @@ console.log("Timeline items:", finalItems);
         const data = {
             ...item.data,
             url: "/" + item.id.replace("/", `/${item.collectionName}/`) // fix the URL to match the expected format
-        }; 
+        };
         return  <Baloon data={data} />
         // return <li  style="background-color: yellow; margin-bottom: 1rem; border: 1px solid #ccc; display: block; ">{JSON.stringify(data, null, 2)}</li>
       })
@@ -42,4 +47,4 @@ console.log("Timeline items:", finalItems);
 
 
 <!-- ============================== SCRIPTS ============================== -->
-<script src="../scripts/components/timeline"></script> 
+<script src="../../scripts/components/timeline"></script>

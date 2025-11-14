@@ -5,9 +5,11 @@
 /* ------------------------------------ */
 /*------------- TIME LINE  -------------*/
 
-
+    $timeline-line-thickness:25px;
+    $timeline-buttom-diameter:25px;
     $timeline-height: 250px;
-    $timeline-color: rgb(70, 70, 70);
+    $color-timeline: rgb(70, 70, 70);
+    $color-balloon-bg: white;
     /* !!!! balloon dimensions !!!! */
     $height-balloon: 90px;
     /* --width-balloon: 200px;
@@ -16,22 +18,22 @@
     $max-height-balloon: 300%;
 
     /* !!!! transitions!!!! */
-    $transition: 0.5s;
-    $delay-transition: 0.3s;
-  
+    $transition: 0.15s;
+    $delay-transition: 0.03s;
+
 
   .timeline {
-    color: $timeline-color;
+    color: $color-timeline;
     position: relative;
     list-style: none;
-    display: inline-flex; 
+    display: flex;
     visibility: hidden;
     width: 100%;
     flex-wrap: nowrap;
+    flex-direction: row;
     margin: 2% auto;
     padding: 0;
     box-sizing: border-box;
-    /* font: .95em Menlo, monospaced; */
     /* set here the height of the timeline */
     height: $timeline-height
   }
@@ -40,37 +42,39 @@
   .timeline:before {
     content: "";
     position: absolute;
-    top: calc(50% - 2px);
+    top: calc(50%);
     width: 100%;
-    height: 4px;
-    background: $timeline-color;
+    transform: translateY(-50%);
+    height: $timeline-line-thickness;
+    background: $color-timeline;
   }
 
   /* arrow */
   .timeline:after {
     /* content: "▶"; */
     content: "";
-    color: $timeline-color;
+    color: $color-timeline;
     font-size: 1.2rem;
     position: absolute;
     /* top: calc(50% -3px); */
-    top: calc(46%);
-    right: -1%;
+    top: calc(50%);
+    transform: translate(50%, -50%);
+    right: 0%;
     width: 0px;
     height: 0px;
-    border: 10px solid transparent;
-    border-left-color: $timeline-color;
+    border: $timeline-line-thickness solid transparent;
+    border-left-color: $color-timeline;
     border-right-width: 0px;
   }
 
   .balloon {
-    border: 1px $timeline-color solid;
-    border-radius: 30px;
+    border: 1px $color-timeline solid;
+    border-radius: 10px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
-    color: $timeline-color;
+    color: $color-timeline;
     width: $width-balloon;
     min-width: 100px;
-    background: #fff;
+    background: $color-balloon-bg;
     opacity: 0;
     margin: 0;
     display: flex;
@@ -121,14 +125,14 @@
     position: absolute;
     top: 50%;
     margin-left: calc($width-balloon/2);
-    transform: translate(-50%, -50%);
-    border: 1px rgb(131, 131, 131) solid;
-    width: 10px;
-    height: 10px;
+    transform: translate(-50%, calc(-50% ));
+    border: 3px rgb(131, 131, 131) solid;
+    width: $timeline-buttom-diameter;
+    height: $timeline-buttom-diameter;
     border-radius: 50%;
-    background: $timeline-color;
+    background: $color-timeline;
     cursor: pointer;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 3px $timeline-color;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px $color-timeline;
     opacity: 1;
     transition: $transition;
     transition-delay: $delay-transition;
@@ -155,7 +159,7 @@
     width: 20px;
     height: 20px;
     transform: translate(-50%, -1px) rotateZ(45deg);
-    background: #fff;
+    background: $color-balloon-bg;
     transition-delay: 0.5s;
   }
 
@@ -170,16 +174,16 @@
   .timeline li:nth-child(2n - 1) div:before {
     top: 100%;
     margin-top: -8px;
-    border-right: 1px $timeline-color solid;
-    border-bottom: 1px $timeline-color solid;
+    border-right: 1px $color-timeline solid;
+    border-bottom: 1px $color-timeline solid;
   }
 
   /* position of the event arrow in even position */
   .timeline li:nth-child(2n) div:before {
     top: 0;
     margin-top: -10px;
-    border-left: 1px $timeline-color solid;
-    border-top: 1px $timeline-color solid;
+    border-left: 1px $color-timeline solid;
+    border-top: 1px $color-timeline solid;
   }
 
   /* css to keep text in down balloons alligned */
@@ -207,7 +211,7 @@
       opacity: 1;
     }
   }
- 
+
 
   /* -------- applied with JS:------------ */
   .timeline_reveal {
@@ -268,7 +272,7 @@
     /* height: 100%; */
     z-index: 2;
     color: #fff;
-    background: $timeline-color;
+    background: $color-timeline;
     /* transition: 0.5s; */
     /* animation: grow-balloon 1s;
     animation-fill-mode: forwards; */
@@ -313,7 +317,7 @@
       height: $height-balloon;
     }
   }
- 
+
 
   @keyframes pop {
     0% {
