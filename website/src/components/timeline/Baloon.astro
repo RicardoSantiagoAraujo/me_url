@@ -1,0 +1,12 @@
+---
+const { data } = Astro.props;
+---
+
+<li class="balloon">
+    <div class="balloon-text">
+        <!-- <time class="event_date" datetime={data.data.dateStart}>{data.data.dateStart} - {data.data.dateEnd}</time> -->
+        <a href={`${data.url}`} class="event">{data.title}</a>
+        <p class="detail">{data.descriptionShort}</p>
+        <p class="location">{data.location}</p>
+   </div>
+</li>

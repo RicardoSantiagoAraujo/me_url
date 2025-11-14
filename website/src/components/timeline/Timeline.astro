@@ -1,46 +1,47 @@
 ---
 
 import '@/styles/components/timeline/_timeline.scss';
+import { getCollection } from "astro:content";
+import { getLangFromUrl } from "@/i18n/utils";
+import { proccessCollectionItems } from '@/scripts/collections.ts';
+import { collections } from "@/content.config.ts";
+import Baloon from './Baloon.astro';
+const targetCollectionNames = Astro.props.collectionNames as (keyof typeof collections)[];
 
+const lang = getLangFromUrl(Astro.url);
+const orderBy = Astro.props.orderBy || null;
+const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
+const items = [] as any[];
+for (const collectionName of targetCollectionNames) {
+  const collectionItems = await getCollection(collectionName);
+  for (const collectionItem of collectionItems) {
+    // Add collection name to each item for URL construction later
+    (collectionItem as any).collectionName = collectionName;
+  }
+  items.push(...collectionItems);
+}
+const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
+
+console.log("Timeline items:", finalItems);
 ---
-
-<ul class="timeline  d-none d-sm-flex">
-    <li class="balloon">
-        <div class="balloon-text">
-            <time class="event_date" datetime="2018-10-09">July 2, 1998</time>
-            <p class="event">London</p>
-            <p class="detail"> I studied A at the uni. of B, in my hometown. I went
-                abroad for my thesis semester in C, at the uni. of D.</p>
-        </div>
-    </li>
-    <li class="balloon">
-        <div class="balloon-text">
-            <time class="event_date" datetime="2018-10-09">October, 2016</time>
-            <p class="event">Cambridge</p>
-            <p class="detail">I moved to A to do my master's studies in B at the
-                C uni., and my master's thesis at the D.</p>
-        </div>
-    </li>
-    <li class="balloon">
-        <div class="balloon-text">
-            <time class="event_date" datetime="2018-10-09">October, 2018</time>
-            <p class="event">Boston</p>
-            <p class="detail"> I moved to A to do an
-                interdisciplinary thesis on computer science.</p>
-        </div>
-    </li>
-    <li class="balloon">
-        <div class="balloon-text">
-            <time class="event_date" datetime="2018-10-09">January, 2023</time>
-            <p class="event">London</p>
-            <p class="detail"> I started a career in software development working with A
-                in the B sector for clients at C. </p>
-        </div>
-    </li>
+ 
+<ul class="timeline">
+    {
+      finalItems
+      .map((item: any) => {
+        const data = {
+            ...item.data,
+            url: "/" + item.id.replace("/", `/${item.collectionName}/`) // fix the URL to match the expected format
+        }; 
+        return  <Baloon data={data} />
+        // return <li  style="background-color: yellow; margin-bottom: 1rem; border: 1px solid #ccc; display: block; ">{JSON.stringify(data, null, 2)}</li>
+      })
+    }
 </ul>
 
 
 
+<!-- ============================== SCRIPTS ============================== -->
 <script>
 var timeline = document.querySelector<HTMLElement>(".timeline");
 var balloons = document.querySelectorAll<HTMLElement>(".balloon"); // array of all sections with the reveal class (the sections of the html proper that we want to animate)
