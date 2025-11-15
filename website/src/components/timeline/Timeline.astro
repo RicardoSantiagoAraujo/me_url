@@ -10,8 +10,8 @@ const collectionConfig = Astro.props.collectionConfig as [(keyof typeof collecti
 
 const lang = getLangFromUrl(Astro.url);
 const orderBy = Astro.props.orderBy || null;
-const sortOrder : "asc" | "desc" = Astro.props.sortOrder || "asc";
-const items = [] as any[];
+const orientation : "vertical" | "horizonal" = Astro.props.orientation;
+var items = [] as any[];
 for (const collection of collectionConfig) {
   const collectionItems = await getCollection(collection[0]);
   for (const collectionItem of collectionItems) {
@@ -23,14 +23,11 @@ for (const collection of collectionConfig) {
   }
   items.push(...collectionItems);
 }
-const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder)
-.sort((a : any, b: any) => a.timelineDate - b.timelineDate)
-// .reverse();
-
-console.log("Timeline items:", finalItems);
+const finalItems = proccessCollectionItems(items, lang, orderBy)
+.sort((a : any, b: any) => a.timelineDate - b.timelineDate); 
 ---
 
-<ul class="timeline">
+<ul class={`timeline ${orientation}`}>
     {
       finalItems
       .map((item: any) => {

@@ -60,7 +60,10 @@ const aboutFigure = {
 
     <!-- TIMELINE -->
     <Accordion title="Timeline" >
-      <Timeline collectionConfig={[['experience', 'dateStart'], ['education', 'dateStart']]}  />
+      <Timeline collectionConfig={[['experience', 'dateStart'], ['education', 'dateStart']]} orientation={"horizontal"} />
+    </Accordion>
+    <Accordion title="Timeline" >
+      <Timeline collectionConfig={[['experience', 'dateStart'], ['education', 'dateStart']]} orientation={"vertical"} />
     </Accordion>
 
     <!-- TECHSTACK -->

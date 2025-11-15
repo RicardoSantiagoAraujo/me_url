@@ -11,7 +11,7 @@ export function proccessCollectionItems(
   items: any,
   lang: string,
   orderBy: string | null,
-  sortOrder: "asc" | "desc"
+  sortOrder: "asc" | "desc" = "asc"
 ) {
   const processedItems = items
     // filter out excluded items
