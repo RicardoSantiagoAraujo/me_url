@@ -35,3 +35,7 @@ export default function timelineAnimation(): void {
     }
   }, (initial_delay + adjuster * balloon_count) * 1000 + 1000);
 }
+
+setTimeout(() => {
+  timelineAnimation();
+}, 500);
