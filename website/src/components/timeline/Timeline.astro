@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
 import { proccessCollectionItems } from '@/scripts/collections.ts';
 import { collections } from "@/content.config.ts";
-import Baloon from './Baloon.astro';
+import Balloon from './Balloon.astro';
 const collectionConfig = Astro.props.collectionConfig as [(keyof typeof collections), date : string][];
 
 const lang = getLangFromUrl(Astro.url);
@@ -24,7 +24,7 @@ for (const collection of collectionConfig) {
   items.push(...collectionItems);
 }
 const finalItems = proccessCollectionItems(items, lang, orderBy)
-.sort((a : any, b: any) => a.timelineDate - b.timelineDate); 
+.sort((a : any, b: any) => a.timelineDate - b.timelineDate);
 ---
 
 <ul class={`timeline ${orientation}`}>
@@ -35,7 +35,7 @@ const finalItems = proccessCollectionItems(items, lang, orderBy)
             ...item.data,
             url: "/" + item.id.replace("/", `/${item.collectionName}/`) // fix the URL to match the expected format
         };
-        return  <Baloon data={data} />
+        return  <Balloon data={data} />
         // return <li  style="background-color: yellow; margin-bottom: 1rem; border: 1px solid #ccc; display: block; ">{JSON.stringify(data, null, 2)}</li>
       })
     }

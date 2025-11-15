@@ -5,7 +5,7 @@
 export default function timelineScript(): void {
   var timeline = document.querySelector<HTMLElement>(".timeline");
   var balloons = document.querySelectorAll<HTMLElement>(".balloon"); // array of all sections with the reveal class (the sections of the html proper that we want to animate)
-  var initial_delay = 2;
+  var initial_delay = 0.02;
   var adjuster = 0.7;
   var balloon_count = balloons.length;
   // function to animate timeline bar and add balloons in sequence

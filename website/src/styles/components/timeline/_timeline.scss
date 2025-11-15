@@ -7,8 +7,9 @@
 
 $timeline-line-thickness: 25px;
 $timeline-buttom-diameter: 25px;
-$timeline-height: 250px;
+$timeline-height: 200px;
 $balloon-gap: -20px;
+$balloon-border-radius: 30px;
 $color-timeline: rgb(70, 70, 70);
 $color-balloon-bg: white;
 $background-highlight: linear-gradient(rgba(255, 255, 155, 0), rgb(255, 255, 155, 1));
@@ -19,7 +20,7 @@ $max-height-balloon--horizontal-mode: calc($timeline-height);
 $width-balloon: 300px;
 
 /* !!!! transitions!!!! */
-$transition: 0.15s;
+$transition: 0.25s;
 $delay-transition: 0.03s;
 
 
@@ -42,6 +43,7 @@ $delay-transition: 0.03s;
   &:before {
     content: "";
     position: absolute;
+    z-index: -1;
     background: $color-timeline;
   }
 
@@ -52,6 +54,7 @@ $delay-transition: 0.03s;
     color: $color-timeline;
     font-size: 1.2rem;
     position: absolute;
+    z-index: -1;
     /* top: calc(50% -3px); */
     width: 0px;
     height: 0px;
@@ -61,7 +64,7 @@ $delay-transition: 0.03s;
   .balloon {
     position: relative;
     border: 1px $color-timeline solid;
-    border-radius: 10px;
+    border-radius: $balloon-border-radius;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
     color: $color-timeline;
     background: $color-balloon-bg;
@@ -70,17 +73,41 @@ $delay-transition: 0.03s;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-
+    $balloon-padding: 10px;
     .balloon-content {
       position: relative;
-      height: 100%;
       width: 100%;
-      padding: 10px;
-      padding-left: 10px;
+      height: 100%;
+      transition: calc($transition * 2);
 
       .balloon-inner {
+        padding: $balloon-padding;
+        position: relative;
         overflow: hidden;
+        z-index: 2;
         height: 100%;
+        transition: height calc($transition * 2);
+        border-radius: $balloon-border-radius;
+        background: $color-balloon-bg;
+      }
+
+      .balloon-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc($height-balloon--horizontal-mode - $balloon-padding*2);
+        white-space: nowrap;
+          .balloon-title a{
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: c.$color-primary;
+          }
+      }
+      .balloon-extra {
+        visibility: hidden;
+        height: calc($max-height-balloon--horizontal-mode - $height-balloon--horizontal-mode - $balloon-padding*2);
       }
     }
   }
@@ -89,6 +116,7 @@ $delay-transition: 0.03s;
   .balloon:before {
     content: "";
     position: absolute;
+    z-index: -1;
     border: 3px rgb(131, 131, 131) solid;
     width: $timeline-buttom-diameter;
     height: $timeline-buttom-diameter;
@@ -162,7 +190,7 @@ $delay-transition: 0.03s;
       }
 
       .balloon-content {
-        height: $height-balloon--horizontal-mode;
+        max-height: $height-balloon--horizontal-mode;
       }
     }
 
@@ -184,7 +212,7 @@ $delay-transition: 0.03s;
     }
 
     // BALLOON ARROW
-    .balloon  {
+    .balloon {
       .balloon-content:before {
         transform: translate(-50%, -50%) rotateZ(45deg);
         left: 50%;
@@ -212,7 +240,7 @@ $delay-transition: 0.03s;
       &:hover {
         height: 100%;
         max-height: $max-height-balloon--horizontal-mode;
-        transition: height 0.5s ease-in-out;
+        transition: height $transition ease-in-out;
 
         .balloon-content {
           height: 100%;
@@ -296,40 +324,48 @@ $delay-transition: 0.03s;
 
 .timeline .balloon_revealed {
   opacity: 1;
-  transition: height 0.5s ease-in-out;
+  transition: height $transition ease-in-out;
   animation: pop 0.7s !important;
   z-index: 0;
   pointer-events: all;
 
-  &::-webkit-scrollbar {
-    width: 0.5em;
-    // height: 0.5em;
-  }
-
-
-
-  .event {
+  .balloon-content {
     animation: pop-text 0.7s;
-  }
 
-  /* balloon arrow */
-  .balloon-content::before {
-    animation: pop 0.7s;
-    z-index: 2;
+    // balloon arrow
+    &:before {
+      animation: pop 0.7s;
+      z-index: 2;
+    }
   }
 
   &:hover {
     cursor: pointer;
-    /* height: 100%; */
     z-index: 3;
     color: #fff;
     background: $color-timeline;
+
+    .balloon-inner {
+      background: $color-timeline;
+    }
+
     opacity: 1;
 
-    .detail {
-      display: block;
+    .balloon-main{
+      .balloon-title a{
+        color:  c.$color-white;
+        text-shadow: 0px 0px 2px c.$color-secondary;
+      }
+    }
+    .balloon-extra {
+      visibility: visible;
       animation: fade-in-text 2s;
       animation-fill-mode: forwards;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: calc($height-balloon--horizontal-mode/5);
       /* transform:translateY( - $height-balloon--horizontal-mode) */
     }
   }
@@ -395,7 +431,7 @@ $delay-transition: 0.03s;
 
   50% {
     /* font-size: xx-large; */
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
 
   100% {

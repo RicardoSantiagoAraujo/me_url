@@ -1,0 +1,34 @@
+---
+const { data } = Astro.props;
+
+/**
+ * Format a Date for display
+ *
+ * @param date Date value
+ */
+export function formatDate(date: Date) : string
+{
+    // Get the month and year
+    const month = date.toLocaleString('default', { month: 'long' }); // Month as full name (e.g., "November")
+    const year = date.getFullYear(); // Year (e.g., 2025)
+
+    // Combine and display as "Month, Year"
+    const formattedDate = `${month}, ${year}`;
+    return formattedDate
+}
+---
+
+<li class="balloon">
+    <div class="balloon-content">
+        <div class="balloon-inner">
+        <div class="balloon-main">
+            <time class="balloon-date" datetime={data.dateStart}>{formatDate(data.dateStart)} - {formatDate(data.dateEnd)}</time>
+            <div class="balloon-title"><a href={`${data.url}`} >{data.title}</a></div>
+        </div>
+        <div class="balloon-extra">
+            <div class="balloon-description">{data.descriptionShort}</div>
+            <div class="balloon-location">{data.location}</div>
+        </div>
+        </div>
+   </div>
+</li>
