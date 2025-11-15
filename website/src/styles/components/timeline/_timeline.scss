@@ -7,22 +7,28 @@
 
 $timeline-line-thickness: 25px;
 $timeline-buttom-diameter: 25px;
-$timeline-height: 200px;
-$balloon-gap: -20px;
+$balloon-gap: 5px;
 $balloon-border-radius: 30px;
 $color-timeline: rgb(70, 70, 70);
 $color-balloon-bg: white;
-$background-highlight: linear-gradient(rgba(255, 255, 155, 0), rgb(255, 255, 155, 1));
+$background-highlight: linear-gradient(rgba(255, 255, 155, 1), rgb(255, 255, 155, 1));
 
 // HORIZONTAL MODE
-$height-balloon--horizontal-mode: calc($timeline-height/2 - $timeline-buttom-diameter*1.5);
-$max-height-balloon--horizontal-mode: calc($timeline-height);
-$width-balloon: 300px;
+$timeline-height--horizontal-mode: 250px;
+$height-balloon--horizontal-mode: calc($timeline-height--horizontal-mode/2 - $timeline-buttom-diameter*1.5);
+$max-height-balloon--horizontal-mode: calc($timeline-height--horizontal-mode);
+
+// VERTICAL MODE
+$timeline-width--vertical-mode: 700px;
+$width-balloon--vertical-mode: calc($timeline-width--vertical-mode/2 - $timeline-buttom-diameter*1.5);
+$max-width-balloon--vertical-mode: calc($timeline-width--vertical-mode);
+$baloon-to-line-gap--vertical-mode: calc($timeline-buttom-diameter *1.5);
 
 /* !!!! transitions!!!! */
 $transition: 0.25s;
 $delay-transition: 0.03s;
-
+$animation-duration-line--appear: 2s;
+$animation-duration-balloon--appear: 1s;
 
 .timeline {
   color: $color-timeline;
@@ -36,7 +42,6 @@ $delay-transition: 0.03s;
   padding: 0;
   box-sizing: border-box;
   /* set here the height of the timeline */
-  height: $timeline-height;
   // gap:50px;
 
   // LINE
@@ -74,6 +79,7 @@ $delay-transition: 0.03s;
     flex-wrap: wrap;
     flex-direction: column;
     $balloon-padding: 10px;
+
     .balloon-content {
       position: relative;
       width: 100%;
@@ -98,13 +104,15 @@ $delay-transition: 0.03s;
         justify-content: center;
         height: calc($height-balloon--horizontal-mode - $balloon-padding*2);
         white-space: nowrap;
-          .balloon-title a{
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: c.$color-primary;
-          }
+
+        .balloon-title a {
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-decoration: none;
+          color: c.$color-primary;
+        }
       }
+
       .balloon-extra {
         visibility: hidden;
         height: calc($max-height-balloon--horizontal-mode - $height-balloon--horizontal-mode - $balloon-padding*2);
@@ -131,8 +139,6 @@ $delay-transition: 0.03s;
 
   // DOTS OVER TIMELINE ON HOVER
   .balloon_revealed:hover::before {
-    /* animation: fade-out 0.3s;
-    animation-fill-mode: forwards; */
     opacity: 0;
     transform: scale(0);
     transition-delay: 0s;
@@ -158,8 +164,11 @@ $delay-transition: 0.03s;
 
   // --------------------------- HORIZONTAL ORIENTATION
   &.horizontal {
+    height: $timeline-height--horizontal-mode;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    margin-left: 0px;
+    margin-right: auto;
 
 
     // LINE
@@ -201,12 +210,12 @@ $delay-transition: 0.03s;
       }
 
       &:nth-child(2n - 1):before {
-        top: calc($timeline-height/2);
+        top: calc($timeline-height--horizontal-mode/2);
         transform: translate(-50%, calc(-50%));
       }
 
       &:nth-child(2n):before {
-        bottom: calc($timeline-height/2);
+        bottom: calc($timeline-height--horizontal-mode/2);
         transform: translate(-50%, calc(50%));
       }
     }
@@ -253,9 +262,9 @@ $delay-transition: 0.03s;
   // ||||||||||||||||||||||||||| VERTICAL ORIENTATION
   &.vertical {
     flex-direction: column;
-    height: 1000px;
-    width: 50%;
-    background-color: red;
+    height: fit-content;
+    width: $timeline-width--vertical-mode;
+    background-color: rgba(255, 192, 203, 0.499);
 
     // LINE
     &:before {
@@ -276,23 +285,25 @@ $delay-transition: 0.03s;
 
     // BALLOON
     .balloon {
-      height: $width-balloon;
+      width: $width-balloon--vertical-mode;
+      height: 30px;
       min-height: 100px;
       align-self: flex-start;
-      margin-left: calc($timeline-buttom-diameter * 1.5);
+      margin: calc($balloon-gap/2) 0 ;
+      margin-left: $baloon-to-line-gap--vertical-mode;
     }
 
     // DOTS OVER TIMELINE
     .balloon:before {
-      left: 0%;
-      // margin-top: calc($width-balloon/2);
-      transform: translate(-50%, calc(0%));
+      left: - $baloon-to-line-gap--vertical-mode;
+      top: 50%;
+      transform: translate(-50%, calc(-50%));
     }
 
     // BALLOON ARROW
     .balloon-content:before {
       top: 50%;
-      transform: translate(-100%, 0px) rotateZ(-45deg);
+      transform: translate(-50%, -50%) rotateZ(-45deg);
       border-left: 1px $color-timeline solid;
       border-top: 1px $color-timeline solid;
     }
@@ -312,20 +323,19 @@ $delay-transition: 0.03s;
 
 /* -------- applied with TS:------------ */
 .timeline_reveal {
-  animation: extend 2s;
+  animation: timeline-appear $animation-duration-line--appear;
   visibility: visible;
   pointer-events: none;
 }
 
 .balloon_reveal {
-  animation: inflate 1s;
+  animation: balloon-appear $animation-duration-balloon--appear;
   animation-fill-mode: forwards;
 }
 
 .timeline .balloon_revealed {
   opacity: 1;
   transition: height $transition ease-in-out;
-  animation: pop 0.7s !important;
   z-index: 0;
   pointer-events: all;
 
@@ -336,6 +346,10 @@ $delay-transition: 0.03s;
     &:before {
       animation: pop 0.7s;
       z-index: 2;
+    }
+
+    .balloon-inner {
+      animation: pop 0.7s !important;
     }
   }
 
@@ -351,12 +365,13 @@ $delay-transition: 0.03s;
 
     opacity: 1;
 
-    .balloon-main{
-      .balloon-title a{
-        color:  c.$color-white;
+    .balloon-main {
+      .balloon-title a {
+        color: c.$color-white;
         text-shadow: 0px 0px 2px c.$color-secondary;
       }
     }
+
     .balloon-extra {
       visibility: visible;
       animation: fade-in-text 2s;
@@ -378,7 +393,7 @@ $delay-transition: 0.03s;
 
 
 
-@keyframes extend {
+@keyframes timeline-appear {
   0% {
     width: 0%;
     opacity: 0;
@@ -391,7 +406,7 @@ $delay-transition: 0.03s;
 }
 
 
-@keyframes inflate {
+@keyframes balloon-appear {
   0% {
     opacity: 0;
     height: calc($height-balloon--horizontal-mode*0.6);
@@ -406,7 +421,7 @@ $delay-transition: 0.03s;
 
 @keyframes pop {
   0% {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: $color-balloon-bg;
     border-color: rgba(0, 0, 0, 1);
   }
 
@@ -418,7 +433,7 @@ $delay-transition: 0.03s;
   }
 
   100% {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: $color-balloon-bg;
     border-color: rgba(0, 0, 0, 1);
   }
 }
