@@ -11,7 +11,7 @@ $balloon-gap: 25px;
 $balloon-border-radius: 30px;
 $color-timeline: c.$color-primary;
 $color-balloon-bg: white;
-$background-highlight: linear-gradient(rgba(255, 255, 155, 1), rgb(255, 255, 155, 1));
+$background-highlight: c.$color-info;
 
 // HORIZONTAL MODE
 $timeline-height--horizontal-mode: 250px;
@@ -27,8 +27,9 @@ $baloon-to-line-gap--vertical-mode: calc($timeline-buttom-diameter *1.5);
 /* !!!! transitions!!!! */
 $transition: 0.25s;
 $delay-transition: 0.03s;
-$animation-duration-line--appear: 2s;
-$animation-duration-balloon--appear: 1s;
+$animation-duration-line--appear: 1s;
+$animation-duration-balloon--appear: 0.5s;
+$animation-duration-baloon-pop: 0.5s;
 
 .timeline {
   color: $color-timeline;
@@ -78,6 +79,7 @@ $animation-duration-balloon--appear: 1s;
     flex-wrap: wrap;
     flex-direction: column;
     $balloon-padding: 10px;
+    pointer-events: none;
 
     .balloon-content {
       position: relative;
@@ -118,6 +120,7 @@ $animation-duration-balloon--appear: 1s;
         height: calc($max-height-balloon--horizontal-mode - $height-balloon--horizontal-mode - $balloon-padding*2);
       }
     }
+
   }
 
   // DOTS OVER TIMELINE
@@ -188,6 +191,10 @@ $animation-duration-balloon--appear: 1s;
         align-self: flex-end;
       }
 
+      .balloon-date--outside {
+          display: none;
+      }
+
       .balloon-content {
         max-height: $height-balloon--horizontal-mode;
 
@@ -195,6 +202,8 @@ $animation-duration-balloon--appear: 1s;
           flex-direction: column;
         }
       }
+
+
     }
 
     // DOTS OVER TIMELINE
@@ -271,7 +280,6 @@ $animation-duration-balloon--appear: 1s;
     &.timeline_reveal {
       animation: timeline-appear-horizontal $animation-duration-line--appear;
       visibility: visible;
-      pointer-events: none;
 
       @keyframes timeline-appear-horizontal {
         0% {
@@ -339,11 +347,12 @@ $animation-duration-balloon--appear: 1s;
       .balloon-inner {
         flex-direction: row;
         justify-content: space-evenly;
-        gap: $baloon-to-line-gap--vertical-mode/2;
+        gap: calc($baloon-to-line-gap--vertical-mode/2);
 
         .balloon-main {
           height: 100%;
-          *{
+
+          * {
             width: calc($width-balloon--vertical-mode - $baloon-to-line-gap--vertical-mode/2);
             text-align: center;
           }
@@ -354,6 +363,16 @@ $animation-duration-balloon--appear: 1s;
           width: calc($max-width-balloon--vertical-mode - $width-balloon--vertical-mode);
           // text-align: center;
         }
+      }
+
+      .balloon-date--outside {
+        $date-outside-width: 70px;
+        display: block;
+        position: absolute;
+        width: $date-outside-width;
+        top: 50%;
+        right: calc(100% + $timeline-line-thickness + $date-outside-width);
+        transform: translate(50%, -50%);
       }
     }
 
@@ -403,7 +422,6 @@ $animation-duration-balloon--appear: 1s;
     &.timeline_reveal {
       // animation: timeline-appear-vertical $animation-duration-line--appear forwards;
       visibility: visible;
-      pointer-events: none;
       animation: timeline-appear-vertical $animation-duration-line--appear;
       transform-origin: bottom;
 
@@ -456,14 +474,14 @@ $animation-duration-balloon--appear: 1s;
 .timeline .balloon_revealed {
   opacity: 1;
   z-index: 0;
-  pointer-events: all;
 
   .balloon-content {
-    animation: pop-text 0.7s;
+    animation: pop-text $animation-duration-baloon-pop forwards;
+
 
     // balloon arrow
     &:before {
-      animation: pop 0.7s;
+      animation: pop $animation-duration-baloon-pop ;
       z-index: 2;
     }
 
@@ -527,7 +545,7 @@ $animation-duration-balloon--appear: 1s;
     /* background-color: rgb(255, 255, 155, 1); */
     background: $background-highlight;
     border-color: rgba(0, 0, 0, 1);
-    border-width: 2px;
+    // border-width: 2px;
   }
 
   100% {
@@ -547,9 +565,16 @@ $animation-duration-balloon--appear: 1s;
     transform: scale(1.05);
   }
 
+  99% {
+    /* font-size: normal; */
+    transform: scale(1);
+    pointer-events: none;
+  }
+
   100% {
     /* font-size: normal; */
     transform: scale(1);
+    pointer-events: all;
   }
 }
 

@@ -4,7 +4,7 @@
  */
 export default function timelineAnimation(): void {
   var timelines = document.querySelectorAll<HTMLElement>(".timeline");
-  var initial_delay = 2;
+  var initial_delay = 1; // recomended to be at least same as $animation-duration-line--appear
   var adjuster = 0.3;
   // for each timeline in page
   timelines?.forEach((timeline) => {

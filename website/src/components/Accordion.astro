@@ -1,14 +1,21 @@
 ---
 import '@/styles/components/_accordion.scss';
-const { title,  href=null, startCollapsed=false , tooltip=null, tooltipPlacement=null } = Astro.props;
+const { title,  href=null, startCollapsed=false , tooltip=null, tooltipPlacement=null, refreshOnOpen=false } = Astro.props as {
+  title: string;
+  href?: string | null;
+  startCollapsed?: boolean;
+  tooltip?: string | null;
+  tooltipPlacement?: "top" | "bottom" | "left" | "right" | null;
+  refreshOnOpen?: boolean;
+};
 ---
 
 <!-- back-to-top button -->
 <button type="button" class=`accordion__btn ${startCollapsed && 'start_collapsed'}` >
     <a class="accordion__title" href={href} data-tooltip={tooltip}  data-tippy-placement={tooltipPlacement}>{title}</a>
 </button>
-<div class="accordion__panel">
-    <div class="accordion-content">
+<div class="accordion__panel" style={refreshOnOpen ? "display:none" : ""}>
+    <div class="accordion-content" >
         <slot />
     </div>
 </div>

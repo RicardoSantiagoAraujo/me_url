@@ -79,7 +79,12 @@ export function getImageFromZArray(
   }
 }
 
-// Handling date display
+/**
+ * Handle date display
+ *
+ * @param dateString Date string
+ * @returns Formatted date
+ */
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat("en-CA", {
@@ -90,6 +95,16 @@ export const formatDate = (dateString: string): string => {
     .replace("-", "/"); // Convert "YYYY-MM" → "YYYY/MM";
 };
 
+
+
+
+/**
+ * Create date interval string
+ *
+ * @param dateStart Starting date
+ * @param dateEnd Ending date
+ * @returns Formatted string
+ */
 export function getDateRangeString(
   dateStart: string,
   dateEnd?: string | null
@@ -101,4 +116,21 @@ export function getDateRangeString(
     dateRange = `${formatDate(dateStart)} - ${formatDate(dateEnd)}`;
   }
   return dateRange;
+}
+
+
+
+/**
+ * Format a Date for display in balloon
+ *
+ * @param date Date value
+ */
+export function formatDateBalloon(date: Date): string {
+  // Get the month and year
+  const month = date.toLocaleString("default", { month: "long" }); // Month as full name (e.g., "November")
+  const year = date.getFullYear(); // Year (e.g., 2025)
+
+  // Combine and display as "Month, Year"
+  const formattedDate = `${month}, ${year}`;
+  return formattedDate;
 }

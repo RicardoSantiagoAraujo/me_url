@@ -1,28 +1,14 @@
 ---
 const { data } = Astro.props;
+import { formatDate, formatDateBalloon } from "@/scripts/utils";
 
-/**
- * Format a Date for display
- *
- * @param date Date value
- */
-export function formatDate(date: Date) : string
-{
-    // Get the month and year
-    const month = date.toLocaleString('default', { month: 'long' }); // Month as full name (e.g., "November")
-    const year = date.getFullYear(); // Year (e.g., 2025)
-
-    // Combine and display as "Month, Year"
-    const formattedDate = `${month}, ${year}`;
-    return formattedDate
-}
 ---
 
 <li class="balloon">
     <div class="balloon-content">
         <div class="balloon-inner">
         <div class="balloon-main">
-            <time class="balloon-date" datetime={data.dateStart}>{formatDate(data.dateStart)} - {formatDate(data.dateEnd)}</time>
+            <time class="balloon-date" datetime={data.dateStart}>{formatDateBalloon(data.dateStart)} - {formatDateBalloon(data.dateEnd)}</time>
             <div class="balloon-title"><a href={`${data.url}`} >{data.title}</a></div>
         </div>
         <div class="balloon-extra">
@@ -31,4 +17,5 @@ export function formatDate(date: Date) : string
         </div>
         </div>
    </div>
+   <div class="balloon-date--outside">{formatDate(data.dateStart)}</div>
 </li>
