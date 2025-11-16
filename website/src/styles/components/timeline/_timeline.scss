@@ -192,7 +192,7 @@ $animation-duration-baloon-pop: 0.5s;
       }
 
       .balloon-date--outside {
-          display: none;
+        display: none;
       }
 
       .balloon-content {
@@ -200,6 +200,15 @@ $animation-duration-baloon-pop: 0.5s;
 
         .balloon-inner {
           flex-direction: column;
+
+
+          .balloon-main {}
+
+          .balloon-extra {
+            padding-top: calc($height-balloon--horizontal-mode/5);
+            align-items: center;
+            justify-content: space-between;
+          }
         }
       }
 
@@ -361,7 +370,8 @@ $animation-duration-baloon-pop: 0.5s;
         .balloon-extra {
           height: 100%;
           width: calc($max-width-balloon--vertical-mode - $width-balloon--vertical-mode);
-          // text-align: center;
+          align-items: center;
+          justify-content: space-evenly;
         }
       }
 
@@ -515,10 +525,11 @@ $animation-duration-baloon-pop: 0.5s;
       animation-fill-mode: forwards;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: calc($height-balloon--horizontal-mode/5);
+
       /* transform:translateY( - $height-balloon--horizontal-mode) */
+      * {
+        background-color: red;
+      }
     }
   }
 }
