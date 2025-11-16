@@ -114,7 +114,8 @@ $animation-duration-balloon-pop: 0.5s;
           text-decoration: none;
           color: c.$color-primary;
         }
-        .balloon-collection-name{
+
+        .balloon-collection-name {
           opacity: 0.5;
           position: absolute;
           top: 5%;
@@ -346,6 +347,30 @@ $animation-duration-balloon-pop: 0.5s;
       height: 100%;
       width: $timeline-line-thickness;
     }
+
+    margin-bottom: calc($timeline-line-thickness *4);
+    .timeline__tail {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      transform: translate(-50%, 100%);
+      display: flex;
+      padding-top: 3px;
+      gap: 3px;
+      flex-direction: column;
+      background-color: transparent;
+      width: $timeline-line-thickness;
+
+      @for $i from 1 through 3 {
+        .tail-dot:nth-child(3n + #{$i}) {
+          background: $color-timeline;
+          width: $timeline-line-thickness;
+          height: $timeline-line-thickness;
+          opacity: 1 - 0.2 * $i;
+        }
+      }
+    }
+
 
     // ARROW
     &:after {
