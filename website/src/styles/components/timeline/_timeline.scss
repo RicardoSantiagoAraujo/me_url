@@ -7,9 +7,9 @@
 
 $timeline-line-thickness: 25px;
 $timeline-buttom-diameter: 25px;
-$balloon-gap: 5px;
+$balloon-gap: 25px;
 $balloon-border-radius: 30px;
-$color-timeline: rgb(70, 70, 70);
+$color-timeline: c.$color-primary;
 $color-balloon-bg: white;
 $background-highlight: linear-gradient(rgba(255, 255, 155, 1), rgb(255, 255, 155, 1));
 
@@ -19,7 +19,7 @@ $height-balloon--horizontal-mode: calc($timeline-height--horizontal-mode/2 - $ti
 $max-height-balloon--horizontal-mode: calc($timeline-height--horizontal-mode);
 
 // VERTICAL MODE
-$timeline-width--vertical-mode: 700px;
+$timeline-width--vertical-mode: 600px;
 $width-balloon--vertical-mode: calc($timeline-width--vertical-mode/2 - $timeline-buttom-diameter*1.5);
 $max-width-balloon--vertical-mode: calc($timeline-width--vertical-mode);
 $baloon-to-line-gap--vertical-mode: calc($timeline-buttom-diameter *1.5);
@@ -35,8 +35,7 @@ $animation-duration-balloon--appear: 1s;
   position: relative;
   list-style: none;
   display: flex;
-  // visibility: hidden;
-  width: 100%;
+  visibility: hidden;
   flex-wrap: nowrap;
   margin: 2% auto;
   padding: 0;
@@ -89,6 +88,7 @@ $animation-duration-balloon--appear: 1s;
       .balloon-inner {
         padding: $balloon-padding;
         position: relative;
+        display: flex;
         overflow: hidden;
         z-index: 2;
         height: 100%;
@@ -137,12 +137,7 @@ $animation-duration-balloon--appear: 1s;
     transition-delay: $delay-transition;
   }
 
-  // DOTS OVER TIMELINE ON HOVER
-  .balloon_revealed:hover::before {
-    opacity: 0;
-    transform: scale(0);
-    transition-delay: 0s;
-  }
+
 
   // BALLOON ARROW
   .balloon-content:before {
@@ -155,12 +150,7 @@ $animation-duration-balloon--appear: 1s;
     transition-delay: 0.5s;
   }
 
-  // BALLOON ARROW ON HOVER
-  .balloon_revealed:hover div::before {
-    opacity: 0;
-    transform: scale(0.1);
-    transition-delay: 0s;
-  }
+
 
   // --------------------------- HORIZONTAL ORIENTATION
   &.horizontal {
@@ -200,6 +190,10 @@ $animation-duration-balloon--appear: 1s;
 
       .balloon-content {
         max-height: $height-balloon--horizontal-mode;
+
+        .balloon-inner {
+          flex-direction: column;
+        }
       }
     }
 
@@ -218,6 +212,13 @@ $animation-duration-balloon--appear: 1s;
         bottom: calc($timeline-height--horizontal-mode/2);
         transform: translate(-50%, calc(50%));
       }
+    }
+
+    // DOTS OVER TIMELINE ON HOVER
+    .balloon_revealed:hover::before {
+      opacity: 0;
+      transform: scale(0);
+      transition-delay: 0s;
     }
 
     // BALLOON ARROW
@@ -242,10 +243,19 @@ $animation-duration-balloon--appear: 1s;
       }
     }
 
+    // BALLOON ARROW ON HOVER
+    .balloon_revealed:hover .balloon-content::before {
+      opacity: 0;
+      transform: scale(0.1);
+      transition-delay: 0s;
+    }
+
 
 
     // ONCE BALLOON IS FULLY LOADED
     .balloon_revealed {
+      transition: height $transition ease-in-out;
+
       &:hover {
         height: 100%;
         max-height: $max-height-balloon--horizontal-mode;
@@ -257,14 +267,48 @@ $animation-duration-balloon--appear: 1s;
         }
       }
     }
+
+    &.timeline_reveal {
+      animation: timeline-appear-horizontal $animation-duration-line--appear;
+      visibility: visible;
+      pointer-events: none;
+
+      @keyframes timeline-appear-horizontal {
+        0% {
+          width: 0%;
+          opacity: 0;
+        }
+
+        100% {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+
+    }
+
+    .balloon_reveal {
+      animation: balloon-appear--horizontal $animation-duration-balloon--appear;
+      animation-fill-mode: forwards;
+
+      @keyframes balloon-appear--horizontal {
+        0% {
+          opacity: 0;
+          height: calc($height-balloon--horizontal-mode*0.6);
+        }
+
+        100% {
+          opacity: 1;
+          height: $height-balloon--horizontal-mode;
+        }
+      }
+    }
   }
 
   // ||||||||||||||||||||||||||| VERTICAL ORIENTATION
   &.vertical {
     flex-direction: column;
-    height: fit-content;
     width: $timeline-width--vertical-mode;
-    background-color: rgba(255, 192, 203, 0.499);
 
     // LINE
     &:before {
@@ -289,8 +333,28 @@ $animation-duration-balloon--appear: 1s;
       height: 30px;
       min-height: 100px;
       align-self: flex-start;
-      margin: calc($balloon-gap/2) 0 ;
+      margin: calc($balloon-gap/2) 0;
       margin-left: $baloon-to-line-gap--vertical-mode;
+
+      .balloon-inner {
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: $baloon-to-line-gap--vertical-mode/2;
+
+        .balloon-main {
+          height: 100%;
+          *{
+            width: calc($width-balloon--vertical-mode - $baloon-to-line-gap--vertical-mode/2);
+            text-align: center;
+          }
+        }
+
+        .balloon-extra {
+          height: 100%;
+          width: calc($max-width-balloon--vertical-mode - $width-balloon--vertical-mode);
+          // text-align: center;
+        }
+      }
     }
 
     // DOTS OVER TIMELINE
@@ -300,12 +364,77 @@ $animation-duration-balloon--appear: 1s;
       transform: translate(-50%, calc(-50%));
     }
 
+    // DOTS OVER TIMELINE ON HOVER
+    .balloon_revealed:hover::before {
+      transform: translate(-50%, calc(-50%))scale(1.1);
+      transition-delay: 0s;
+    }
+
     // BALLOON ARROW
     .balloon-content:before {
       top: 50%;
       transform: translate(-50%, -50%) rotateZ(-45deg);
       border-left: 1px $color-timeline solid;
       border-top: 1px $color-timeline solid;
+    }
+
+    // BALLOON ARROW ON HOVER
+    .balloon_revealed:hover .balloon-content::before {
+      transform: scaleY(1.1);
+      transition-delay: 0s;
+    }
+
+    // ONCE BALLOON IS FULLY LOADED
+    .balloon_revealed {
+      transition: width $transition ease-in-out;
+
+      &:hover {
+        width: 100%;
+        max-width: $max-width-balloon--vertical-mode;
+        transition: width $transition ease-in-out;
+
+        .balloon-content {
+          width: 100%;
+          max-width: $max-width-balloon--vertical-mode;
+        }
+      }
+    }
+
+    &.timeline_reveal {
+      // animation: timeline-appear-vertical $animation-duration-line--appear forwards;
+      visibility: visible;
+      pointer-events: none;
+      animation: timeline-appear-vertical $animation-duration-line--appear;
+      transform-origin: bottom;
+
+      @keyframes timeline-appear-vertical {
+        0% {
+          opacity: 0;
+          transform: scaleY(0);
+        }
+
+        100% {
+          opacity: 1;
+          transform: scaleY(1);
+        }
+      }
+    }
+
+    .balloon_reveal {
+      animation: balloon-appear--vertical $animation-duration-balloon--appear;
+      animation-fill-mode: forwards;
+
+      @keyframes balloon-appear--vertical {
+        0% {
+          opacity: 0;
+          width: calc($width-balloon--vertical-mode*0.6);
+        }
+
+        100% {
+          opacity: 1;
+          width: $width-balloon--vertical-mode;
+        }
+      }
     }
   }
 
@@ -322,20 +451,10 @@ $animation-duration-balloon--appear: 1s;
 
 
 /* -------- applied with TS:------------ */
-.timeline_reveal {
-  animation: timeline-appear $animation-duration-line--appear;
-  visibility: visible;
-  pointer-events: none;
-}
 
-.balloon_reveal {
-  animation: balloon-appear $animation-duration-balloon--appear;
-  animation-fill-mode: forwards;
-}
 
 .timeline .balloon_revealed {
   opacity: 1;
-  transition: height $transition ease-in-out;
   z-index: 0;
   pointer-events: all;
 
@@ -393,30 +512,9 @@ $animation-duration-balloon--appear: 1s;
 
 
 
-@keyframes timeline-appear {
-  0% {
-    width: 0%;
-    opacity: 0;
-  }
-
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
-}
 
 
-@keyframes balloon-appear {
-  0% {
-    opacity: 0;
-    height: calc($height-balloon--horizontal-mode*0.6);
-  }
 
-  100% {
-    opacity: 1;
-    height: $height-balloon--horizontal-mode;
-  }
-}
 
 
 @keyframes pop {

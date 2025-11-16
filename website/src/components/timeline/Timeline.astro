@@ -23,8 +23,11 @@ for (const collection of collectionConfig) {
   }
   items.push(...collectionItems);
 }
-const finalItems = proccessCollectionItems(items, lang, orderBy)
+var finalItems = proccessCollectionItems(items, lang, orderBy)
 .sort((a : any, b: any) => a.timelineDate - b.timelineDate);
+if (orientation == "vertical"){
+  finalItems = finalItems.reverse()
+}
 ---
 
 <ul class={`timeline ${orientation}`}>
@@ -44,4 +47,4 @@ const finalItems = proccessCollectionItems(items, lang, orderBy)
 
 
 <!-- ============================== SCRIPTS ============================== -->
-<script src="../../scripts/components/timeline"></script>  
+<script src="../../scripts/components/timeline"></script>
