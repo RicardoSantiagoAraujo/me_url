@@ -3,22 +3,27 @@ const { data } = Astro.props;
 import { formatDate, formatDateBalloon } from "@/scripts/utils";
 import { getImageFromZArray } from "@/scripts/utils";
 import Figure from "../figure/Figure.astro";
+import Image from "astro/components/Image.astro";
 const cardImg   = getImageFromZArray("idMainImg", data);
+const bgImg = getImageFromZArray("idBgImg", data);
 
 ---
 
 <li class="balloon">
     <div class="balloon-content">
         <div class="balloon-inner">
-        <div class="balloon-main">
-            <div class="balloon-collection-name">{data.collectionName}</div>
-            <time class="balloon-date" datetime={data.dateStart}>{formatDateBalloon(data.dateStart)} - {formatDateBalloon(data.dateEnd)}</time>
-            <div class="balloon-title"><a href={`${data.url}`} >{data.title}</a></div>
-        </div>
-        <div class="balloon-extra">
-            <div class="balloon-description">{data.descriptionShort}</div>
-            <div class="balloon-location">{data.location}</div>
-        </div>
+            <div class="balloon-main">
+                <div class="balloon-collection-name">{data.collectionName}</div>
+                <time class="balloon-date" datetime={data.dateStart}>{formatDateBalloon(data.dateStart)} - {formatDateBalloon(data.dateEnd)}</time>
+                <div class="balloon-title"><a href={`${data.url}`} >{data.title}</a></div>
+            </div>
+            <div class="balloon-extra">
+                <div class="balloon-description">{data.descriptionShort}</div>
+                <div class="balloon-location">{data.location}</div>
+            </div>
+            {bgImg && <div class="balloon--img-bg">
+                <Image  src={bgImg.url} alt={"background image of baloon"}  inferSize={true} class="collection-item__body__bg-image"/>
+            </div>}
         </div>
    </div>
    <div class="balloon--outside">
