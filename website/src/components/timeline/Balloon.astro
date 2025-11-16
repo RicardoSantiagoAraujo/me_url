@@ -1,6 +1,9 @@
 ---
 const { data } = Astro.props;
 import { formatDate, formatDateBalloon } from "@/scripts/utils";
+import { getImageFromZArray } from "@/scripts/utils";
+import Figure from "../figure/Figure.astro";
+const cardImg   = getImageFromZArray("idMainImg", data);
 
 ---
 
@@ -8,6 +11,7 @@ import { formatDate, formatDateBalloon } from "@/scripts/utils";
     <div class="balloon-content">
         <div class="balloon-inner">
         <div class="balloon-main">
+            <div class="balloon-collection-name">{data.collectionName}</div>
             <time class="balloon-date" datetime={data.dateStart}>{formatDateBalloon(data.dateStart)} - {formatDateBalloon(data.dateEnd)}</time>
             <div class="balloon-title"><a href={`${data.url}`} >{data.title}</a></div>
         </div>
@@ -17,5 +21,10 @@ import { formatDate, formatDateBalloon } from "@/scripts/utils";
         </div>
         </div>
    </div>
-   <div class="balloon-date--outside">{formatDate(data.dateStart)}</div>
+   <div class="balloon--outside">
+        <div class="balloon-date--outside">{formatDate(data.dateStart)}</div>
+        {cardImg &&<div class="balloon-img--outside">
+                    <Figure figureData={cardImg} showCaption={false} allowZoom={false}/>
+        </div>}
+   </div>
 </li>

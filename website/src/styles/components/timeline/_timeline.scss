@@ -22,14 +22,15 @@ $max-height-balloon--horizontal-mode: calc($timeline-height--horizontal-mode);
 $timeline-width--vertical-mode: 700px;
 $width-balloon--vertical-mode: calc($timeline-width--vertical-mode/2 - $timeline-buttom-diameter*1.5);
 $max-width-balloon--vertical-mode: calc($timeline-width--vertical-mode);
-$baloon-to-line-gap--vertical-mode: calc($timeline-buttom-diameter *1.5);
+$height-balloon--vertical-mode: 130px;
+$balloon-to-line-gap--vertical-mode: calc($timeline-buttom-diameter *1.5);
 
 /* !!!! transitions!!!! */
 $transition: 0.25s;
 $delay-transition: 0.03s;
 $animation-duration-line--appear: 1s;
 $animation-duration-balloon--appear: 0.5s;
-$animation-duration-baloon-pop: 0.5s;
+$animation-duration-balloon-pop: 0.5s;
 
 .timeline {
   color: $color-timeline;
@@ -113,6 +114,13 @@ $animation-duration-baloon-pop: 0.5s;
           text-decoration: none;
           color: c.$color-primary;
         }
+        .balloon-collection-name{
+          opacity: 0.5;
+          position: absolute;
+          top: 5%;
+          text-transform: capitalize;
+
+        }
       }
 
       .balloon-extra {
@@ -191,8 +199,12 @@ $animation-duration-baloon-pop: 0.5s;
         align-self: flex-end;
       }
 
-      .balloon-date--outside {
+      .balloon--outside {
         display: none;
+
+        .balloon-date--outside {}
+
+        .balloon-img--outside {}
       }
 
       .balloon-content {
@@ -347,22 +359,21 @@ $animation-duration-baloon-pop: 0.5s;
     // BALLOON
     .balloon {
       width: $width-balloon--vertical-mode;
-      height: 30px;
-      min-height: 100px;
+      height: $height-balloon--vertical-mode;
       align-self: flex-start;
       margin: calc($balloon-gap/2) 0;
-      margin-left: $baloon-to-line-gap--vertical-mode;
+      margin-left: $balloon-to-line-gap--vertical-mode;
 
       .balloon-inner {
         flex-direction: row;
         justify-content: space-evenly;
-        gap: calc($baloon-to-line-gap--vertical-mode/2);
+        gap: calc($balloon-to-line-gap--vertical-mode/2);
 
         .balloon-main {
           height: 100%;
 
           * {
-            width: calc($width-balloon--vertical-mode - $baloon-to-line-gap--vertical-mode/2);
+            width: calc($width-balloon--vertical-mode - $balloon-to-line-gap--vertical-mode/2);
             text-align: center;
           }
         }
@@ -375,20 +386,35 @@ $animation-duration-baloon-pop: 0.5s;
         }
       }
 
-      .balloon-date--outside {
-        $date-outside-width: 70px;
-        display: block;
-        position: absolute;
-        width: $date-outside-width;
-        top: 50%;
-        right: calc(100% + $timeline-line-thickness + $date-outside-width);
-        transform: translate(50%, -50%);
+      .balloon--outside {
+        .balloon-date--outside {
+          $date-outside-width: 70px;
+          display: block;
+          position: absolute;
+          width: $date-outside-width;
+          top: 50%;
+          right: calc(100% + $timeline-line-thickness + $date-outside-width);
+          transform: translate(50%, -50%);
+        }
+
+        .balloon-img--outside {
+          $img-outside-width: 150px;
+          height: calc($height-balloon--vertical-mode *0.98);
+          display: flex;
+          align-items: center;
+          position: absolute;
+          z-index: -1;
+          width: $img-outside-width;
+          top: 50%;
+          left: calc(($max-width-balloon--vertical-mode)*0.666);
+          transform: translate(-50%, -50%);
+        }
       }
     }
 
     // DOTS OVER TIMELINE
     .balloon:before {
-      left: - $baloon-to-line-gap--vertical-mode;
+      left: - $balloon-to-line-gap--vertical-mode;
       top: 50%;
       transform: translate(-50%, calc(-50%));
     }
@@ -486,12 +512,12 @@ $animation-duration-baloon-pop: 0.5s;
   z-index: 0;
 
   .balloon-content {
-    animation: pop-text $animation-duration-baloon-pop forwards;
+    animation: pop-text $animation-duration-balloon-pop forwards;
 
 
     // balloon arrow
     &:before {
-      animation: pop $animation-duration-baloon-pop ;
+      animation: pop $animation-duration-balloon-pop ;
       z-index: 2;
     }
 
@@ -527,9 +553,6 @@ $animation-duration-baloon-pop: 0.5s;
       flex-direction: column;
 
       /* transform:translateY( - $height-balloon--horizontal-mode) */
-      * {
-        background-color: red;
-      }
     }
   }
 }

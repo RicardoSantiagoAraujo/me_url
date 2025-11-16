@@ -36,6 +36,7 @@ if (orientation == "vertical"){
       .map((item: any) => {
         const data = {
             ...item.data,
+            collectionName: item.collectionName,
             url: "/" + item.id.replace("/", `/${item.collectionName}/`) // fix the URL to match the expected format
         };
         return  <Balloon data={data} />
