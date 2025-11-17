@@ -1,0 +1,102 @@
+---
+---
+
+<div>
+    <h1>Welcome to the Test Page</h1>
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro exercitationem saepe ducimus quod rerum facilis sapiente deleniti quia, tempore aspernatur. Beatae itaque nisi quia vero facere molestias provident tempore!
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, atque quaerat perspiciatis, impedit corrupti ab laborum ullam, itaque tempore repellendus eveniet id voluptas dolor earum. Voluptas earum voluptates reprehenderit fugit?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sunt molestiae a exercitationem ea minus neque tempora harum accusamus reprehenderit adipisci voluptatibus, provident, architecto quia recusandae excepturi consectetur magni explicabo?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro exercitationem saepe ducimus quod rerum facilis sapiente deleniti quia, tempore aspernatur. Beatae itaque nisi quia vero facere molestias provident tempore!
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, atque quaerat perspiciatis, impedit corrupti ab laborum ullam, itaque tempore repellendus eveniet id voluptas dolor earum. Voluptas earum voluptates reprehenderit fugit?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sunt molestiae a exercitationem ea minus neque tempora harum accusamus reprehenderit adipisci voluptatibus, provident, architecto quia recusandae excepturi consectetur magni explicabo?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro exercitationem saepe ducimus quod rerum facilis sapiente deleniti quia, tempore aspernatur. Beatae itaque nisi quia vero facere molestias provident tempore!
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, atque quaerat perspiciatis, impedit corrupti ab laborum ullam, itaque tempore repellendus eveniet id voluptas dolor earum. Voluptas earum voluptates reprehenderit fugit?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sunt molestiae a exercitationem ea minus neque tempora harum accusamus reprehenderit adipisci voluptatibus, provident, architecto quia recusandae excepturi consectetur magni explicabo?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro exercitationem saepe ducimus quod rerum facilis sapiente deleniti quia, tempore aspernatur. Beatae itaque nisi quia vero facere molestias provident tempore!
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, atque quaerat perspiciatis, impedit corrupti ab laborum ullam, itaque tempore repellendus eveniet id voluptas dolor earum. Voluptas earum voluptates reprehenderit fugit?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sunt molestiae a exercitationem ea minus neque tempora harum accusamus reprehenderit adipisci voluptatibus, provident, architecto quia recusandae excepturi consectetur magni explicabo?
+  
+    <p class="animate-target">This is a sample paragraph for the test page.</p>
+  </div>
+  
+  <script>  
+      import { gsap } from "@/scripts/animation/init";
+  
+      gsap.utils.toArray<HTMLElement>(".animate-target").forEach((el, i) => {
+          
+          console.log(`Animating element ${i}`, el); 
+          gsap.set(el, { opacity: 0, y: 50 });
+          gsap.to(el, {
+              scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              toggleActions: "play reverse play reverse",
+            //   scrub: true, // animation follows scroll position
+              },
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              delay:   0.4,
+              ease: "power3.out",
+              
+              onComplete: () => {
+                  console.log(`Animation completed for element ${i}`);
+              },
+          });
+      });
+  
+  
+  </script>
+
+  <style>
+    .animate-target {
+        margin-bottom: 2rem;
+        height: 50vh;
+        background-color: rgba(95, 158, 160, 0.237);
+    }
+    .animate-target:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    } 
+    </style>
+ 
+
+

@@ -34,3 +34,31 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
       })
     }
   </ul>
+
+  <script>  
+    import { gsap } from "@/scripts/animation/init"; 
+    gsap.utils.toArray<HTMLElement>(".collection-item").forEach((el, i) => {
+        
+        console.log(`Animating element ${i}`, el); 
+        gsap.set(el, { opacity: 0, y: 50 });
+        gsap.to(el, {
+            scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          //   scrub: true, // animation follows scroll position
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay:   0.1,
+            ease: "power3.out",
+            
+            onComplete: () => {
+                console.log(`Animation completed for element ${i}`);
+            },
+        });
+    });
+
+
+</script>
