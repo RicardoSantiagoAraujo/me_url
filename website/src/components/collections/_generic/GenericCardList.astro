@@ -35,9 +35,10 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
     }
   </ul>
 
-  <script>  
-    import { gsap } from "@/scripts/animation/init"; 
-    gsap.utils.toArray<HTMLElement>(".collection-item").forEach((el, i) => {
+  <script type="module">  
+    import { gsap } from "/src/scripts/animation/init.ts"; 
+    console.log(gsap);
+    gsap.utils.toArray(".collection-item").forEach((el, i) => {
         
         console.log(`Animating element ${i}`, el); 
         gsap.set(el, { opacity: 0, y: 50 });
