@@ -4,6 +4,7 @@ import Footer from '@/components/footer/Footer.astro';
 import BackToTopButton from '@/components/BackToTopButton.astro';
 import FullscreenFigure from '@/components/figure/FullscreenFigure.astro';
 import {generalParametersUser} from '@/data/general.config';
+import { ClientRouter } from "astro:transitions";
 import '@/styles/_global.scss';
 const { pageTitle, pageSubtitle } = Astro.props;
 import { getLangFromUrl } from '@/i18n/utils';
@@ -19,6 +20,8 @@ const lang = getLangFromUrl(Astro.url);
     <link rel="icon" type="image/svg+xml" href={generalParametersUser.favicon} />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>{pageTitle}</title>
+
+    <ClientRouter /> <!-- animated transitions between different website views: Astro will create default page animations -->
   </head>
   <body>
     <Header />
