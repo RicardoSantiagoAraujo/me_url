@@ -1,8 +1,7 @@
 // Functins used to dynamically generate routes for specified collections in Astro.
 
 import { getCollection, render } from "astro:content";
-import { collections, collectionsMetadata0 } from "@/content.config.ts";
-import { languages } from "@/i18n/ui";
+import { collections, collectionsMetadata0 } from "@/content.config.ts"; 
 /**
  * Generates dynamic routes for items in a specified collection.
  *

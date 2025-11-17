@@ -7,8 +7,7 @@ import {
 } from "./collectionsConfig/projects";
 import { definition as collectionTemplate } from "./collectionsConfig/collectionTemplate";
 import { definition as experience } from "./collectionsConfig/experience";
-import { definition as education } from "./collectionsConfig/education";
-import { flattenDiagnosticMessageText } from "typescript";
+import { definition as education } from "./collectionsConfig/education"; 
 
 //Metadata for each collection
 export const collectionsMetadata0: {
