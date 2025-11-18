@@ -7,54 +7,70 @@ import '@/styles/components/_back-to-top-button.scss';
     <i class="fas fa-arrow-up"></i>
 </button>
 
-<script is:inline>
-    import {listenViewTransitions} from "src/scripts/animation/viewTransitions.ts";
-//////////////////////////////////////////////////////////////////////////////
-// Back to top button
+<script >
 
-//Get the button
-let mybutton = document.getElementById("btn-back-to-top");
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
-
-window.addEventListener("scroll", scrollFunction);
-// Run   on view transitions
-listenViewTransitions(scrollFunction); 
-var dist_threshold = 400;
+import {listenViewTransitions} from "src/scripts/animation/viewTransitions.ts";
 
 /**
- * Handles the visibility of the back-to-top button based on scroll position.
+ * Run back to top button script
  */
-function scrollFunction() {
-  var position = document.documentElement.scrollTop;
-  mybutton.style.transition =
-    "visibility 0.5s, opacity 0.5s, transform 0.2s, background-color 0.2s";
-  if (document.body.scrollTop > dist_threshold || position > dist_threshold) {
-    // mybutton.style.display = "block";
-    mybutton.style.opacity = "1";
-    mybutton.style.visibility = "visible";
-  } else {
-    // mybutton.style.opacity = position / dist_threshold;
-    mybutton.style.opacity = "0";
-    mybutton.style.visibility = "hidden";
-    // mybutton.style.display = "none";
-  }
-}
-// When the user clicks on the button, scroll to the top of the document
-mybutton.addEventListener("click", backToTop);
-// Run   on view transitions
-listenViewTransitions(backToTop); 
+function backToTopButton(){
+    //////////////////////////////////////////////////////////////////////////////
+    // Back to top button
+
+    //Get the button
+    let mybutton = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    window.addEventListener("scroll", scrollFunction);
+
+    var dist_threshold = 400;
+
+    /**
+     * Handles the visibility of the back-to-top button based on scroll position.
+     */
+    function scrollFunction() {
+      var position = document.documentElement.scrollTop;
+      if (mybutton){
+        mybutton.style.transition =
+          "visibility 0.5s, opacity 0.5s, transform 0.2s, background-color 0.2s";
+        if (document.body.scrollTop > dist_threshold || position > dist_threshold) {
+          // mybutton.style.display = "block";
+          mybutton.style.opacity = "1";
+          mybutton.style.visibility = "visible";
+          // console.log("show scroll button!");
+        } else {
+          // mybutton.style.opacity = position / dist_threshold;
+          mybutton.style.opacity = "0";
+          mybutton.style.visibility = "hidden";
+          // mybutton.style.display = "none";
+          // console.log("hide scroll button!");
+        }
+      }
+    }
 
 
-/**
- * Scrolls the document to the top smoothly.
- */
-function backToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton?.addEventListener("click", backToTop);
+
+
+    /**
+     * Scrolls the document to the top smoothly.
+     */
+    function backToTop() {
+      // console.log("back to top !!!!")
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
 }
+// Run once at start
+backToTopButton()
+// Run on view transitions
+listenViewTransitions(backToTopButton);
 
 </script>
