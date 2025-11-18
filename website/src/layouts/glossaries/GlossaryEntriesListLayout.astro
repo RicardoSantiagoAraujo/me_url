@@ -65,7 +65,8 @@ const pageTitle = `${glossaries[glossaryType].name} Index`;
   }
 
 </BaseLayout>
-<style>
+
+<style lang="scss">
   a {
     color: #00539f;
   }
@@ -86,5 +87,28 @@ const pageTitle = `${glossaries[glossaryType].name} Index`;
       color: black;
       text-decoration: none;
     }
+    opacity: 0;
+    @for $i from 1 through 50 {
+    &:nth-child(#{$i}) {
+      animation: fade-in ease-in-out forwards;
+      animation-duration: calc(0.3s);
+      animation-delay: calc(0.1s* $i);
+    }
   }
+
+
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+  }
+
+
+
+
+
+
+
+
 </style>
