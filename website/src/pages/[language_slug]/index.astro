@@ -28,7 +28,7 @@ const translatePath = useTranslatedPath(lang);
 
 
 
-const parallaxEffect = 0.1;
+const parallaxEffect = 0.31;
 const pageTitle = "Welcome to my Website !";
 const pageSubtitle = ""
 ---
@@ -85,7 +85,36 @@ const pageSubtitle = ""
 
   <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 
-  <!-- <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}/> -->
+  <!-- <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}>
+    Parallax Text
+  </ParallaxImage> -->
 
 
 </BaseLayout>
+
+
+
+<style lang="scss">
+
+.home-collections {
+  .collection-container {
+    opacity: 0;
+  }
+
+  // Loop only for the nth-child animation delay
+  @for $i from 1 through 10 {
+    .collection-container:nth-child(#{$i}) {
+      animation: fade-in ease-in-out forwards;
+      animation-duration: calc(0.3s);
+      animation-delay: calc(0.35s* $i);
+    }
+  }
+}
+
+// Keyframes MUST be outside the loop and outside nested selectors
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+</style>

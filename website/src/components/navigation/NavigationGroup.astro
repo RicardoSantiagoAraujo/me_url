@@ -67,5 +67,5 @@ warningMissingSectionName(groupName, lang)
     // Run once at start
     navigationGroup()
     // Run on view transitions
-    document.addEventListener("astro:after-swap", navigationGroup);
+    listenViewTransitions(navigationGroup);
   </script>
