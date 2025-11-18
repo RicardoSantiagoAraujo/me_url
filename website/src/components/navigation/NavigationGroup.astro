@@ -25,36 +25,47 @@ warningMissingSectionName(groupName, lang)
 }
 
 
-<script define:vars={{groupName_NoSpaces}}>
-    let isOpen = false;
+<script type="module"  define:vars={{groupName_NoSpaces}}>
+    import {listenViewTransitions} from "/src/scripts/animation/viewTransitions.ts";
 
-    const targetElement = document.querySelector(`.navigation-group-${groupName_NoSpaces} .navigation-group-dropdown`);
+    /**
+     * Navigation group function
+     *
+     */
+    function navigationGroup(){
+        let isOpen = false;
 
-    const handleNavGroupClick = (event) => {
-        event.stopPropagation(); // prevent this click from closing immediately
-        const allDropdownElements = document.querySelectorAll(`.navigation-group-dropdown`);
-        allDropdownElements?.forEach(element => {
-            if (element !== targetElement) // check if the element is not the one that was clicked
-            {
-                element.classList.add("hidden");
+        const targetElement = document.querySelector(`.navigation-group-${groupName_NoSpaces} .navigation-group-dropdown`);
+
+        const handleNavGroupClick = (event) => {
+            event.stopPropagation(); // prevent this click from closing immediately
+            const allDropdownElements = document.querySelectorAll(`.navigation-group-dropdown`);
+            allDropdownElements?.forEach(element => {
+                if (element !== targetElement) // check if the element is not the one that was clicked
+                {
+                    element.classList.add("hidden");
+                }
+            });
+            targetElement.classList.toggle("hidden");
+            isOpen = !isOpen;
+        }
+
+        const handleDocumentClick = () => {
+            if (isOpen) {
+            targetElement?.classList.add("hidden");
+            isOpen = false;
             }
-        });
-        targetElement.classList.toggle("hidden");
-        isOpen = !isOpen;
+        };
+
+        document.querySelector(`.navigation-group-${groupName_NoSpaces} .navigation-group-name`)?.addEventListener("click",
+            handleNavGroupClick
+        );
+
+        document.addEventListener("click", handleDocumentClick);
     }
 
-
-    const handleDocumentClick = () => {
-        if (isOpen) {
-        targetElement?.classList.add("hidden");
-        isOpen = false;
-        }
-    };
-
-    document.querySelector(`.navigation-group-${groupName_NoSpaces} .navigation-group-name`)?.addEventListener("click",
-        handleNavGroupClick
-    );
-
-
-    document.addEventListener("click", handleDocumentClick);
+    // Run once at start
+    navigationGroup()
+    // Run on view transitions
+    document.addEventListener("astro:after-swap", navigationGroup);
   </script>
