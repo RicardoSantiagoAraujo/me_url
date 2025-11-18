@@ -34,8 +34,8 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
       })
     }
   </ul>
-  <script type="module">
-    import { gsap } from "/src/scripts/animation/init.ts";
+  <script >
+    import { gsap } from "src/scripts/animation/init.ts";
     console.log(gsap);
     gsap.utils.toArray(".collection-item").forEach((el, i) => {
 
