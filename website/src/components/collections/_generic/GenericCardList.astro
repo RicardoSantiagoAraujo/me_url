@@ -35,12 +35,12 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
     }
   </ul>
 
-  <script type="module">  
-    import { gsap } from "/src/scripts/animation/init.ts"; 
+  <!-- <script type="module">
+    import { gsap } from "/src/scripts/animation/init.ts";
     console.log(gsap);
     gsap.utils.toArray(".collection-item").forEach((el, i) => {
-        
-        console.log(`Animating element ${i}`, el); 
+
+        console.log(`Animating element ${i}`, el);
         gsap.set(el, { opacity: 0, y: 50 });
         gsap.to(el, {
             scrollTrigger: {
@@ -54,7 +54,7 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
             duration: 0.5,
             delay:   0.1,
             ease: "power3.out",
-            
+
             onComplete: () => {
                 console.log(`Animation completed for element ${i}`);
             },
@@ -62,4 +62,4 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
     });
 
 
-</script>
+</script> -->
