@@ -34,31 +34,33 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
       })
     }
   </ul>
+
+
   <script >
     import { gsap } from "src/scripts/animation/init.ts";
-    console.log(gsap);
-    gsap.utils.toArray(".collection-item").forEach((el, i) => {
+    // console.log(gsap);
 
-        console.log(`Animating element ${i}`, el);
+    /**
+     * Run animations with GSAP
+     */
+    function runAnimations() : void{
+    gsap.utils.toArray<HTMLElement>(".collection-item").forEach((el) => {
         gsap.set(el, { opacity: 0, y: 50 });
         gsap.to(el, {
             scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
-          //   scrub: true, // animation follows scroll position
+                trigger: el,
+                start: "top 80%",
             },
             opacity: 1,
             y: 0,
             duration: 0.5,
-            delay:   0.1,
             ease: "power3.out",
-
-            onComplete: () => {
-                console.log(`Animation completed for element ${i}`);
-            },
         });
     });
-
+  }
+  // Run animations on initial load
+  runAnimations();
+  // If you're using Astro's View Transitions, animations won't rerun on navigation. You must re-trigger them.
+  document.addEventListener("astro:after-swap", runAnimations);
 
 </script>
