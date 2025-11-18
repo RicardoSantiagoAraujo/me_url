@@ -38,6 +38,7 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
 
   <script >
     import { gsap } from "src/scripts/animation/init.ts";
+    import {listenViewTransitions} from "src/scripts/animation/viewTransitions.ts";
     // console.log(gsap);
 
     /**
@@ -58,9 +59,8 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
         });
     });
   }
-  // Run animations on initial load
+  // Run animations on initial load and on view transitions
   runAnimations();
-  // If you're using Astro's View Transitions, animations won't rerun on navigation. You must re-trigger them.
-  document.addEventListener("astro:after-swap", runAnimations);
+  listenViewTransitions(runAnimations); 
 
 </script>

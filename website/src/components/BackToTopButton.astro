@@ -8,6 +8,7 @@ import '@/styles/components/_back-to-top-button.scss';
 </button>
 
 <script is:inline>
+    import {listenViewTransitions} from "src/scripts/animation/viewTransitions.ts";
 //////////////////////////////////////////////////////////////////////////////
 // Back to top button
 
@@ -20,6 +21,8 @@ window.onscroll = function () {
 };
 
 window.addEventListener("scroll", scrollFunction);
+// Run   on view transitions
+listenViewTransitions(scrollFunction); 
 var dist_threshold = 400;
 
 /**
@@ -42,6 +45,9 @@ function scrollFunction() {
 }
 // When the user clicks on the button, scroll to the top of the document
 mybutton.addEventListener("click", backToTop);
+// Run   on view transitions
+listenViewTransitions(backToTop); 
+
 
 /**
  * Scrolls the document to the top smoothly.
