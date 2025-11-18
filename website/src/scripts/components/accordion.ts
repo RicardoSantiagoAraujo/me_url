@@ -1,3 +1,5 @@
+import { listenViewTransitions } from "@/scripts/animation/viewTransitions";
+
 /**
  * Handles accordion functionality for collapsible sections.
  * @returns void
@@ -38,6 +40,4 @@ export default function accordionScript() : void {
 }
 
 
-setTimeout(() => {
-  accordionScript()
-}, 200);
+listenViewTransitions(()=>setTimeout(accordionScript, 200), true);

@@ -1,4 +1,4 @@
-import { listenViewTransitions } from "./animation/viewTransitions";
+import { listenViewTransitions } from "@/scripts/animation/viewTransitions";
 
 listenViewTransitions(() => {
   document.querySelector(".hamburger")?.addEventListener("click", () => {
