@@ -1,4 +1,4 @@
-import { Fullscreen_slideshow } from "./fullscreen_slideshow.js"
+import { Fullscreen_slideshow } from "./fullscreen_slideshow.js";
+import { listenViewTransitions } from "@/scripts/animation/viewTransitions";
 
-
-Fullscreen_slideshow();
+listenViewTransitions(Fullscreen_slideshow, true);
