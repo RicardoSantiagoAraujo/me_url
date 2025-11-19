@@ -25,8 +25,7 @@ warningMissingSectionName(groupName, lang)
 }
 
 
-<script type="module"  define:vars={{groupName_NoSpaces}}> 
-    import { listenViewTransitions } from "/src/scripts/animation/viewTransitions.ts";
+<script   define:vars={{groupName_NoSpaces}}>  
 
     /**
      * Navigation group function
@@ -66,6 +65,6 @@ warningMissingSectionName(groupName, lang)
 
     // Run once at start
     navigationGroup()
-    // Run on view transitions
-    listenViewTransitions(navigationGroup);
+    // Run on view transitions 
+    document.addEventListener("astro:after-swap", navigationGroup);
   </script>
