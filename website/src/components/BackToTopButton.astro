@@ -67,10 +67,8 @@ function backToTopButton(){
       document.documentElement.scrollTop = 0;
     }
 
-}
-// Run once at start
-backToTopButton()
-// Run on view transitions
-listenViewTransitions(backToTopButton);
+} 
+// Run on view transitions and on initial load
+listenViewTransitions(backToTopButton, true);
 
 </script>

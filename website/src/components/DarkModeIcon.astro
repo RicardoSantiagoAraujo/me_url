@@ -66,10 +66,8 @@ import '@/styles/header/_dark-mode-icon.scss';
   }
 
 
-  // Run once at start
-  darkModeIcon()
-  // Run on view transitions
-  document.addEventListener("astro:after-swap", darkModeIcon)
+  // Run on view transitions and on initial load
+  listenViewTransitions(darkModeIcon, true)
 
 
 
