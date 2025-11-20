@@ -9,24 +9,31 @@ const gitHubReadMe = Astro.props.gitHubReadMe;
 <script type="module" define:vars={{gitHubReadMe}}>
   import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
-  // "https://raw.githubusercontent.com/your-username/your-project-name/branch-name/file-name.md";
-  const endpoint = `https://raw.githubusercontent.com/${gitHubReadMe.username}/${gitHubReadMe.repoName}/${gitHubReadMe.branch}/${gitHubReadMe.filename}`;
+  function readMe(){
+    // "https://raw.githubusercontent.com/your-username/your-project-name/branch-name/file-name.md";
+    const endpoint = `https://raw.githubusercontent.com/${gitHubReadMe.username}/${gitHubReadMe.repoName}/${gitHubReadMe.branch}/${gitHubReadMe.filename}`;
 
-  fetch(endpoint)
-    .then(r => r.text())
-    .then(markdown => {
-      document.querySelector(".readme--container").innerHTML =  marked.parse(markdown);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
+    fetch(endpoint)
+      .then(r => r.text())
+      .then(markdown => {
+        document.querySelector(".readme--container").innerHTML =  marked.parse(markdown);
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }
+
+  readMe()
+  document.addEventListener("astro:after-swap", readMe())
+
+
 </script>
 
 <style>
   .readme--container {
     position: relative;
     width: 100%;
-    display: block; 
+    display: block;
     text-wrap: auto;
     p {
       position: relative;
