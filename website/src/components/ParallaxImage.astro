@@ -56,8 +56,8 @@ const { image, parallaxEffect } = Astro.props;
 
   </style>
 
-  <script type="module" define:vars={{parallaxEffect}}>
-    import {listenViewTransitions} from "/src/scripts/animation/viewTransitions.ts";
+
+  <script   define:vars={{parallaxEffect}}>
 
     function parallaxImage(){
       window.addEventListener('scroll', function () {
@@ -71,7 +71,6 @@ const { image, parallaxEffect } = Astro.props;
     // Run once at start
     parallaxImage()
     // Run on view transitions
-    listenViewTransitions(parallaxImage)
-
+    document.addEventListener("astro:after-swap", parallaxImage);
 
   </script>
