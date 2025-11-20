@@ -1,0 +1,22 @@
+---
+--- 
+
+<pre>
+<code class="readme--container">
+</code>
+</pre>
+    
+<script type="module">
+  import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+
+  var endpoint = "https://raw.githubusercontent.com/your-repo/your-project/main/README.md";
+  endpoint = "https://raw.githubusercontent.com/RicardoSantiagoAraujo/cv.ersatile/main/README.md";
+  fetch(endpoint)
+    .then(r => r.text())
+    .then(markdown => {
+      document.querySelector(".readme--container").innerHTML =  marked.parse(markdown);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+</script>

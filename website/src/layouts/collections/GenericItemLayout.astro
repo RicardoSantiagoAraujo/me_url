@@ -10,6 +10,7 @@ import {getImageFromZArray} from './../../scripts/utils';
 import './../../styles/collections/_genericLayout.scss';
 import Figure from '@/components/figure/Figure.astro';
 import Accordion from '@/components/Accordion.astro';
+import ReadMe from '@/components/ReadMe.astro';
 
 
 
@@ -114,11 +115,18 @@ frontmatter.lang = currentLang;
   </Accordion>
 }
 
+<!-- REPO README CONTENTS -->
+{true   &&
+  <Accordion title="README.md" startCollapsed={false}>
+    <ReadMe />
+  </Accordion>
+}
+
 <!-- SLOT CONTENTS -->
 {Astro.slots.default  && (await Astro.slots.render('default')).replace(/\s/g, "").length > 0  &&
     <Accordion title="Contents" startCollapsed={true}>
     <slot /> <!-- slot injects contents of .md file  -->
-  </Accordion>
+</Accordion>
 }
 
 
