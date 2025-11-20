@@ -13,6 +13,7 @@ export interface GeneralParameters {
   portrait: string;
   favicon: string;
   email: string;
+  githubUsername?: string;
   phone: string;
   street: string;
   city: string;

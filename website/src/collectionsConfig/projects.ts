@@ -11,6 +11,7 @@ import { tech } from "./collectionObjects/tech.ts";
 import { field } from "./collectionObjects/field.ts";
 import { author } from "./collectionObjects/author.ts";
 import { uniqueArray } from "./utils/utils.ts";
+import { gitHubReadMe } from "./collectionObjects/gitHubReadMe.ts";
 
 // Define a `loader` and `schema` for collection
 export const definition: Record<string, any> = {};
@@ -33,6 +34,7 @@ definition[collection] = defineCollection({
       descriptionShort: z.string().nullable().optional(),
       authors: uniqueArray(author).nullable().optional(),
       repository: z.string().nullable().optional(),
+      gitHubReadMe: gitHubReadMe.nullable().optional(),
       externalLink: z.string().nullable().optional(),
       documentation: z.string().nullable().optional(),
       datePublication: z.date().nullable().optional(),

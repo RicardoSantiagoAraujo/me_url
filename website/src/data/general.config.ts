@@ -18,6 +18,7 @@ export const generalParametersUser: GeneralParameters = {
   portrait: "/src/assets/placeholders/generic_portrait.svg",
   favicon: "/icons/favicon.svg",
   email: "johndoe@email.com",
+  githubUsername: "johnDoe",
   phone: "9999999999",
   street: "rue de Cockayne, 1234",
   city: "Cockayne",
