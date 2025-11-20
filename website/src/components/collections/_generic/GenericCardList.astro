@@ -29,7 +29,7 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
             url: "/" + item.id.replace("/", `/${targetCollectionName}/`) // fix the URL to match the expected format
         };
         // const itemLang = item.id.split('/')[0];
-        return <ListItem data={data} />
+        return <div class="gsap-target" style="opacity:0"><ListItem data={data} /></div>
         // return <li  style="background-color: yellow; margin-bottom: 1rem; border: 1px solid #ccc; display: block; ">{JSON.stringify(data, null, 2)}</li>
       })
     }
@@ -45,17 +45,22 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
      * Run animations with GSAP
      */
     function runAnimations() : void{
-    gsap.utils.toArray<HTMLElement>(".collection-item").forEach((el) => {
-        gsap.set(el, { opacity: 0, y: 50 });
+    gsap.utils.toArray<HTMLElement>(".gsap-target").forEach((el) => {
+        gsap.set(el, { opacity: 0, x: -50 });
         gsap.to(el, {
             scrollTrigger: {
                 trigger: el,
                 start: "top 80%",
+                toggleActions: "play reverse play reverse",
             },
             opacity: 1,
-            y: 0,
+            x: 0,
             duration: 0.5,
+            delay:   0.4,
             ease: "power3.out",
+            onComplete: () => {
+                  // console.log(`Animation completed for element ${el}`);
+              },
         });
     });
   }
