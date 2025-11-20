@@ -1,17 +1,17 @@
 ---
 const gitHubReadMe = Astro.props.gitHubReadMe;
---- 
-
+---
 <pre>
 <code class="readme--container">
 </code>
 </pre>
-    
-<script type="module">
+
+<script type="module" define:vars={{gitHubReadMe}}>
   import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
   // "https://raw.githubusercontent.com/your-username/your-project-name/branch-name/file-name.md";
-  const endpoint = `https://raw.githubusercontent.com/RicardoSantiagoAraujo/cv.ersatile/main/README.md`;	
+  const endpoint = `https://raw.githubusercontent.com/${gitHubReadMe.username}/${gitHubReadMe.repoName}/${gitHubReadMe.branch}/${gitHubReadMe.filename}`;
+
   fetch(endpoint)
     .then(r => r.text())
     .then(markdown => {
@@ -21,3 +21,23 @@ const gitHubReadMe = Astro.props.gitHubReadMe;
       console.error('There was a problem with the fetch operation:', error);
     });
 </script>
+
+<style>
+  .readme--container {
+    position: relative;
+    width: 100%;
+    display: block; 
+    text-wrap: auto;
+    p {
+      position: relative;
+      width:100%
+    }
+
+    pre{
+      padding: 3px;
+      background-color: rgba(0, 0, 0, 0.667);
+      color: white;
+    }
+  }
+
+</style>

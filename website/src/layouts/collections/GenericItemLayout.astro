@@ -115,10 +115,12 @@ frontmatter.lang = currentLang;
   </Accordion>
 }
 
+
+
 <!-- REPO README CONTENTS -->
 {frontmatter.gitHubReadMe   &&
-  <Accordion title="README.md" gitHubReadMe={frontmatter.gitHubReadMe} startCollapsed={false}>
-    <ReadMe />
+  <Accordion title="Project README" startCollapsed={false}>
+    <ReadMe gitHubReadMe={frontmatter.gitHubReadMe}  />
   </Accordion>
 }
 
