@@ -9,9 +9,10 @@ import GlossaryEntryComponent from '@/components/GlossaryEntryComponent.astro';
 import Timeline from '@/components/timeline/Timeline.astro';
 const pageTitle = "About me";
 
-const skillColor = "navy";
+const skillColor = "red";
 const fontWeight = "bold";
 const textCase = "uppercase";
+const nTech : number = Object.keys(gp.techstack).length;
 
 const aboutFigure = {
   url: gp.portrait,
@@ -22,7 +23,7 @@ const aboutFigure = {
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <style  is:global define:vars={{skillColor, fontWeight, textCase}}>
+    <style lang="scss"  is:global define:vars={{skillColor, fontWeight, textCase}}>
         h1 {
           color: purple;
           font-size: 3rem;
@@ -31,6 +32,20 @@ const aboutFigure = {
           color: var(--skillColor);
           font-weight: var(--fontWeight);
           text-transform: var(--textCase);
+        }
+        @for $i from 1 through 999 {
+          .tech:nth-child(#{$i}) {
+            opacity: 0;
+            animation: fadeIn ease-in-out;
+            animation-duration: 0.5s;
+            animation-delay: $i * 0.05s;
+            animation-fill-mode: forwards;
+          }
+        }
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+          }
         }
       </style>
 
@@ -64,8 +79,8 @@ const aboutFigure = {
     </Accordion>
 
     <!-- TECHSTACK -->
-    <Accordion title="My techstack" startCollapsed={false}>
-      {Object.values(gp.techstack).length > 0 &&
+    <Accordion title="My techstack" startCollapsed={false} refreshOnOpen={true}>
+      {nTech > 0 &&
         <p>Here are some tools in tech that I use:</p>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; list-style-type: none; padding: 0;">
         {Object.entries(gp.techstack)
