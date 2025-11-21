@@ -1,0 +1,7 @@
+---
+const {data} = Astro.props
+---
+
+<a href={`/${data.params.language_slug}/${data.props.collection}/${data.params.slug}`} data-tooltip={data.props.data.descriptionShort}>
+    {data.props.data.title}
+</a>

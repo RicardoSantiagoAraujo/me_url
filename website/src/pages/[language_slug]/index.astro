@@ -8,7 +8,8 @@ import { proccessCollectionItems } from '@/scripts/collections';
 import { getLangFromUrl, useTranslations , useTranslatedPath, translateRoute, warningMissingSectionName} from '@/i18n/utils';
 import {languages, defaultLang} from "@/i18n/language.config";
 import { generateCollectionItemRoutes } from '@/scripts/dynamicRoutes';
-
+import GenericItemLink from '@/components/collections/_generic/GenericItemLink.astro';
+import GenericList from '@/components/collections/_generic/GenericList.astro';
 
 const collections_list = Object.entries(collectionsMetadata);
 export const language_slugs = Object.keys(languages);
@@ -68,14 +69,11 @@ const pageSubtitle = ""
           </h3>
           <ul>{route.map((item:any)=>{
             return (item.params.language_slug == lang ?
-            <li >
-              <a href={`/${item.params.language_slug}/${item.props.collection}/${item.params.slug}`} data-tooltip={item.props.data.descriptionShort}>
-                {item.props.data.title}
-              </a>
-            </li>
+            <li><GenericItemLink data={item}/></li>
             : null
             )})}
           </ul>
+          <GenericList collectionName={key} isGenericComponent={true} itemListComponent={"GenericItemLink"} />
         </div>
       );
     })}
