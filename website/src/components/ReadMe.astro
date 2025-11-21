@@ -22,18 +22,22 @@ const gitHubReadMe = Astro.props.gitHubReadMe;
         return response.text();
       })
       .then(markdown => {
-        document.querySelector(".readme--container").innerHTML =  marked.parse(markdown);
-      })
-    .then(() => {
-        const errorEl = document.querySelector('.readme--container .readme-error');
-        if (errorEl){
-          errorEl.parentElement.parentElement.parentElement.parentElement.style.background = 'rgba(255, 0, 0, 0.1)';
-          console.error('README not found at the specified location.');
+        var readmeContainer = document.querySelector(".readme--container");
+        if (readmeContainer){
+          readmeContainer.innerHTML = marked.parse(markdown);
         }
+
       })
-      // .catch(error => {
-      //   console.error('There was a problem with the fetch operation for the README file:', error);
-      // });
+      .then(() => {
+          const errorEl = document.querySelector('.readme--container .readme-error');
+          if (errorEl){
+            errorEl.parentElement.parentElement.parentElement.parentElement.style.background = 'rgba(255, 0, 0, 0.1)';
+            console.error('README not found at the specified location.');
+          }
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation for the README file:', error);
+        });
   }
 
   readMe()
