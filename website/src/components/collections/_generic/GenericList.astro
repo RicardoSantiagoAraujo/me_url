@@ -6,8 +6,8 @@ import { collections } from "@/content.config.ts";
 const targetCollectionName = Astro.props.collectionName as keyof typeof collections;
 const itemListComponent = Astro.props.itemListComponent;
 const isGenericComponent : boolean = Astro.props.isGenericComponent || false;
-const componentFolder = isGenericComponent ? "_generic" : targetCollectionName;
-const componentImport =  import(`../${componentFolder}/${itemListComponent}.astro`);
+const componentImport =  isGenericComponent ? import(`../_generic/${itemListComponent}.astro`) : import(`../${targetCollectionName}/${itemListComponent}.astro`);
+// const componentImport =  import(`../_generic/GenericItemLink.astro`);
 const ListItem = (await componentImport).default;
 
 const lang = getLangFromUrl(Astro.url);

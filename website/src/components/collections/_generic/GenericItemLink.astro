@@ -1,7 +1,6 @@
 ---
-const {data} = Astro.props
+const {data} = Astro.props;
+console.log(data);
 ---
 
-<a href={`/${data.params.language_slug}/${data.props.collection}/${data.params.slug}`} data-tooltip={data.props.data.descriptionShort}>
-    {data.props.data.title}
-</a>
+<li><a href={data.url} data-tooltip={data.descriptionShort}>{data.title}</a></li>

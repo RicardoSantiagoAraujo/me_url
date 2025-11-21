@@ -67,12 +67,6 @@ const pageSubtitle = ""
 
             <a href={`/${lang}/${key}`}  data-tooltip={collectionsMetadata[key]?.description}  data-tippy-placement="top"><span class="collection-title">{translateRoute(key,defaultLang,lang)}</span> <span class="collection-item-count">({route.length})</span></a>
           </h3>
-          <ul>{route.map((item:any)=>{
-            return (item.params.language_slug == lang ?
-            <li><GenericItemLink data={item}/></li>
-            : null
-            )})}
-          </ul>
           <GenericList collectionName={key} isGenericComponent={true} itemListComponent={"GenericItemLink"} />
         </div>
       );
