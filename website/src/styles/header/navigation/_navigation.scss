@@ -167,12 +167,7 @@ nav {
 
 }
 
-
-
-
-
-
-.expanded {
+.nav-links.expanded {
   display: unset;
   position: absolute;
   top: 0px;
@@ -226,7 +221,22 @@ nav {
   }
 }
 
-
+.nav-links__bg-screen {
+  display: block;
+  position: fixed;
+  background: transparent; 
+  top:0;
+  left: 0;
+  width: 100vw; 
+  height: 100vh;
+  transition: 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+  &.expanded{ 
+    pointer-events: all;
+    background: color.scale(c.$color-secondary, $alpha: -50%);
+  }
+};
 
 // ==============  Media Query for LARGER screens
 @media screen and (min-width: d.$mobile-screen-width-threshold) {

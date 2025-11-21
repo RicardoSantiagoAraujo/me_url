@@ -9,6 +9,7 @@ import { glossaries , glossaries0} from "@/content.config";
 
 <div class="nav-links">
     <!-- <Logo /> -->
+     
     <NavigationItem dir={"."} target="about"/>
     <!-- COLLECTIONS -->
     {Object.entries(collectionsMetadata).map(([key, val])=>
@@ -17,3 +18,4 @@ import { glossaries , glossaries0} from "@/content.config";
     { <NavigationGroup groupName={`more`} dir={"."} targets={Object.keys(glossaries)} />}
     <!-- <NavigationGroup groupName={`example-dropdownGroup`} dir={"dropdownGroup"} targets={['example-dropdownItem','example-dropdownItem']} /> -->
 </div>
+<div class="nav-links__bg-screen"></div>
