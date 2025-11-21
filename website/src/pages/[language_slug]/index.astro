@@ -2,13 +2,11 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Greeting from '@/components/Greeting'; ;
 import ParallaxImage from '@/components/ParallaxImage.astro';
-import myImg from "@/assets/placeholders/placeholder_image.jpg";
+import parallaxImg from "@/assets/placeholders/generic_portrait.svg";
 import {collectionsMetadata , collections} from '@/content.config';
-import { proccessCollectionItems } from '@/scripts/collections';
 import { getLangFromUrl, useTranslations , useTranslatedPath, translateRoute, warningMissingSectionName} from '@/i18n/utils';
 import {languages, defaultLang} from "@/i18n/language.config";
 import { generateCollectionItemRoutes } from '@/scripts/dynamicRoutes';
-import GenericItemLink from '@/components/collections/_generic/GenericItemLink.astro';
 import GenericList from '@/components/collections/_generic/GenericList.astro';
 
 const collections_list = Object.entries(collectionsMetadata);
@@ -35,9 +33,12 @@ const pageSubtitle = ""
 ---
 <BaseLayout pageTitle={pageTitle}  pageSubtitle={pageSubtitle}>
 
-  <div class="home-intro">
-    Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
-  </div>
+  <ParallaxImage image={"https://velvetescape.com/wp-content/uploads/2011/11/dawid-zawila-G3rw6Y02D0-unsplash.jpg"} parallaxEffect={parallaxEffect}>
+    <div class="home-intro">
+      Learn more about me <a href={translatePath("about")}>here</a> or check out some of my <a href={translatePath("projects")}>projects</a>.
+    </div>
+  </ParallaxImage>
+
 
   <section class="home-collections-wrapper">
     <h2>{"Site contents"}</h2>
@@ -77,9 +78,7 @@ const pageSubtitle = ""
 
   <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 
-  <!-- <ParallaxImage image={myImg} parallaxEffect={parallaxEffect}>
-    Parallax Text
-  </ParallaxImage> -->
+
 
 
 </BaseLayout>
@@ -88,25 +87,6 @@ const pageSubtitle = ""
 
 <style lang="scss">
 
-.home-collections {
-  .collection-container {
-    opacity: 0;
-  }
 
-  // Loop only for the nth-child animation delay
-  @for $i from 1 through 10 {
-    .collection-container:nth-child(#{$i}) {
-      animation: fade-in ease-in-out forwards;
-      animation-duration: calc(0.3s);
-      animation-delay: calc(0.35s* $i);
-    }
-  }
-}
-
-
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
 
 </style>

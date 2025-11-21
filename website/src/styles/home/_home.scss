@@ -5,7 +5,7 @@
 
 .home-intro {
     // font-size: d.$font-size-large;
-    margin-top: 20px;
+    margin: 25px 5% 0px;
 
     a {
         color: c.$color-secondary;
@@ -18,63 +18,98 @@
     }
 }
 
-.home-collections-wrapper{
+.home-collections-wrapper {
     margin-top: 50px;
-    h2{
+
+    h2 {
         color: c.$color-primary;
         margin-bottom: 20px;
         text-transform: capitalize;
     }
 }
 
-.home-collections {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
+.home-collections-wrapper {
+    background-color: color.scale(c.$color-secondary, $alpha: -90%);
+    border-radius: 20px;
+    padding: 10px 20px 30px;
+    box-shadow: 3px 3px 10px color.adjust(c.$color-primary, $alpha: -0.9);
 
-    .collection-container {
-        border: 1px solid color.adjust(c.$color-primary, $alpha: -0.8);
-        border-radius: 6px;
-        background-color: color.adjust(c.$color-bg, $lightness: +10%);
-        padding: 20px 20px 10px;
-        min-width: 23%;
-        margin: 1%;
 
-        h3 {
-            margin: 0px;
-            padding: 0px;
-            a{
-                text-decoration: none;
+    .home-collections {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(23%, 1fr));  /* Adjust column width */
+        grid-gap: 16px;  /* Space between items */
+        width: fit-content;  /* Width of the container based on content */
+        margin: 0 auto;  /* Center the container horizontally */
+        max-width: 100%;  /* Prevent the container from becoming too wide */
+
+        .collection-container {
+            border: 1px solid color.adjust(c.$color-primary, $alpha: -0.8);
+            border-radius: 6px;
+            background-color: color.adjust(c.$color-bg, $lightness: +10%);
+            padding: 20px 20px 10px;
+            margin: 1%;
+            box-shadow: 3px 3px 5px color.adjust(c.$color-primary, $alpha: -0.7);
+
+            h3 {
+                margin: 0px;
+                padding: 0px;
+
+                a {
+                    text-decoration: none;
+                }
+
+                .collection-title {
+                    font-weight: bolder;
+                    text-transform: capitalize;
+                    color: c.$color-primary;
+                }
+
+                .collection-item-count {
+                    font-weight: normal;
+                    color: c.$color-primary;
+                    opacity: 0.4;
+                }
             }
 
-            .collection-title {
-                font-weight: bolder;
-                text-transform: capitalize;
-                color: c.$color-primary;
-            }
+            ul {
+                list-style-type: none;
+                padding-left: 0;
 
-            .collection-item-count {
-                font-weight: normal;
-                color: c.$color-primary;
-                opacity: 0.4;
+                a {
+                    text-decoration: none;
+                    color: c.$color-secondary;
+                    transition: all 0.2s ease-in-out;
+
+                    &:hover {
+                        // text-decoration: underline;
+                        text-shadow: 1px 1px 2px rgba(c.$color-secondary, 0.3);
+                    }
+                }
             }
         }
 
-        ul {
-            list-style-type: none;
-            padding-left: 0;
+        .collection-container {
+            opacity: 0;
+        }
 
-            a {
-                text-decoration: none;
-                color: c.$color-secondary;
-                transition: all 0.2s ease-in-out;
-
-                &:hover {
-                    // text-decoration: underline;
-                    text-shadow: 1px 1px 2px rgba(c.$color-secondary, 0.3);
-                }
+        // Loop only for the nth-child animation delay
+        @for $i from 1 through 10 {
+            .collection-container:nth-child(#{$i}) {
+                animation: fade-in ease-in-out forwards;
+                animation-duration: calc(0.3s);
+                animation-delay: calc(0.35s* $i);
             }
+        }
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
         }
     }
 }
