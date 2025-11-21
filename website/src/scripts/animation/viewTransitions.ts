@@ -14,5 +14,8 @@ export function listenViewTransitions(
     functionName();
   }
   // If you're using Astro's View Transitions, animations won't rerun on navigation. You must re-trigger them.
-  document.addEventListener("astro:after-swap", functionName);
+  document.addEventListener("astro:after-swap", (event) => {
+    // console.log("astro:after-swap event triggered", event);
+    functionName();  // Call your function
+  });
 }
