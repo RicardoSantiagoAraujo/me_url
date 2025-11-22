@@ -37,11 +37,16 @@
 
     .home-collections {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(23%, 1fr));  /* Adjust column width */
-        grid-gap: 16px;  /* Space between items */
-        width: fit-content;  /* Width of the container based on content */
-        margin: 0 auto;  /* Center the container horizontally */
-        max-width: 100%;  /* Prevent the container from becoming too wide */
+        grid-template-columns: repeat(auto-fill, minmax(23%, 1fr));
+        /* Adjust column width */
+        grid-gap: 16px;
+        /* Space between items */
+        width: fit-content;
+        /* Width of the container based on content */
+        margin: 0 auto;
+        /* Center the container horizontally */
+        max-width: 100%;
+        /* Prevent the container from becoming too wide */
 
         .collection-container {
             border: 1px solid color.adjust(c.$color-primary, $alpha: -0.8);
@@ -54,6 +59,7 @@
             h3 {
                 margin: 0px;
                 padding: 0px;
+                text-align: center;
 
                 a {
                     text-decoration: none;
@@ -91,6 +97,11 @@
 
         .collection-container {
             opacity: 0;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.01);
+            }
         }
 
         // Loop only for the nth-child animation delay

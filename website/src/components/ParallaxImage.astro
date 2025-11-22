@@ -70,6 +70,7 @@ const { image, parallaxEffect } = Astro.props;
       window.addEventListener('scroll', function () {
       const parallax = document.querySelector('.parallax__image');
       const scrolled = window.scrollY;
+      if (parallax)
       parallax.style.transform = `translateY(${scrolled * parallaxEffect}px)`; // Adjust speed
     });
 

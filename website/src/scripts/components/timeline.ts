@@ -1,8 +1,10 @@
+import { listenViewTransitions } from "../animation/viewTransitions";
+
 /**
  * function to animate timeline bars and add balloons in sequence
  * @returns void
  */
-export default function timelineAnimation(): void {
+function timelineAnimation(): void {
   var timelines = document.querySelectorAll<HTMLElement>(".timeline");
   var initial_delay = 1; // recomended to be at least same as $animation-duration-line--appear
   var adjuster = 0.3;
@@ -45,6 +47,7 @@ export default function timelineAnimation(): void {
   });
 }
 
-setTimeout(() => {
-  timelineAnimation();
+export default setTimeout(() => {
+  // timelineAnimation();
+  listenViewTransitions(timelineAnimation, true);
 }, 500);

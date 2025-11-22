@@ -1,6 +1,6 @@
 import { listenViewTransitions } from "@/scripts/animation/viewTransitions";
 
-listenViewTransitions(() => {
+function menuBehaviour(): void {
   document.querySelector(".hamburger")?.addEventListener("click", () => {
     document.querySelector(".nav-links")?.classList.toggle("expanded");
   });
@@ -11,4 +11,10 @@ listenViewTransitions(() => {
     document.querySelector(".nav-links")?.classList.toggle("expanded");
     document.querySelector(".nav-links__bg-screen")?.classList.toggle("expanded");
   });
-}, true);
+}
+
+
+
+
+
+listenViewTransitions(menuBehaviour, true);
