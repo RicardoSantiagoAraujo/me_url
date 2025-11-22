@@ -11,6 +11,7 @@ export interface GeneralParameters {
   signature: string;
   signatureLinkTo: string;
   portrait: string;
+  bannerImage:string;
   favicon: string;
   email: string;
   githubUsername?: string;

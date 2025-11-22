@@ -18,6 +18,7 @@ const generalParametersPlaceholder: GeneralParameters = {
   signature: "/src/assets/placeholders/generic_signature.png",
   signatureLinkTo: "",
   portrait: "/src/assets/placeholders/generic_portrait.svg",
+  bannerImage: "https://images.photowall.com/products/60869/azores-mountain-landscape-1.jpg?h=699&q=85",
   favicon: "/icons/favicon.svg",
   email: "johndoe@email.com",
   phone: "9999999999",

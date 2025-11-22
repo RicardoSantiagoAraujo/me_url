@@ -1,12 +1,19 @@
 ---
 import { Image } from 'astro:assets';
-const { image, parallaxEffect } = Astro.props;
+const { image, parallaxEffect = "0.3",parallaxHeight = "33vh", parallaxBgColor = "white" , parallaxOpacity = 1, parallaxVerticalAdjustment = 0} = Astro.props as {
+  image: string;
+  parallaxEffect?: number;
+  parallaxHeight?: string;
+  parallaxBgColor?: string;
+  parallaxOpacity?: number;
+  parallaxVerticalAdjustment?: string;
+};
 ---
 
 
 <div class="parallax__container">
     <div class="parallax__image">
-      <Image src={image} alt="Logo image." width="1000" height="899" />
+      <Image src={image} alt="Logo image." width="1" height="1" />
     </div>
     <div class="parallax__content">
       <slot />
@@ -15,13 +22,12 @@ const { image, parallaxEffect } = Astro.props;
 
 
 
-  <style>
+  <style define:vars={{ parallaxHeight, parallaxBgColor, parallaxEffect, parallaxOpacity, parallaxVerticalAdjustment}}>
 
     /* In your global CSS file or component style block */
   .parallax__container {
-    background-color: white;
-    height: 45vw; /* Adjust as needed */
-    width: 100%;
+    background-color: var(--parallaxBgColor);
+    height: var(--parallaxHeight);
     margin: auto;
     overflow: hidden;
     position: relative;
@@ -30,14 +36,18 @@ const { image, parallaxEffect } = Astro.props;
 
   .parallax__image {
     position: absolute;
-    top: -150px;
+    transition: 0.01s ease-in-out;
+    top: calc(50% + var(--parallaxVerticalAdjustment));
     left: 0;
     width: 100%;
-    height:  45vw; /* Larger than container for the effect */
-    transform: translateZ(0); /* Avoid paint issues on some browsers */
+    height:  calc(var(--parallaxHeight));
+    transform: translateZ(0)translateY(-50%); /* Avoid paint issues on some browsers */
     will-change: transform;
     background-attachment: fixed;
-    opacity: 0.5;
+    opacity: var(--parallaxOpacity);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 
@@ -54,10 +64,10 @@ const { image, parallaxEffect } = Astro.props;
   }
   @media screen and (min-width: 636px) {
     .parallax__container {
-    height: 10vw; /* Adjust as needed */
+    height: var(--parallaxHeight);
   }
   .parallax__image {
-    height:  20vw; /* Larger than container for the effect */
+    height:  calc(var(--parallaxHeight));
   }
   }
 
@@ -71,7 +81,7 @@ const { image, parallaxEffect } = Astro.props;
       const parallax = document.querySelector('.parallax__image');
       const scrolled = window.scrollY;
       if (parallax)
-      parallax.style.transform = `translateY(${scrolled * parallaxEffect}px)`; // Adjust speed
+      parallax.style.transform = `translateY(calc(-50% + ${scrolled * parallaxEffect}px))`; // Adjust speed
     });
 
     }
