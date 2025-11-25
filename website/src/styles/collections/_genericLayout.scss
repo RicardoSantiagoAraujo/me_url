@@ -27,11 +27,24 @@ $genericLayout-header-height-with-img: 33vh;
         .genericLayout-page__header__bg-img {
             width: 100%;
             height: auto;
-            opacity: 0.2;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: bg-img-appear 1s ease-in-out forwards;
+            animation-delay: 0.2s;
+            @keyframes bg-img-appear {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -55%);
+                }
+
+                100% {
+                    opacity: 0.2;
+                    transform: translate(-50%, -50%);
+                }
+            }
         }
     }
 

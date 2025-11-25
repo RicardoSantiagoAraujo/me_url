@@ -22,6 +22,26 @@ $footer-height: 12%;
     column-gap: 20px;
     row-gap: 50px;
 
+    .item-counter{ 
+        position: absolute;
+        width: 50px;
+        text-align: center; 
+        top: 10px;
+        right: 100%;
+        font-size: small;
+        z-index: 2;
+        span{
+            color: c.$color-text;
+            &.index{
+                font-weight: bold;
+                font-size: medium;
+            }
+            &.total{
+                opacity: 0.5;
+            }   
+        }
+    }
+
     li.collection-item {
         position: relative;
         display: flex;

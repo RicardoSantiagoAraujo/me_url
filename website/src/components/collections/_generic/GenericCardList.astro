@@ -29,7 +29,10 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
             url: "/" + item.id.replace("/", `/${targetCollectionName}/`) // fix the URL to match the expected format
         };
         // const itemLang = item.id.split('/')[0];
-        return <div class="gsap-target" style="opacity:0; width:100%"><ListItem data={data} /></div>
+        return <div class="gsap-target" style="opacity:0; width:100%">
+          <ListItem data={data} />
+          <div class="item-counter" ><span class="index">{finalItems.indexOf(item) + 1}</span>/<span class="total">{finalItems.length}</span></div>
+        </div>
         // return <li  style="background-color: yellow; margin-bottom: 1rem; border: 1px solid #ccc; display: block; ">{JSON.stringify(data, null, 2)}</li>
       })
     }
@@ -50,16 +53,34 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
         gsap.to(el, {
             scrollTrigger: {
                 trigger: el,
-                start: "top 80%",
+                start: "top 85%",
                 toggleActions: "play reverse play reverse",
             },
             opacity: 1,
             x: 0,
             duration: 0.5,
-            delay:   0.4,
+            delay:   0.1,
             ease: "power3.out",
+            onStart: () => {
+                // console.log(`Animation started for element ${el}`);                  
+                const children = el.querySelectorAll(".item-counter"); 
+                gsap.set(children, { y: 0, opacity: 0, x: -50 });
+                gsap.to(children, {
+                    y: 0,
+                    opacity: 1,
+                    x: 0,
+                    stagger: 0.15,  
+                    duration: 1.5,
+                    ease: "power2.out", 
+                  });
+                const bgImg = el.querySelectorAll(".collection-item__body__bg-image-container");
+                gsap.set(bgImg, { opacity: 0, scale: 1.05 });
+                gsap.to(bgImg, { opacity: 1, duration: 2, delay: 0.1, scale: 1, ease: "power2.out" });
+            },
             onComplete: () => {
                   // console.log(`Animation completed for element ${el}`);
+                  // Animate children after parent reveals
+
               },
         });
     });

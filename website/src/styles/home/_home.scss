@@ -3,6 +3,9 @@
 @use '../variables/dimensions' as d;
 @use 'sass:color';
 
+$delay_start: 0.5s;
+
+
 .home-intro {
     // font-size: d.$font-size-large;
     margin: 25px 5% 0px;
@@ -18,6 +21,7 @@
     }
 }
 
+
 .home-collections-wrapper {
     margin-top: 50px;
 
@@ -25,6 +29,19 @@
         color: c.$color-primary;
         margin-bottom: 20px;
         text-transform: capitalize;
+    }
+    animation: collections-appear $delay_start ease-in-out forwards;
+    opacity: 0;
+    @keyframes collections-appear {
+        0% {
+            transform: translateY(25%);
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
     }
 }
 
@@ -114,7 +131,7 @@
             .collection-container:nth-child(#{$i}) {
                 animation: fade-in ease-in-out forwards;
                 animation-duration: calc(0.3s);
-                animation-delay: calc(0.35s* $i);
+                animation-delay: $delay_start + calc(0.35s* $i);
             }
         }
     }
