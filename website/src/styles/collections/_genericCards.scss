@@ -22,10 +22,10 @@ $footer-height: 12%;
     column-gap: 20px;
     row-gap: 50px;
 
-    .item-counter{ 
+    .item-counter{
         position: absolute;
         width: 50px;
-        text-align: center; 
+        text-align: center;
         top: 10px;
         right: 100%;
         font-size: small;
@@ -38,7 +38,7 @@ $footer-height: 12%;
             }
             &.total{
                 opacity: 0.5;
-            }   
+            }
         }
     }
 
@@ -109,6 +109,7 @@ $footer-height: 12%;
             width: 100%;
             background-color: color.scale(c.$color-text, $alpha: -95%);
             ;
+            overflow: hidden;
 
             .collection-item__body__left {
                 height: 100%;
