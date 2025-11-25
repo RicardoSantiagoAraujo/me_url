@@ -33,7 +33,7 @@ $genericLayout-header-height-with-img: 33vh;
             transform: translate(-50%, -50%);
             opacity: 0;
             animation: bg-img-appear 1s ease-in-out forwards;
-            animation-delay: 0.2s;
+            animation-delay: 0s; // not working?
             @keyframes bg-img-appear {
                 0% {
                     opacity: 0;
