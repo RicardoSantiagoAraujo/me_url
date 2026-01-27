@@ -105,9 +105,9 @@ export const techstackDefault: Record<string, Tech> = {
     descriptionShort: "An open-source relational database system.",
     description: "MySQL is one of the most popular SQL-based databases, widely used in web applications for its reliability and performance."
   },
-  postgressql: {
+  postgresql: {
     name: "PostgreSQL",
-    icon: "tech/postgressql",
+    icon: "tech/postgresql",
     link: "https://www.postgresql.org/",
     descriptionShort: "A powerful open-source relational database.",
     description: "PostgreSQL is known for its robustness, extensibility, and support for complex queries and data types."
@@ -188,5 +188,19 @@ export const techstackDefault: Record<string, Tech> = {
     link: "https://www.google.com/",
     descriptionShort: "A sample placeholder for tech stack listings.",
     description: "Generic Tech C can be used as a placeholder or template element when showcasing or testing a technical stack structure."
+  },
+  aws: {
+    name: "AWS",
+    icon: "tech/aws",
+    link: "https://aws.amazon.com/en",
+    descriptionShort: "On-demand cloud computing platforms and APIs.",
+    description: "On-demand cloud computing platforms and APIs."
+  },
+    snowflake: {
+    name: "Snowflake",
+    icon: "tech/snowflake",
+    link: "https://www.snowflake.com/en/",
+    descriptionShort: "Cloud-based data platform that supports data analysis and simultaneous access of data sets with minimal latency.",
+    description: "Cloud-based data platform that supports data analysis and simultaneous access of data sets with minimal latency."
   },
 };
