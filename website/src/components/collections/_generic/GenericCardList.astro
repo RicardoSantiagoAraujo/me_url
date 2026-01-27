@@ -62,19 +62,19 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
             delay:   0.1,
             ease: "power3.out",
             onStart: () => {
-                // console.log(`Animation started for element ${el}`);                  
-                const children = el.querySelectorAll(".item-counter"); 
+                // console.log(`Animation started for element ${el}`);
+                const children = el.querySelectorAll(".item-counter");
                 gsap.set(children, { y: 0, opacity: 0, x: -50 });
                 gsap.to(children, {
                     y: 0,
                     opacity: 1,
                     x: 0,
-                    stagger: 0.15,  
+                    stagger: 0.15,
                     duration: 1.5,
-                    ease: "power2.out", 
+                    ease: "power2.out",
                   });
                 const bgImg = el.querySelectorAll(".collection-item__body__bg-image-container");
-                gsap.set(bgImg, { opacity: 0, scale: 1.05 });
+                gsap.set(bgImg, { opacity: 0, scale: 1.25 });
                 gsap.to(bgImg, { opacity: 1, duration: 2, delay: 0.1, scale: 1, ease: "power2.out" });
             },
             onComplete: () => {
@@ -85,7 +85,7 @@ const finalItems = proccessCollectionItems(items, lang, orderBy, sortOrder);
         });
     });
   }
-  // Run animations on initial load and on view transitions 
+  // Run animations on initial load and on view transitions
   listenViewTransitions(runAnimations, true);
 
 </script>
